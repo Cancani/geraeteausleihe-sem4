@@ -1,1 +1,18 @@
+site_name: Geräteausleihe Microservice Sem4
+repo_url: https://github.com/Cancani/geraeteausleihe-sem4
+repo_name: Cancani/geraeteausleihe-sem4
 
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+
+nav:
+  - Start: index.md
+  - Projektmanagement: projektmanagement.md
+  - Sprints: sprints.md
+  - Architektur: architektur.md
