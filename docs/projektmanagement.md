@@ -219,3 +219,49 @@ Empfohlene Nachweise, die in der Dokumentation verlinkt werden:
 3. Screenshot Actions Run für Build und Deploy
 4. kubectl Ausgaben für Pods, Services, Ingress
 5. GHCR Image Tags Übersicht
+
+## Branching Strategie und Regeln
+
+### Ziel
+Ein stabiler main Branch fuer Demo und Abgabe. Entwicklung findet auf develop oder feature branches statt. Dokumentation wird ueber GitHub Pages aus dem main Branch gebaut.
+
+### Branches
+main  
+Stabiler Stand fuer Demo und Abgabe. Merge nur via Pull Request.
+
+develop  
+Integrationsbranch fuer laufende Arbeit. Feature branches werden hier gemerged.
+
+feature branches  
+Kurzlebige branches fuer einzelne Issues, zB feature/us08-k3s-ec2.
+
+gh-pages  
+Wird nur durch den GitHub Pages Workflow beschrieben. Kein manuelles Arbeiten in diesem Branch.
+
+### Merge Flow
+1 Neue Arbeit startet auf feature branch aus develop  
+2 Pull Request von feature nach develop  
+3 Wenn ein Sprint Stand stabil ist, Pull Request von develop nach main  
+4 GitHub Pages baut die Doku nur bei Aenderungen an docs oder mkdocs yml auf main
+
+### Branch Schutz und Regeln
+1 Force Push ist blockiert auf main und gh-pages  
+2 Direkt Push auf main ist eingeschraenkt, Merge via Pull Request  
+3 Status Checks muessen bestehen, wenn Workflows vorhanden sind  
+4 gh-pages darf nur vom GitHub Actions Workflow aktualisiert werden
+
+### Commit Konvention
+Konvention: type scope: message
+
+Beispiele:
+docs(pm): update sprint documentation  
+docs(arch): add target architecture overview  
+ci(pages): enable manual docs deployment  
+ci(cd): deploy to k3s on push to main  
+feat(k8s): add deployment and service manifests  
+fix(ci): correct ghcr image tag
+
+### Definition of Done fuer Branching Doku
+1 Dokumentation ist committed und gepusht  
+2 Regeln sind im README oder docs referenziert  
+3 Issue US05 ist im Board auf Done
