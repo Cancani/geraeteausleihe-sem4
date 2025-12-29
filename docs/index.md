@@ -7,3 +7,5 @@ Fokus ist Cloud Native Deployment auf AWS mit Kubernetes und GitHub Actions.
 - Projektmanagement
 - Sprint Planung und Umsetzung
 - Architektur und technische Entscheide
+
+# Test for Actions
