@@ -1,17 +1,22 @@
 .md-typeset h1 {
-  font-size: 2.4rem;
+  font-size: 2.0rem;
   font-weight: 800;
+  color: var(--md-default-fg-color);
   letter-spacing: 0.2px;
+  margin-bottom: 0.6rem;
 }
 
 .md-typeset h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 750;
-  letter-spacing: 0.15px;
+  color: var(--md-default-fg-color);
+  margin-top: 1.6rem;
 }
 
-.md-typeset h3 {
-  font-weight: 700;
+.md-typeset p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color);
 }
 
 .md-header__title {
