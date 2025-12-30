@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: geraeteausleihe
+  namespace: geraeteausleihe
+spec:
+  rules:
+    - host: geraeteausleihe.CHANGE_ME
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: geraeteausleihe
+                port:
+                  number: 80
