@@ -1,53 +1,149 @@
-# Sprint 1 Review und Retro
+## Sprint 1 – Review und Retrospektive
 
-## Meta
-Sprint: 1  
-Ort: GitHub Repository und GitHub Project Board  
-Teilnehmende: Efekan Demirci  
-Review Empfänger: Dozenten
+### 1. Ziel des Sprints
+Ziel von Sprint 1 war der **Projektstart sowie der Aufbau der Projektmanagement-Grundlagen**.  
+Der Fokus lag nicht auf technischer Umsetzung, sondern auf Struktur, Planung und Nachvollziehbarkeit gemäss agiler Methodik mit Kanban.
 
-## Sprint Ziel
-Projektstart und Projektmanagement Setup in GitHub.
-Dazu gehören Board Struktur, Labels, Milestones, initiale User Stories sowie eine Basis Dokumentation auf GitHub Pages.
+Der Sprint bildet die Basis für alle folgenden technischen Arbeiten.
 
-## Was wurde umgesetzt
-1. Labels wurden im Repository angelegt
-2. Milestones fuer Sprint 1 bis Sprint 3 sowie Abschluss wurden angelegt
-3. User Stories US01 bis US27 wurden als Issues erfasst und den Milestones zugeordnet
-4. GitHub Pages Dokumentation ist aktiv und wird per Workflow bei Aenderungen an docs gebaut
-5. Dokumentation Projektmanagement wurde erstellt
+---
 
-## Nachweise
-1. [Link zu GitHub Issues Liste mit US01 bis US27 und Miulestones](https://github.com/Cancani/geraeteausleihe-sem4/issues)
-2. [Project Board mit Spalten Backlog, Ready, In Progress, Review, Done](https://github.com/users/Cancani/projects/3)
-3. [Beispiel GitHub Actions Lauf für Docs Deployment](https://github.com/Cancani/geraeteausleihe-sem4/actions/runs/20572615824)
-4. [Link zur GitHub Pages Seite](https://cancani.com/geraeteausleihe-sem4/)
+### 2. Geplante Inhalte (Sprint Backlog)
+Für Sprint 1 wurden folgende Themen definiert:
 
+- **Aufsetzen eines Kanban Boards** mit klaren Spalten
+- **Definition von Labels** zur Klassifizierung der Issues
+- **Erstellung von Milestones** für Sprints und Abgabe
+- **Erfassung aller User Stories** für das Gesamtprojekt
+- **Dokumentation der Projektmanagement-Vorgehensweise**
+- **Architektur Zielbild als konzeptionelle Grundlage**
 
-Ablageort der Nachweise:
-docs assets oder docs images Ordner, Dateinamen mit sprint1 prefix
+---
 
-## Offene Punkte aus Sprint 1
-1. Board WIP Regel im Project sichtbar dokumentieren
-2. Sprint Review und Retro als wiederholbares Template festlegen
-3. Architektur Zielbild finalisieren und in Doku verlinken
+### 3. Umsetzung im Sprint
+Im Verlauf des Sprints wurden die geplanten Inhalte vollständig umgesetzt.
 
-## Sprint Retro
+#### 3.1 Kanban Board
+Das Kanban Board wurde in GitHub Projects erstellt und umfasst folgende Spalten:
 
-### Was lief gut
-1. GitHub CLI hat die initiale Projektstruktur sehr schnell aufgebaut
-2. Issues sind einheitlich mit Akzeptanzkriterien und Definition of Done aufgebaut
-3. GitHub Pages Build funktioniert stabil bei Dokumentations Aenderungen
+- **Backlog**
+- **Ready**
+- **In Progress**
+- **Review**
+- **Done**
 
-### Was war schwierig
-1. Unterschiedliche CLI Flags zwischen gh api und anderen gh Befehlen
-2. Milestone Zuordnung musste nachgebessert werden
-3. Klarer Startpunkt im Board musste erst definiert werden
+Zusätzlich wurde eine WIP-Regel definiert, um parallele Arbeit zu begrenzen.
 
-### Verbesserungen für Sprint 2
-1. Vor jedem groesseren Schritt kurze Checkliste pflegen
-2. K3s Setup in kleine Schritte teilen und je Schritt einen Nachweis sichern
-3. Secrets und Zugriffe frueh testen, bevor CI CD fertig gebaut wird
+![Kanban Board](./screenshots/prj/sprint1_kanban_board.png)
 
-## Beschluss für Sprint 2
-Priorit$t ist ein lauff$higer K3s Cluster auf EC2 mit erstem Deploy des Services.
+<small>Bild 1: Kanban Board</small>
+
+---
+
+#### 3.2 Issues und User Stories
+Alle relevanten Aufgaben wurden als **User Stories (US01 bis US27)** in GitHub Issues erfasst.  
+Jede User Story enthält:
+
+- Beschreibung
+- Akzeptanzkriterien als Checkboxen
+- Definition of Done
+
+Die Issues sind eindeutig benannt und den entsprechenden Milestones zugeordnet.
+
+![alt text](./screenshots/prj/Sprint1_Issues.png)
+
+<small>Bild 2: Issues</small>
+
+---
+
+#### 3.3 Labels
+Zur besseren Strukturierung wurden Labels für folgende Bereiche angelegt:
+
+- Projektmanagement
+- Dokumentation
+- AWS
+- K3s
+- Kubernetes
+- CI/CD
+- Security
+- Testing
+- Story und Task
+- Must, Should, Could
+
+Diese Labels werden in allen folgenden Sprints konsequent verwendet.
+
+![Labels](./screenshots/prj/sprint1_labels.png)
+
+<small>Bild 3: Labels</small>
+
+---
+
+#### 3.4 Milestones
+Es wurden Milestones für die einzelnen Projektphasen erstellt:
+
+- Sprint 1 Projektstart und Planung
+- Sprint 2 K3s Cluster und erster Deploy
+- Sprint 3 CI/CD Build Push Deploy
+- Abgabe und Dokumentation
+
+Dadurch ist der Projektfortschritt jederzeit nachvollziehbar.
+
+![Milestones](./screenshots/prj/Sprint1_Milestones.png)
+
+<small>Bild 4: Milestones</small>
+
+---
+
+#### 3.5 Dokumentation
+Die Projektdokumentation wurde strukturiert aufgebaut und über **GitHub Pages** veröffentlicht.  
+Die Dokumentation umfasst unter anderem:
+
+- Projektdefinition
+- Projektmanagement
+- Sprint Reviews
+- Architektur Zielbild
+
+https://cancani.com/geraeteausleihe-sem4/
+
+---
+
+### 4. Sprint Review (Ergebnisbewertung)
+
+**Sprintziel erreicht:** Ja  
+
+Alle geplanten Inhalte für Sprint 1 wurden umgesetzt.  
+Die Projektorganisation ist nun sauber strukturiert, nachvollziehbar dokumentiert und bereit für die technische Umsetzung.
+
+Besonders positiv ist die vollständige Erfassung aller User Stories bereits zu Projektbeginn.
+
+---
+
+### 5. Sprint Retrospektive
+
+#### 5.1 Was lief gut
+- Klare Strukturierung des Projekts von Anfang an
+- Einheitliche User Stories mit Akzeptanzkriterien
+- Kanban Board ermöglicht transparente Arbeitsweise
+- Dokumentation ist früh vorhanden und versioniert
+
+#### 5.2 Was war schwierig
+- Einstieg in GitHub CLI und Automatisierung der Projektanlage
+- Feinabstimmung von Milestones und deren Zuordnung
+- Entscheidung für die geeignete Kubernetes Variante
+
+#### 5.3 Verbesserungen für Sprint 2
+- Technische Tasks noch granularer aufteilen
+- Nachweise direkt während der Umsetzung sichern
+- K3s Installation schrittweise dokumentieren
+
+---
+
+### 6. Ausblick auf Sprint 2
+In Sprint 2 liegt der Fokus auf der **technischen Basis**:
+
+- Bereitstellung einer AWS EC2 Instanz
+- Installation und Konfiguration von K3s
+- Erstes Deployment des Microservices
+- Verifikation der Container Registry Anbindung
+
+Damit wird der Übergang von Planung zu technischer Umsetzung vollzogen.
