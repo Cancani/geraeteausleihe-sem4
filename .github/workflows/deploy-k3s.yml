@@ -1,0 +1,31 @@
+name: deploy-k3s
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: write kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > kubeconfig
+          echo "KUBECONFIG=$(pwd)/kubeconfig" >> $GITHUB_ENV
+
+      - name: apply manifests
+        run: |
+          kubectl apply -f k8s/namespace.yaml
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+          kubectl apply -f k8s/ingress.yaml
+
+      - name: set image to current sha
+        run: |
+          kubectl -n geraeteausleihe set image deployment/geraeteausleihe app=ghcr.io/${{ github.repository }}:${{ github.sha }}
+          kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe
