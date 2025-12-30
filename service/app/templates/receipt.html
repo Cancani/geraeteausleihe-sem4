@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TBZ Quittung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 40px 32px 32px 32px;
+            background: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 6px 0 0 0;
+            color: #333;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+        .info-table td {
+            padding: 7px 18px 7px 0;
+        }
+        .info-table td:first-child {
+            font-weight: bold;
+            text-align: right;
+            width: 210px;
+        }
+        .betrag-row td {
+            border: none !important;
+            padding-top: 22px;
+            padding-bottom: 10px;
+        }
+        .betrag-box {
+            margin-top: 18px;
+            border-top: 1px solid #000;
+            padding-top: 16px;
+        }
+        .signature {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .sig-box {
+            width: 48%;
+        }
+        .sig-line {
+            border-top: 1px solid #000;
+            margin-top: 48px;
+        }
+        .sig-label {
+            margin-top: 8px;
+            color: #333;
+            font-size: 12px;
+        }
+        .footer {
+            margin-top: 35px;
+            font-size: 11px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Quittung Geräteausleihe</h1>
+            <p>Technische Berufsschule Zürich</p>
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <td>Ausleihe an:</td>
+                <td>{{ borrower }}</td>
+            </tr>
+            <tr>
+                <td>Gerät:</td>
+                <td>{{ device }}</td>
+            </tr>
+            <tr>
+                <td>Ausleihedatum:</td>
+                <td>{{ loan_date }}</td>
+            </tr>
+            <tr>
+                <td>Rückgabe bis:</td>
+                <td>{{ return_date }}</td>
+            </tr>
+            <tr>
+                <td>Ausgestellt durch:</td>
+                <td>{{ staff }}</td>
+            </tr>
+            <tr>
+                <td>Zahlungszweck:</td>
+                <td>TBZ Ausleihe Notebooks</td>
+            </tr>
+        </table>
+
+        <div class="betrag-box">
+            <p><strong>Hinweis</strong></p>
+            <p>
+                Mit dieser Quittung wird bestätigt, dass das oben genannte Gerät ausgeliehen wurde.
+                Das Gerät ist fristgerecht und in einwandfreiem Zustand zurückzugeben.
+            </p>
+        </div>
+
+        <div class="signature">
+            <div class="sig-box">
+                <div class="sig-line"></div>
+                <div class="sig-label">Unterschrift Ausleihe</div>
+            </div>
+            <div class="sig-box">
+                <div class="sig-line"></div>
+                <div class="sig-label">Unterschrift IT Support</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>TBZ Informatikdienst, Sihlquai 101, 8005 Zürich</p>
+        </div>
+    </div>
+</body>
+</html>
