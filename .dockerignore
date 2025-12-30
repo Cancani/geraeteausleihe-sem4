@@ -2,9 +2,11 @@
 .github
 docs
 site
-__pycache__
-*.pyc
-.venv
 .env
 .DS_Store
 .vscode
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.vscode/

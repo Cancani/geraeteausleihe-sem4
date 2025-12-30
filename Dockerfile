@@ -17,6 +17,8 @@ RUN pip install --no-cache-dir -r /srv/requirements.txt
 
 COPY service/ /srv/
 
+RUN chown -R app:app /srv
+
 USER app
 
 ENV PORT=8080
