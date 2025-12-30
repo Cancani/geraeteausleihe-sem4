@@ -1,9 +1,10 @@
-# Geräteausleihe Microservice Sem4
+# Geraeteausleihe Microservice Sem4
 
-Diese Dokumentation beschreibt die Semesterarbeit 4.  
-Fokus ist Cloud Native Deployment auf AWS mit Kubernetes und GitHub Actions.
+**Cloud Native Deployment auf AWS mit K3s und GitHub Actions.**
+
+Diese Dokumentation beschreibt die Semesterarbeit 4. Fokus ist ein automatisiertes Deployment in ein Kubernetes Cluster, inklusive CI CD Pipeline und GitHub Pages Doku.
 
 ## Inhalte
-- Projektmanagement
-- Sprint Planung und Umsetzung
-- Architektur und technische Entscheide
+- **Projektmanagement**
+- **Sprint Planung und Umsetzung**
+- **Architektur und technische Entscheide**

@@ -1,15 +1,43 @@
-site_name: Geräteausleihe Microservice Sem4
-repo_url: https://github.com/Cancani/geraeteausleihe-sem4
-repo_name: Cancani/geraeteausleihe-sem4
+site_name: Geraeteausleihe Microservice
+site_description: Cloud Native Deployment auf AWS mit K3s und GitHub Actions
+site_url: https://cancani.github.io/geraeteausleihe-sem4/
 
 theme:
   name: material
   language: de
+  palette:
+    scheme: slate
+    primary: black
+    accent: cyan
   features:
+    - navigation.instant
     - navigation.tabs
     - navigation.sections
-    - toc.integrate
     - content.code.copy
+    - toc.follow
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/mermaid-init.js
 
 nav:
   - Start: index.md
