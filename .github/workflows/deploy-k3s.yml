@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DEPLOY_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
-      REPO_LOWER: ${{ github.repository }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -30,15 +29,13 @@ jobs:
           source: "k8s/*.yaml"
           target: "~/deploy/geraeteausleihe"
 
-      - name: apply manifests and rollout
+      - name: apply manifests and set image
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          REPO: ${{ github.repository }}
-          SHA: ${{ env.DEPLOY_SHA }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: true
           script: |
             set -e
             cd ~/deploy/geraeteausleihe/k8s
@@ -48,12 +45,11 @@ jobs:
             kubectl apply -f service.yaml
             kubectl apply -f ingress.yaml
 
-            REPO_LOWER=$(echo "$REPO" | tr '[:upper:]' '[:lower:]')
-            IMAGE="ghcr.io/${REPO_LOWER}:${SHA}"
+            REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+            IMAGE="ghcr.io/${REPO_LOWER}:${{ env.DEPLOY_SHA }}"
 
             echo "Using image: ${IMAGE}"
             kubectl -n geraeteausleihe set image deployment/geraeteausleihe app=${IMAGE}
-
             kubectl -n geraeteausleihe rollout restart deployment/geraeteausleihe
             kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe --timeout=180s
 
