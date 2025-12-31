@@ -9,6 +9,10 @@ on:
       - "Dockerfile"
       - ".dockerignore"
       - ".github/workflows/container-build.yml"
+    paths-ignore:
+      - "docs/**"
+      - "README.md"
+      - "mkdocs.yml"
   workflow_dispatch:
 
 permissions:
