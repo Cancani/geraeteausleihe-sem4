@@ -8,3 +8,4 @@ Diese Dokumentation beschreibt die Semesterarbeit 4. Fokus ist ein automatisiert
 - **Projektmanagement**
 - **Sprint Planung und Umsetzung**
 - **Architektur und technische Entscheide**
+- **Technische Umsetzung**
