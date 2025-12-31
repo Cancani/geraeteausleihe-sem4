@@ -30,7 +30,7 @@ jobs:
           source: "k8s/*.yaml"
           target: "~/deploy/geraeteausleihe"
 
-      - name: apply manifests and set image
+      - name: apply manifests and rollout
         uses: appleboy/ssh-action@v1.0.3
         env:
           REPO: ${{ github.repository }}
