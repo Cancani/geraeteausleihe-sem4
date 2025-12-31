@@ -29,7 +29,7 @@ jobs:
           source: "k8s/*.yaml"
           target: "~/deploy/geraeteausleihe"
 
-      - name: apply manifests and set image
+      - name: apply manifests and rollout
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -44,9 +44,11 @@ jobs:
             kubectl apply -f service.yaml
             kubectl apply -f ingress.yaml
 
-            kubectl -n geraeteausleihe patch ingress geraeteausleihe --type=json -p='[{"op":"replace","path":"/spec/rules/0/host","value":"geraeteausleihe.${{ secrets.EC2_HOST }}.nip.io"}]'
-
             IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}:${{ env.DEPLOY_SHA }}"
             kubectl -n geraeteausleihe set image deployment/geraeteausleihe app=$IMAGE
-            kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe
+
+            kubectl -n geraeteausleihe rollout restart deployment/geraeteausleihe
+            kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe --timeout=120s
+
+            kubectl -n geraeteausleihe get pods -o wide
             kubectl -n geraeteausleihe get ingress
