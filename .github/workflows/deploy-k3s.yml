@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DEPLOY_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      REPO_LOWER: ${{ github.repository }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -31,6 +32,9 @@ jobs:
 
       - name: apply manifests and set image
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          REPO: ${{ github.repository }}
+          SHA: ${{ env.DEPLOY_SHA }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
