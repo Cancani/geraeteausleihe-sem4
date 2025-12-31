@@ -1,171 +1,437 @@
 # Technische Umsetzung
 
 ## Kontext und Ziel
-Ausgangslage war ein bestehender Python Flask Microservice aus Semesterarbeit 3. Ziel war, den Service so vorzubereiten, dass er spaeter Cloud Native betrieben werden kann, inklusive Containerisierung, reproduzierbaren Tests, Kubernetes Manifeste und GitHub Actions Checks.
+
+Projekt: Geräteausleihe Microservice  
+Ausgangslage: Microservice aus Semesterarbeit 3, umgesetzt mit Python Flask  
+Ziel dieser Phase: Cloud Native Betrieb mit Container Image, Kubernetes Deployment auf K3s in AWS EC2, sowie CI und CD Automatisierung über GitHub Actions und GitHub Container Registry
+
+Kernziele
+
+* Containerisierung des bestehenden Services
+* Build und Push des Images in GitHub Container Registry
+* Betrieb auf AWS EC2 mit K3s
+* Kubernetes Ressourcen für Namespace, Deployment, Service, Ingress
+* Automatisches Deployment nach erfolgreichem Image Build
+* Dokumentation über MkDocs und GitHub Pages
+
+Repository: https://github.com/Cancani/geraeteausleihe-sem4  
+Branches: develop für Arbeiten, main für stabile Version, gh pages für GitHub Pages
+
+## Ergebnisstatus
+
+Aktueller Zustand
+
+* Image wird in GHCR erstellt und mit Tags latest sowie Commit SHA veröffentlicht
+* K3s läuft auf EC2 und ist erreichbar
+* Kubernetes Ressourcen werden angewendet und der Service ist über Ingress erreichbar
+* GitHub Actions deployt nach erfolgreichem Container Build automatisch auf die EC2 Instanz
+* Endpunkte sind extern testbar
+
+Beispiel Endpoint über nip io
+
+* http://geraeteausleihe.13.223.28.53.nip.io
+* http://geraeteausleihe.13.223.28.53.nip.io/healthz
+* http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Notebook
+
+Hinweis: nip io ist für Tests geeignet. Für Produktivbetrieb sollte eine eigene Domain mit DNS und TLS genutzt werden.
 
 ## Repository Struktur
-Die bestehende MkDocs Dokumentation unter `docs/` blieb bestehen. Fuer die technische Umsetzung kamen drei Bereiche dazu:
 
-1. `service/` fuer den Microservice Code
-2. `k8s/` fuer Kubernetes Manifeste
-3. `.github/workflows/` fuer GitHub Actions
+Zielstruktur im Repo
 
-Beispiel Struktur:
+* service  
+  * Flask Anwendung, Templates, Static Inhalte, requirements, Gunicorn Entry
+* k8s  
+  * namespace.yaml  
+  * deployment.yaml  
+  * service.yaml  
+  * ingress.yaml
+* .github workflows  
+  * container build.yml  
+  * deploy k3s.yml  
+  * pr checks.yml  
+  * docs pages.yml
+* docs  
+  * MkDocs Inhalte
 
-```text
-.github/workflows/
-docs/
-k8s/
-service/
-Dockerfile
-.dockerignore
-mkdocs.yml
-README.md
-```
+Warum __init__.py und .gitkeep existieren
 
-## Branching Vorgehen
-Es wurde mit drei Branches gearbeitet:
+* __init__.py markiert Ordner als Python Package. Inhalt kann leer sein, damit Imports funktionieren
+* .gitkeep hält leere Ordner im Git Repo, zum Beispiel service app static
 
-1. `develop` fuer die laufende Umsetzung
-2. `main` als stabiler Stand
-3. `gh-pages` ausschliesslich fuer den generierten GitHub Pages Output
+## Lokale Ausführung und Tests
 
-Die Umsetzung erfolgte auf `develop`. Wenn alles funktioniert, wird ein Pull Request von `develop` nach `main` erstellt.
+### Lokale Ausführung ohne Container
 
-## Lokale Vorbereitung
-### Virtuelle Umgebung
-Fuer lokale Tests wurde eine virtuelle Umgebung eingerichtet:
+Voraussetzung: Python Umgebung und Abhängigkeiten aus requirements.txt
 
-```bash
-python -m venv .venv
-source .venv/Scripts/activate
-python -m pip install --upgrade pip
-pip install -r service/requirements.txt
-```
+Befehle
 
-### Typischer Fehler und Loesung
-Beim Start trat ein Import Fehler auf, weil `pytz` fehlte. Loesung war das Installieren der Dependencies aus `service/requirements.txt`.
-
-## Microservice Start und Funktionstest
-Der Service wurde lokal gestartet und mit Curl getestet.
-
-### Service starten
 ```bash
 cd service
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 python run.py
 ```
 
-### Root Endpoint testen
+Tests
+
 ```bash
-curl http://localhost:8080/
+pytest -q test_api.py
 ```
 
-Erwartet war eine Text Antwort.
+Wichtige Anpassungen bei Tests
 
-### PDF Endpoint testen
-```bash
-curl -I "http://localhost:8080/pdf?borrower=Test&device=Notebook"
-```
+* Bytes Assertion mit Umlaut führte zu SyntaxError, weil bytes literals nur ASCII erlauben
+* Lösung: Response Text als String lesen und String Vergleich verwenden
 
-Erwartet war HTTP 200 und `Content-Type: application/pdf` sowie ein Attachment Header.
+### Container Build und Container Tests
 
-### Health Endpoints testen
-```bash
-curl -i http://localhost:8080/healthz
-curl -i http://localhost:8080/health
-```
+Image bauen
 
-Erwartet war HTTP 200 und ein JSON Payload mit `status` gleich `healthy`.
-
-## Tests mit Pytest
-### Problem 1 Syntax Fehler durch Bytes Literal
-Beim ersten Test Lauf trat ein Syntax Fehler auf, weil ein Bytes Literal nicht ASCII Zeichen enthielt. Ursache war ein Assert mit `b"..."` und Sonderzeichen.
-
-Loesung war, den Response Body als Text zu lesen und als String zu vergleichen:
-
-```python
-body = response.get_data(as_text=True)
-assert "Geraeteausleihe Microservice is running" in body
-```
-
-### Problem 2 WeasyPrint unter Windows
-Beim Import von WeasyPrint trat unter Windows ein Fehler auf, weil externe Libraries wie gobject, pango und cairo fehlten. Das ist ein bekanntes Verhalten bei nativer Windows Ausfuehrung.
-
-Loesung war, Tests in der Container Umgebung auszufuehren. Diese Umgebung entspricht spaeter dem Betrieb auf Linux.
-
-## Container Build und Tests im Container
-### Image bauen
 ```bash
 docker build -t geraeteausleihe:test .
 ```
 
-### Problem pytest nicht vorhanden
-Beim ersten Versuch fehlte `pytest` im Container. Loesung war, pytest beim Test Run zu installieren.
-
-### Tests im Container ausfuehren
-Da der Dockerfile den Ordner `service/` nach `/srv/` kopiert, liegt die Test Datei im Container unter `/srv/test_api.py`.
+Tests im Container ausführen
 
 ```bash
 docker run --rm geraeteausleihe:test sh -c "pip install pytest && cd /srv && pytest -q test_api.py"
 ```
 
-Ergebnis war erfolgreich, alle Tests liefen durch.
+Hinweise
 
-### Hinweis zu Pytest Cache Warnungen
-Es gab Warnungen, weil Pytest Cache Dateien im Container nicht geschrieben werden konnten. Das ist funktional unkritisch. Optional kann der Cache Provider deaktiviert werden:
+* pytest muss im Container verfügbar sein, entweder als dependency in requirements.txt oder via pip install im Test Run
+* Pytest Cache Warnungen im Container sind reine Rechte Thematik ohne Einfluss auf das Test Ergebnis
+
+## Containerisierung
+
+### Dockerfile
+
+* Base Image python 3.11 slim
+* System Libraries für WeasyPrint installiert
+* requirements.txt installieren
+* service Code nach /srv kopieren
+* nicht als root laufen
+
+Ergebnis: Container startet den Microservice über Gunicorn, Port 8080 wird exposed
+
+### .dockerignore
+
+Ziel: Unnötige Dateien aus Build Context entfernen
+
+Beispiele
+
+* .venv
+* __pycache__
+* .pytest_cache
+* .git
+
+### .gitignore
+
+Ziel: Lokale Artefakte nicht committen
+
+Beispiele
+
+* .venv
+* __pycache__
+* .pytest_cache
+* .vscode
+* *.log
+
+## GitHub Actions
+
+Es wurden mehrere Workflows erstellt, um Build, Tests und Deployment zu automatisieren.
+
+### PR Checks
+
+Ziel
+
+* Bei Pull Requests werden Tests und Lint Checks ausgeführt
+* Dadurch wird verhindert, dass fehlerhafte Änderungen in main landen
+
+### Container Build zu GHCR
+
+Ziel
+
+* Bei Push auf main wird das Image gebaut und in GHCR gepusht
+
+Kritische Anpassung
+
+* GHCR Repository Namen müssen lowercase sein
+* github.repository liefert Owner Repo und kann Grossbuchstaben enthalten
+* Lösung: repository in lowercase umwandeln
+
+Tags
+
+* latest
+* Commit SHA
+
+### Deployment zu K3s auf EC2
+
+Ziel
+
+* Nach erfolgreichem container build Workflow wird automatisch deployt
+* Kubernetes Manifeste werden via scp auf die EC2 kopiert
+* Anschliessend werden die Ressourcen angewendet
+* Image wird auf das neue Tag gesetzt
+* Rollout wird abgewartet
+
+Secrets in GitHub
+
+Diese Secrets wurden in GitHub Actions Repository Secrets hinterlegt
+
+* EC2_HOST
+* EC2_USER
+* EC2_SSH_KEY
+
+Hinweis: Secrets gehören in Actions Secrets, nicht in Environment Secrets, sofern kein Environment genutzt wird.
+
+## AWS Setup und K3s Installation
+
+### AWS Setup
+
+Umgebung: AWS Academy Learner Lab  
+Region: us east
+
+EC2
+
+* Instance Typ: t3 small
+* Ubuntu 22.04
+* Elastic IP zugewiesen
+
+Security Group Ports
+
+* 22 für SSH
+* 80 für HTTP
+* optional 443 für HTTPS
+
+Wichtig: SSH nicht dauerhaft offen lassen. Best Practice ist Einschränkung auf feste Source IP oder Nutzung von VPN und Bastion Konzept.
+
+### K3s Installation
+
+Installation auf EC2 wurde bewusst manuell ausgeführt, damit der Ablauf sichtbar und testbar ist. Automatisierung wäre später mit Terraform und Cloud Init oder Ansible möglich.
+
+Befehle
 
 ```bash
-docker run --rm geraeteausleihe:test sh -c "cd /srv && pytest -q -p no:cacheprovider test_api.py"
+curl -sfL https://get.k3s.io | sh -
 ```
 
-## Git Ignore bereinigen
-Damit lokale Artefakte nicht committed werden, wurde eine `.gitignore` erstellt. Ziel war insbesondere, dass `.venv` nicht committet wird.
+Kubeconfig Berechtigung
 
-Optionaler Fix falls `.venv` bereits getrackt war:
+Kubectl Zugriff für ubuntu Nutzer
 
 ```bash
-git rm -r --cached .venv
+sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+mkdir -p ~/.kube
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+sudo chown $(id -u):$(id -g) ~/.kube/config
 ```
 
-## Commits
-Es wurde empfohlen, Commits nach Themen zu splitten, zum Beispiel:
+Cluster Check
 
-1. Git Ignore
-2. Dockerfile und dockerignore
-3. Requirements und Tests
+```bash
+kubectl get nodes
+kubectl get pods -A
+```
 
-Damit bleibt die Historie nachvollziehbar.
+Traefik ist bei K3s standardmässig aktiv und übernimmt Ingress.
 
-## Pull Request und Merge Konflikt
-Beim Pull Request von `develop` nach `main` gab es einen Konflikt in `README.md`. Da die Version auf `main` erhalten bleiben sollte, wurde im GitHub Conflict Editor die eingehende Version von `main` uebernommen.
+## Kubernetes Deployment
 
-In GitHub entspricht das der Auswahl:
+### Namespace
 
-Accept incoming change
+* Eigener Namespace geraeteausleihe
 
-Danach wurde der Konflikt als geloest markiert und der Merge Commit erstellt.
+### Deployment
 
-## GitHub Actions Required Checks
-### Problem
-Im Pull Request wurden Required Checks erwartet, aber es wurden keine Status Reports geliefert. Das passiert typischerweise, wenn Workflows nicht auf Pull Requests triggern oder die Job Namen nicht zu den erwarteten Checks passen.
+* 1 Replica
+* Container Image aus GHCR
+* Container Port 8080
+* Readiness und Liveness Probes für healthz
 
-### Loesung
-Es wurde ein zusaetzlicher Workflow erstellt, der bei `pull_request` auf `main` laeuft und die exakt erwarteten Job Namen bereitstellt:
+### Service
 
-1. build
-2. lint
-3. test
-4. pages-build
+* ClusterIP Service auf Port 80
+* Target Port 8080
 
-Wichtig ist, dass die Job Namen genau so heissen wie die Required Checks. Danach liefen die Checks im Pull Request und wurden erfolgreich abgeschlossen.
+### Ingress
 
-## Ergebnis
-Der Microservice ist lokal erreichbar, Health Endpoints liefern OK, PDF Endpoint liefert ein PDF, und die Tests sind reproduzierbar in der Container Umgebung ausfuehrbar. Pull Request Checks liefen erfolgreich, der Merge nach `main` war moeglich.
+* IngressClass traefik
+* Host wird auf nip io gesetzt
 
-## Naechste Schritte
-1. GHCR Build Push auf `main` verifizieren
-2. AWS EC2 vorbereiten
-3. K3s installieren
-4. Kubernetes Manifeste aus `k8s/` anwenden
-5. Ingress testen und dokumentieren
-6. Optional Deployment Automatisierung nach K3s ergaenzen
+Wichtig: Ein Platzhalter wie CHANGE_ME ist kein gültiger Host und verhindert das Anlegen des Ingress. Wenn der Ingress nicht erstellt wird, kann er danach auch nicht gepatcht werden.
+
+## Manuelles Deployment auf EC2
+
+Manuelles Deployment diente zur Verifikation von YAML Dateien und zur Fehlersuche.
+
+Repo holen
+
+```bash
+git clone https://github.com/Cancani/geraeteausleihe-sem4.git
+cd geraeteausleihe-sem4
+```
+
+Manifeste anwenden
+
+```bash
+kubectl apply -f k8s/namespace.yaml
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/ingress.yaml
+```
+
+Ingress prüfen
+
+```bash
+kubectl -n geraeteausleihe get ingress
+```
+
+Wichtig beim Pfad
+
+Wenn man im Ordner k8s steht, darf der apply Pfad nicht erneut k8s enthalten. Beispiel
+
+* korrekt: kubectl apply -f ingress.yaml
+* falsch: kubectl apply -f k8s/ingress.yaml
+
+## Automatisiertes Deployment und Verifikation
+
+### Typischer Ablauf
+
+1. Änderungen auf develop committen und pushen
+2. Pull Request von develop nach main
+3. PR Checks laufen und müssen grün sein
+4. Merge nach main
+5. container build Workflow baut Image und pusht nach GHCR
+6. deploy k3s Workflow läuft und aktualisiert Deployment in K3s
+
+### Verifikation auf GitHub
+
+Auf der Actions Seite prüfen
+
+* container build ist success
+* deploy k3s ist success
+
+In Logs prüfen
+
+* kubectl apply ohne Fehler
+* kubectl set image setzt korrektes Image, kein ghcr.io/:tag
+
+### Verifikation auf EC2
+
+Ressourcen Check
+
+```bash
+kubectl -n geraeteausleihe get all
+kubectl -n geraeteausleihe get ingress
+kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.template.spec.containers[0].image}{"\n"}'
+```
+
+Pod Details bei Fehlern
+
+```bash
+kubectl -n geraeteausleihe describe pod <podname>
+kubectl -n geraeteausleihe logs <podname>
+```
+
+Extern Test
+
+```bash
+curl -i http://geraeteausleihe.13.223.28.53.nip.io/healthz
+curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Notebook"
+```
+
+## Typische Fehler und Loesungen
+
+### GHCR Tag Fehler repository name must be lowercase
+
+Ursache
+
+* github.repository enthält Grossbuchstaben
+
+Loesung
+
+* in tags und in deploy script den Repo Namen in lowercase verwenden, zum Beispiel ${GITHUB_REPOSITORY,,}
+
+### InvalidImageName und Image ghcr.io/:
+
+Ursache
+
+* Image String wurde falsch zusammengesetzt, dadurch fehlte repository path
+
+Loesung
+
+* IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}:${DEPLOY_SHA}"
+* danach set image auf den Container Namen anwenden
+
+### Ingress nicht vorhanden nach apply
+
+Ursache
+
+* Host im Ingress war ungültig, zum Beispiel CHANGE_ME
+
+Loesung
+
+* Host direkt gültig definieren oder Ingress erst mit gültigem Host erstellen, danach optional patchen
+
+### kubectl permission denied auf /etc rancher k3s k3s yaml
+
+Ursache
+
+* Kubeconfig ist root only
+
+Loesung
+
+* Kubeconfig kopieren und Berechtigung für ubuntu Nutzer setzen, siehe Abschnitt Kubeconfig Berechtigung
+
+### WeasyPrint unter Windows bei local pytest
+
+Ursache
+
+* WeasyPrint benötigt native Libraries wie gobject und pango, die unter Windows nicht automatisch vorhanden sind
+
+Loesung
+
+* Tests in Docker Container ausführen oder WeasyPrint Abhängigkeiten auf Windows korrekt installieren
+
+## PowerApps Integration
+
+Der PDF Endpoint wird aus PowerApps über Launch mit Query Parametern aufgerufen. Der Host muss auf den Ingress Endpoint zeigen.
+
+Beispiel URL
+
+http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Demirci%20Efekan&device=HP%20Elitebook%20860%20G6&staff=Efekan%20Demirci
+
+## Erledigte Arbeitspakete und User Stories
+
+Basierend auf dem aktuellen Stand wurden folgende Bereiche umgesetzt
+
+* US10 Namespace und Basis Ressourcen
+* US11 Dockerfile finalisieren
+* US12 GHCR Push verifizieren
+* US13 Kubernetes Deployment Manifest
+* US14 Kubernetes Service Manifest
+* US15 Ingress konfigurieren
+* US16 Readiness und Liveness Probes
+* US18 GitHub Actions Build und Push nach GHCR
+* US20 CD Workflow Deployment nach K3s
+
+Zusätzlich
+
+* Test Setup mit pytest
+* .gitignore ergänzt, damit .venv nicht versioniert wird
+* Troubleshooting und Fixes für GHCR Tags, Ingress Host und Image Referenzen
+
+## Nächste Schritte
+
+Empfehlungen für die nächsten technischen Schritte
+
+* Härtung der EC2 Security Group, SSH Source IP einschränken
+* Eigene Domain und TLS, zum Beispiel über Traefik und Let s Encrypt
+* Automatisiertes Provisioning, zum Beispiel Terraform plus Cloud Init, optional Ansible
+* Observability, zum Beispiel logs und metrics Erweiterung, optional Prometheus und Grafana
+* Helm Chart oder Kustomize für strukturierte Deployments
