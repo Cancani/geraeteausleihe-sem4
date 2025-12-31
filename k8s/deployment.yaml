@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/Cancani/geraeteausleihe-sem4:latest
+          image: ghcr.io/cancani/geraeteausleihe-sem4:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
