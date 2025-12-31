@@ -1,31 +1,52 @@
 name: deploy-k3s
 
 on:
+  workflow_run:
+    workflows: ["container-build"]
+    types:
+      - completed
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: setup kubectl
-        uses: azure/setup-kubectl@v4
+      - name: copy k8s manifests to ec2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "k8s/*.yaml"
+          target: "~/deploy/geraeteausleihe"
 
-      - name: write kubeconfig
-        run: |
-          echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > kubeconfig
-          echo "KUBECONFIG=$(pwd)/kubeconfig" >> $GITHUB_ENV
+      - name: apply manifests and set image
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+            cd ~/deploy/geraeteausleihe/k8s
 
-      - name: apply manifests
-        run: |
-          kubectl apply -f k8s/namespace.yaml
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
-          kubectl apply -f k8s/ingress.yaml
+            kubectl apply -f namespace.yaml
+            kubectl apply -f deployment.yaml
+            kubectl apply -f service.yaml
+            kubectl apply -f ingress.yaml
 
-      - name: set image to current sha
-        run: |
-          kubectl -n geraeteausleihe set image deployment/geraeteausleihe app=ghcr.io/${{ github.repository }}:${{ github.sha }}
-          kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe
+            kubectl -n geraeteausleihe patch ingress geraeteausleihe --type=json -p='[{"op":"replace","path":"/spec/rules/0/host","value":"geraeteausleihe.${{ secrets.EC2_HOST }}.nip.io"}]'
+
+            IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}:${{ env.DEPLOY_SHA }}"
+            kubectl -n geraeteausleihe set image deployment/geraeteausleihe app=$IMAGE
+            kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe
+            kubectl -n geraeteausleihe get ingress
