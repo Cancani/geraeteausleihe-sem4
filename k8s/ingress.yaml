@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: geraeteausleihe.CHANGE_ME
+    - host: geraeteausleihe.13.223.28.53.nip.io
       http:
         paths:
           - path: /
