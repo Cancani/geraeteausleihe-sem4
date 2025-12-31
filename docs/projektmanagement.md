@@ -1,267 +1,200 @@
 # Projektmanagement
 
 ## Zweck und Umfang
-Dieses Dokument beschreibt die organisatorische Umsetzung der Semesterarbeit. Das Projekt wird sprintbasiert umgesetzt. Planung, Tracking und Nachweise erfolgen im GitHub Repository über Issues, Milestones und ein Kanban Board.
+Dieses Dokument beschreibt die organisatorische Umsetzung der Semesterarbeit 4. Planung, Umsetzung, Nachweise und Dokumentation werden zentral im oeffentlichen GitHub Repository gefuehrt.
 
- 
-Der Geräteausleihe Microservice wird auf AWS in einem K3s Cluster auf EC2 betrieben und per CI CD Pipeline automatisiert gebaut, veröffentlicht und ins Cluster ausgerollt.
+Repository
+https://github.com/Cancani/geraeteausleihe-sem4
+
+Kanban Board
+https://github.com/users/Cancani/projects/3/views/1
+
+Dokumentation
+https://cancani.com/geraeteausleihe-sem4/
+
+Betrieb
+Der Geraeteausleihe Microservice laeuft auf AWS in einem K3s Cluster auf einer EC2 Instanz. Container Images werden nach GHCR gepusht. Deployments erfolgen ueber GitHub Actions und kubectl auf die EC2 Instanz.
+
 
 ## Vorgehensmodell
-Das Projekt folgt einer sprintbasierten Arbeitsweise mit diesen Elementen:
-1. Product Backlog als GitHub Issues
-2. Sprint Planung über Milestones
-3. Umsetzung mit Kanban Board Status
-4. Sprint Review und Sprint Retro als Dokumentationseinträge pro Sprint
+Die Arbeit folgt einer sprintbasierten Arbeitsweise mit Kanban Elementen.
+
+1. Backlog als GitHub Issues
+2. Sprint Planung ueber Milestones
+3. Umsetzung und Tracking im GitHub Project Board
+4. Sprint Review und Sprint Retro als schriftlicher Nachweis pro Sprint in der Dokumentation
+
 
 ## Rollen und Verantwortlichkeiten
-| Rolle | Person | Verantwortung |
-| --- | --- | --- |
-| Projektleitung und Umsetzung | Efekan Demirci | Planung, Umsetzung, Dokumentation, Sprint Reviews |
-| Dozent PRJ | Corrado Parisi | Feedback zu Projektmanagement, Board, Reviews |
-| Dozent CNC | Philip Stark | Feedback zu Cloud Native Umsetzung und Architektur |
+1. Projektleitung und Umsetzung
+   1. Efekan Demirci
+   2. Planung, Umsetzung, Betrieb, Tests, Dokumentation, Sprint Reviews
+2. Dozent PRJ
+   1. Corrado Parisi
+   2. Feedback zu Projektmanagement, Kanban, Reviews, Nachweisfuehrung
+3. Dozent CNC
+   1. Philip Stark
+   2. Feedback zu Cloud Native Umsetzung, Architektur und Betrieb
+
 
 ## Tools und Artefakte
-| Bereich | Tool | Artefakt |
-| --- | --- | --- |
-| Repository und Tracking | GitHub | Code, Issues, Milestones, Project Board |
-| Dokumentation | Markdown und GitHub Pages | Dokumentationsseiten unter docs |
-| CI/CD | GitHub Actions | Workflows für Build, Push, Deploy |
-| Container Registry | GHCR | Versionierte Images |
-| Runtime | AWS EC2 mit K3s | Kubernetes Cluster für Deployment |
+1. GitHub Repository
+   1. Code, Dokumentation, Pull Requests, Issues, Milestones
+2. GitHub Project Board
+   1. Kanban Spalten, Status Tracking, WIP Regel
+3. GitHub Actions
+   1. Container Build und Push nach GHCR
+   2. Deployment nach K3s auf EC2
+   3. Pages Build fuer Dokumentation
+4. GHCR
+   1. Container Registry mit Tags latest und git sha
+5. AWS EC2 und K3s
+   1. Kubernetes Runtime fuer den Microservice
 
-## Kanban Board Setup
-### Spalten
-1. Backlog  
-2. Ready  
-3. In Progress  
-4. Review  
-5. Done  
 
-### Arbeitsregeln
-1. WIP Limit in In Progress maximal 2 Issues gleichzeitig  
-2. Ein Issue darf erst nach Ready, wenn Akzeptanzkriterien und Definition of Done im Issue stehen  
-3. Review bedeutet technische Kontrolle, Dokumentation aktualisiert, Nachweise vorhanden  
-4. Done bedeutet Definition of Done vollständig abgehakt und Milestone bleibt gesetzt  
+## Kanban Setup und Regeln
+Spalten im Board
 
-## Schätzung
-Für die Grobplanung werden Story Points verwendet:
-**1 2 3 5 8**
+1. Backlog
+2. Ready
+3. In Progress
+4. Review
+5. Done
 
-Orientierung:
-1 bis 30 Minuten  
-2 bis 1 Stunde  
-3 bis 2 Stunden  
-5 bis 4 Stunden  
-8 bis 1 Arbeitstag  
+Arbeitsregeln
 
-## Labels
-Die Labels sind so aufgebaut, dass Priorität, Bereich und Typ klar getrennt sind.
+1. WIP Limit
+   1. In Progress maximal 2 Tickets gleichzeitig
+2. Definition of Ready
+   1. Ein Ticket wird erst nach Ready verschoben, wenn Inhalt und Kriterien vollstaendig sind
+3. Review
+   1. Technische Kontrolle abgeschlossen
+   2. Dokumentation aktualisiert
+   3. Nachweise vorhanden
+4. Done
+   1. Akzeptanzkriterien abgehakt
+   2. Definition of Done abgehakt
+   3. Ticket im Board final verschoben
 
-### Priorität
-Must  
-Should  
-Could  
+Dozentenfeedback, umgesetzt
 
-### Bereich
-PM  
-Docs  
-Repo  
-Pages  
-AWS  
-K3s  
-Docker  
-Kubernetes  
-CI  
-Security  
-Testing  
+1. Spalten In Progress und Done sind Pflichtbestandteil
+2. Akzeptanzkriterien werden als Checkboxen gepflegt
+3. Definition of Done wird als Checkboxen gepflegt und pro Ticket verwendet
 
-### Typ
-Story  
-Task  
-Bug  
 
-## Milestones
-Pro Sprint existiert ein Milestone. Zusätzlich gibt es einen Milestone für den Abschluss.
+## Ticket Standard und Vorlagen
 
-Milestones im Repository:
-1. Sprint 1 Projektstart und Planung  
-2. Sprint 2 K3s Cluster und erster Deploy  
-3. Sprint 3 CI CD Build Push Deploy  
-4. Abgabe und Doku fertig  
-
-Die konkreten Due Dates sind im GitHub Milestone gesetzt.
-
-## Issue Struktur
-Alle Issues werden als User Stories geführt. Jede Story enthält Akzeptanzkriterien als Checkboxen und eine Definition of Done als Checkboxen.
-
-### Standard Inhalt pro Issue
-1. User Story Satz mit Als möchte ich damit  
-2. Kurzbeschreibung
-3. Akzeptanzkriterien Checkboxen
-4. Definition of Done Checkboxen
-
-### Definition of Done
-Diese DoD wird in jedes Issue übernommen:
-1. Code oder Dokumentation ist committed und gepusht  
-2. Akzeptanzkriterien sind abgehakt  
-3. Nachweis ist in docs abgelegt, Screenshot oder Logauszug  
-4. Issue ist im Board korrekt verschoben  
+### Ticket Struktur
+1. User Story Satz im Format
+   1. Als Rolle moechte ich Ziel, damit Nutzen
+2. Kontext und Scope
+3. Akzeptanzkriterien als Checkboxen
+4. Definition of Done als Checkboxen
+5. Labels und Milestone gesetzt
 
 ### Definition of Ready
-Ein Issue gilt als Ready, wenn:
-1. Beschreibung ist eindeutig  
-2. Akzeptanzkriterien sind vorhanden  
-3. DoD ist vorhanden  
-4. Milestone ist gesetzt  
-5. Priorität ist gesetzt  
+Ein Ticket ist Ready, wenn
 
-## Sprint Planung
-### Sprint 1 Projektstart und Planung
-**Ziel** 
-Projektsetup, Board Struktur, Labels, Milestones, erste Dokumentationsstruktur und initialer Backlog.
+1. Beschreibung eindeutig ist
+2. Akzeptanzkriterien existieren
+3. Definition of Done existiert
+4. Prioritaet Label gesetzt ist
+5. Milestone gesetzt ist
 
-**Lieferobjekte:**
-1. Board und Regeln
-2. Labels und Milestones
-3. Erste User Stories
-4. Erste Sprint Review und Retro Dokumentation
+### Definition of Done
+Ein Ticket ist Done, wenn
 
-### Sprint 2 K3s Cluster und erster Deploy
-**Ziel**  
-EC2 bereitstellen, K3s installieren, Container vorbereiten, Kubernetes Manifeste erstellen, erster funktionierender Deploy.
+1. Umsetzung ist committed und gepusht
+2. Akzeptanzkriterien sind abgehakt
+3. Nachweise sind dokumentiert, zum Beispiel Logs oder Screenshots
+4. Ticket ist im Board auf Done verschoben
 
-**Lieferobjekte:**
-1. EC2 Instanz und Zugriff
-2. K3s Cluster und kubectl Zugriff
-3. Dockerfile und Image in GHCR
-4. Kubernetes Deployment, Service und optional Ingress
-5. Probes und Nachweise
 
-### Sprint 3 CI CD Build Push Deploy
-**Ziel**  
-Automatisierung von Build, Push nach GHCR und Deployment nach K3s.
+## Schaetzung und Planung
+Fuer die Grobplanung werden Story Points genutzt.
 
-**Lieferobjekte:**
-1. GitHub Actions Workflow für Build und Push
-2. Secrets und Zugriff auf Cluster
-3. CD Schritt mit kubectl apply oder rollout
-4. Dokumentierter Pipeline Testlauf
+Skala
+1, 2, 3, 5, 8
 
-### Abschluss Abgabe und Doku fertig
-**Ziel**  
-Dokumentation finalisieren, Demo Ablauf definieren, Endkontrolle und Abgabe Paket erstellen.
+Orientierung
+1 entspricht bis 30 Minuten
+2 entspricht bis 1 Stunde
+3 entspricht bis 2 Stunden
+5 entspricht bis 4 Stunden
+8 entspricht bis 1 Arbeitstag
 
-**Lieferobjekte:**
-1. Vollständige Doku auf GitHub Pages
-2. Demo Ablauf und Nachweise
-3. Endkontrolle Checkliste
-4. Abgabe Links und Repository Stand auf main
 
-## Backlog Umsetzung in GitHub
-### Automatisierte Erstellung über GitHub CLI
-Um Labels, Milestones und Issues effizient zu erzeugen, wurde GitHub CLI verwendet.
+## Labels
+Ziel ist eine klare Filterung nach Typ, Bereich und Prioritaet.
 
-Beispiele zur Prüfung:
-```powershell
-gh auth status
-gh label list -R Cancani/geraeteausleihe-sem4 --limit 50
-gh issue list -R Cancani/geraeteausleihe-sem4 --limit 50
-gh api "repos/Cancani/geraeteausleihe-sem4/milestones?state=open&per_page=100" --jq '.[] | "\(.number) \(.title)"'
-```
+1. Typ
+   1. Story
+   2. Task
+   3. Bug
+2. Bereich, Beispiele
+   1. PM
+   2. Docs
+   3. CI
+   4. CD
+   5. Docker
+   6. Kubernetes
+   7. K3s
+   8. AWS
+   9. Security
+   10. Testing
+3. Prioritaet
+   1. Must
+   2. Should
+   3. Could
 
-### Ergebnis
-Im Repository wurden 27 Issues als User Stories angelegt und den Sprint Milestones zugeordnet:
-US01 bis US07 **Sprint 1**  
-US08 bis US17 **Sprint 2**  
-US18 bis US23 **Sprint 3**  
-US24 bis US27 **Abschluss**  
 
-## Kommunikations und Dokumentationskonzept
-1. Dokumentation wird versioniert im Repository gepflegt
-2. Sprint Review und Retro werden je Sprint als Markdown Eintrag dokumentiert
-3. Technische Nachweise werden als Screenshots oder Logauszüge unter docs abgelegt
-4. Links zu Board, Milestones, Actions Runs und GHCR werden in der Doku gesammelt
+## Milestones und Sprints
+Pro Sprint existiert ein Milestone. Alle Tickets des Sprints werden dem Milestone zugeordnet.
 
-## Qualitäts und Risikomanagement
-### Qualitätssicherung
-1. Akzeptanzkriterien pro Issue
-2. DoD pro Issue
-3. Review Spalte im Board für Kontrolle
-4. Nachweise für wichtige Schritte wie Deployment und Rollouts
+1. Sprint 1 Projektstart und Planung
+2. Sprint 2 K3s Cluster und erster Deploy
+3. Sprint 3 CI CD Automatisierung
+4. Abschluss Doku, Demo und Abgabe
 
-### Risiken und Massnahmen
-| Risiko | Auswirkung | Massnahme |
-| --- | --- | --- |
-| Cluster Zugriff aus CI schlägt fehl | CD blockiert | Kubeconfig als Secret prüfen, Zugriff lokal verifizieren |
-| Deployment schlägt fehl durch fehlende Ressourcen | Service nicht erreichbar | Minimal Setup, schrittweise Manifeste, Rollout Status prüfen |
-| Zeitdruck | Scope zu gross | Must Issues priorisieren, Should nur wenn Zeit |
-| Kosten AWS | Budgetüberschreitung | K3s auf EC2, kleine Instanz, Ressourcen begrenzen |
 
-## Branching und Merge Regeln
-### Branches
-```
-main  
-develop  
-feature branches  
-gh pages branch für die Dokumentation
-```
+## Branching und Merge Flow
+Ziel ist ein stabiler main Branch fuer Demo und Abgabe. Entwicklung findet auf develop oder Feature Branches statt.
 
-### Grundregeln
-1. Entwicklung erfolgt auf develop oder feature branches
-2. Merge nach main per Pull Request
-3. main bleibt stabil und entspricht dem Stand für Abgabe und Demo
-4. gh pages wird nur durch Workflow aktualisiert
+1. Feature Branch wird von develop erstellt
+2. Pull Request von Feature nach develop
+3. Pull Request von develop nach main fuer stabilen Stand
+4. Workflows laufen auf Pull Requests und auf main gemaess Trigger Regeln
 
-## Nachweise für Dozenten
-Empfohlene Nachweise, die in der Dokumentation verlinkt werden:
-1. Screenshot Project Board Spalten und WIP Regel
-2. Screenshot Milestones Übersicht
-3. Screenshot Actions Run für Build und Deploy
-4. kubectl Ausgaben für Pods, Services, Ingress
-5. GHCR Image Tags Übersicht
 
-## Branching Strategie und Regeln
+## Wechsel auf GitHub, GitHub Pages und GitHub Projects
 
-### Ziel
-Ein stabiler main Branch fuer Demo und Abgabe. Entwicklung findet auf develop oder feature branches statt. Dokumentation wird ueber GitHub Pages aus dem main Branch gebaut.
+### Entscheidung
+Die Arbeit wurde auf GitHub zentralisiert, inklusive Repository, Dokumentation und Kanban Board.
 
-### Branches
-main  
-Stabiler Stand fuer Demo und Abgabe. Merge nur via Pull Request.
+### Gruende
+1. Ein zentraler Ort fuer Code, Tickets, Reviews und Nachweise
+2. Direkte Verknuepfung von Commits, Pull Requests, Issues und Workflows
+3. Integration von Actions, GHCR und Pages reduziert Tool Wechsel
+4. Oeffentliche Nachweise sind fuer Dozenten direkt einsehbar
 
-develop  
-Integrationsbranch fuer laufende Arbeit. Feature branches werden hier gemerged.
 
-feature branches  
-Kurzlebige branches fuer einzelne Issues, zB feature/us08-k3s-ec2.
+## Nachweise fuer Sprint Reviews
+Empfohlene Nachweise, die pro Sprint in der Dokumentation verlinkt werden.
 
-gh-pages  
-Wird nur durch den GitHub Pages Workflow beschrieben. Kein manuelles Arbeiten in diesem Branch.
+1. Screenshot vom Project Board mit Spalten und WIP Regel
+2. Screenshot der Milestones Uebersicht
+3. Screenshot eines erfolgreichen Actions Runs fuer Build und Deploy
+4. kubectl Ausgaben fuer Pods, Service und Ingress
+5. GHCR Uebersicht der Image Tags
 
-### Merge Flow
-1 Neue Arbeit startet auf feature branch aus develop  
-2 Pull Request von feature nach develop  
-3 Wenn ein Sprint Stand stabil ist, Pull Request von develop nach main  
-4 GitHub Pages baut die Doku nur bei Aenderungen an docs oder mkdocs yml auf main
 
-### Branch Schutz und Regeln
-1 Force Push ist blockiert auf main und gh-pages  
-2 Direkt Push auf main ist eingeschraenkt, Merge via Pull Request  
-3 Status Checks muessen bestehen, wenn Workflows vorhanden sind  
-4 gh-pages darf nur vom GitHub Actions Workflow aktualisiert werden
-
-### Commit Konvention
-Konvention: type scope: message
-
-Beispiele:
-docs(pm): update sprint documentation  
-docs(arch): add target architecture overview  
-ci(pages): enable manual docs deployment  
-ci(cd): deploy to k3s on push to main  
-feat(k8s): add deployment and service manifests  
-fix(ci): correct ghcr image tag
-
-### Definition of Done fuer Branching Doku
-1 Dokumentation ist committed und gepusht  
-2 Regeln sind im README oder docs referenziert  
-3 Issue US05 ist im Board auf Done
+## Risiken und Massnahmen
+1. Deployment Fehler durch falsche Image Referenz
+   1. Massnahme: Image Name und Tag im Workflow validieren, Rollout Status pruefen
+2. Cluster Zugriff aus CI schlaegt fehl
+   1. Massnahme: SSH Keys und Secrets pruefen, kubectl Zugriff auf EC2 verifizieren
+3. Zeitdruck
+   1. Massnahme: Must Tickets priorisieren, Scope begrenzen, Reviews laufend pflegen
+4. Kosten AWS
+   1. Massnahme: Kleine Instanz, Ressourcen Limits, Abschalten wenn nicht benoetigt
