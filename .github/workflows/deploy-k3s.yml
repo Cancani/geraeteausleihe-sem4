@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "k8s/*.yaml"
-          target: "~/deploy/geraeteausleihe/k8s"
+          target: "~/deploy/geraeteausleihe"
 
       - name: apply manifests and set image
         uses: appleboy/ssh-action@v1.0.3

@@ -4,9 +4,15 @@ metadata:
   name: geraeteausleihe
   namespace: geraeteausleihe
 spec:
-  selector:
-    app: geraeteausleihe
-  ports:
-    - name: http
-      port: 80
-      targetPort: 8080
+  ingressClassName: traefik
+  rules:
+    - host: geraeteausleihe.CHANGE_ME
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: geraeteausleihe
+                port:
+                  number: 80
