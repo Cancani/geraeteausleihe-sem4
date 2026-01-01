@@ -1,205 +1,246 @@
 # Projektmanagement
 
-!!! abstract "Kurzüberblick"
-    - Planung und Nachvollziehbarkeit über GitHub Projects (Kanban)
-    - Arbeitspakete als Issues mit Labels und Akzeptanzkriterien
-    - Klare Definition of Ready und Definition of Done
+Diese Seite beschreibt das Vorgehen, die Regeln und die Artefakte der Semesterarbeit.
+
+| Bereich | Link |
+| --- | --- |
+| Repository | https://github.com/Cancani/geraeteausleihe-sem4 |
+| GitHub Projects Board | https://github.com/users/Cancani/projects/3/views/1 |
+| GitHub Pages | https://cancani.com/geraeteausleihe-sem4 |
+
+---
 
 ## Zweck und Umfang
-Dieses Dokument beschreibt die organisatorische Umsetzung der Semesterarbeit 4. Planung, Umsetzung, Nachweise und Dokumentation werden zentral im öffentlichen GitHub Repository geführt.
 
-Repository
-https://github.com/Cancani/geraeteausleihe-sem4
+| Punkt | Beschreibung |
+| --- | --- |
+| Ziel | Transparente, nachvollziehbare Umsetzung der Semesterarbeit mit klaren Nachweisen |
+| Scope | Projektmanagement, Sprint Planung, Reviews, Risiko Management, Doku Struktur |
+| Tracking | GitHub Issues und GitHub Projects (Kanban) |
+| Nachweise | Markdown Dokumentation, Screenshots, Workflow Runs, Logs, Kubernetes Status |
 
-Kanban Board
-https://github.com/users/Cancani/projects/3/views/1
-
-Dokumentation
-https://cancani.com/geraeteausleihe-sem4/
-
-Betrieb
-Der Geräteausleihe Microservice läuft auf AWS in einem K3s Cluster auf einer EC2 Instanz. Container Images werden nach GHCR gepusht. Deployments erfolgen über GitHub Actions und kubectl auf die EC2 Instanz.
-
+---
 
 ## Vorgehensmodell
+
 Die Arbeit folgt einer sprintbasierten Arbeitsweise mit Kanban Elementen.
 
-1. Backlog als GitHub Issues
-2. Sprint Planung über Milestones
-3. Umsetzung und Tracking im GitHub Project Board
-4. Sprint Review und Sprint Retro als schriftlicher Nachweis pro Sprint in der Dokumentation
+| Element | Umsetzung |
+| --- | --- |
+| Backlog | GitHub Issues (User Stories und Tasks) |
+| Planung | Milestones pro Sprint, Priorisierung über Must Should Could |
+| Umsetzung | Kanban Board mit klaren Status Spalten und WIP Limit |
+| Review | Sprint Review als Dokumentation in `docs/sprints.md` mit Nachweisen |
+| Retrospektive | Kurze Reflexion pro Sprint mit konkreten Verbesserungen |
+| Dokumentation | MkDocs Material, Publikation über GitHub Pages |
 
+---
 
 ## Rollen und Verantwortlichkeiten
-1. Projektleitung und Umsetzung
-   1. Efekan Demirci
-   2. Planung, Umsetzung, Betrieb, Tests, Dokumentation, Sprint Reviews
-2. Dozent PRJ
-   1. Corrado Parisi
-   2. Feedback zu Projektmanagement, Kanban, Reviews, Nachweisführung
-3. Dozent CNC
-   1. Philip Stark
-   2. Feedback zu Cloud Native Umsetzung, Architektur und Betrieb
 
+| Rolle | Verantwortlich | Aufgaben |
+| --- | --- | --- |
+| Studierender | Efekan Demirci | Umsetzung, Dokumentation, Nachweise, Abgabe |
+| Experte Projektmanagement | Dozent PRJ | Feedback zu Planung, Vorgehen, Risiko Management, Struktur |
+| Experte Fachliches Modul | Dozent CNC | Feedback zu Technik, Architektur, Umsetzung, Betriebsaspekten |
+
+---
 
 ## Tools und Artefakte
-1. GitHub Repository
-   1. Code, Dokumentation, Pull Requests, Issues, Milestones
-2. GitHub Project Board
-   1. Kanban Spalten, Status Tracking, WIP Regel
-3. GitHub Actions
-   1. Container Build und Push nach GHCR
-   2. Deployment nach K3s auf EC2
-   3. Pages Build für Dokumentation
-4. GHCR
-   1. Container Registry mit Tags latest und git sha
-5. AWS EC2 und K3s
-   1. Kubernetes Runtime für den Microservice
 
+| Tool oder Artefakt | Zweck | Beispiele |
+| --- | --- | --- |
+| GitHub Repository | Versionierung, Code, Manifeste, Docs | Branches, Pull Requests, Releases |
+| GitHub Projects | Kanban Board und Sprint Übersicht | Backlog, Ready, In Progress, Review, Done |
+| GitHub Actions | CI CD und Dokumentations Deployment | Build, Push, Deploy, Pages |
+| GHCR | Container Registry | Image Tags, Commit SHA |
+| AWS EC2 | Laufzeit Umgebung | K3s Node, Traefik Ingress |
+| MkDocs Material | Dokumentation | `docs/*.md`, Screenshots, Mermaid Diagramme |
+
+---
 
 ## Kanban Setup und Regeln
-Spalten im Board
 
-1. Backlog
-2. Ready
-3. In Progress
-4. Review
-5. Done
+| Spalte | Zweck | Eintrittskriterium | Austrittskriterium |
+| --- | --- | --- | --- |
+| Backlog | Sammlung aller Themen | Ticket ist erfasst | Ticket ist priorisiert |
+| Ready | Bereit für Umsetzung | Definition of Ready erfüllt | Umsetzung gestartet |
+| In Progress | Aktive Bearbeitung | Ticket ist zugewiesen | Umsetzung fertig, Self Check |
+| Review | Review und Nachweise | Nachweise vorhanden | Definition of Done erfüllt |
+| Done | Abschluss | Review abgeschlossen | Ticket ist abgeschlossen |
 
-Arbeitsregeln
+Empfohlene Regel
+- WIP Limit für In Progress: Zielwert 2
 
-1. WIP Limit
-   1. In Progress maximal 2 Tickets gleichzeitig
-2. Definition of Ready
-   1. Ein Ticket wird erst nach Ready verschoben, wenn Inhalt und Kriterien vollständig sind
-3. Review
-   1. Technische Kontrolle abgeschlossen
-   2. Dokumentation aktualisiert
-   3. Nachweise vorhanden
-4. Done
-   1. Akzeptanzkriterien abgehakt
-   2. Definition of Done abgehakt
-   3. Ticket im Board final verschoben
-
-Dozentenfeedback, umgesetzt
-
-1. Spalten In Progress und Done sind Pflichtbestandteil
-2. Akzeptanzkriterien werden als Checkboxen gepflegt
-3. Definition of Done wird als Checkboxen gepflegt und pro Ticket verwendet
-
+---
 
 ## Ticket Standard und Vorlagen
 
 ### Ticket Struktur
-1. User Story Satz im Format
-   1. Als Rolle möchte ich Ziel, damit Nutzen
-2. Kontext und Scope
-3. Akzeptanzkriterien als Checkboxen
-4. Definition of Done als Checkboxen
-5. Labels und Milestone gesetzt
+
+| Feld | Inhalt |
+| --- | --- |
+| Titel | Kurzer präziser Titel, z. B. `US12: GHCR Push verifizieren` |
+| Kontext | Warum ist das nötig |
+| User Story | Als Rolle möchte ich Ziel, damit Nutzen |
+| Akzeptanzkriterien | Messbar und abhakbar |
+| Nachweis | Link, Screenshot, Logauszug, Workflow Run |
+| Labels | Priorität, Bereich, Typ |
 
 ### Definition of Ready
-Ein Ticket ist Ready, wenn
 
-1. Beschreibung eindeutig ist
-2. Akzeptanzkriterien existieren
-3. Definition of Done existiert
-4. Priorität Label gesetzt ist
-5. Milestone gesetzt ist
+| Check | Beschreibung |
+| --- | --- |
+| Ziel ist klar | Ticket beschreibt Ergebnis und Nutzen |
+| Akzeptanzkriterien vorhanden | Kriterien sind messbar und abhakbar |
+| Aufwand grob einschätzbar | Ticket ist nicht zu gross oder unklar |
+| Nachweis definiert | Es ist klar, wie das Ergebnis belegt wird |
 
 ### Definition of Done
-Ein Ticket ist Done, wenn
 
-1. Umsetzung ist committed und gepusht
-2. Akzeptanzkriterien sind abgehakt
-3. Nachweise sind dokumentiert, zum Beispiel Logs oder Screenshots
-4. Ticket ist im Board auf Done verschoben
+| Check | Beschreibung |
+| --- | --- |
+| 1 | Code oder Doku ist committed und gepusht |
+| 2 | Akzeptanzkriterien sind abgehakt |
+| 3 | Nachweis ist in docs abgelegt, Screenshot oder Logauszug |
+| 4 | Issue ist im Board korrekt verschoben |
 
+---
 
 ## Schätzung und Planung
-Für die Grobplanung werden Story Points genutzt.
 
-Skala
-1, 2, 3, 5, 8
+| Grösse | Beschreibung | Beispiel |
+| --- | --- | --- |
+| S | Kurze Aufgabe, unter 1 Stunde | Doku Abschnitt ergänzen |
+| M | Mittlere Aufgabe, 1 bis 3 Stunden | Workflow Trigger anpassen |
+| L | Grössere Aufgabe, über 3 Stunden | K3s Setup und Ingress testen |
 
-Orientierung
-1 entspricht bis 30 Minuten
-2 entspricht bis 1 Stunde
-3 entspricht bis 2 Stunden
-5 entspricht bis 4 Stunden
-8 entspricht bis 1 Arbeitstag
-
+---
 
 ## Labels
-Ziel ist eine klare Filterung nach Typ, Bereich und Priorität.
 
-1. Typ
-   1. Story
-   2. Task
-   3. Bug
-2. Bereich, Beispiele
-   1. PM
-   2. Docs
-   3. CI
-   4. CD
-   5. Docker
-   6. Kubernetes
-   7. K3s
-   8. AWS
-   9. Security
-   10. Testing
-3. Priorität
-   1. Must
-   2. Should
-   3. Could
+| Kategorie | Labels (Beispiele) |
+| --- | --- |
+| Priorität | Must, Should, Could |
+| Typ | Story, Task, Bug |
+| Bereich | PM, Docs, Repo, Pages, AWS, K3s, Docker, Kubernetes, CI, Security, Testing |
 
+---
 
 ## Milestones und Sprints
-Pro Sprint existiert ein Milestone. Alle Tickets des Sprints werden dem Milestone zugeordnet.
 
-1. Sprint 1 Projektstart und Planung
-2. Sprint 2 K3s Cluster und erster Deploy
-3. Sprint 3 CI CD Automatisierung
-4. Abschluss Doku, Demo und Abgabe
+| Milestone | Fällig (geplant) | Inhalt |
+| --- | --- | --- |
+| Sprint 1 Projektstart und Planung | 05.01.2026 | Board, Labels, Milestones, Doku Struktur, Backlog, erste Reviews |
+| Sprint 2 K3s Cluster und erster Deploy | 12.01.2026 | EC2, K3s Installation, Kubernetes Manifeste, Ingress, Probes |
+| Sprint 3 CI CD Build Push Deploy | 19.01.2026 | GitHub Actions, GHCR, automatisches Deployment nach K3s |
+| Abgabe und Doku fertig | 28.01.2026 | Dokumentation final, Demo Ablauf, Endkontrolle, Abgabe Links |
 
+
+---
 
 ## Branching und Merge Flow
-Ziel ist ein stabiler main Branch für Demo und Abgabe. Entwicklung findet auf develop oder Feature Branches statt.
 
-1. Feature Branch wird von develop erstellt
-2. Pull Request von Feature nach develop
-3. Pull Request von develop nach main für stabilen Stand
-4. Workflows laufen auf Pull Requests und auf main gemäss Trigger Regeln
+| Branch | Zweck | Regel |
+| --- | --- | --- |
+| develop | Arbeitsbranch | Feature Arbeit, regelmässige Commits |
+| main | Stabile Version | Nur geprüfte Änderungen via Pull Request |
+| gh pages | GitHub Pages Deployment | Wird durch Workflow befüllt |
 
+Ablauf
+- Entwicklung erfolgt auf `develop`
+- Pull Request von `develop` nach `main`
+- Merge nur, wenn Build und Checks erfolgreich sind
+- Deploy Pipeline läuft bei Push auf `main`
+
+---
 
 ## Wechsel auf GitHub, GitHub Pages und GitHub Projects
 
-### Entscheidung
-Die Arbeit wurde auf GitHub zentralisiert, inklusive Repository, Dokumentation und Kanban Board.
+| Aspekt | Entscheidung | Nutzen |
+| --- | --- | --- |
+| Versionsverwaltung | GitHub Repository als zentrale Quelle | Einheitlicher Workflow, Pull Requests, Actions |
+| Dokumentation | GitHub Pages via MkDocs Material | Saubere Doku Struktur und öffentliche Nachweise |
+| Projektmanagement | GitHub Projects als Kanban | Backlog, Sprints, Status und Nachvollziehbarkeit |
 
-### Gründe
-1. Ein zentraler Ort für Code, Tickets, Reviews und Nachweise
-2. Direkte Verknüpfung von Commits, Pull Requests, Issues und Workflows
-3. Integration von Actions, GHCR und Pages reduziert Tool Wechsel
-4. Öffentliche Nachweise sind für Dozenten direkt einsehbar
+---
 
+## Backlog und User Stories
+
+Die User Stories und Tasks wurden als Issues definiert und automatisiert erstellt. Grundlage sind die Skripte in `create_issues.ps1` und `create_issues_rest.ps1`.
+
+### Sprint 1 Projektstart und Planung
+
+| US | Titel | Typ | Priorität | Labels | Akzeptanzkriterien |
+| --- | --- | --- | --- | --- | --- |
+| US01 | Kanban Board finalisieren | Story | Must | PM | - Spalten Backlog, Ready, In Progress, Review, Done sind vorhanden<br>- WIP Limit für In Progress ist dokumentiert, Zielwert 2<br>- Mindestens 10 Issues sind dem Board hinzugefügt |
+| US02 | Labels anlegen | Task | Must | PM, Repo | - Must, Should, Could sind vorhanden<br>- PM, Docs, Repo, Pages, AWS, K3s, Docker, Kubernetes, CI, Security, Testing sind vorhanden<br>- Story, Task, Bug sind vorhanden |
+| US03 | Milestones anlegen | Task | Must | PM, Repo | - Sprint 1, Sprint 2, Sprint 3, Abgabe sind angelegt<br>- Due Dates sind gesetzt<br>- Beschreibungen sind gesetzt |
+| US04 | Issue Template einrichten | Task | Should | PM, Repo | - Template existiert in .github/ISSUE_TEMPLATE<br>- Akzeptanzkriterien sind als Checkboxen im Template vorhanden<br>- DoD ist als Checkboxen im Template vorhanden |
+| US05 | Branching Strategie dokumentieren | Story | Should | Docs, Repo | - Branches main, develop, feature, gh pages sind beschrieben<br>- Merge Flow ist beschrieben<br>- Branch Rulesets sind kurz dokumentiert |
+| US06 | Sprint 1 Review und Retro dokumentieren | Story | Must | Docs, PM | - Sprint Goal ist dokumentiert<br>- Ergebnis ist dokumentiert, Repo, Board, Pages als Nachweis<br>- Retro enthält gut, schlecht, verbessern |
+| US07 | Architektur Zielbild skizzieren | Story | Should | Docs, Kubernetes | - Komponenten sind beschrieben, GitHub Actions, GHCR, EC2, K3s, Ingress<br>- Datenfluss Push bis Deploy ist beschrieben<br>- Entscheide sind dokumentiert, kein Monitoring |
+
+
+### Sprint 2 K3s Cluster und erster Deploy
+
+| US | Titel | Typ | Priorität | Labels | Akzeptanzkriterien |
+| --- | --- | --- | --- | --- | --- |
+| US08 | EC2 Instanz vorbereiten | Story | Must | AWS, K3s | - EC2 Instanz läuft<br>- SSH Zugriff von meiner IP funktioniert<br>- HTTP und HTTPS sind offen für Ingress Tests |
+| US09 | K3s auf EC2 installieren | Story | Must | K3s, Kubernetes | - K3s läuft als Service<br>- kubectl get nodes zeigt Node Ready<br>- kubeconfig Zugriff von meinem Client funktioniert |
+| US10 | Namespace und Basis Ressourcen erstellen | Task | Should | Kubernetes | - Namespace manifest existiert<br>- Ressourcen sind applied und sichtbar |
+| US11 | Dockerfile finalisieren | Story | Must | Docker | - docker build ist erfolgreich<br>- Container startet lokal<br>- Service Endpoint ist erreichbar |
+| US12 | GHCR Push verifizieren | Task | Must | Docker, Repo | - Image ist in GHCR sichtbar<br>- Tagging Konzept ist definiert, latest plus commit sha<br>- Pull von GHCR ist getestet |
+| US13 | Kubernetes Deployment manifest erstellen | Story | Must | Kubernetes | - deployment yaml existiert<br>- Pod startet im Cluster<br>- Replica Count ist definiert |
+| US14 | Kubernetes Service manifest erstellen | Story | Must | Kubernetes | - service yaml existiert<br>- Service zeigt korrekt auf Pods<br>- Ports sind korrekt |
+| US15 | Ingress konfigurieren | Story | Should | Kubernetes, K3s | - ingress yaml existiert<br>- Zugriff über Public IP oder Domain funktioniert<br>- Routing auf Service funktioniert |
+| US16 | Readiness und Liveness Probes definieren | Story | Should | Kubernetes, Testing | - Probes sind im Deployment gesetzt<br>- Pod reagiert korrekt bei Fehler<br>- Probe Endpunkte sind dokumentiert |
+| US17 | Sprint 2 Review und Retro dokumentieren | Story | Must | Docs, PM | - Screenshots kubectl get pods svc ingress vorhanden<br>- Review Text mit Ergebnis<br>- Retro mit Verbesserungen für Sprint 3 |
+
+
+### Sprint 3 CI CD Build Push Deploy
+
+| US | Titel | Typ | Priorität | Labels | Akzeptanzkriterien |
+| --- | --- | --- | --- | --- | --- |
+| US18 | GitHub Actions Build und Push nach GHCR | Story | Must | CI, Docker | - Workflow startet bei Push auf main<br>- Image wird gebaut<br>- Image wird nach GHCR gepusht mit commit sha Tag |
+| US19 | Secrets für GHCR und Cluster Zugriff einrichten | Story | Must | Security, CI | - GHCR Auth funktioniert mit GITHUB_TOKEN oder PAT<br>- kubeconfig oder token ist als Secret vorhanden<br>- Keine Secrets im Repository |
+| US20 | CD Workflow deployt nach K3s | Story | Must | CI, Kubernetes | - Workflow wendet Manifeste an<br>- Deployment aktualisiert das Image auf neuen Tag<br>- Rollout Status ist dokumentiert |
+| US21 | Tagging Strategie dokumentieren und anwenden | Task | Should | CI, Repo | - Image Tag ist commit sha<br>- Deployment referenziert den Tag<br>- Doku beschreibt das Konzept |
+| US22 | Pipeline Testlauf dokumentieren | Story | Must | Docs, Testing | - Screenshot Actions Run vorhanden<br>- Vorher nachher Version dokumentiert<br>- Debug Vorgehen bei Fehler beschrieben |
+| US23 | Sprint 3 Review und Retro dokumentieren | Story | Must | Docs, PM | - Review Text mit End to End Ablauf<br>- Retro mit gut, schlecht, verbessern<br>- Offene Punkte für Abgabe sind erfasst |
+
+
+### Abgabe und Doku fertig
+
+| US | Titel | Typ | Priorität | Labels | Akzeptanzkriterien |
+| --- | --- | --- | --- | --- | --- |
+| US24 | Dokumentation finalisieren und strukturieren | Story | Must | Docs, Pages | - Projektmanagement Kapitel vollständig<br>- Sprints Kapitel vollständig<br>- Architektur Kapitel vollständig<br>- Links zu Repo, Board, Pages funktionieren |
+| US25 | Demo Ablauf definieren | Story | Should | Docs, PM | - Schrittfolge für Demo dokumentiert<br>- Live Nachweise, Actions, GHCR, kubectl, Ingress<br>- Fallback Plan definiert |
+| US26 | Endkontrolle gegen Anforderungen | Story | Must | PM, Testing | - Kubernetes läuft, Deploy funktioniert<br>- CI CD läuft, Build Push Deploy erfolgreich<br>- Board ist aktuell, Milestones sind konsistent |
+| US27 | Abgabe Links und Paket bereitstellen | Story | Must | Docs, PM | - Repo Link, Board Link, Pages Link gesammelt<br>- Letzte Sprint Reviews sind vorhanden<br>- main enthält den finalen Stand |
+
+
+
+---
 
 ## Nachweise für Sprint Reviews
-Empfohlene Nachweise, die pro Sprint in der Dokumentation verlinkt werden.
 
-1. Screenshot vom Project Board mit Spalten und WIP Regel
-2. Screenshot der Milestones Übersicht
-3. Screenshot eines erfolgreichen Actions Runs für Build und Deploy
-4. kubectl Ausgaben für Pods, Service und Ingress
-5. GHCR Übersicht der Image Tags
+| Nachweis | Wo | Beispiel |
+| --- | --- | --- |
+| Workflow Runs | GitHub Actions | Build und Deploy Logs |
+| Container Images | GHCR | Tags `latest` und Commit SHA |
+| Kubernetes Status | EC2 Shell | `kubectl get pods -n ...` |
+| Ingress Erreichbarkeit | Browser oder curl | Endpoint über nip io |
+| Screenshots | `docs/screenshots/` | Pipeline Run, Pods, Ingress |
 
+---
 
 ## Risiken und Massnahmen
-1. Deployment Fehler durch falsche Image Referenz
-   1. Massnahme: Image Name und Tag im Workflow validieren, Rollout Status prüfen
-2. Cluster Zugriff aus CI schlägt fehl
-   1. Massnahme: SSH Keys und Secrets prüfen, kubectl Zugriff auf EC2 verifizieren
-3. Zeitdruck
-   1. Massnahme: Must Tickets priorisieren, Scope begrenzen, Reviews laufend pflegen
-4. Kosten AWS
-   1. Massnahme: Kleine Instanz, Ressourcen Limits, Abschalten wenn nicht benötigt
+
+| Risiko | Auswirkung | Massnahme |
+| --- | --- | --- |
+| Deployment Fehler durch falsche Image Referenz | Service startet nicht | Image Name und Tag prüfen, Rollout Status kontrollieren |
+| Cluster Zugriff aus CI schlägt fehl | Deploy nicht möglich | SSH Keys und Secrets prüfen, kubectl Zugriff verifizieren |
+| Zeitdruck | Umfang nicht fertig | Must Tickets priorisieren, Scope begrenzen, Reviews laufend pflegen |
+| Kosten AWS | Budgetüberschreitung | Kleine Instanz, Ressourcen Limits, Instanz abschalten wenn nicht benötigt |
+

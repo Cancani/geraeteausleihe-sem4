@@ -1,29 +1,23 @@
-.md-content {
-  scroll-behavior: smooth;
-}
-
-.md-typeset {
-  font-size: 1.02rem;
-  line-height: 1.65;
-}
-
+/* Typography */
 .md-typeset h1 {
-  font-size: 2.1rem;
+  font-size: 2.0rem;
   font-weight: 800;
+  color: var(--md-default-fg-color);
   letter-spacing: 0.2px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .md-typeset h2 {
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   font-weight: 750;
-  margin-top: 1.75rem;
+  color: var(--md-default-fg-color);
+  margin-top: 1.6rem;
 }
 
-.md-typeset h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-top: 1.25rem;
+.md-typeset p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color);
 }
 
 .md-header__title {
@@ -34,30 +28,35 @@
   font-weight: 700;
 }
 
-.md-typeset code {
-  font-size: 0.92rem;
-  border-radius: 0.25rem;
-}
-
-.md-typeset table {
-  border-radius: 0.5rem;
+/* Tables */
+.md-typeset table:not([class]) {
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
-.md-typeset img {
-  border-radius: 0.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+.md-typeset table:not([class]) th {
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.md-typeset small {
-  color: var(--md-default-fg-color--light);
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  padding: 0.65rem 0.8rem;
 }
 
-.md-typeset .md-button {
-  border-radius: 0.6rem;
+.md-typeset table:not([class]) tr:nth-child(2n) td {
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.md-typeset .grid.cards > ul > li {
-  border-radius: 1rem;
+/* Code blocks */
+.md-typeset pre > code {
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
+/* Badges spacing on start page */
+.md-typeset a img {
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}

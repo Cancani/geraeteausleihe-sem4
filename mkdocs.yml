@@ -1,36 +1,47 @@
-site_name: Geraeteausleihe Microservice
-site_description: Cloud Native Deployment auf AWS mit K3s und GitHub Actions
-site_url: https://cancani.github.io/geraeteausleihe-sem4/
+site_name: Geräteausleihe Microservice Sem4
+site_description: Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions
+site_url: https://cancani.com/geraeteausleihe-sem4/
+
+repo_url: https://github.com/Cancani/geraeteausleihe-sem4
+repo_name: Cancani/geraeteausleihe-sem4
+edit_uri: edit/main/docs/
 
 theme:
   name: material
   language: de
   palette:
-    scheme: slate
-    primary: black
-    accent: cyan
+    - scheme: slate
+      primary: black
+      accent: cyan
   features:
     - navigation.instant
     - navigation.tabs
     - navigation.sections
-    - content.code.copy
+    - navigation.top
     - toc.follow
-  font:
-    text: Roboto
-    code: Roboto Mono
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+
+plugins:
+  - search
 
 markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - tables
   - pymdownx.details
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_css:
   - stylesheets/extra.css
