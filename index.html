@@ -1,0 +1,1314 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions">
+      
+      
+      
+        <link rel="canonical" href="https://cancani.com/geraeteausleihe-sem4/">
+      
+      
+      
+        <link rel="next" href="projektmanagement/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Geräteausleihe Microservice Sem4</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kurzlinks" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="." title="Geräteausleihe Microservice Sem4" class="md-header__button md-logo" aria-label="Geräteausleihe Microservice Sem4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Geräteausleihe Microservice Sem4
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Start
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Cancani/geraeteausleihe-sem4" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Cancani/geraeteausleihe-sem4
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Hauptnavigation" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="projektmanagement/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Projektmanagement
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="sprints/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Sprints
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="architektur/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architektur
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="technische_umsetzung/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Technische Umsetzung
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Geräteausleihe Microservice Sem4" class="md-nav__button md-logo" aria-label="Geräteausleihe Microservice Sem4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Geräteausleihe Microservice Sem4
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Cancani/geraeteausleihe-sem4" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Cancani/geraeteausleihe-sem4
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kurzlinks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kurzlinks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projektdefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projektdefinition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projektubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projektübersicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ausgangslage-und-problemstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ausgangslage und Problemstellung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ausgangslage und Problemstellung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ist-zustand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IST Zustand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soll-zustand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SOLL Zustand
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zielsetzung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zielsetzung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smart-ziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SMART Ziele
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technologien-und-werkzeuge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technologien und Werkzeuge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ablauf-und-termine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ablauf und Termine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weiterfuhrende-seiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weiterführende Seiten
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projektmanagement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektmanagement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sprints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sprints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architektur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architektur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technische_umsetzung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Umsetzung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kurzlinks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kurzlinks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projektdefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projektdefinition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projektubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projektübersicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ausgangslage-und-problemstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ausgangslage und Problemstellung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ausgangslage und Problemstellung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ist-zustand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IST Zustand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soll-zustand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SOLL Zustand
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zielsetzung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zielsetzung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smart-ziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SMART Ziele
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technologien-und-werkzeuge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technologien und Werkzeuge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ablauf-und-termine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ablauf und Termine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weiterfuhrende-seiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weiterführende Seiten
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Cancani/geraeteausleihe-sem4/edit/main/docs/index.md" title="Seite editieren" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Cancani/geraeteausleihe-sem4/raw/main/docs/index.md" title="Quellcode der Seite anzeigen" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+  <h1>Start</h1>
+
+<p align="center"><strong>Geräteausleihe Microservice Sem4</strong></p>
+<p align="center">Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions</p>
+
+<p><a href="https://python.org"><img alt="Python" src="https://img.shields.io/badge/Python-3.11-3776ab?style=for-the-badge&amp;logo=python&amp;logoColor=white" /></a>
+<a href="https://flask.palletsprojects.com"><img alt="Flask" src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&amp;logo=flask&amp;logoColor=white" /></a>
+<a href="https://docker.com"><img alt="Docker" src="https://img.shields.io/badge/Docker-2496ed?style=for-the-badge&amp;logo=docker&amp;logoColor=white" /></a>
+<a href="https://kubernetes.io"><img alt="Kubernetes" src="https://img.shields.io/badge/Kubernetes-326ce5?style=for-the-badge&amp;logo=kubernetes&amp;logoColor=white" /></a>
+<a href="https://github.com/features/actions"><img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub_Actions-2088ff?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" /></a>
+<a href="https://aws.amazon.com"><img alt="AWS" src="https://img.shields.io/badge/AWS-Cloud-ff9900?style=for-the-badge&amp;logo=amazonaws&amp;logoColor=white" /></a></p>
+<hr />
+<h2 id="kurzlinks">Kurzlinks</h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository</td>
+<td>https://github.com/Cancani/geraeteausleihe-sem4</td>
+</tr>
+<tr>
+<td>GitHub Projects Board</td>
+<td>https://github.com/users/Cancani/projects/3/views/1</td>
+</tr>
+<tr>
+<td>GitHub Pages</td>
+<td>https://cancani.com/geraeteausleihe-sem4</td>
+</tr>
+<tr>
+<td>Einreichungsformular</td>
+<td><code>./docs/Efekan_Einreichungsformular_4.SemesterV2.docx</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="projektdefinition">Projektdefinition</h2>
+<p>In dieser Semesterarbeit wird der bestehende Microservice aus dem 3. Semester weitergeführt und technologisch erweitert. Ziel ist ein weitgehend automatisierter Cloud Native Betrieb auf AWS mit Kubernetes. Der Betrieb läuft auf einem K3s Cluster auf einer EC2 Instanz, Deployments erfolgen über GitHub Actions.</p>
+<p>Das Resultat ist ein skalierbarer, wartbarer und reproduzierbar bereitgestellter Microservice als praxisnahes Beispiel für moderne DevOps Betriebsprozesse.</p>
+<hr />
+<h2 id="projektubersicht">Projektübersicht</h2>
+<table>
+<thead>
+<tr>
+<th>Eigenschaft</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Titel</td>
+<td>Geräteausleihe Microservice, Cloud Native Deployment auf AWS</td>
+</tr>
+<tr>
+<td>Studierender</td>
+<td>Efekan Demirci</td>
+</tr>
+<tr>
+<td>Dozenten</td>
+<td>PRJ Corrado Parisi, CNC Philip Stark</td>
+</tr>
+<tr>
+<td>Semester</td>
+<td>4. Semester HF TBZ, ITCNE24</td>
+</tr>
+<tr>
+<td>Zeitraum</td>
+<td>Oktober 2025 bis Januar 2026</td>
+</tr>
+<tr>
+<td>Technologie Stack</td>
+<td>Python Flask, Docker, Kubernetes, K3s, AWS, GitHub Actions</td>
+</tr>
+<tr>
+<td>Architektur</td>
+<td>Microservice, CI CD, Infrastructure as Code Grundprinzipien</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td>https://github.com/Cancani/geraeteausleihe-sem4</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ausgangslage-und-problemstellung">Ausgangslage und Problemstellung</h2>
+<h3 id="ist-zustand">IST Zustand</h3>
+<p>Der Microservice aus dem 3. Semester wird initial manuell auf einer AWS EC2 Instanz betrieben. Deployments erfolgen per Hand über Docker Befehle ohne konsistente Versionierung und ohne reproduzierbare Abläufe.</p>
+<table>
+<thead>
+<tr>
+<th>Schritt</th>
+<th>Manuell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Codeänderung lokal</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Docker Image lokal bauen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Image hochladen</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Alten Container stoppen</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Neuen Container starten</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Auswirkung</th>
+<th>Häufigkeit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kein automatisiertes Deployment</td>
+<td>Hoher manueller Aufwand</td>
+<td>Nach jedem Update</td>
+</tr>
+<tr>
+<td>Fehlende Skalierbarkeit</td>
+<td>Keine automatische Anpassung an Last</td>
+<td>Regelmässig</td>
+</tr>
+<tr>
+<td>Kein Monitoring</td>
+<td>Fehler bleiben unbemerkt</td>
+<td>Zufallsabhängig</td>
+</tr>
+<tr>
+<td>Kein Versionsmanagement</td>
+<td>Unklar welche Version läuft</td>
+<td>Oft</td>
+</tr>
+<tr>
+<td>Keine Health Checks</td>
+<td>Fehler werden nicht automatisch erkannt</td>
+<td>Sporadisch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="soll-zustand">SOLL Zustand</h3>
+<p>Der Microservice wird in Kubernetes betrieben und automatisiert ausgerollt. Codeänderungen lösen Build, Push in eine Registry und Deployment ins Cluster aus.</p>
+<table>
+<thead>
+<tr>
+<th>Schritt</th>
+<th>Automatisiert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Push auf <code>main</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>GitHub Actions startet</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Docker Image wird gebaut und nach GHCR gepusht</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Deployment im K3s Cluster wird aktualisiert</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kubernetes rollt per Rolling Update aus</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Verbesserung</th>
+<th>Nutzen</th>
+<th>Automatisierung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI CD Pipeline</td>
+<td>Kein manuelles Deployment</td>
+<td>Vollständig</td>
+</tr>
+<tr>
+<td>Kubernetes Betrieb</td>
+<td>Self Healing und Skalierung</td>
+<td>Vollständig</td>
+</tr>
+<tr>
+<td>GHCR Images</td>
+<td>Versionierte Builds</td>
+<td>Vollständig</td>
+</tr>
+<tr>
+<td>Probes</td>
+<td>Stabilität durch Auto Restart</td>
+<td>Teilweise</td>
+</tr>
+<tr>
+<td>AWS Hosting</td>
+<td>Reproduzierbare Infrastruktur</td>
+<td>Vollständig</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="zielsetzung">Zielsetzung</h2>
+<p>Ziel ist die Umsetzung einer automatisierten Deployment Pipeline für den Microservice. Das Projekt verbindet Inhalte aus CNC und DevOps mit einem bestehenden Service aus dem 3. Semester.</p>
+<p>Schwerpunkte
+- Containerisierung und Image Build
+- Kubernetes Betrieb mit K3s auf EC2
+- Automatisierung per GitHub Actions
+- Versionierung und Deployment Nachweis
+- Dokumentation über GitHub Pages</p>
+<hr />
+<h2 id="smart-ziele">SMART Ziele</h2>
+<table>
+<thead>
+<tr>
+<th>Ziel</th>
+<th>Spezifisch</th>
+<th>Messbar</th>
+<th>Attraktiv</th>
+<th>Realistisch</th>
+<th>Terminiert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Containerisierung</td>
+<td>Dockerfile und Build Workflow</td>
+<td>Image läuft lokal und im Cluster</td>
+<td>Wiederverwendbar</td>
+<td>Machbar</td>
+<td>Sprint 1 bis 2</td>
+</tr>
+<tr>
+<td>K3s Deployment</td>
+<td>Kubernetes Manifeste</td>
+<td>Pods laufen im Cluster</td>
+<td>Skalierbar</td>
+<td>Machbar</td>
+<td>Sprint 2</td>
+</tr>
+<tr>
+<td>CI CD</td>
+<td>Actions Build Push Deploy</td>
+<td>Deploy bei Push auf main</td>
+<td>Praxisnah</td>
+<td>Machbar</td>
+<td>Sprint 3</td>
+</tr>
+<tr>
+<td>Health Checks</td>
+<td>Probes und Endpoints</td>
+<td>Pods werden überwacht</td>
+<td>Stabilität</td>
+<td>Optional</td>
+<td>Sprint 2 bis 3</td>
+</tr>
+<tr>
+<td>Dokumentation und Demo</td>
+<td>Pages und Nachweise</td>
+<td>Vollständig</td>
+<td>Bewertungsrelevant</td>
+<td>Machbar</td>
+<td>Abschluss</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="technologien-und-werkzeuge">Technologien und Werkzeuge</h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Technologie</th>
+<th>Begründung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend</td>
+<td>Python Flask</td>
+<td>Schlankes Framework für REST APIs</td>
+</tr>
+<tr>
+<td>Container</td>
+<td>Docker</td>
+<td>Portables Build und Laufzeitformat</td>
+</tr>
+<tr>
+<td>Orchestrierung</td>
+<td>Kubernetes, K3s</td>
+<td>Betrieb und Rollouts im Cluster</td>
+</tr>
+<tr>
+<td>CI CD</td>
+<td>GitHub Actions</td>
+<td>Automatisiertes Build, Push, Deploy</td>
+</tr>
+<tr>
+<td>Registry</td>
+<td>GitHub Container Registry</td>
+<td>Versionierte Container Images</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>AWS EC2</td>
+<td>Kostenarme und praxisnahe Infrastruktur</td>
+</tr>
+<tr>
+<td>Projektmanagement</td>
+<td>GitHub Projects und Issues</td>
+<td>Sprints, Tracking, Nachweise</td>
+</tr>
+<tr>
+<td>Dokumentation</td>
+<td>MkDocs Material und GitHub Pages</td>
+<td>Versionierte Doku, öffentlich lesbar</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ablauf-und-termine">Ablauf und Termine</h2>
+<table>
+<thead>
+<tr>
+<th>Datum (ca.)</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01.10.2025</td>
+<td>Ablauf Semesterarbeiten und Themenübersicht</td>
+</tr>
+<tr>
+<td>20.10.2025</td>
+<td>Abgabe Einreichungsformular</td>
+</tr>
+<tr>
+<td>27.10.2025</td>
+<td>Freigabe Semesterarbeit und Start Umsetzung</td>
+</tr>
+<tr>
+<td>17.11.2025</td>
+<td>Einzelbesprechung 1 mit Feedback</td>
+</tr>
+<tr>
+<td>15.12.2025</td>
+<td>Einzelbesprechung 2 mit Feedback</td>
+</tr>
+<tr>
+<td>23.01.2026</td>
+<td>Einzelbesprechung 3 mit Feedback</td>
+</tr>
+<tr>
+<td>28.01.2026</td>
+<td>Abgabe, Abnahme, Schlusspräsentation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="weiterfuhrende-seiten">Weiterführende Seiten</h2>
+<table>
+<thead>
+<tr>
+<th>Seite</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="projektmanagement/">Projektmanagement</a></td>
+<td>Vorgehen, Rollen, Regeln, Backlog Struktur, Nachweise</td>
+</tr>
+<tr>
+<td><a href="sprints/">Sprints</a></td>
+<td>Sprint Reviews und Retrospektiven, Status und Ausblick</td>
+</tr>
+<tr>
+<td><a href="architektur/">Architektur</a></td>
+<td>Zielbild, Komponenten, Schnittstellen, Kubernetes Ressourcen</td>
+</tr>
+<tr>
+<td><a href="technische_umsetzung/">Technische Umsetzung</a></td>
+<td>Setup, Manifeste, CI CD, Deploy Ablauf, Verifikation</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.top", "toc.follow", "content.code.copy", "content.action.edit", "content.action.view"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

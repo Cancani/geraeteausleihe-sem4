@@ -1,0 +1,1936 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions">
+      
+      
+      
+        <link rel="canonical" href="https://cancani.com/geraeteausleihe-sem4/projektmanagement/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../sprints/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Projektmanagement - Geräteausleihe Microservice Sem4</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#projektmanagement" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href=".." title="Geräteausleihe Microservice Sem4" class="md-header__button md-logo" aria-label="Geräteausleihe Microservice Sem4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Geräteausleihe Microservice Sem4
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Projektmanagement
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Cancani/geraeteausleihe-sem4" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Cancani/geraeteausleihe-sem4
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Hauptnavigation" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Projektmanagement
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sprints/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Sprints
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../architektur/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architektur
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../technische_umsetzung/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Technische Umsetzung
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Geräteausleihe Microservice Sem4" class="md-nav__button md-logo" aria-label="Geräteausleihe Microservice Sem4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Geräteausleihe Microservice Sem4
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Cancani/geraeteausleihe-sem4" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Cancani/geraeteausleihe-sem4
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektmanagement
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektmanagement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#zweck-und-umfang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zweck und Umfang
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vorgehensmodell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vorgehensmodell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollen-und-verantwortlichkeiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollen und Verantwortlichkeiten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-und-artefakte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools und Artefakte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kanban-setup-und-regeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kanban Setup und Regeln
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ticket-standard-und-vorlagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticket Standard und Vorlagen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ticket Standard und Vorlagen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ticket-struktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticket Struktur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of Ready
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of Done
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schatzung-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schätzung und Planung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestones-und-sprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milestones und Sprints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branching-und-merge-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branching und Merge Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wechsel-auf-github-github-pages-und-github-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wechsel auf GitHub, GitHub Pages und GitHub Projects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backlog-und-user-stories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlog und User Stories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backlog und User Stories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sprint-1-projektstart-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 1 Projektstart und Planung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sprint-2-k3s-cluster-und-erster-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 2 K3s Cluster und erster Deploy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sprint-3-ci-cd-build-push-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 3 CI CD Build Push Deploy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abgabe-und-doku-fertig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgabe und Doku fertig
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachweise-fur-sprint-reviews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nachweise für Sprint Reviews
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risiken-und-massnahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risiken und Massnahmen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sprints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architektur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architektur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technische_umsetzung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Umsetzung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#zweck-und-umfang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zweck und Umfang
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vorgehensmodell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vorgehensmodell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollen-und-verantwortlichkeiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollen und Verantwortlichkeiten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-und-artefakte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools und Artefakte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kanban-setup-und-regeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kanban Setup und Regeln
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ticket-standard-und-vorlagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticket Standard und Vorlagen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ticket Standard und Vorlagen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ticket-struktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticket Struktur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of Ready
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of Done
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schatzung-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schätzung und Planung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestones-und-sprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milestones und Sprints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branching-und-merge-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branching und Merge Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wechsel-auf-github-github-pages-und-github-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wechsel auf GitHub, GitHub Pages und GitHub Projects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backlog-und-user-stories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlog und User Stories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backlog und User Stories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sprint-1-projektstart-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 1 Projektstart und Planung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sprint-2-k3s-cluster-und-erster-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 2 K3s Cluster und erster Deploy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sprint-3-ci-cd-build-push-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 3 CI CD Build Push Deploy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abgabe-und-doku-fertig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgabe und Doku fertig
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachweise-fur-sprint-reviews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nachweise für Sprint Reviews
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risiken-und-massnahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risiken und Massnahmen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Cancani/geraeteausleihe-sem4/edit/main/docs/projektmanagement.md" title="Seite editieren" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Cancani/geraeteausleihe-sem4/raw/main/docs/projektmanagement.md" title="Quellcode der Seite anzeigen" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="projektmanagement">Projektmanagement</h1>
+<p>Diese Seite beschreibt das Vorgehen, die Regeln und die Artefakte der Semesterarbeit.</p>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository</td>
+<td>https://github.com/Cancani/geraeteausleihe-sem4</td>
+</tr>
+<tr>
+<td>GitHub Projects Board</td>
+<td>https://github.com/users/Cancani/projects/3/views/1</td>
+</tr>
+<tr>
+<td>GitHub Pages</td>
+<td>https://cancani.com/geraeteausleihe-sem4</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="zweck-und-umfang">Zweck und Umfang</h2>
+<table>
+<thead>
+<tr>
+<th>Punkt</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ziel</td>
+<td>Transparente, nachvollziehbare Umsetzung der Semesterarbeit mit klaren Nachweisen</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Projektmanagement, Sprint Planung, Reviews, Risiko Management, Doku Struktur</td>
+</tr>
+<tr>
+<td>Tracking</td>
+<td>GitHub Issues und GitHub Projects (Kanban)</td>
+</tr>
+<tr>
+<td>Nachweise</td>
+<td>Markdown Dokumentation, Screenshots, Workflow Runs, Logs, Kubernetes Status</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="vorgehensmodell">Vorgehensmodell</h2>
+<p>Die Arbeit folgt einer sprintbasierten Arbeitsweise mit Kanban Elementen.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Umsetzung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backlog</td>
+<td>GitHub Issues (User Stories und Tasks)</td>
+</tr>
+<tr>
+<td>Planung</td>
+<td>Milestones pro Sprint, Priorisierung über Must Should Could</td>
+</tr>
+<tr>
+<td>Umsetzung</td>
+<td>Kanban Board mit klaren Status Spalten und WIP Limit</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Sprint Review als Dokumentation in <code>docs/sprints.md</code> mit Nachweisen</td>
+</tr>
+<tr>
+<td>Retrospektive</td>
+<td>Kurze Reflexion pro Sprint mit konkreten Verbesserungen</td>
+</tr>
+<tr>
+<td>Dokumentation</td>
+<td>MkDocs Material, Publikation über GitHub Pages</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rollen-und-verantwortlichkeiten">Rollen und Verantwortlichkeiten</h2>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Verantwortlich</th>
+<th>Aufgaben</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Studierender</td>
+<td>Efekan Demirci</td>
+<td>Umsetzung, Dokumentation, Nachweise, Abgabe</td>
+</tr>
+<tr>
+<td>Experte Projektmanagement</td>
+<td>Dozent PRJ</td>
+<td>Feedback zu Planung, Vorgehen, Risiko Management, Struktur</td>
+</tr>
+<tr>
+<td>Experte Fachliches Modul</td>
+<td>Dozent CNC</td>
+<td>Feedback zu Technik, Architektur, Umsetzung, Betriebsaspekten</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tools-und-artefakte">Tools und Artefakte</h2>
+<table>
+<thead>
+<tr>
+<th>Tool oder Artefakt</th>
+<th>Zweck</th>
+<th>Beispiele</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub Repository</td>
+<td>Versionierung, Code, Manifeste, Docs</td>
+<td>Branches, Pull Requests, Releases</td>
+</tr>
+<tr>
+<td>GitHub Projects</td>
+<td>Kanban Board und Sprint Übersicht</td>
+<td>Backlog, Ready, In Progress, Review, Done</td>
+</tr>
+<tr>
+<td>GitHub Actions</td>
+<td>CI CD und Dokumentations Deployment</td>
+<td>Build, Push, Deploy, Pages</td>
+</tr>
+<tr>
+<td>GHCR</td>
+<td>Container Registry</td>
+<td>Image Tags, Commit SHA</td>
+</tr>
+<tr>
+<td>AWS EC2</td>
+<td>Laufzeit Umgebung</td>
+<td>K3s Node, Traefik Ingress</td>
+</tr>
+<tr>
+<td>MkDocs Material</td>
+<td>Dokumentation</td>
+<td><code>docs/*.md</code>, Screenshots, Mermaid Diagramme</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="kanban-setup-und-regeln">Kanban Setup und Regeln</h2>
+<table>
+<thead>
+<tr>
+<th>Spalte</th>
+<th>Zweck</th>
+<th>Eintrittskriterium</th>
+<th>Austrittskriterium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backlog</td>
+<td>Sammlung aller Themen</td>
+<td>Ticket ist erfasst</td>
+<td>Ticket ist priorisiert</td>
+</tr>
+<tr>
+<td>Ready</td>
+<td>Bereit für Umsetzung</td>
+<td>Definition of Ready erfüllt</td>
+<td>Umsetzung gestartet</td>
+</tr>
+<tr>
+<td>In Progress</td>
+<td>Aktive Bearbeitung</td>
+<td>Ticket ist zugewiesen</td>
+<td>Umsetzung fertig, Self Check</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Review und Nachweise</td>
+<td>Nachweise vorhanden</td>
+<td>Definition of Done erfüllt</td>
+</tr>
+<tr>
+<td>Done</td>
+<td>Abschluss</td>
+<td>Review abgeschlossen</td>
+<td>Ticket ist abgeschlossen</td>
+</tr>
+</tbody>
+</table>
+<p>Empfohlene Regel
+- WIP Limit für In Progress: Zielwert 2</p>
+<hr />
+<h2 id="ticket-standard-und-vorlagen">Ticket Standard und Vorlagen</h2>
+<h3 id="ticket-struktur">Ticket Struktur</h3>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Titel</td>
+<td>Kurzer präziser Titel, z. B. <code>US12: GHCR Push verifizieren</code></td>
+</tr>
+<tr>
+<td>Kontext</td>
+<td>Warum ist das nötig</td>
+</tr>
+<tr>
+<td>User Story</td>
+<td>Als Rolle möchte ich Ziel, damit Nutzen</td>
+</tr>
+<tr>
+<td>Akzeptanzkriterien</td>
+<td>Messbar und abhakbar</td>
+</tr>
+<tr>
+<td>Nachweis</td>
+<td>Link, Screenshot, Logauszug, Workflow Run</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td>Priorität, Bereich, Typ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="definition-of-ready">Definition of Ready</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ziel ist klar</td>
+<td>Ticket beschreibt Ergebnis und Nutzen</td>
+</tr>
+<tr>
+<td>Akzeptanzkriterien vorhanden</td>
+<td>Kriterien sind messbar und abhakbar</td>
+</tr>
+<tr>
+<td>Aufwand grob einschätzbar</td>
+<td>Ticket ist nicht zu gross oder unklar</td>
+</tr>
+<tr>
+<td>Nachweis definiert</td>
+<td>Es ist klar, wie das Ergebnis belegt wird</td>
+</tr>
+</tbody>
+</table>
+<h3 id="definition-of-done">Definition of Done</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Code oder Doku ist committed und gepusht</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Akzeptanzkriterien sind abgehakt</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Nachweis ist in docs abgelegt, Screenshot oder Logauszug</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Issue ist im Board korrekt verschoben</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="schatzung-und-planung">Schätzung und Planung</h2>
+<table>
+<thead>
+<tr>
+<th>Grösse</th>
+<th>Beschreibung</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>Kurze Aufgabe, unter 1 Stunde</td>
+<td>Doku Abschnitt ergänzen</td>
+</tr>
+<tr>
+<td>M</td>
+<td>Mittlere Aufgabe, 1 bis 3 Stunden</td>
+<td>Workflow Trigger anpassen</td>
+</tr>
+<tr>
+<td>L</td>
+<td>Grössere Aufgabe, über 3 Stunden</td>
+<td>K3s Setup und Ingress testen</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="labels">Labels</h2>
+<table>
+<thead>
+<tr>
+<th>Kategorie</th>
+<th>Labels (Beispiele)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Priorität</td>
+<td>Must, Should, Could</td>
+</tr>
+<tr>
+<td>Typ</td>
+<td>Story, Task, Bug</td>
+</tr>
+<tr>
+<td>Bereich</td>
+<td>PM, Docs, Repo, Pages, AWS, K3s, Docker, Kubernetes, CI, Security, Testing</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="milestones-und-sprints">Milestones und Sprints</h2>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Fällig (geplant)</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint 1 Projektstart und Planung</td>
+<td>05.01.2026</td>
+<td>Board, Labels, Milestones, Doku Struktur, Backlog, erste Reviews</td>
+</tr>
+<tr>
+<td>Sprint 2 K3s Cluster und erster Deploy</td>
+<td>12.01.2026</td>
+<td>EC2, K3s Installation, Kubernetes Manifeste, Ingress, Probes</td>
+</tr>
+<tr>
+<td>Sprint 3 CI CD Build Push Deploy</td>
+<td>19.01.2026</td>
+<td>GitHub Actions, GHCR, automatisches Deployment nach K3s</td>
+</tr>
+<tr>
+<td>Abgabe und Doku fertig</td>
+<td>28.01.2026</td>
+<td>Dokumentation final, Demo Ablauf, Endkontrolle, Abgabe Links</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="branching-und-merge-flow">Branching und Merge Flow</h2>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Zweck</th>
+<th>Regel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>develop</td>
+<td>Arbeitsbranch</td>
+<td>Feature Arbeit, regelmässige Commits</td>
+</tr>
+<tr>
+<td>main</td>
+<td>Stabile Version</td>
+<td>Nur geprüfte Änderungen via Pull Request</td>
+</tr>
+<tr>
+<td>gh pages</td>
+<td>GitHub Pages Deployment</td>
+<td>Wird durch Workflow befüllt</td>
+</tr>
+</tbody>
+</table>
+<p>Ablauf
+- Entwicklung erfolgt auf <code>develop</code>
+- Pull Request von <code>develop</code> nach <code>main</code>
+- Merge nur, wenn Build und Checks erfolgreich sind
+- Deploy Pipeline läuft bei Push auf <code>main</code></p>
+<hr />
+<h2 id="wechsel-auf-github-github-pages-und-github-projects">Wechsel auf GitHub, GitHub Pages und GitHub Projects</h2>
+<table>
+<thead>
+<tr>
+<th>Aspekt</th>
+<th>Entscheidung</th>
+<th>Nutzen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Versionsverwaltung</td>
+<td>GitHub Repository als zentrale Quelle</td>
+<td>Einheitlicher Workflow, Pull Requests, Actions</td>
+</tr>
+<tr>
+<td>Dokumentation</td>
+<td>GitHub Pages via MkDocs Material</td>
+<td>Saubere Doku Struktur und öffentliche Nachweise</td>
+</tr>
+<tr>
+<td>Projektmanagement</td>
+<td>GitHub Projects als Kanban</td>
+<td>Backlog, Sprints, Status und Nachvollziehbarkeit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="backlog-und-user-stories">Backlog und User Stories</h2>
+<p>Die User Stories und Tasks wurden als Issues definiert und automatisiert erstellt. Grundlage sind die Skripte in <code>create_issues.ps1</code> und <code>create_issues_rest.ps1</code>.</p>
+<h3 id="sprint-1-projektstart-und-planung">Sprint 1 Projektstart und Planung</h3>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Titel</th>
+<th>Typ</th>
+<th>Priorität</th>
+<th>Labels</th>
+<th>Akzeptanzkriterien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US01</td>
+<td>Kanban Board finalisieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>PM</td>
+<td>- Spalten Backlog, Ready, In Progress, Review, Done sind vorhanden<br>- WIP Limit für In Progress ist dokumentiert, Zielwert 2<br>- Mindestens 10 Issues sind dem Board hinzugefügt</td>
+</tr>
+<tr>
+<td>US02</td>
+<td>Labels anlegen</td>
+<td>Task</td>
+<td>Must</td>
+<td>PM, Repo</td>
+<td>- Must, Should, Could sind vorhanden<br>- PM, Docs, Repo, Pages, AWS, K3s, Docker, Kubernetes, CI, Security, Testing sind vorhanden<br>- Story, Task, Bug sind vorhanden</td>
+</tr>
+<tr>
+<td>US03</td>
+<td>Milestones anlegen</td>
+<td>Task</td>
+<td>Must</td>
+<td>PM, Repo</td>
+<td>- Sprint 1, Sprint 2, Sprint 3, Abgabe sind angelegt<br>- Due Dates sind gesetzt<br>- Beschreibungen sind gesetzt</td>
+</tr>
+<tr>
+<td>US04</td>
+<td>Issue Template einrichten</td>
+<td>Task</td>
+<td>Should</td>
+<td>PM, Repo</td>
+<td>- Template existiert in .github/ISSUE_TEMPLATE<br>- Akzeptanzkriterien sind als Checkboxen im Template vorhanden<br>- DoD ist als Checkboxen im Template vorhanden</td>
+</tr>
+<tr>
+<td>US05</td>
+<td>Branching Strategie dokumentieren</td>
+<td>Story</td>
+<td>Should</td>
+<td>Docs, Repo</td>
+<td>- Branches main, develop, feature, gh pages sind beschrieben<br>- Merge Flow ist beschrieben<br>- Branch Rulesets sind kurz dokumentiert</td>
+</tr>
+<tr>
+<td>US06</td>
+<td>Sprint 1 Review und Retro dokumentieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>Docs, PM</td>
+<td>- Sprint Goal ist dokumentiert<br>- Ergebnis ist dokumentiert, Repo, Board, Pages als Nachweis<br>- Retro enthält gut, schlecht, verbessern</td>
+</tr>
+<tr>
+<td>US07</td>
+<td>Architektur Zielbild skizzieren</td>
+<td>Story</td>
+<td>Should</td>
+<td>Docs, Kubernetes</td>
+<td>- Komponenten sind beschrieben, GitHub Actions, GHCR, EC2, K3s, Ingress<br>- Datenfluss Push bis Deploy ist beschrieben<br>- Entscheide sind dokumentiert, kein Monitoring</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sprint-2-k3s-cluster-und-erster-deploy">Sprint 2 K3s Cluster und erster Deploy</h3>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Titel</th>
+<th>Typ</th>
+<th>Priorität</th>
+<th>Labels</th>
+<th>Akzeptanzkriterien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US08</td>
+<td>EC2 Instanz vorbereiten</td>
+<td>Story</td>
+<td>Must</td>
+<td>AWS, K3s</td>
+<td>- EC2 Instanz läuft<br>- SSH Zugriff von meiner IP funktioniert<br>- HTTP und HTTPS sind offen für Ingress Tests</td>
+</tr>
+<tr>
+<td>US09</td>
+<td>K3s auf EC2 installieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>K3s, Kubernetes</td>
+<td>- K3s läuft als Service<br>- kubectl get nodes zeigt Node Ready<br>- kubeconfig Zugriff von meinem Client funktioniert</td>
+</tr>
+<tr>
+<td>US10</td>
+<td>Namespace und Basis Ressourcen erstellen</td>
+<td>Task</td>
+<td>Should</td>
+<td>Kubernetes</td>
+<td>- Namespace manifest existiert<br>- Ressourcen sind applied und sichtbar</td>
+</tr>
+<tr>
+<td>US11</td>
+<td>Dockerfile finalisieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>Docker</td>
+<td>- docker build ist erfolgreich<br>- Container startet lokal<br>- Service Endpoint ist erreichbar</td>
+</tr>
+<tr>
+<td>US12</td>
+<td>GHCR Push verifizieren</td>
+<td>Task</td>
+<td>Must</td>
+<td>Docker, Repo</td>
+<td>- Image ist in GHCR sichtbar<br>- Tagging Konzept ist definiert, latest plus commit sha<br>- Pull von GHCR ist getestet</td>
+</tr>
+<tr>
+<td>US13</td>
+<td>Kubernetes Deployment manifest erstellen</td>
+<td>Story</td>
+<td>Must</td>
+<td>Kubernetes</td>
+<td>- deployment yaml existiert<br>- Pod startet im Cluster<br>- Replica Count ist definiert</td>
+</tr>
+<tr>
+<td>US14</td>
+<td>Kubernetes Service manifest erstellen</td>
+<td>Story</td>
+<td>Must</td>
+<td>Kubernetes</td>
+<td>- service yaml existiert<br>- Service zeigt korrekt auf Pods<br>- Ports sind korrekt</td>
+</tr>
+<tr>
+<td>US15</td>
+<td>Ingress konfigurieren</td>
+<td>Story</td>
+<td>Should</td>
+<td>Kubernetes, K3s</td>
+<td>- ingress yaml existiert<br>- Zugriff über Public IP oder Domain funktioniert<br>- Routing auf Service funktioniert</td>
+</tr>
+<tr>
+<td>US16</td>
+<td>Readiness und Liveness Probes definieren</td>
+<td>Story</td>
+<td>Should</td>
+<td>Kubernetes, Testing</td>
+<td>- Probes sind im Deployment gesetzt<br>- Pod reagiert korrekt bei Fehler<br>- Probe Endpunkte sind dokumentiert</td>
+</tr>
+<tr>
+<td>US17</td>
+<td>Sprint 2 Review und Retro dokumentieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>Docs, PM</td>
+<td>- Screenshots kubectl get pods svc ingress vorhanden<br>- Review Text mit Ergebnis<br>- Retro mit Verbesserungen für Sprint 3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sprint-3-ci-cd-build-push-deploy">Sprint 3 CI CD Build Push Deploy</h3>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Titel</th>
+<th>Typ</th>
+<th>Priorität</th>
+<th>Labels</th>
+<th>Akzeptanzkriterien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US18</td>
+<td>GitHub Actions Build und Push nach GHCR</td>
+<td>Story</td>
+<td>Must</td>
+<td>CI, Docker</td>
+<td>- Workflow startet bei Push auf main<br>- Image wird gebaut<br>- Image wird nach GHCR gepusht mit commit sha Tag</td>
+</tr>
+<tr>
+<td>US19</td>
+<td>Secrets für GHCR und Cluster Zugriff einrichten</td>
+<td>Story</td>
+<td>Must</td>
+<td>Security, CI</td>
+<td>- GHCR Auth funktioniert mit GITHUB_TOKEN oder PAT<br>- kubeconfig oder token ist als Secret vorhanden<br>- Keine Secrets im Repository</td>
+</tr>
+<tr>
+<td>US20</td>
+<td>CD Workflow deployt nach K3s</td>
+<td>Story</td>
+<td>Must</td>
+<td>CI, Kubernetes</td>
+<td>- Workflow wendet Manifeste an<br>- Deployment aktualisiert das Image auf neuen Tag<br>- Rollout Status ist dokumentiert</td>
+</tr>
+<tr>
+<td>US21</td>
+<td>Tagging Strategie dokumentieren und anwenden</td>
+<td>Task</td>
+<td>Should</td>
+<td>CI, Repo</td>
+<td>- Image Tag ist commit sha<br>- Deployment referenziert den Tag<br>- Doku beschreibt das Konzept</td>
+</tr>
+<tr>
+<td>US22</td>
+<td>Pipeline Testlauf dokumentieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>Docs, Testing</td>
+<td>- Screenshot Actions Run vorhanden<br>- Vorher nachher Version dokumentiert<br>- Debug Vorgehen bei Fehler beschrieben</td>
+</tr>
+<tr>
+<td>US23</td>
+<td>Sprint 3 Review und Retro dokumentieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>Docs, PM</td>
+<td>- Review Text mit End to End Ablauf<br>- Retro mit gut, schlecht, verbessern<br>- Offene Punkte für Abgabe sind erfasst</td>
+</tr>
+</tbody>
+</table>
+<h3 id="abgabe-und-doku-fertig">Abgabe und Doku fertig</h3>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Titel</th>
+<th>Typ</th>
+<th>Priorität</th>
+<th>Labels</th>
+<th>Akzeptanzkriterien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US24</td>
+<td>Dokumentation finalisieren und strukturieren</td>
+<td>Story</td>
+<td>Must</td>
+<td>Docs, Pages</td>
+<td>- Projektmanagement Kapitel vollständig<br>- Sprints Kapitel vollständig<br>- Architektur Kapitel vollständig<br>- Links zu Repo, Board, Pages funktionieren</td>
+</tr>
+<tr>
+<td>US25</td>
+<td>Demo Ablauf definieren</td>
+<td>Story</td>
+<td>Should</td>
+<td>Docs, PM</td>
+<td>- Schrittfolge für Demo dokumentiert<br>- Live Nachweise, Actions, GHCR, kubectl, Ingress<br>- Fallback Plan definiert</td>
+</tr>
+<tr>
+<td>US26</td>
+<td>Endkontrolle gegen Anforderungen</td>
+<td>Story</td>
+<td>Must</td>
+<td>PM, Testing</td>
+<td>- Kubernetes läuft, Deploy funktioniert<br>- CI CD läuft, Build Push Deploy erfolgreich<br>- Board ist aktuell, Milestones sind konsistent</td>
+</tr>
+<tr>
+<td>US27</td>
+<td>Abgabe Links und Paket bereitstellen</td>
+<td>Story</td>
+<td>Must</td>
+<td>Docs, PM</td>
+<td>- Repo Link, Board Link, Pages Link gesammelt<br>- Letzte Sprint Reviews sind vorhanden<br>- main enthält den finalen Stand</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nachweise-fur-sprint-reviews">Nachweise für Sprint Reviews</h2>
+<table>
+<thead>
+<tr>
+<th>Nachweis</th>
+<th>Wo</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workflow Runs</td>
+<td>GitHub Actions</td>
+<td>Build und Deploy Logs</td>
+</tr>
+<tr>
+<td>Container Images</td>
+<td>GHCR</td>
+<td>Tags <code>latest</code> und Commit SHA</td>
+</tr>
+<tr>
+<td>Kubernetes Status</td>
+<td>EC2 Shell</td>
+<td><code>kubectl get pods -n ...</code></td>
+</tr>
+<tr>
+<td>Ingress Erreichbarkeit</td>
+<td>Browser oder curl</td>
+<td>Endpoint über nip io</td>
+</tr>
+<tr>
+<td>Screenshots</td>
+<td><code>docs/screenshots/</code></td>
+<td>Pipeline Run, Pods, Ingress</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="risiken-und-massnahmen">Risiken und Massnahmen</h2>
+<table>
+<thead>
+<tr>
+<th>Risiko</th>
+<th>Auswirkung</th>
+<th>Massnahme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployment Fehler durch falsche Image Referenz</td>
+<td>Service startet nicht</td>
+<td>Image Name und Tag prüfen, Rollout Status kontrollieren</td>
+</tr>
+<tr>
+<td>Cluster Zugriff aus CI schlägt fehl</td>
+<td>Deploy nicht möglich</td>
+<td>SSH Keys und Secrets prüfen, kubectl Zugriff verifizieren</td>
+</tr>
+<tr>
+<td>Zeitdruck</td>
+<td>Umfang nicht fertig</td>
+<td>Must Tickets priorisieren, Scope begrenzen, Reviews laufend pflegen</td>
+</tr>
+<tr>
+<td>Kosten AWS</td>
+<td>Budgetüberschreitung</td>
+<td>Kleine Instanz, Ressourcen Limits, Instanz abschalten wenn nicht benötigt</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.top", "toc.follow", "content.code.copy", "content.action.edit", "content.action.view"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
