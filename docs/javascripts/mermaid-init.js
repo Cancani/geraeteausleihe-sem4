@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const getMermaidTheme = () => {
+    const scheme = document.body.getAttribute("data-md-color-scheme");
+    return scheme === "slate" ? "dark" : "default";
+  };
+
   const initMermaid = () => {
     if (typeof mermaid === "undefined") return;
 
     mermaid.initialize({
       startOnLoad: false,
-      theme: "dark"
+      theme: getMermaidTheme()
     });
 
     document.querySelectorAll(".mermaid").forEach((el) => {
@@ -19,4 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     initMermaid();
   }
+
+  const observer = new MutationObserver(() => initMermaid());
+  observer.observe(document.body, { attributes: true, attributeFilter: ["data-md-color-scheme"] });
 });

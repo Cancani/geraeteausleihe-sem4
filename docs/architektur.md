@@ -1,56 +1,66 @@
-## Architektur Zielbild
+# Architektur
 
-### Ziel
-Der Microservice wird als Container in Kubernetes betrieben. Ein Push auf main loest Build, Push nach GHCR und Deployment nach K3s aus.
+!!! abstract "Kurzüberblick"
+    - Laufzeit: K3s Cluster auf einer AWS EC2 Instanz
+    - Auslieferung: GitHub Actions baut und deployt nach Push auf `main`
+    - Zugriff: Ingress Endpoint (Traefik) leitet auf Service und Pods
+    - Artefakte: Container Images in GitHub Container Registry
 
-### Komponenten
-GitHub Repository  
-GitHub Actions  
-GitHub Container Registry  
-AWS EC2 Instanz  
-K3s Cluster  
-Ingress Controller  
-Kubernetes Ressourcen Deployment, Service, optional Ingress
+## Zielbild
 
-### Ablauf CI CD
-1. Push auf main
-2. GitHub Actions baut Docker Image
-3. Push nach GHCR mit commit sha Tag
-4. GitHub Actions deployt ins K3s Cluster
-5. Kubernetes rollt das Deployment aus
+Der Microservice wird containerisiert betrieben und über Kubernetes Ressourcen ausgerollt. Änderungen werden über einen automatisierten CI und CD Ablauf bereitgestellt.
 
-### Kubernetes Ressourcen
-Deployment  
-Steuert Replicas und Rolling Updates
+## Komponenten
 
-Service  
-Stellt die Anwendung intern bereit
+- GitHub Repository (Source Code, Manifeste, Dokumentation)
+- GitHub Actions (CI, Build und CD Pipeline)
+- GitHub Container Registry (Container Images)
+- AWS EC2 Instanz (Host für K3s)
+- K3s Cluster (Control Plane und Worker auf einer Instanz)
+- Kubernetes Ressourcen (Namespace, Deployment, Service, Ingress)
+- Ingress Controller (Traefik)
 
-Ingress  
-Leitet Requests von aussen an den Service weiter
+## Ablauf CI und CD
 
-### Entscheidungen
-K3s auf EC2 statt EKS wegen geringeren Kosten und weniger Setup Overhead  
-Automatisches Deploy um End to End DevOps Ablauf zu zeigen  
-Monitoring ist nicht im Scope
-
+1. Merge oder Push auf `main`
+2. GitHub Actions baut das Docker Image
+3. Push nach GHCR mit Tags `latest` und Commit SHA
+4. Deployment Job wendet Manifeste an und setzt das Image im Deployment
+5. K3s rollt ein Rolling Update der Pods aus
+6. Zugriff erfolgt über Ingress Hostname (zum Beispiel via `nip.io`)
 
 ## Architektur Diagramm
 
 ```mermaid
-flowchart LR
+flowchart TD
   Dev[Developer Laptop] --> Repo[GitHub Repository]
-  Repo -->|push auf main| Actions[GitHub Actions Workflow]
+  Repo -->|Push oder Merge auf main| Actions[GitHub Actions]
   Actions --> Build[Build Docker Image]
   Build --> GHCR[GitHub Container Registry]
-  Actions --> Deploy[Deploy Job]
-  Deploy -->|kubectl apply| EC2[AWS EC2 Instance]
+  Actions --> Deploy[Deploy nach K3s]
+  Deploy -->|kubectl apply| EC2[AWS EC2 Instanz]
   EC2 --> K3s[K3s Cluster]
   K3s --> DEP[Deployment]
   DEP --> PODS[Pods]
   K3s --> SVC[Service]
   K3s --> ING[Ingress]
-  ING --> Users[User Browser]
+  ING --> Users[Client]
   ING --> SVC
   SVC --> PODS
 ```
+
+## Kubernetes Ressourcen
+
+- Namespace: logische Isolation für das Projekt
+- Deployment: Replikas, Rolling Updates, Image Referenz
+- Service: stabiler Cluster Endpoint zu den Pods
+- Ingress: Routing von extern nach intern, Host und Pfad Regeln
+
+## Architektur Entscheide
+
+| Thema | Entscheidung | Begründung |
+|---|---|---|
+| Kubernetes Distribution | K3s auf EC2 | geringer Setup Aufwand und günstige Ressourcen |
+| Container Registry | GHCR | nahtlose Integration in GitHub Actions |
+| Deployment Strategie | Rolling Update via Deployment | minimaler Downtime Effekt, standardisiert |
+| Ingress | Traefik (K3s default) | out of the box verfügbar, einfache Konfiguration |

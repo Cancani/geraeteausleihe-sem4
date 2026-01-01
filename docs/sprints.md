@@ -1,4 +1,11 @@
-## Sprint 1 – Review und Retrospektive
+# Sprints
+
+!!! abstract "Kurzüberblick"
+    - Sprint 1: Projektmanagement Grundlagen und Artefakte
+    - Sprint 2: Technische Umsetzung von CI und CD bis Deployment
+    - Nachweise: Screenshots und Links sind in den Sprint Abschnitten enthalten
+
+## Sprint 1 - Review und Retrospektive
 
 ### 1. Ziel des Sprints
 Ziel von Sprint 1 war der **Projektstart sowie der Aufbau der Projektmanagement-Grundlagen**.  
@@ -70,7 +77,7 @@ Zur besseren Strukturierung wurden Labels für folgende Bereiche angelegt:
 - Story und Task
 - Must, Should, Could
 
-Diese Labels werden in allen folgenden Sprints konsequent verwendet.
+Diese Labels werden in allen folgenden Sprints konseqünt verwendet.
 
 ![Labels](./screenshots/prj/sprint1_labels.png)
 
@@ -148,140 +155,140 @@ In Sprint 2 liegt der Fokus auf der **technischen Basis**:
 
 Damit wird der Übergang von Planung zu technischer Umsetzung vollzogen.
 
-# Sprint 2 Review und Retrospektive
+## Sprint 2 Review und Retrospektive
 
 ## 1 Ziel des Sprints
-Ziel von Sprint 2 war der Aufbau der technischen Basis fuer den produktionsnahen Betrieb des Microservice auf AWS. Der Fokus lag auf einer lauffaehigen Kubernetes Umgebung mit K3s, einem funktionierenden Container Build und Push nach GHCR sowie einem automatisierten Deployment per GitHub Actions.
+Ziel von Sprint 2 war der Aufbau der technischen Basis für den produktionsnahen Betrieb des Microservice auf AWS. Der Fokus lag auf einer lauffähigen Kubernetes Umgebung mit K3s, einem funktionierenden Container Build und Push nach GHCR sowie einem automatisierten Deployment per GitHub Actions.
 
 ## 2 Geplante Inhalte
-Geplant waren folgende Themen gemaess Milestone Sprint 2 K3s Cluster und erster Deploy
+Geplant waren folgende Themen gemäss Milestone Sprint 2 K3s Cluster und erster Deploy
 
-* AWS EC2 Instanz bereitstellen und Netzwerkregeln konfigurieren
-* K3s auf der EC2 Instanz installieren und verifizieren
-* Kubernetes Namespace und Basis Ressourcen erstellen
-* Kubernetes Manifeste fuer Deployment, Service und Ingress erstellen
-* GitHub Actions Workflow fuer Build und Push nach GHCR erstellen
-* GitHub Actions Workflow fuer Deploy nach K3s erstellen
-* Smoke Tests durchfuehren und Endpunkte testen
+- AWS EC2 Instanz bereitstellen und Netzwerkregeln konfigurieren
+- K3s auf der EC2 Instanz installieren und verifizieren
+- Kubernetes Namespace und Basis Ressourcen erstellen
+- Kubernetes Manifeste für Deployment, Service und Ingress erstellen
+- GitHub Actions Workflow für Build und Push nach GHCR erstellen
+- GitHub Actions Workflow für Deploy nach K3s erstellen
+- Smoke Tests durchführen und Endpunkte testen
 
 ## 3 Umsetzung im Sprint
 
 ### 3.1 AWS Setup
-* EC2 Instanz wurde erstellt und als Deployment Ziel definiert
-* Security Group wurde so konfiguriert, dass SSH und HTTP Zugriff moeglich ist
-* Der Microservice wird ueber Ingress via Port 80 bereitgestellt
+- EC2 Instanz wurde erstellt und als Deployment Ziel definiert
+- Security Group wurde so konfiguriert, dass SSH und HTTP Zugriff möglich ist
+- Der Microservice wird über Ingress via Port 80 bereitgestellt
 
 Hinweis
-Der aktuelle Zugriff erfolgt ueber eine temporaere Domain via nip.io. Diese kann spaeter durch eine echte Domain ersetzt werden.
+Der aktülle Zugriff erfolgt über eine temporäre Domain via nip.io. Diese kann später durch eine echte Domain ersetzt werden.
 
 ### 3.2 K3s Installation
-Die Installation von K3s wurde bewusst manuell durchgefuehrt, um die Umgebung zuerst stabil zu testen. Eine Automatisierung mit Terraform oder Ansible ist moeglich, wurde in diesem Sprint aber bewusst nicht umgesetzt.
+Die Installation von K3s wurde bewusst manüll durchgeführt, um die Umgebung zürst stabil zu testen. Eine Automatisierung mit Terraform oder Ansible ist möglich, wurde in diesem Sprint aber bewusst nicht umgesetzt.
 
 Ergebnis
-* K3s laeuft auf der EC2 Instanz
-* kubectl Zugriff ist eingerichtet
-* Traefik ist als Ingress Controller verfuegbar
+- K3s läuft auf der EC2 Instanz
+- kubectl Zugriff ist eingerichtet
+- Träfik ist als Ingress Controller verfügbar
 
 ### 3.3 Kubernetes Ressourcen
-Es wurde ein eigener Namespace fuer die Applikation erstellt und die Basis Ressourcen wurden umgesetzt
+Es wurde ein eigener Namespace für die Applikation erstellt und die Basis Ressourcen wurden umgesetzt
 
-* Namespace geraeteausleihe
-* Deployment fuer den Microservice
-* Service als ClusterIP
-* Ingress via Traefik
+- Namespace geräteausleihe
+- Deployment für den Microservice
+- Service als ClusterIP
+- Ingress via Träfik
 
 Der Ingress stellt den Service unter folgender Struktur bereit
-* Host geraeteausleihe.<Public IP>.nip.io
-* Pfade fuer Health und PDF Generierung
+- Host geräteausleihe.<Public IP>.nip.io
+- Pfade für Health und PDF Generierung
 
 ### 3.4 Container Image Build und Push nach GHCR
-Fuer das Container Build wurde ein GitHub Actions Workflow erstellt, der ein Docker Image baut und nach GHCR pusht.
+Für das Container Build wurde ein GitHub Actions Workflow erstellt, der ein Docker Image baut und nach GHCR pusht.
 
 Tagging Strategie
-* latest fuer den aktuellen Stand
-* Commit SHA Tag fuer reproduzierbare Releases
+- latest für den aktüllen Stand
+- Commit SHA Tag für reproduzierbare Releases
 
 Wichtigste Erkenntnis
-Ein falscher Image String fuehrt in Kubernetes zu InvalidImageName. Das wurde behoben, indem der vollstaendige GHCR Pfad verwendet wird, inklusive Owner und Repository.
+Ein falscher Image String führt in Kubernetes zu InvalidImageName. Das wurde behoben, indem der vollständige GHCR Pfad verwendet wird, inklusive Owner und Repository.
 
 ### 3.5 Deployment per GitHub Actions
-Der Deploy Workflow uebernimmt folgende Schritte
+Der Deploy Workflow übernimmt folgende Schritte
 
-* Kubernetes Manifeste werden auf die EC2 Instanz kopiert
-* kubectl apply wird im Namespace ausgefuehrt
-* das Deployment Image wird auf den aktuellen Commit SHA Tag gesetzt
-* Rollout Status wird ueberwacht
+- Kubernetes Manifeste werden auf die EC2 Instanz kopiert
+- kubectl apply wird im Namespace ausgeführt
+- das Deployment Image wird auf den aktüllen Commit SHA Tag gesetzt
+- Rollout Status wird überwacht
 
-Damit ist eine Lieferung ohne manuelles kubectl Setzen moeglich, sobald die Workflows korrekt konfiguriert sind.
+Damit ist eine Lieferung ohne manülles kubectl Setzen möglich, sobald die Workflows korrekt konfiguriert sind.
 
 ### 3.6 Verifikation und Smoke Tests
 Erfolgreich verifiziert wurden
 
-* Pod Status Running
-* Deployment Ready
-* Ingress Host erreichbar
-* GET /healthz liefert Status 200 mit JSON
-* GET /pdf liefert Status 200 und ein PDF als Download
+- Pod Status Running
+- Deployment Ready
+- Ingress Host erreichbar
+- GET /healthz liefert Status 200 mit JSON
+- GET /pdf liefert Status 200 und ein PDF als Download
 
 ## 4 Sprint Review
 
 ### 4.1 Sprintziel erreicht
-Ja. Die Applikation laeuft auf K3s innerhalb der EC2 Instanz, ist ueber Ingress erreichbar und kann PDFs generieren.
+Ja. Die Applikation läuft auf K3s innerhalb der EC2 Instanz, ist über Ingress erreichbar und kann PDFs generieren.
 
 ### 4.2 Lieferobjekte
-* Lauffaehige K3s Installation auf EC2
-* Kubernetes Manifeste fuer Namespace, Deployment, Service, Ingress
-* Build Workflow fuer GHCR
-* Deploy Workflow fuer K3s
-* Erfolgreiche Smoke Tests mit Health und PDF
+- Lauffähige K3s Installation auf EC2
+- Kubernetes Manifeste für Namespace, Deployment, Service, Ingress
+- Build Workflow für GHCR
+- Deploy Workflow für K3s
+- Erfolgreiche Smoke Tests mit Health und PDF
 
 ### 4.3 Offene Punkte
-* Workflow Trigger sauber eingrenzen, damit Docs Changes keinen Container Build ausloesen
-* Branching Prozess stabilisieren, damit Aenderungen ueber Pull Requests laufen koennen
-* Dokumentation der Pipeline Testlaeufe ergaenzen
+- Workflow Trigger sauber eingrenzen, damit Docs Changes keinen Container Build auslösen
+- Branching Prozess stabilisieren, damit Änderungen über Pull Requests laufen können
+- Dokumentation der Pipeline Testläufe ergänzen
 
 ## 5 Sprint Retrospektive
 
 ### 5.1 Was lief gut
-* Der produktionsnahe Betrieb auf K3s konnte erfolgreich hergestellt werden
-* Der End to End Ablauf wurde mit echten Requests validiert
-* Die Workflows sind grundsaetzlich vorhanden und lauffaehig
+- Der produktionsnahe Betrieb auf K3s konnte erfolgreich hergestellt werden
+- Der End to End Ablauf wurde mit echten Requests validiert
+- Die Workflows sind grundsätzlich vorhanden und lauffähig
 
 ### 5.2 Was war schwierig
-* Fehleranalyse bei InvalidImageName war zeitintensiv
-* Konflikte zwischen main und develop Branch mussten nachtraeglich bereinigt werden
-* Workflow Trigger und Pfad Filter waren anfangs zu breit definiert
+- Fehleranalyse bei InvalidImageName war zeitintensiv
+- Konflikte zwischen main und develop Branch mussten nachträglich bereinigt werden
+- Workflow Trigger und Pfad Filter waren anfangs zu breit definiert
 
-### 5.3 Verbesserungen fuer den naechsten Sprint
-* paths Filter in Workflows verwenden, damit Build Jobs nur bei Service Code laufen
-* zusaetzliche Checks nach Deploy integrieren, zum Beispiel ein curl Smoke Test gegen den Ingress Host
+### 5.3 Verbesserungen für den nächsten Sprint
+- paths Filter in Workflows verwenden, damit Build Jobs nur bei Service Code laufen
+- zusätzliche Checks nach Deploy integrieren, zum Beispiel ein curl Smoke Test gegen den Ingress Host
 
 ## 6 User Stories Status
 
 ### 6.1 Erledigt im Sprint 2
-* US08 EC2 Instanz vorbereiten
-* US09 K3s auf EC2 installieren
-* US10 Namespace und Basic Ressourcen erstellen
+- US08 EC2 Instanz vorbereiten
+- US09 K3s auf EC2 installieren
+- US10 Namespace und Basic Ressourcen erstellen
 
 ### 6.2 Technische Umsetzung abgeschlossen, Dokumentation oder Feinschliff noch offen
-* US11 Dockerfile finalisieren
-* US12 GHCR Push verifizieren
-* US13 Kubernetes Deployment manifest erstellen
-* US14 Kubernetes Service manifest erstellen
-* US15 Ingress konfigurieren
-* US16 Readiness und Liveness Probes definieren
-* US18 GitHub Actions Build und Push nach GHCR
-* US19 Secrets fuer GHCR und Cluster Zugriff einrichten
-* US20 CD Workflow deploy nach K3s
-* US21 Tagging Strategie dokumentieren und anwenden
-* US22 Pipeline Testlauf dokumentieren
+- US11 Dockerfile finalisieren
+- US12 GHCR Push verifizieren
+- US13 Kubernetes Deployment manifest erstellen
+- US14 Kubernetes Service manifest erstellen
+- US15 Ingress konfigurieren
+- US16 Readiness und Liveness Probes definieren
+- US18 GitHub Actions Build und Push nach GHCR
+- US19 Secrets für GHCR und Cluster Zugriff einrichten
+- US20 CD Workflow deploy nach K3s
+- US21 Tagging Strategie dokumentieren und anwenden
+- US22 Pipeline Testlauf dokumentieren
 
 Hinweis
-Falls einzelne Punkte bereits komplett erledigt sind, kann diese Liste direkt im Review an den aktuellen Stand der Issues angepasst werden.
+Falls einzelne Punkte bereits komplett erledigt sind, kann diese Liste direkt im Review an den aktüllen Stand der Issues angepasst werden.
 
 ## 7 Ausblick Sprint 3
 In Sprint 3 liegt der Fokus auf Stabilisierung und Vertiefung
 
-  Workflows sauber trennen und Trigger praezise definieren
-* Dokumentation finalisieren und strukturieren
-* Demo Ablauf definieren und Endkontrolle gegen Anforderungen durchfuehren
+  Workflows sauber trennen und Trigger präzise definieren
+- Dokumentation finalisieren und strukturieren
+- Demo Ablauf definieren und Endkontrolle gegen Anforderungen durchführen

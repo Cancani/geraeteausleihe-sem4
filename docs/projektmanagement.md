@@ -1,7 +1,12 @@
 # Projektmanagement
 
+!!! abstract "Kurzüberblick"
+    - Planung und Nachvollziehbarkeit über GitHub Projects (Kanban)
+    - Arbeitspakete als Issues mit Labels und Akzeptanzkriterien
+    - Klare Definition of Ready und Definition of Done
+
 ## Zweck und Umfang
-Dieses Dokument beschreibt die organisatorische Umsetzung der Semesterarbeit 4. Planung, Umsetzung, Nachweise und Dokumentation werden zentral im oeffentlichen GitHub Repository gefuehrt.
+Dieses Dokument beschreibt die organisatorische Umsetzung der Semesterarbeit 4. Planung, Umsetzung, Nachweise und Dokumentation werden zentral im öffentlichen GitHub Repository geführt.
 
 Repository
 https://github.com/Cancani/geraeteausleihe-sem4
@@ -13,14 +18,14 @@ Dokumentation
 https://cancani.com/geraeteausleihe-sem4/
 
 Betrieb
-Der Geraeteausleihe Microservice laeuft auf AWS in einem K3s Cluster auf einer EC2 Instanz. Container Images werden nach GHCR gepusht. Deployments erfolgen ueber GitHub Actions und kubectl auf die EC2 Instanz.
+Der Geräteausleihe Microservice läuft auf AWS in einem K3s Cluster auf einer EC2 Instanz. Container Images werden nach GHCR gepusht. Deployments erfolgen über GitHub Actions und kubectl auf die EC2 Instanz.
 
 
 ## Vorgehensmodell
 Die Arbeit folgt einer sprintbasierten Arbeitsweise mit Kanban Elementen.
 
 1. Backlog als GitHub Issues
-2. Sprint Planung ueber Milestones
+2. Sprint Planung über Milestones
 3. Umsetzung und Tracking im GitHub Project Board
 4. Sprint Review und Sprint Retro als schriftlicher Nachweis pro Sprint in der Dokumentation
 
@@ -31,7 +36,7 @@ Die Arbeit folgt einer sprintbasierten Arbeitsweise mit Kanban Elementen.
    2. Planung, Umsetzung, Betrieb, Tests, Dokumentation, Sprint Reviews
 2. Dozent PRJ
    1. Corrado Parisi
-   2. Feedback zu Projektmanagement, Kanban, Reviews, Nachweisfuehrung
+   2. Feedback zu Projektmanagement, Kanban, Reviews, Nachweisführung
 3. Dozent CNC
    1. Philip Stark
    2. Feedback zu Cloud Native Umsetzung, Architektur und Betrieb
@@ -45,11 +50,11 @@ Die Arbeit folgt einer sprintbasierten Arbeitsweise mit Kanban Elementen.
 3. GitHub Actions
    1. Container Build und Push nach GHCR
    2. Deployment nach K3s auf EC2
-   3. Pages Build fuer Dokumentation
+   3. Pages Build für Dokumentation
 4. GHCR
    1. Container Registry mit Tags latest und git sha
 5. AWS EC2 und K3s
-   1. Kubernetes Runtime fuer den Microservice
+   1. Kubernetes Runtime für den Microservice
 
 
 ## Kanban Setup und Regeln
@@ -66,7 +71,7 @@ Arbeitsregeln
 1. WIP Limit
    1. In Progress maximal 2 Tickets gleichzeitig
 2. Definition of Ready
-   1. Ein Ticket wird erst nach Ready verschoben, wenn Inhalt und Kriterien vollstaendig sind
+   1. Ein Ticket wird erst nach Ready verschoben, wenn Inhalt und Kriterien vollständig sind
 3. Review
    1. Technische Kontrolle abgeschlossen
    2. Dokumentation aktualisiert
@@ -87,7 +92,7 @@ Dozentenfeedback, umgesetzt
 
 ### Ticket Struktur
 1. User Story Satz im Format
-   1. Als Rolle moechte ich Ziel, damit Nutzen
+   1. Als Rolle möchte ich Ziel, damit Nutzen
 2. Kontext und Scope
 3. Akzeptanzkriterien als Checkboxen
 4. Definition of Done als Checkboxen
@@ -99,7 +104,7 @@ Ein Ticket ist Ready, wenn
 1. Beschreibung eindeutig ist
 2. Akzeptanzkriterien existieren
 3. Definition of Done existiert
-4. Prioritaet Label gesetzt ist
+4. Priorität Label gesetzt ist
 5. Milestone gesetzt ist
 
 ### Definition of Done
@@ -111,8 +116,8 @@ Ein Ticket ist Done, wenn
 4. Ticket ist im Board auf Done verschoben
 
 
-## Schaetzung und Planung
-Fuer die Grobplanung werden Story Points genutzt.
+## Schätzung und Planung
+Für die Grobplanung werden Story Points genutzt.
 
 Skala
 1, 2, 3, 5, 8
@@ -126,7 +131,7 @@ Orientierung
 
 
 ## Labels
-Ziel ist eine klare Filterung nach Typ, Bereich und Prioritaet.
+Ziel ist eine klare Filterung nach Typ, Bereich und Priorität.
 
 1. Typ
    1. Story
@@ -143,7 +148,7 @@ Ziel ist eine klare Filterung nach Typ, Bereich und Prioritaet.
    8. AWS
    9. Security
    10. Testing
-3. Prioritaet
+3. Priorität
    1. Must
    2. Should
    3. Could
@@ -159,12 +164,12 @@ Pro Sprint existiert ein Milestone. Alle Tickets des Sprints werden dem Mileston
 
 
 ## Branching und Merge Flow
-Ziel ist ein stabiler main Branch fuer Demo und Abgabe. Entwicklung findet auf develop oder Feature Branches statt.
+Ziel ist ein stabiler main Branch für Demo und Abgabe. Entwicklung findet auf develop oder Feature Branches statt.
 
 1. Feature Branch wird von develop erstellt
 2. Pull Request von Feature nach develop
-3. Pull Request von develop nach main fuer stabilen Stand
-4. Workflows laufen auf Pull Requests und auf main gemaess Trigger Regeln
+3. Pull Request von develop nach main für stabilen Stand
+4. Workflows laufen auf Pull Requests und auf main gemäss Trigger Regeln
 
 
 ## Wechsel auf GitHub, GitHub Pages und GitHub Projects
@@ -172,29 +177,29 @@ Ziel ist ein stabiler main Branch fuer Demo und Abgabe. Entwicklung findet auf d
 ### Entscheidung
 Die Arbeit wurde auf GitHub zentralisiert, inklusive Repository, Dokumentation und Kanban Board.
 
-### Gruende
-1. Ein zentraler Ort fuer Code, Tickets, Reviews und Nachweise
-2. Direkte Verknuepfung von Commits, Pull Requests, Issues und Workflows
+### Gründe
+1. Ein zentraler Ort für Code, Tickets, Reviews und Nachweise
+2. Direkte Verknüpfung von Commits, Pull Requests, Issues und Workflows
 3. Integration von Actions, GHCR und Pages reduziert Tool Wechsel
-4. Oeffentliche Nachweise sind fuer Dozenten direkt einsehbar
+4. Öffentliche Nachweise sind für Dozenten direkt einsehbar
 
 
-## Nachweise fuer Sprint Reviews
+## Nachweise für Sprint Reviews
 Empfohlene Nachweise, die pro Sprint in der Dokumentation verlinkt werden.
 
 1. Screenshot vom Project Board mit Spalten und WIP Regel
-2. Screenshot der Milestones Uebersicht
-3. Screenshot eines erfolgreichen Actions Runs fuer Build und Deploy
-4. kubectl Ausgaben fuer Pods, Service und Ingress
-5. GHCR Uebersicht der Image Tags
+2. Screenshot der Milestones Übersicht
+3. Screenshot eines erfolgreichen Actions Runs für Build und Deploy
+4. kubectl Ausgaben für Pods, Service und Ingress
+5. GHCR Übersicht der Image Tags
 
 
 ## Risiken und Massnahmen
 1. Deployment Fehler durch falsche Image Referenz
-   1. Massnahme: Image Name und Tag im Workflow validieren, Rollout Status pruefen
-2. Cluster Zugriff aus CI schlaegt fehl
-   1. Massnahme: SSH Keys und Secrets pruefen, kubectl Zugriff auf EC2 verifizieren
+   1. Massnahme: Image Name und Tag im Workflow validieren, Rollout Status prüfen
+2. Cluster Zugriff aus CI schlägt fehl
+   1. Massnahme: SSH Keys und Secrets prüfen, kubectl Zugriff auf EC2 verifizieren
 3. Zeitdruck
    1. Massnahme: Must Tickets priorisieren, Scope begrenzen, Reviews laufend pflegen
 4. Kosten AWS
-   1. Massnahme: Kleine Instanz, Ressourcen Limits, Abschalten wenn nicht benoetigt
+   1. Massnahme: Kleine Instanz, Ressourcen Limits, Abschalten wenn nicht benötigt

@@ -1,22 +1,29 @@
+.md-content {
+  scroll-behavior: smooth;
+}
+
+.md-typeset {
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
 .md-typeset h1 {
-  font-size: 2.0rem;
+  font-size: 2.1rem;
   font-weight: 800;
-  color: var(--md-default-fg-color);
   letter-spacing: 0.2px;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .md-typeset h2 {
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   font-weight: 750;
-  color: var(--md-default-fg-color);
-  margin-top: 1.6rem;
+  margin-top: 1.75rem;
 }
 
-.md-typeset p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--md-default-fg-color);
+.md-typeset h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
 }
 
 .md-header__title {
@@ -26,3 +33,31 @@
 .md-nav__title {
   font-weight: 700;
 }
+
+.md-typeset code {
+  font-size: 0.92rem;
+  border-radius: 0.25rem;
+}
+
+.md-typeset table {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.md-typeset img {
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.md-typeset small {
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .md-button {
+  border-radius: 0.6rem;
+}
+
+.md-typeset .grid.cards > ul > li {
+  border-radius: 1rem;
+}
+
