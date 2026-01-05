@@ -779,7 +779,7 @@ flowchart TD
     EC2[AWS EC2 Instanz]
     K3S[K3s Cluster]
     TRF[Traefik Ingress]
-    SVC[Flask Microservice\nGeräteausleihe]
+    SVC[Flask Microservice geraeteausleihe]
   end
 
   PA -->|HTTP| TRF
@@ -788,7 +788,7 @@ flowchart TD
 
   REPO --> ACT
   ACT -->|Build und Push| GHCR
-  ACT -->|kubectl apply / set image| K3S
+  ACT -->|kubectl apply set image| K3S
   GHCR -->|pull image| SVC
 
   REPO -->|MkDocs Build| PAGES

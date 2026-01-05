@@ -20,25 +20,16 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 4
-  - pymdownx.details
-  - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.highlight:
-      anchor_linenums: true
+  - pymdownx.highlight
   - pymdownx.inlinehilite
-  - pymdownx.tabbed:
-      alternate_style: true
+  - pymdownx.details
 
 extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
-  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
-  - javascripts/mermaid-init.js
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
+  - javascripts/mermaid-force.js
 
 nav:
   - Start: index.md
