@@ -32,6 +32,7 @@ markdown_extensions:
   - md_in_html
   - tables
   - pymdownx.details
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -52,7 +53,4 @@ extra_javascript:
 
 nav:
   - Start: index.md
-  - Projektmanagement: projektmanagement.md
-  - Sprints: sprints.md
-  - Architektur: architektur.md
-  - Technische Umsetzung: technische_umsetzung.md
+  - Projektdokumentation: README.md
