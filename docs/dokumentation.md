@@ -1,13 +1,13 @@
-# 1 Projektdefinition
+# Projektdefinition
 
-## 1.1 Einreichungsformular
+## Einreichungsformular
 
 Das Einreichungsformular kann hier entnommen werden:  
 [ITCNE24 Semesterarbeit 4 Einreichungsformular](./Efekan_Einreichungsformular_4.SemesterV2.docx)
 
 ---
 
-## 1.2 Projektübersicht
+## Projektübersicht
 
 | Eigenschaft | Details |
 |---|---|
@@ -33,7 +33,7 @@ Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient a
 
 ---
 
-## 1.3 Ausgangslage und Problemstellung
+## Ausgangslage und Problemstellung
 
 ### 1.3.1 Ist Zustand
 
@@ -91,7 +91,7 @@ flowchart LR
 
 ---
 
-## 1.4 Zielsetzung
+## Zielsetzung
 
 Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betriebsumgebung zu überfuehren. Der Fokus liegt auf CI und CD, Kubernetes Deployment, stabiler Erreichbarkeit ueber Ingress sowie einer laufenden Dokumentation, die den Fortschritt und die Qualität belegt.
 
@@ -108,7 +108,7 @@ Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betri
 
 ---
 
-## 1.5 Technologien und Werkzeuge
+## Technologien und Werkzeuge
 
 | Bereich | Technologie | Begründung |
 |---|---|---|
@@ -122,9 +122,9 @@ Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betri
 | Dokumentation | MkDocs, GitHub Pages | Versionierte und laufend publizierte Doku |
 | Projektmanagement | GitHub Projects, Issues | Backlog, Schätzungen, Priorisierung, DoD |
 
-# 2 Projektmanagement
+# Projektmanagement
 
-## 2.1 Projektmethodik
+## Projektmethodik
 
 Das Projekt folgt einem agilen, scrumähnlichen Vorgehen mit iterativer Entwicklung und regelmässigen Review Zyklen. Die Planung und Nachverfolgung erfolgt vollständig in GitHub.
 
@@ -175,7 +175,7 @@ Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 * Motivation, sichtbare Fortschritte nach jedem Sprint
 * Lernoptimierung, Retrospektiven führen zu kontinuierlicher Prozessverbesserung
 
-## 2.2 Projektphasen und Meilensteine
+## Projektphasen und Meilensteine
 
 Das Projekt ist in drei Sprints gegliedert. Die Sprintzeiträume entsprechen der ursprünglichen Planung. Inhalte aus Sprint 1 und Sprint 2 wurden in einem späteren Zeitraum konzentriert nachgezogen. Die Dokumentation wird nun strukturiert und evidenzbasiert ergänzt, damit der Stand jederzeit nachvollziehbar ist.
 
@@ -203,7 +203,7 @@ Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versio
 
 ---
 
-## 2.3 Anpassung der Sprint Planung
+## Anpassung der Sprint Planung
 
 In der praktischen Umsetzung wurden zentrale Inhalte aus Sprint 1 und Sprint 2 in einem späteren Zeitraum konzentriert nachgezogen. Gründe dafür waren parallele Verpflichtungen und die Priorisierung des technischen Fortschritts vor der finalen Dokumentationsform.
 
@@ -216,7 +216,7 @@ Die Sanierung erfolgt durch folgende Massnahmen:
 
 ---
 
-## 2.4 Issues und User Stories
+## Issues und User Stories
 
 Das Projekt umfasst 27 User Stories, US01 bis US27. Alle Stories werden als GitHub Issues geführt und im [GitHub Project Board](https://github.com/users/Cancani/projects/3) verwaltet.
 
@@ -252,7 +252,7 @@ Die Steuerung erfolgt über folgende Felder im GitHub Project:
 
 ---
 
-## 2.5 Sprint 1 Planung und Sprint Review
+## Sprint 1 Planung und Sprint Review
 
 ### 2.5.1 Sprint 1 Planung
 
@@ -339,7 +339,7 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 Link:
 
-## 2.6 Verwaltung der Aufgaben
+## Verwaltung der Aufgaben
 
 Die Aufgaben wurden vollständig in [GitHub Projects](https://github.com/users/Cancani/projects/3/views/1) organisiert.  
 Das Board ist nach Sprints gegliedert und orientiert sich an der Kanban-Struktur mit den Spalten  
@@ -360,7 +360,7 @@ Diese Struktur sorgt für durchgängige Transparenz im gesamten Projektmanagemen
 
 ---
 
-## 2.7 Wechsel von Microsoft Planner zu GitHub Projects und Issues
+## Wechsel von Microsoft Planner zu GitHub Projects und Issues
 
 ### 2.7.1 Hintergrund
 
@@ -397,7 +397,7 @@ Zudem ist die Nachweisführung durch Screenshots, Actions-Runs und verlinkte Dok
 
 
 
-## 2.8 SWOT-Analyse
+## SWOT-Analyse
 
 Die SWOT-Analyse fasst die internen und externen Faktoren des Projekts zusammen und dient zur Bewertung der technologischen Tragfähigkeit und prozessualen Stabilität. Die SWOT-Analyse bietet einen strukturierten Überblick über die internen Stärken und Schwächen sowie die externen Chancen und Risiken des Projekts. Ziel ist es, das Projekt im Hinblick auf seine technologische, organisatorische und strategische Tragfähigkeit zu reflektieren.
 
@@ -496,7 +496,7 @@ Insgesamt überwiegen die Stärken und Chancen, insbesondere im Hinblick auf Ler
 
 ---
 
-## 2.9 Use-Case Diagramm
+## Use-Case Diagramm
 
 Das Use-Case Diagramm zeigt die Akteure und Interaktionen mit dem Geräteausleihe-System aus technischer Sicht.  
 Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration bewerten möchten.
@@ -564,7 +564,7 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 
 ---
 
-## 2.10 Risikomatrix
+## Risikomatrix
 
 Die Risikomatrix dient zur strukturierten Bewertung potenzieller Risiken im Projekt.
 
@@ -629,11 +629,11 @@ Die Risiken wurden in der Risikomatrix wie folgt positioniert:
 - Dieses Risiko wird durch klare Priorisierung der Kernanforderungen, Sprint-Planung sowie konsequente Fokussierung auf Mindestanforderungen aktiv adressiert.
 - Insgesamt bleibt das Risikoprofil trotz des identifizierten kritischen Risikos kontrollierbar und angemessen für ein praxisorientiertes Lernprojekt.
 
-# 3 Architektur
+# Architektur
 
 Die folgenden Abschnitte erklären die drei Diagramme inhaltlich und bezogen auf dein aktuelles Setup mit GitHub, GHCR, AWS EC2, K3s und Traefik Ingress. Externe Erreichbarkeit erfolgt über den Host `geraeteausleihe.<EC2_IP>.nip.io`, die wichtigsten Endpoints sind `/healthz` und `/pdf`.
 
-## 3.1 Deployment Ablauf
+## Deployment Ablauf
 
 Dieses Diagramm zeigt den Ablauf einer Änderung vom Commit bis zum erfolgreichen Rollout im K3s Cluster.
 
@@ -648,7 +648,8 @@ Dieses Diagramm zeigt den Ablauf einer Änderung vom Commit bis zum erfolgreiche
 
 Kernaussage: Jeder Push auf `main` erzeugt eine neue deployte Version. Der Commit SHA Tag in GHCR dient als Nachweis, welche Version gerade produktiv läuft und ermöglicht ein sauberes Rollback auf eine frühere Version.
 
-### 3.1.1 Sequenzdiagramm
+### Sequenzdiagramm
+
 
 ```mermaid
 sequenceDiagram
@@ -668,7 +669,7 @@ sequenceDiagram
   K-->>GA: Rollout Status ok
 ```
 
-#### 3.1.2 Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
+#### Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
 
 Dieses Diagramm zeigt die Systemlandschaft und den Datenfluss von links nach rechts, also vom lokalen Arbeiten bis zum Aufruf durch Nutzer.
 
@@ -708,7 +709,7 @@ flowchart LR
 
 ```
 
-#### 3.1.3 Flowchart TB interne Kubernetes Struktur im Cluster
+#### Flowchart TB interne Kubernetes Struktur im Cluster
 
 Dieses Diagramm zoomt in den K3s Cluster hinein und zeigt die internen Kubernetes Objekte und deren Rollen.
 
@@ -742,7 +743,9 @@ flowchart TB
   SVC --> P1
   SVC --> P2
 ```
-## Zielbild
+---
+
+### Zielbild
 
 ```mermaid
 flowchart TD
@@ -776,7 +779,6 @@ flowchart TD
 
   REPO -->|MkDocs Build| PAGES
 ```
-
 ---
 
 ## Komponenten
@@ -835,12 +837,12 @@ Für die Erreichbarkeit ohne eigene DNS Zone wird nip io verwendet.
 | Logs | Container Logs über kubectl abrufbar | Zentrales Logging optional |
 | Rollback | Über Image Tags möglich | Strategie dokumentieren und üben |
 
-# 4 Branching Strategie und Regeln
+# Branching Strategie und Regeln
 
-## 4.1 Ziel
+## Ziel
 Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil** ist und den Stand für Demo und Abgabe abbildet. Entwicklung und laufende Arbeiten erfolgen auf **develop** oder auf **feature branches**. Die Dokumentation wird über GitHub Pages aus dem Repository veröffentlicht.
 
-## 4.2 Branches
+## Branches
 
 - **main**
   - Stabiler Stand für Sprint Reviews, Demo und Abgabe
@@ -867,7 +869,7 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
 
 
 
-## 4.3 Merge Flow
+## Merge Flow
 
 - **Feature Umsetzung**
   - feature branch wird von develop erstellt
@@ -878,7 +880,7 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
   - Pull Request von develop nach main
   - main wird nur gemerged, wenn der Stand stabil ist
 
-## 4.4 Regeln und Schutz
+## Regeln und Schutz
 
 - **main**
   - Force Push blockiert
@@ -894,10 +896,10 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
   - Updates erfolgen nur über den GitHub Actions Workflow
   - Keine manuellen Pushes
 
-## 4.5 Dokumentation und GitHub Pages
+## Dokumentation und GitHub Pages
 Die GitHub Pages Dokumentation wird aus dem Repository gebaut. Der Workflow wird nur ausgeführt, wenn relevante Dateien geändert wurden, zum Beispiel `docs` oder `mkdocs.yml`. Dadurch bleibt die Pages Ausgabe konsistent mit dem Stand auf main.
 
-## 4.6 Commit Konvention
+## Commit Konvention
 Konvention: `type(scope): message`
 
 Beispiele:
@@ -909,7 +911,7 @@ Beispiele:
 - **fix(ci):** correct ghcr image tag
 - **chore:** update dependencies
 
-## 4.7 Definition of Done für Branching Doku
+## Definition of Done für Branching Doku
 - **Dokumentation ist committed und gepusht**
 - **Merge Flow ist nachvollziehbar beschrieben**
 - **Branch Regeln sind dokumentiert**
