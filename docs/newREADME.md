@@ -742,3 +742,81 @@ flowchart TB
   SVC --> P1
   SVC --> P2
 ```
+# 4 Branching Strategie und Regeln
+
+## 4.1 Ziel
+Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil** ist und den Stand für Demo und Abgabe abbildet. Entwicklung und laufende Arbeiten erfolgen auf **develop** oder auf **feature branches**. Die Dokumentation wird über GitHub Pages aus dem Repository veröffentlicht.
+
+## 4.2 Branches
+
+- **main**
+  - Stabiler Stand für Sprint Reviews, Demo und Abgabe
+  - Änderungen erfolgen nur über Pull Requests
+  - Keine direkten Pushes, sofern Branch Regeln aktiv sind
+
+- **develop**
+  - Integrationsbranch für laufende Entwicklung
+  - Feature branches werden zuerst nach develop gemerged
+  - develop dient als Sammelpunkt bis zum stabilen Merge nach main
+
+- **feature branches**
+  - Kurzlebige branches für einzelne Themen oder Issues
+  - Namensschema Empfehlung:
+    - `feature/us08-ec2-setup`
+    - `feature/us09-k3s-install`
+    - `feature/us20-ci-cd-deploy`
+  - Nach Abschluss wird per Pull Request nach develop gemerged
+
+- **gh-pages**
+  - Enthält die generierte GitHub Pages Ausgabe
+  - Wird ausschliesslich durch den GitHub Actions Workflow aktualisiert
+  - Keine manuelle Bearbeitung
+
+## 4.3 Merge Flow
+
+- **Feature Umsetzung**
+  - feature branch wird von develop erstellt
+  - Pull Request von feature nach develop
+  - Review und Checks, dann Merge
+
+- **Sprint Stand oder Release**
+  - Pull Request von develop nach main
+  - main wird nur gemerged, wenn der Stand stabil ist
+
+## 4.4 Regeln und Schutz
+
+- **main**
+  - Force Push blockiert
+  - Direkte Pushes blockiert, Merge nur über Pull Request
+  - Status Checks müssen bestehen, falls Workflows definiert sind
+
+- **develop**
+  - Direkte Pushes erlaubt, aber bevorzugt über Pull Requests
+  - Force Push blockiert, falls Regeln aktiv sind
+
+- **gh-pages**
+  - Branch ist geschützt
+  - Updates erfolgen nur über den GitHub Actions Workflow
+  - Keine manuellen Pushes
+
+## 4.5 Dokumentation und GitHub Pages
+Die GitHub Pages Dokumentation wird aus dem Repository gebaut. Der Workflow wird nur ausgeführt, wenn relevante Dateien geändert wurden, zum Beispiel `docs` oder `mkdocs.yml`. Dadurch bleibt die Pages Ausgabe konsistent mit dem Stand auf main.
+
+## 4.6 Commit Konvention
+Konvention: `type(scope): message`
+
+Beispiele:
+- **docs(pm):** add sprint 1 review and retrospective
+- **docs(arch):** add target architecture overview
+- **ci(pages):** enable docs deployment workflow
+- **ci(cd):** deploy to k3s on push to main
+- **feat(k8s):** add deployment and service manifests
+- **fix(ci):** correct ghcr image tag
+- **chore:** update dependencies
+
+## 4.7 Definition of Done für Branching Doku
+- **Dokumentation ist committed und gepusht**
+- **Merge Flow ist nachvollziehbar beschrieben**
+- **Branch Regeln sind dokumentiert**
+- **Issue US05 ist im Board auf Done**
+

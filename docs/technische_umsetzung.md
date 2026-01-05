@@ -141,7 +141,7 @@ curl -i http://geraeteausleihe.<EC2_IP>.nip.io/health
 | Pull Image Fehler | Secret fehlt oder Tag existiert nicht | Secret setzen, Tag prüfen |
 | Pod CrashLoopBackOff | App Startfehler | Logs prüfen, Health Checks anpassen |
 
-## Branching Strategie und Regeln
+
 
 ### Ziel
 Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil** ist und den Stand für Demo und Abgabe abbildet. Entwicklung und laufende Arbeiten erfolgen auf **develop** oder auf **feature branches**. Die Dokumentation wird über GitHub Pages aus dem Repository veröffentlicht.
@@ -218,3 +218,4 @@ Beispiele:
 - **Merge Flow ist nachvollziehbar beschrieben**
 - **Branch Regeln sind dokumentiert**
 - **Issue US05 ist im Board auf Done**
+
