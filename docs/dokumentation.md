@@ -47,12 +47,14 @@ Typische Nachteile im Ist Zustand:
 
 **Ist Workflow**
 
+
 ```mermaid
 flowchart LR
   A[Lokale Aenderung am Code] --> B[Manueller Build oder uneinheitlicher Build]
   B --> C[Manuelles Deployment]
   C --> D[Service laeuft, Status schwer nachvollziehbar]
 ```
+
 
 ---
 
@@ -61,6 +63,7 @@ flowchart LR
 Ziel ist ein durchgängig automatisierter Workflow vom Commit bis zum laufenden Pod im Cluster. Jede relevante Änderung soll ein Image bauen, in die Registry pushen und anschliessend automatisiert im K3s Cluster deployed werden. Der Betriebszustand soll jederzeit über Board, Doku und konkrete Nachweise nachvollziehbar sein.
 
 **Soll Workflow**
+
 
 ```mermaid
 flowchart LR
@@ -79,6 +82,8 @@ flowchart LR
   C --> H
   B --> E
 ```
+
+___ 
 
 **Soll Verbesserungen**
 
@@ -668,6 +673,7 @@ sequenceDiagram
   K->>K: Rollout Deployment
   K-->>GA: Rollout Status ok
 ```
+___
 
 #### Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
 
@@ -684,6 +690,7 @@ Dieses Diagramm zeigt die Systemlandschaft und den Datenfluss von links nach rec
 9. Der Nutzer greift extern über `geraeteausleihe.<EC2_IP>.nip.io` zu. nip.io löst den Host automatisch auf die EC2 IP auf und ersetzt damit eine klassische DNS Konfiguration.
 
 Kernaussage: Das Diagramm zeigt die saubere Trennung zwischen Artefakt Ebene und Laufzeit Ebene. Das Image entsteht und lebt in GHCR, die Ausführung erfolgt in K3s als Pods, gesteuert durch deklarative Manifeste.
+
 
 ```mermaid
 flowchart LR
@@ -709,6 +716,8 @@ flowchart LR
 
 ```
 
+---
+
 #### Flowchart TB interne Kubernetes Struktur im Cluster
 
 Dieses Diagramm zoomt in den K3s Cluster hinein und zeigt die internen Kubernetes Objekte und deren Rollen.
@@ -723,6 +732,7 @@ Dieses Diagramm zoomt in den K3s Cluster hinein und zeigt die internen Kubernete
 8. Der Nutzer spricht nur den Ingress an. Alles danach passiert intern über Service und Pod Networking.
 
 Kernaussage: Extern sichtbar ist der Ingress, intern bleibt die Applikation über Service und Deployment abstrahiert. Das entspricht der erwarteten Kubernetes Struktur für stabile Deployments und Rolling Updates.
+
 
 ```mermaid
 flowchart TB
@@ -743,9 +753,13 @@ flowchart TB
   SVC --> P1
   SVC --> P2
 ```
+
 ---
 
 ### Zielbild
+
+FlowChart Zielbild <add Text>
+
 
 ```mermaid
 flowchart TD
@@ -779,6 +793,7 @@ flowchart TD
 
   REPO -->|MkDocs Build| PAGES
 ```
+
 ---
 
 ## Komponenten
