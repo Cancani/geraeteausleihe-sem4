@@ -629,3 +629,116 @@ Die Risiken wurden in der Risikomatrix wie folgt positioniert:
 - Dieses Risiko wird durch klare Priorisierung der Kernanforderungen, Sprint-Planung sowie konsequente Fokussierung auf Mindestanforderungen aktiv adressiert.
 - Insgesamt bleibt das Risikoprofil trotz des identifizierten kritischen Risikos kontrollierbar und angemessen für ein praxisorientiertes Lernprojekt.
 
+# 3 Architektur
+
+Die folgenden Abschnitte erklären die drei Diagramme inhaltlich und bezogen auf dein aktuelles Setup mit GitHub, GHCR, AWS EC2, K3s und Traefik Ingress. Externe Erreichbarkeit erfolgt über den Host `geraeteausleihe.<EC2_IP>.nip.io`, die wichtigsten Endpoints sind `/healthz` und `/pdf`.
+
+## 3.1 Deployment Ablauf
+
+Dieses Diagramm zeigt den Ablauf einer Änderung vom Commit bis zum erfolgreichen Rollout im K3s Cluster.
+
+1. Entwickler pusht Änderungen auf den Branch `main` im GitHub Repository.  
+2. GitHub triggert den GitHub Actions Workflow aufgrund des Push Events.  
+3. GitHub Actions baut ein neues Docker Image aus dem aktuellen Repository Stand. Dabei wird der Service reproduzierbar erstellt, inklusive Abhängigkeiten.  
+4. Das erzeugte Image wird in die GitHub Container Registry GHCR gepusht. Als Tag wird ein eindeutiger Wert genutzt, typischerweise die Commit SHA, damit jede Version klar nachvollziehbar ist.  
+5. Danach startet der Deploy Schritt. GitHub Actions authentifiziert sich auf die AWS EC2 Instanz, auf der K3s läuft. In deinem Setup passiert das üblicherweise über SSH zur EC2 Instanz und anschliessend über `kubectl` Befehle im richtigen Cluster Kontext.  
+6. Mit `kubectl apply` werden die Kubernetes Manifeste angewendet oder aktualisiert. Damit sind Namespace, Deployment, Service und Ingress definiert.  
+7. K3s führt ein Rolling Update durch. Neue Pods werden gestartet, Readiness greift, danach werden alte Pods beendet. Der Service bleibt während des Updates erreichbar.  
+8. Der Workflow prüft den Rollout Status. Bei Erfolg gilt das Deployment als abgeschlossen. Optional kann danach zusätzlich ein externer Smoke Test erfolgen, zum Beispiel ein Request auf `https://geraeteausleihe.<EC2_IP>.nip.io/healthz`.
+
+Kernaussage: Jeder Push auf `main` erzeugt eine neue deployte Version. Der Commit SHA Tag in GHCR dient als Nachweis, welche Version gerade produktiv läuft und ermöglicht ein sauberes Rollback auf eine frühere Version.
+
+### 3.1.1 Sequenzdiagramm
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Dev as Developer
+  participant GH as GitHub
+  participant GA as GitHub Actions
+  participant Reg as GHCR
+  participant K as K3s on EC2
+
+  Dev->>GH: Push auf main
+  GH->>GA: Trigger Workflow
+  GA->>GA: Build Docker Image
+  GA->>Reg: Push Image Tag commit sha
+  GA->>K: Auth und kubectl apply
+  K->>K: Rollout Deployment
+  K-->>GA: Rollout Status ok
+```
+
+#### 3.1.2 Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
+
+Dieses Diagramm zeigt die Systemlandschaft und den Datenfluss von links nach rechts, also vom lokalen Arbeiten bis zum Aufruf durch Nutzer.
+
+1. Der Entwickler arbeitet lokal am Service, an den Kubernetes Manifesten und an den Workflows.  
+2. Der Code wird ins GitHub Repository gepusht. Das Repository ist die zentrale Quelle für Source Code, `k8s` Manifeste und Workflows unter `.github/workflows`.  
+3. Bei einem Push auf `main` startet GitHub Actions.  
+4. GitHub Actions baut das Docker Image und pusht es nach GHCR. Dadurch ist das Artefakt zentral verfügbar und eindeutig versioniert.  
+5. Anschliessend führt GitHub Actions den Deploy Job aus und verbindet sich mit der AWS EC2 Instanz, auf der K3s läuft.  
+6. In K3s existiert ein Namespace `geraeteausleihe`. Dort laufen Deployment, Pods, Service und Ingress.  
+7. Der Ingress wird über Traefik bereitgestellt. Er nimmt externe HTTP Requests an, matched Host und Pfade und leitet den Traffic intern an den Service weiter.  
+8. Der Service verteilt den Traffic auf die laufenden Pods. Die Pods beantworten die Requests, zum Beispiel `/healthz` für den Health Check und `/pdf` für die PDF Ausgabe.  
+9. Der Nutzer greift extern über `geraeteausleihe.<EC2_IP>.nip.io` zu. nip.io löst den Host automatisch auf die EC2 IP auf und ersetzt damit eine klassische DNS Konfiguration.
+
+Kernaussage: Das Diagramm zeigt die saubere Trennung zwischen Artefakt Ebene und Laufzeit Ebene. Das Image entsteht und lebt in GHCR, die Ausführung erfolgt in K3s als Pods, gesteuert durch deklarative Manifeste.
+
+```mermaid
+flowchart LR
+  Dev[Developer Laptop] --> Repo[GitHub Repository]
+  Repo -->|push auf main| Actions[GitHub Actions Workflow]
+
+  Actions --> Build[Build Docker Image]
+  Build --> GHCR[GitHub Container Registry]
+
+  Actions --> Deploy[Deploy Job]
+  Deploy -->|kubectl apply| EC2[AWS EC2 Instance]
+  EC2 --> K3s[K3s Cluster]
+
+  K3s --> NS[Namespace]
+  NS --> DEP[Deployment]
+  DEP --> PODS[Pods]
+  NS --> SVC[Service]
+  NS --> ING[Ingress]
+
+  Users[User Browser] --> ING
+  ING --> SVC
+  SVC --> PODS
+
+```
+
+#### 3.1.3 Flowchart TB interne Kubernetes Struktur im Cluster
+
+Dieses Diagramm zoomt in den K3s Cluster hinein und zeigt die internen Kubernetes Objekte und deren Rollen.
+
+1. K3s ist die Kubernetes Laufzeitplattform auf deiner AWS EC2 Instanz. Sie übernimmt Scheduling, Rollouts, Self Healing und Cluster Networking.  
+2. Im Cluster existiert der Namespace `geraeteausleihe`. Er dient der logischen Trennung, verbessert die Übersicht und erleichtert die Wartung.  
+3. Das Deployment beschreibt, welches Container Image laufen soll, wie viele Replikate gewünscht sind und welche Ports und Einstellungen der Service braucht.  
+4. Aus dem Deployment entsteht ein ReplicaSet. Das ReplicaSet stellt sicher, dass die gewünschte Anzahl Pods wirklich läuft. Fällt ein Pod aus, wird automatisch ein neuer erstellt.  
+5. Die Pods sind die eigentlichen Instanzen deines Flask Microservice. Dort laufen die Endpoints `/healthz` und `/pdf`.  
+6. Der Service vom Typ ClusterIP stellt eine interne stabile Adresse bereit und verteilt Requests an die Pods anhand von Labels.  
+7. Der Ingress Controller Traefik nimmt externe Requests entgegen. Er leitet sie anhand von Regeln im Ingress Objekt an den Service weiter.  
+8. Der Nutzer spricht nur den Ingress an. Alles danach passiert intern über Service und Pod Networking.
+
+Kernaussage: Extern sichtbar ist der Ingress, intern bleibt die Applikation über Service und Deployment abstrahiert. Das entspricht der erwarteten Kubernetes Struktur für stabile Deployments und Rolling Updates.
+
+```mermaid
+flowchart TB
+  subgraph K3s[K3s Cluster]
+    subgraph NS[Namespace geraeteausleihe]
+      DEP[Deployment]
+      DEP --> RS[ReplicaSet]
+      RS --> P1[Pod 1]
+      RS --> P2[Pod 2]
+      SVC[Service ClusterIP]
+    end
+
+    INGCTRL[Ingress Controller]
+  end
+
+  Users[User Browser] --> INGCTRL
+  INGCTRL --> SVC
+  SVC --> P1
+  SVC --> P2
+```
