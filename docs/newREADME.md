@@ -349,11 +349,10 @@ Jede Aufgabe ist als **GitHub Issue** (US01 – US27) angelegt und enthält:
 - eine klare **User Story**,
 - **Akzeptanzkriterien** und **Definition of Done** als Checkboxen,
 - eine **Priorität** (Must / Should / Could),
-- die Zuordnung zum **Sprint** als Milestone,
-- und Links zu Nachweisen (Actions Run, Screenshots, Doku).
+- die Zuordnung zum **Sprint** als Milestone
 
-![Project Board](./assets/board/20260105_project_board.png)
-<small><em>Abbildung 10: GitHub Project Board</em></small>
+
+![Project Board](./screenshots/Projectboard_Sprint_1.png)
 
 Der Fortschritt ist über das Board jederzeit nachvollziehbar:  
 Geschlossene Issues wandern automatisch nach „Done“, offene bleiben in „Review“, bis alle DoD-Kriterien erfüllt und Nachweise in der Dokumentation ergänzt sind.  
