@@ -1,62 +1,47 @@
-/* Typography */
-.md-typeset h1 {
-  font-size: 2.0rem;
-  font-weight: 800;
-  color: var(--md-default-fg-color);
-  letter-spacing: 0.2px;
-  margin-bottom: 0.6rem;
+/* Allgemeine Typografie */
+body {
+  font-size: 16px;
+  line-height: 1.65;
 }
 
-.md-typeset h2 {
-  font-size: 1.5rem;
-  font-weight: 750;
-  color: var(--md-default-fg-color);
-  margin-top: 1.6rem;
+/* Überschriften klarer und technischer */
+h1, h2, h3, h4 {
+  font-weight: 600;
 }
 
-.md-typeset p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--md-default-fg-color);
+/* Tabellen lesbarer */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.md-header__title {
-  font-weight: 800;
+table th,
+table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.md-nav__title {
-  font-weight: 700;
+/* Codeblöcke */
+code {
+  font-size: 0.9em;
 }
 
-/* Tables */
-.md-typeset table:not([class]) {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+/* Mermaid Diagramme zentrieren */
+.mermaid {
+  display: flex;
+  justify-content: center;
 }
 
-.md-typeset table:not([class]) th {
-  font-weight: 700;
-  white-space: nowrap;
+/* Buttons (z. B. auf index.md) */
+a.md-button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.md-typeset table:not([class]) td,
-.md-typeset table:not([class]) th {
-  padding: 0.65rem 0.8rem;
-}
-
-.md-typeset table:not([class]) tr:nth-child(2n) td {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-/* Code blocks */
-.md-typeset pre > code {
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-/* Badges spacing on start page */
-.md-typeset a img {
-  margin-right: 0.25rem;
-  margin-bottom: 0.25rem;
+a.md-button:hover {
+  background-color: #1e40af;
 }

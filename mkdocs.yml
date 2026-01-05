@@ -4,24 +4,10 @@ site_url: https://cancani.com/geraeteausleihe-sem4/
 
 repo_url: https://github.com/Cancani/geraeteausleihe-sem4
 repo_name: Cancani/geraeteausleihe-sem4
-edit_uri: edit/main/docs/
 
 theme:
-  name: material
+  name: windmill
   language: de
-  palette:
-    - scheme: slate
-      primary: black
-      accent: cyan
-  features:
-    - navigation.instant
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - toc.follow
-    - content.code.copy
-    - content.action.edit
-    - content.action.view
 
 plugins:
   - search
