@@ -1,4 +1,4 @@
-site_name: Geräteausleihe Microservice Sem4
+site_name: Geraeteausleihe Microservice Sem4
 site_description: Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions
 site_url: https://cancani.com/geraeteausleihe-sem4/
 
@@ -53,4 +53,4 @@ extra_javascript:
 
 nav:
   - Start: index.md
-  - Projektdokumentation: README.md
+  - Dokumentation: dokumentation.md

@@ -2,7 +2,7 @@
 <p align="center">Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions</p>
 
 <p align="center">
-  <a href="README/" class="md-button md-button--primary">
+  <a href="dokumentation/" class="md-button md-button--primary">
     Hier geht es zur Dokumentation!
   </a>
 </p>
