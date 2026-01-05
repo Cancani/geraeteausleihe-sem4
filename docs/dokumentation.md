@@ -35,7 +35,7 @@ Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient a
 
 ## Ausgangslage und Problemstellung
 
-### 1.3.1 Ist Zustand
+### Ist Zustand
 
 Der Service war zwar technisch lauffähig, der Betrieb und das Deployment waren jedoch zu wenig standardisiert und zu wenig automatisiert. Zudem fehlten laufende Nachweise und eine klare Transparenz über Projektstand, Risiken und Fortschritt.
 
@@ -56,7 +56,7 @@ flowchart LR
 
 ---
 
-### 1.3.2 Soll Zustand
+###Soll Zustand
 
 Ziel ist ein durchgängig automatisierter Workflow vom Commit bis zum laufenden Pod im Cluster. Jede relevante Änderung soll ein Image bauen, in die Registry pushen und anschliessend automatisiert im K3s Cluster deployed werden. Der Betriebszustand soll jederzeit über Board, Doku und konkrete Nachweise nachvollziehbar sein.
 
@@ -97,7 +97,7 @@ Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betri
 
 ---
 
-### 1.4.1 SMART Ziele
+### SMART Ziele
 
 | Ziel | Spezifisch | Messbar | Attraktiv | Realistisch | Terminiert |
 |---|---|---|---|---|---|
@@ -144,7 +144,7 @@ Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 * Laufende Nachweisführung, damit der Projektstand jederzeit nachvollziehbar ist
 * Klare Definition of Done pro Ticket inklusive Evidence Anforderungen
 
-### 2.1.1 Sprintstruktur im Detail
+### Sprintstruktur im Detail
 
 **Sprint Planning (Sprintbeginn):**
 * Definition von User Stories mit klaren Akzeptanzkriterien
@@ -179,7 +179,7 @@ Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 
 Das Projekt ist in drei Sprints gegliedert. Die Sprintzeiträume entsprechen der ursprünglichen Planung. Inhalte aus Sprint 1 und Sprint 2 wurden in einem späteren Zeitraum konzentriert nachgezogen. Die Dokumentation wird nun strukturiert und evidenzbasiert ergänzt, damit der Stand jederzeit nachvollziehbar ist.
 
-### 2.2.1 Sprint Progression im Überblick
+### Sprint Progression im Überblick
 
 **Sprint 1 Projektbasis:**  
 Aufbau der Projektbasis mit Board Struktur, Labels, Milestones, Issue Standards und erstem Architektur Zielbild.
@@ -192,7 +192,7 @@ Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versio
 
 ![Sprintuebersicht](./screenshots/Sprintuebersicht.png)
 
-### 2.2.2 Zeitplan
+### Zeitplan
 
 | Sprint       | Zeitraum                  | Fokus                                                                                      | Status        |
 | ------------ | ------------------------- | ------------------------------------------------------------------------------------------ | ------------- |
@@ -254,7 +254,7 @@ Die Steuerung erfolgt über folgende Felder im GitHub Project:
 
 ## Sprint 1 Planung und Sprint Review
 
-### 2.5.1 Sprint 1 Planung
+### Sprint 1 Planung
 
 **Sprint Zeitraum**
 
@@ -297,7 +297,7 @@ Für Sprint 1 werden mindestens folgende Nachweise geplant:
 
 ---
 
-### 2.5.2 Sprint 1 Review
+### Sprint 1 Review
 
 **Review Ergebnis**
 
@@ -362,7 +362,7 @@ Diese Struktur sorgt für durchgängige Transparenz im gesamten Projektmanagemen
 
 ## Wechsel von Microsoft Planner zu GitHub Projects und Issues
 
-### 2.7.1 Hintergrund
+### Hintergrund
 
 Zu Beginn der Semesterarbeit 4 wurde die Projektplanung zunächst provisorisch in Microsoft Planner vorbereitet, da das Tool visuell bekannt war und bereits in früheren Arbeiten genutzt wurde.  
 Mit dem Start der technischen Umsetzung erfolgte jedoch der Umstieg auf **GitHub Projects**, um Code, Doku und Aufgabenverwaltung auf einer Plattform zu bündeln.  
@@ -374,7 +374,7 @@ Der Entscheid wurde im Sprint-Review mit Corrado Parisi und Philip Stark besproc
 
 ---
 
-### 2.7.2 Gründe für den Wechsel
+### Gründe für den Wechsel
 
 - **Zentrale Plattform:** Code, Doku und Tasks an einem Ort  
 - **Nachvollziehbarkeit:** Verknüpfung von Issues, Commits und Deployments  
@@ -389,7 +389,7 @@ Verwendete Labels:
 
 ---
 
-### 2.7.3 Fazit
+### Fazit
 
 Der Wechsel zu GitHub Projects und Issues hat sich als entscheidender Schritt erwiesen.  
 Er ermöglicht einen durchgängigen Arbeitsfluss zwischen Code, Automation und Projektmanagement, ohne Tool-Brüche.  
@@ -504,7 +504,7 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 ![Use-Case](./screenshots/use_case_diagramm.png)
 <small><em>Abbildung 12: Use-Case Diagramm Geräteausleihe Sem4</em></small>
 
-### 2.9.1 Akteure
+### Akteure
 
 | Akteur | Rolle | Berechtigung | Hauptfunktionen |
 |--------|-------|---------------|-----------------|
@@ -516,7 +516,7 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 
 ---
 
-### 2.9.2 Use-Cases im Detail
+### Use-Cases im Detail
 
 | Use-Case | Beschreibung | Akteur | Priorität |
 |-----------|--------------|---------|-----------|
@@ -531,7 +531,7 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 
 ---
 
-### 2.9.3 Externe System-Integrationen
+### Externe System-Integrationen
 
 | System | Beschreibung | Use-Cases | Schnittstelle |
 |---------|---------------|------------|----------------|
@@ -544,7 +544,7 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 
 ---
 
-### 2.9.4 Geschäftsregeln und technische Constraints
+### Geschäftsregeln und technische Constraints
 
 **Berechtigungen:**
 - Nur der Developer darf Deployments ausführen.
@@ -592,7 +592,7 @@ Die Kombination aus Eintrittswahrscheinlichkeit und Auswirkung zeigt die Dringli
 
 ---
 
-### 2.10.1 Risiken im Detail
+### Risiken im Detail
 
 | Nr. | Risiko                                                                 | Eintritt        | Auswirkung | Bewertung | Massnahme / Lösung |
 |----:|------------------------------------------------------------------------|-----------------|------------|-----------|--------------------|
@@ -609,7 +609,7 @@ Die Kombination aus Eintrittswahrscheinlichkeit und Auswirkung zeigt die Dringli
 
 ---
 
-### 2.10.2 Einordnung in die Risikomatrix
+### Einordnung in die Risikomatrix
 
 Die Risiken wurden in der Risikomatrix wie folgt positioniert:
 
@@ -621,7 +621,7 @@ Die Risiken wurden in der Risikomatrix wie folgt positioniert:
 
 ---
 
-### 2.10.3 Fazit
+### Fazit
 
 - Insgesamt wurden 10 projektrelevante Risiken identifiziert und bewertet.
 - Mehrere Risiken befinden sich im orangefarbenen Bereich, was die erhöhte technische Komplexität von Kubernetes und CI/CD widerspiegelt.
