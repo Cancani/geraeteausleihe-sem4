@@ -338,3 +338,229 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 #### Architektur
 
 Link:
+
+## 2.6 Verwaltung der Aufgaben
+
+Die Aufgaben wurden vollständig in [GitHub Projects](https://github.com/users/Cancani/projects/3/views/1) organisiert.  
+Das Board ist nach Sprints gegliedert und orientiert sich an der Kanban-Struktur mit den Spalten  
+**Backlog**, **Ready**, **In Progress**, **Review** und **Done**.  
+
+Jede Aufgabe ist als **GitHub Issue** (US01 – US27) angelegt und enthält:
+- eine klare **User Story**,
+- **Akzeptanzkriterien** und **Definition of Done** als Checkboxen,
+- eine **Priorität** (Must / Should / Could),
+- die Zuordnung zum **Sprint** als Milestone,
+- und Links zu Nachweisen (Actions Run, Screenshots, Doku).
+
+![Project Board](./assets/board/20260105_project_board.png)
+<small><em>Abbildung 10: GitHub Project Board</em></small>
+
+Der Fortschritt ist über das Board jederzeit nachvollziehbar:  
+Geschlossene Issues wandern automatisch nach „Done“, offene bleiben in „Review“, bis alle DoD-Kriterien erfüllt und Nachweise in der Dokumentation ergänzt sind.  
+Diese Struktur sorgt für durchgängige Transparenz im gesamten Projektmanagementprozess.
+
+---
+
+## 2.7 Wechsel von Microsoft Planner zu GitHub Projects und Issues
+
+### 2.7.1 Hintergrund
+
+Zu Beginn der Semesterarbeit 4 wurde die Projektplanung zunächst provisorisch in Microsoft Planner vorbereitet, da das Tool visuell bekannt war und bereits in früheren Arbeiten genutzt wurde.  
+Mit dem Start der technischen Umsetzung erfolgte jedoch der Umstieg auf **GitHub Projects**, um Code, Doku und Aufgabenverwaltung auf einer Plattform zu bündeln.  
+
+Durch diesen Wechsel konnten alle User Stories direkt mit Commits, Pull Requests und Actions-Runs verknüpft werden.  
+Damit war es erstmals möglich, Planung, Automatisierung und Deployment vollständig integriert zu führen.
+
+Der Entscheid wurde im Sprint-Review mit Corrado Parisi und Philip Stark besprochen und als Best Practice für Cloud-Native Projekte bestätigt.
+
+---
+
+### 2.7.2 Gründe für den Wechsel
+
+- **Zentrale Plattform:** Code, Doku und Tasks an einem Ort  
+- **Nachvollziehbarkeit:** Verknüpfung von Issues, Commits und Deployments  
+- **Automatisierung:** Actions können Status oder Nachweise direkt aktualisieren  
+- **Klarer Prozess:** Backlog → Sprint → Review → Done (identisch mit Planner, aber nachvollziehbar versioniert)  
+- **GitHub Labels und Milestones:** Ersetzen Buckets und Fälligkeitsdaten aus Planner  
+- **Synchronität mit CI/CD:** Automatische Workflows binden den Projektfortschritt direkt an den technischen Build Prozess  
+
+Verwendete Labels:
+- `sprint-1`, `sprint-2`, `sprint-3`
+- `ci-cd`, `kubernetes`, `documentation`, `review`, `done`
+
+---
+
+### 2.7.3 Fazit
+
+Der Wechsel zu GitHub Projects und Issues hat sich als entscheidender Schritt erwiesen.  
+Er ermöglicht einen durchgängigen Arbeitsfluss zwischen Code, Automation und Projektmanagement, ohne Tool-Brüche.  
+Zudem ist die Nachweisführung durch Screenshots, Actions-Runs und verlinkte Dokumentation klar prüfbar und Versionen lassen sich über Commit-SHAs direkt nachvollziehen.
+
+
+
+## 2.8 SWOT-Analyse
+
+Die SWOT-Analyse fasst die internen und externen Faktoren des Projekts zusammen und dient zur Bewertung der technologischen Tragfähigkeit und prozessualen Stabilität. Die SWOT-Analyse bietet einen strukturierten Überblick über die internen Stärken und Schwächen sowie die externen Chancen und Risiken des Projekts. Ziel ist es, das Projekt im Hinblick auf seine technologische, organisatorische und strategische Tragfähigkeit zu reflektieren.
+
+![SWOT-Analyse](./screenshots/SWOT.png)
+
+### Stärken
+
+- **Cloud Native Architektur**
+  - Kubernetes ermöglicht skalierbaren und stabilen Betrieb
+  - Self Healing durch automatische Pod Neustarts
+
+- **Automatisierte CI/CD Pipeline**
+  - Build, Push und Deployment laufen vollautomatisch
+  - Reduktion von manuellen Fehlern bei Deployments
+
+- **Moderne DevOps Praktiken**
+  - Infrastructure as Code Denkweise
+  - Versionierte Deployments über GitHub Container Registry
+
+- **Technologie Unabhängigkeit**
+  - Kein Vendor Lock In wie bei proprietären Plattformen
+  - Offene Standards (Docker, Kubernetes, GitHub Actions)
+
+- **Saubere Dokumentation**
+  - Projektmanagement und Technik transparent dokumentiert
+  - GitHub Pages ermöglicht jederzeitigen Zugriff
+
+
+### Schwächen
+
+- **Erhöhte Komplexität**
+  - Kubernetes und CI/CD erfordern tiefere Einarbeitung
+  - Höherer initialer Setup Aufwand
+
+- **Single Node Setup**
+  - K3s läuft auf einer einzelnen EC2 Instanz
+  - Keine echte Hochverfügbarkeit
+
+- **Betriebsverantwortung**
+  - Wartung und Updates liegen vollständig beim Betreiber
+  - Monitoring und Alerting nur rudimentär umgesetzt
+
+- **Kein Managed Service**
+  - Im Vergleich zu EKS mehr manueller Aufwand
+  - Sicherheitsupdates müssen selbst geplant werden
+
+### Chancen
+
+- **Skalierbarkeit für Zukunft**
+  - Erweiterung auf Multi Node Cluster möglich
+  - Einfache Integration weiterer Microservices
+
+- **Übertragbarkeit auf reale Projekte**
+  - Architektur entspricht modernen Unternehmensstandards
+  - Direkter Praxisbezug für DevOps und Cloud Rollen
+
+- **Automatisierungspotenzial**
+  - Erweiterbar um Monitoring, Logging und Alerts
+  - GitOps Ansatz später möglich
+
+- **Weiterentwicklung der Anwendung**
+  - Anbindung weiterer Systeme oder Services
+  - Trennung von Frontend und Backend möglich
+
+- **Wiederverwendbarkeit**
+  - Pipeline und Kubernetes Manifeste können für andere Projekte genutzt werden
+
+
+### Risiken
+
+- **Fehlkonfigurationen**
+  - Fehler in Kubernetes Manifests können Service Ausfall verursachen
+  - Sicherheitsrelevante Fehlkonfigurationen möglich
+
+- **Kostenrisiken**
+  - AWS EC2 Kosten bei längerem Betrieb
+  - Speicher und Traffic Kosten bei Skalierung
+
+- **Know how Abhängigkeit**
+  - Betrieb erfordert Kubernetes und Linux Wissen
+  - Fehlende Erfahrung kann zu Ausfällen führen
+
+- **Zeitliche Überforderung**
+  - Parallel laufende Module können Zeitdruck erzeugen
+  - Debugging von CI/CD kann zeitintensiv sein
+
+
+### Fazit der SWOT Analyse
+
+Die Cloud Native Umsetzung bietet klare Vorteile in Bezug auf Automatisierung, Skalierbarkeit und Wartbarkeit.  
+Die erhöhte technische Komplexität und der manuelle Betriebsaufwand stellen jedoch Herausforderungen dar.  
+Insgesamt überwiegen die Stärken und Chancen, insbesondere im Hinblick auf Lerngewinn und Praxisnähe für moderne IT Betriebsmodelle.
+
+
+
+
+---
+
+## 2.9 Use-Case Diagramm
+
+Das Use-Case Diagramm zeigt die Akteure und Interaktionen mit dem Geräteausleihe-System aus technischer Sicht.  
+Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration bewerten möchten.
+
+![Use-Case](./screenshots/use_case_diagramm.png)
+<small><em>Abbildung 12: Use-Case Diagramm Geräteausleihe Sem4</em></small>
+
+### 2.9.1 Akteure
+
+| Akteur | Rolle | Berechtigung | Hauptfunktionen |
+|--------|-------|---------------|-----------------|
+| **Developer / Student** | Projektverantwortlicher | Vollzugriff auf Repo und Cluster | Code, Deploy, Doku |
+| **Fachdozent** | Reviewer | Leserechte auf Board und Repo | Sprint Reviews, Feedback |
+| **AWS System** | Infrastruktur | Cluster Hosting und Networking | CI/CD Zielsystem |
+| **GitHub Actions** | Automatisierung | Build, Push, Deploy | Workflows, Status, Rollbacks |
+| **Nutzer (PowerApps)** | Externer Konsument | Zugriff auf /healthz und /pdf | Nutzung der API |
+
+---
+
+### 2.9.2 Use-Cases im Detail
+
+| Use-Case | Beschreibung | Akteur | Priorität |
+|-----------|--------------|---------|-----------|
+| **UC1** | Codeänderung pushen | Developer | Hoch |
+| **UC2** | Workflow ausführen | GitHub Actions | Hoch |
+| **UC3** | Container bauen und pushen | GitHub Actions / GHCR | Hoch |
+| **UC4** | Deployment auf K3s durchführen | GitHub Actions | Hoch |
+| **UC5** | Service testen über /healthz | Nutzer / Dozent | Hoch |
+| **UC6** | PDF-Endpoint überprüfen | Nutzer / Dozent | Mittel |
+| **UC7** | Rollback auf älteres Image durchführen | Developer | Mittel |
+| **UC8** | Dokumentation aktualisieren und deployen | GitHub Actions | Mittel |
+
+---
+
+### 2.9.3 Externe System-Integrationen
+
+| System | Beschreibung | Use-Cases | Schnittstelle |
+|---------|---------------|------------|----------------|
+| **GitHub Actions** | CI/CD-Automatisierung | UC1 – UC4, UC8 | Workflow-YAML |
+| **GHCR** | Container Registry für Images | UC3 – UC4 | Docker API |
+| **AWS EC2** | Hostet den K3s Cluster | UC4 – UC7 | SSH / kubectl |
+| **K3s Cluster** | Kubernetes Runtime | UC4 – UC7 | API Server |
+| **PowerApps** | Client Frontend für Nutzer | UC5 – UC6 | HTTP GET |
+| **GitHub Pages** | Dokumentationshosting | UC8 | Static Site Deploy |
+
+---
+
+### 2.9.4 Geschäftsregeln und technische Constraints
+
+**Berechtigungen:**
+- Nur der Developer darf Deployments ausführen.
+- Dozenten haben Leserechte auf Board, Repo und Doku.
+- GitHub Actions arbeitet mit SSH-Key und Secret Authentication.
+
+**Regeln für Deployments:**
+- Nur Änderungen im Ordner `/service` lösen einen Container Build aus.
+- Deployments erfolgen nur auf dem Branch `main`.  
+- Erfolgreiche Deployments werden in der Doku unter Evidence pro Sprint nachgewiesen.
+
+**Technische Constraints:**
+- Cluster: Einzelinstanz K3s auf AWS EC2 t3.medium  
+- Registry: GHCR öffentlich lesbar, privat schreibgeschützt  
+- Keine Persistenz im Cluster, da State nicht Teil des Projekts  
+- Keine TLS Zertifikate, da nip.io Host für interne Demo
+
+---
