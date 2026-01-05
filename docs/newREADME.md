@@ -11,7 +11,7 @@ Das Einreichungsformular kann hier entnommen werden:
 
 | Eigenschaft | Details |
 |---|---|
-| **Titel** | Geraeteausleihe Microservice, Cloud Native Deployment auf AWS |
+| **Titel** | Geräteausleihe Microservice, Cloud Native Deployment auf AWS |
 | **Studierender** | Efekan Demirci |
 | **Dozenten** | PRJ Corrado Parisi, MSVC Philip Stark |
 | **Semester** | 4 Semester HF TBZ, ITCNE24 |
