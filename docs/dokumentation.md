@@ -22,7 +22,7 @@ Das Einreichungsformular kann hier entnommen werden:
 | **GitHub Pages** | https://cancani.com/geraeteausleihe-sem4/ |
 | **Project Board** | https://github.com/users/Cancani/projects/3/views/1 |
 
-Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient als Ausgangsbasis. In dieser Arbeit steht nicht die fachliche Erweiterung im Vordergrund, sondern die Cloud Native Transformation: Containerisierung, automatisierte Build und Deploy Pipelines sowie der Betrieb in einem Kubernetes Cluster auf AWS.
+Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient als Ausgangsbasis. In dieser Arbeit steht nicht die fachliche Erweiterung im Vordergrund, sondern die Cloud Native Transformation: Containerisierung, automatisierte CI/CD Pipelines sowie der Betrieb in einem Kubernetes Cluster auf AWS.
 
 **Key Features**
 * Container Build und Push nach GHCR
@@ -56,7 +56,7 @@ flowchart LR
 
 ---
 
-###Soll Zustand
+### Soll Zustand
 
 Ziel ist ein durchgängig automatisierter Workflow vom Commit bis zum laufenden Pod im Cluster. Jede relevante Änderung soll ein Image bauen, in die Registry pushen und anschliessend automatisiert im K3s Cluster deployed werden. Der Betriebszustand soll jederzeit über Board, Doku und konkrete Nachweise nachvollziehbar sein.
 
@@ -727,7 +727,7 @@ Kernaussage: Extern sichtbar ist der Ingress, intern bleibt die Applikation übe
 ```mermaid
 flowchart TB
   subgraph K3s[K3s Cluster]
-    subgraph NS[Namespace geräteausleihe]
+    subgraph NS[Namespace geraeteausleihe]
       DEP[Deployment]
       DEP --> RS[ReplicaSet]
       RS --> P1[Pod 1]
@@ -800,7 +800,7 @@ flowchart TD
 
 | Endpoint | Methode | Zweck | Erwartung |
 | --- | --- | --- | --- |
-| `/health` | GET | Health Check | 200 OK |
+| `/healthz` | GET | Health Check | 200 OK |
 | `/pdf` | GET | PDF Ausgabe für PowerApps | PDF Response |
 
 ---
