@@ -28,12 +28,3 @@
 | Einreichungsformular | [Efekan_Einreichungsformular_4.SemesterV2.docx](Efekan_Einreichungsformular_4.SemesterV2.docx) |
 
 ---
-
-## Verlinkungen
-
-| Seite | Inhalt |
-| --- | --- |
-| [Projektmanagement](projektmanagement.md) | Vorgehen, Rollen, Regeln, Backlog Struktur, Nachweise |
-| [Sprints](sprints.md) | Sprint Reviews und Retrospektiven, Status und Ausblick |
-| [Architektur](architektur.md) | Zielbild, Komponenten, Schnittstellen, Kubernetes Ressourcen |
-| [Technische Umsetzung](technische_umsetzung.md) | Setup, Manifeste, CI CD, Deploy Ablauf, Verifikation |
