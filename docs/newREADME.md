@@ -563,3 +563,69 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 - Keine TLS Zertifikate, da nip.io Host für interne Demo
 
 ---
+
+## 2.10 Risikomatrix
+
+Die Risikomatrix dient zur strukturierten Bewertung potenzieller Risiken im Projekt.
+
+Bewertet werden Risiken aus den Bereichen **Infrastruktur, Kubernetes, CI/CD, Sicherheit und Betrieb**.  
+Die Kombination aus Eintrittswahrscheinlichkeit und Auswirkung zeigt die Dringlichkeit notwendiger Gegenmassnahmen.
+
+![Risikomatrix](./screenshots/Risikomatrix_Sem4.png)
+
+
+
+### Achsenbeschreibung
+
+- **Y-Achse:** Eintrittswahrscheinlichkeit  
+  (Unwahrscheinlich → Sehr wahrscheinlich)
+
+- **X-Achse:** Auswirkung  
+  (Niedrig → Kritisch)
+
+### Farbbedeutung
+
+- 🟩 Grün: Geringes Risiko  
+- 🟨 Gelb: Akzeptables Risiko  
+- 🟧 Orange: Erhöhtes Risiko  
+- 🔴 Rot: Kritisches Risiko
+
+---
+
+### 2.10.1 Risiken im Detail
+
+| Nr. | Risiko                                                                 | Eintritt        | Auswirkung | Bewertung | Massnahme / Lösung |
+|----:|------------------------------------------------------------------------|-----------------|------------|-----------|--------------------|
+| 1 | Fehlkonfiguration von Kubernetes Manifests (Pods starten nicht) | Gelegentlich | Hoch | Orange | Manifeste schrittweise testen, `kubectl apply --dry-run`, Logs prüfen |
+| 2 | CI Pipeline schlägt fehl durch falsche Secrets oder Tokens | Wahrscheinlich | Mittel | Orange | Secrets früh testen, klare Namenskonventionen, Test Runs |
+| 3 | Kein Zugriff auf EC2 Instanz (SSH Key verloren oder Security Group Fehler) | Unwahrscheinlich | Kritisch | Gelb | SSH Keys sichern, Dokumentation der Zugänge, Fallback Zugriff |
+| 4 | Container Image wird nicht korrekt nach GHCR gepusht | Gelegentlich | Mittel | Gelb | Image Tags prüfen, lowercase Repo Namen erzwingen |
+| 5 | Ingress ist falsch konfiguriert, Service nicht erreichbar | Gelegentlich | Hoch | Orange | Ingress separat testen, Logs des Ingress Controllers prüfen |
+| 6 | K3s Dienst oder Node fällt aus (Single Node Setup) | Selten | Hoch | Gelb | Neustart Strategien dokumentieren, Risiko bewusst akzeptieren |
+| 7 | Fehlende Health Checks führen zu instabilem Betrieb | Wahrscheinlich | Mittel | Orange | Readiness und Liveness Probes definieren |
+| 8 | Fehlerhafte CI/CD Änderung deployed fehlerhafte Version | Gelegentlich | Hoch | Orange | Deployment nur über main, saubere Reviews, Rollback via Image Tag |
+| 9 | Dokumentation nicht aktuell zum Projektstand | Gelegentlich | Niedrig | Grün | Doku als Teil der Definition of Done |
+| 10 | Zeitmangel durch parallele Module und Aufgaben | Sehr Wahrscheinlich | Hoch | Rot | Priorisierung auf Kernanforderungen, Sprint Planung strikt einhalten |
+
+---
+
+### 2.10.2 Einordnung in die Risikomatrix
+
+Die Risiken wurden in der Risikomatrix wie folgt positioniert:
+
+- **Orange (erhöhtes Risiko):** 1, 2, 5, 7, 8  
+- **Gelb (akzeptables Risiko):** 3, 4, 6  
+- **Grün (geringes Risiko):** 9  
+- **Rot (kritisch):** 10
+
+
+---
+
+### 2.10.3 Fazit
+
+- Insgesamt wurden 10 projektrelevante Risiken identifiziert und bewertet.
+- Mehrere Risiken befinden sich im orangefarbenen Bereich, was die erhöhte technische Komplexität von Kubernetes und CI/CD widerspiegelt.
+- Ein Risiko (Nr. 10: Zeitmangel durch parallele Module und Aufgaben) wurde bewusst als **kritisch (rot)** eingestuft, da die zeitlichen Rahmenbedingungen während des Semesters eine reale und hohe Gefahr darstellen.
+- Dieses Risiko wird durch klare Priorisierung der Kernanforderungen, Sprint-Planung sowie konsequente Fokussierung auf Mindestanforderungen aktiv adressiert.
+- Insgesamt bleibt das Risikoprofil trotz des identifizierten kritischen Risikos kontrollierbar und angemessen für ein praxisorientiertes Lernprojekt.
+
