@@ -392,7 +392,7 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 
 Technische Umsetzung für den Cloud Native Betrieb liefern und gleichzeitig die Nachvollziehbarkeit massiv verbessern. Der Fokus liegt auf einem lauffähigen End to End Betrieb mit Container, GHCR, K3s, Kubernetes und Ingress sowie auf sauberen Nachweisen, realistischen Schätzungen und einem sichtbar priorisierten Backlog.
 
-![Sprint 2 Milestone und Issues](./screenshots/Sprint2_1.png)
+![Sprint 2 Milestone und Issues]
 
 **Reviewgespräch Hinweis**  
 Für Sprint 2 fand kein Reviewgespräch statt. Feedback erfolgte schriftlich via Microsoft Teams durch Corrado Parisi.
