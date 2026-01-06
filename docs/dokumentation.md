@@ -380,17 +380,89 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 - Dozentenfeedback direkt als Issue erfassen, priorisieren und mit Belegen abschliessen
 ---
 
-### Sprint 2 Planung, Review und Retrospektive
+## Sprint 2 Planung, Review und Retrospektive
 
-#### Sprint Zeitraum
+### Sprint 2 Planung
 
-18.11.2025 bis 15.12.2025
+#### Sprint Zeitraum**  
 
-#### Sprintziel
+18.11.2025 bis 31.12.2025
 
-Projektbasis schaffen, damit Fortschritt und Qualität transparent nachvollziehbar sind. Fokus liegt auf Board Setup, Standards und erstem Architektur Zielbild.
+#### Sprint Ziel
 
-![Sprint 1 Milestone & Issues](./screenshots/Sprint1_1.png)
+Technische Umsetzung für den Cloud Native Betrieb liefern und gleichzeitig die Nachvollziehbarkeit massiv verbessern. Der Fokus liegt auf einem lauffähigen End to End Betrieb mit Container, GHCR, K3s, Kubernetes und Ingress sowie auf sauberen Nachweisen, realistischen Schätzungen und einem sichtbar priorisierten Backlog.
+
+![Sprint 2 Milestone und Issues](./screenshots/Sprint2_1.png)
+
+**Reviewgespräch Hinweis**  
+Für Sprint 2 fand kein Reviewgespräch statt. Feedback erfolgte schriftlich via Microsoft Teams durch Corrado Parisi.
+
+### Sprint 2 Scope
+
+Die folgenden Umsetzungspakete gehören zu Sprint 2:
+
+| Bereich | Inhalt |
+|---|---|
+| Service | Bestehenden Flask Service aufbereiten, Requirements bereinigen und Tests ausführbar machen |
+| Containerisierung | Dockerfile erstellen sowie Image lokal bauen und testen |
+| Registry | Build und Push nach GitHub Container Registry (GHCR) mit sinnvollen Tags wie latest und Commit SHA |
+| Kubernetes | Namespace, Deployment, Service und Ingress Manifeste erstellen |
+| Infrastruktur | AWS EC2 bereitstellen, K3s installieren und Traefik Ingress nutzen |
+| Deployment | Manuelles Deployment verifizieren und anschliessend GitHub Actions Deployment auf EC2 umsetzen |
+| Nachweise | Pro abgeschlossenem Punkt Belege erfassen wie Screenshots, Logs, curl Ausgaben, kubectl Status und Actions Runs |
+| PM Verbesserungen | Board Sichtbarkeit sicherstellen, Schätzungen und Priorisierung einführen sowie DoD in Tickets konsequent schliessen |
+| Dokumentation | MkDocs Struktur pflegen, Navigation bereinigen und Grafiken ergänzen |
+
+---
+
+### Sprint 2 User Stories
+
+Die folgenden User Stories gehören zu Sprint 2:
+
+[Link zu Issues auf GitHub Projects](https://github.com/Cancani/geraeteausleihe-sem4/milestone/2)
+
+| US | Titel | Bereich |
+|---|---|---|
+| US08 | EC2 Instanz vorbereiten | Infrastruktur |
+| US09 | K3s auf EC2 installieren | Infrastruktur |
+| US10 | Namespace und Basis Ressourcen erstellen | Kubernetes |
+| US11 | Dockerfile finalisieren | Containerisierung |
+| US12 | GHCR Push verifizieren | Registry |
+| US13 | Kubernetes Deployment Manifest erstellen | Kubernetes |
+| US14 | Kubernetes Service Manifest erstellen | Kubernetes |
+| US15 | Ingress konfigurieren | Kubernetes |
+| US16 | Readiness und Liveness Probes definieren | Kubernetes |
+| US17 | Sprint 2 Review und Retro dokumentieren | Dokumentation |
+
+### WIP Regel
+
+In Progress sind maximal zwei parallel laufende Issues erlaubt.
+
+### Schätzungen und Priorisierung
+
+- Jede User Story erhält eine Schätzung wie zum Beispiel Story Points oder T Shirt Grössen  
+- Die Priorisierung im Backlog ist sichtbar mit Must, Should und Could sowie einer klaren Reihenfolge im Board  
+- Closed bedeutet erst Done, wenn alle DoD Checkboxen vollständig abgehakt sind  
+
+### Evidence Standard für Sprint 2
+
+Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend ergänzt:
+
+- Screenshot des GHCR Packages mit Tags latest und Commit SHA  
+- Screenshot oder Link zu GitHub Actions Runs für Container Build und Deployment  
+- Screenshot oder Output von Docker Build und lokalen Tests mit pytest  
+- kubectl get nodes und kubectl get pods -A als Nachweis, dass K3s läuft  
+- kubectl -n geraeteausleihe get all und get ingress als Nachweis für ein korrektes Deployment  
+- curl Nachweise extern  
+  - /healthz  
+  - /pdf mit Content Disposition Header  
+- Screenshots der relevanten Dokumentationsseiten wie Technische Umsetzung, Projektmanagement und Sprint Review  
+- Mindestens eine Grafik für die Architektur und eine Grafik für den CI CD Ablauf  
+- Eine Risiko Matrix wird als Grafik erstellt und eingebunden  
+
+---
+
+### Sprint 2 Review
 
 
 
