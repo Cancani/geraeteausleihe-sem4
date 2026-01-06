@@ -380,11 +380,9 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 - Dozentenfeedback direkt als Issue erfassen, priorisieren und mit Belegen abschliessen
 ---
 
-## Sprint 2 Planung, Review und Retrospektive
-
 ### Sprint 2 Planung
 
-#### Sprint Zeitraum**  
+#### Sprint Zeitraum
 
 18.11.2025 bis 31.12.2025
 
@@ -397,7 +395,7 @@ Technische Umsetzung für den Cloud Native Betrieb liefern und gleichzeitig die 
 **Reviewgespräch Hinweis**  
 Für Sprint 2 fand kein Reviewgespräch statt. Feedback erfolgte schriftlich via Microsoft Teams durch Corrado Parisi.
 
-### Sprint 2 Scope
+#### Sprint 2 Scope
 
 Die folgenden Umsetzungspakete gehören zu Sprint 2:
 
@@ -415,7 +413,7 @@ Die folgenden Umsetzungspakete gehören zu Sprint 2:
 
 ---
 
-### Sprint 2 User Stories
+#### Sprint 2 User Stories
 
 Die folgenden User Stories gehören zu Sprint 2:
 
@@ -434,17 +432,17 @@ Die folgenden User Stories gehören zu Sprint 2:
 | US16 | Readiness und Liveness Probes definieren | Kubernetes |
 | US17 | Sprint 2 Review und Retro dokumentieren | Dokumentation |
 
-### WIP Regel
+#### WIP Regel
 
 In Progress sind maximal zwei parallel laufende Issues erlaubt.
 
-### Schätzungen und Priorisierung
+#### Schätzungen und Priorisierung
 
 - Jede User Story erhält eine Schätzung wie zum Beispiel Story Points oder T Shirt Grössen  
 - Die Priorisierung im Backlog ist sichtbar mit Must, Should und Could sowie einer klaren Reihenfolge im Board  
 - Closed bedeutet erst Done, wenn alle DoD Checkboxen vollständig abgehakt sind  
 
-### Evidence Standard für Sprint 2
+#### Evidence Standard für Sprint 2
 
 Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend ergänzt:
 
@@ -467,13 +465,7 @@ Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend ergänzt:
 
 
 
-
-
-#### Architektur
-
-Link:
-
-
+---
 
 ## Verwaltung der Aufgaben
 
