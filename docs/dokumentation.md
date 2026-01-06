@@ -257,21 +257,27 @@ Die Steuerung erfolgt über folgende Felder im GitHub Project:
 
 ---
 
-## Sprint 1 Planung und Sprint Review
+## Sprint Planungen, Reviews & Retrospektiven
 
-### Sprint 1 Planung
+Die nachfolgenden Abschnitte dokumentieren den vollständigen Projektverlauf und machen Fortschritte, Entscheidungen und Herausforderungen transparent nachvollziehbar.
 
-**Sprint Zeitraum**
+---
+
+### Sprint 1 Planung, Review und Retrospektive
+
+#### Sprint Zeitraum
 
 27.10.2025 bis 17.11.2025
 
-**Sprint Goal**
+#### Sprintziel
 
 Projektbasis schaffen, damit Fortschritt und Qualität transparent nachvollziehbar sind. Fokus liegt auf Board Setup, Standards und erstem Architektur Zielbild.
 
 ![Sprint 1 Milestone & Issues](./screenshots/Sprint1_1.png)
 
-**Sprint 1 Scope**
+---
+
+#### Sprint 1 Scope
 
 Die folgenden User Stories gehören zu Sprint 1:
 
@@ -289,7 +295,7 @@ Die folgenden User Stories gehören zu Sprint 1:
 
 In Progress maximal 2 parallel laufende Issues.
 
-**Evidence Standard für Sprint 1**
+#### Evidence Standard für Sprint 1
 
 Für Sprint 1 werden mindestens folgende Nachweise geplant:
 
@@ -304,7 +310,12 @@ Für Sprint 1 werden mindestens folgende Nachweise geplant:
 
 ### Sprint 1 Review
 
-**Review Ergebnis**
+**Reviewgespräch Hinweis**
+Für Sprint 1 fand kein Reviewgespräch statt. R
+ückmeldungen und Hinweise wurden schriftlich via Microsoft Teams ausgetauscht.
+
+
+#### Review Ergebnis
 
 Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlage für Sprint 2 und Sprint 3.
 
@@ -323,14 +334,18 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 
 #### Board und Planung
+
 * Project Board Overview  
-  ![Project Board Sprint 1](./screenshots/Projectboard_Sprint_1.png)
+
+![Project Board Sprint 1](./screenshots/Projectboard_Sprint_1.png)
 
 * Labels  
-  ![Issue Labels](./screenshots/Issue_Labels.png)
 
-* Milestones  
-  ![Milestones](./screenshots/Milestones_Uebersicht.png)
+![Issue Labels](./screenshots/Issue_Labels.png)
+
+* Milestones 
+
+![Milestones](./screenshots/Milestones_Uebersicht.png)
 
 #### Standards
 * Issue Template  
@@ -338,11 +353,55 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
   ![Issue Template 2](./screenshots/Issue_Template_2.png)
 
 * Branching Strategie Dokumentation  
-  Link: 
+Link: 
+
+### Sprint 1 Retrospektive
+
+
+![Starfish Retrospektive Sprint 1](./screenshots/Sprint_1_Retro.png)
+
+Die Retrospektive wurde mithilfe des Starfish-Modells durchgeführt und reflektiert die Erfahrungen des ersten Sprints.
+
+
+
+### Zusammenfassung
+
+Positiv hervorzuheben ist, dass die Projektbasis sauber aufgebaut wurde und damit eine nachvollziehbare Grundlage für die nächsten Sprints entstand. Die Aufgaben wurden konsequent als Issues erfasst, über ein Kanban Board gesteuert und durch definierte Standards wie Akzeptanzkriterien und Definition of Done strukturiert. Dadurch war der Fortschritt bereits in Sprint 1 transparent sichtbar.
+
+Gleichzeitig zeigte Sprint 1, dass Projektmanagement nicht nur aus der Board Struktur besteht, sondern vor allem aus laufender Evidenz und aktiver Kommunikation. Rückmeldungen erfolgten in Sprint 1 ausschliesslich schriftlich via Teams und ohne separates Reviewgespräch. Dadurch fehlte zeitweise eine klare gemeinsame Standortbestimmung. Ebenfalls wurde deutlich, dass Nachweise und Dokumentation früher und kontinuierlicher gepflegt werden müssen, damit Stakeholder den Projektfortschritt jederzeit prüfen können.
+
+Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Starfish, Risiko Matrix und Architektur Grafiken konsequent eingesetzt werden sollen. Zudem muss Dozentenfeedback nicht nur gelesen, sondern direkt als Issue erfasst, priorisiert und nachvollziehbar umgesetzt werden. Die Sprint Planung soll ausserdem klar definierte Sprint Goals enthalten, welche am Sprintende explizit überprüft werden.
+
+## Empfehlungen für die nächsten Sprints
+
+- Mehr Zeitpuffer beim Sprintbeginn einplanen und Aufgaben früh schätzen  
+- Retrospektiven konsequent visuell dokumentieren und konkrete Massnahmen ableiten  
+- Nachweise pro erledigtem Ticket sofort ergänzen und nicht erst am Sprintende  
+- Dozentenfeedback direkt als Issue erfassen, priorisieren und mit Belegen abschliessen
+---
+
+### Sprint 2 Planung, Review und Retrospektive
+
+#### Sprint Zeitraum
+
+18.11.2025 bis 15.12.2025
+
+#### Sprintziel
+
+Projektbasis schaffen, damit Fortschritt und Qualität transparent nachvollziehbar sind. Fokus liegt auf Board Setup, Standards und erstem Architektur Zielbild.
+
+![Sprint 1 Milestone & Issues](./screenshots/Sprint1_1.png)
+
+
+
+
+
 
 #### Architektur
 
 Link:
+
+
 
 ## Verwaltung der Aufgaben
 
