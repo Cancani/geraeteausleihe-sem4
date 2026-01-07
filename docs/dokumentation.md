@@ -557,7 +557,7 @@ Der Wechsel zu GitHub Projects und Issues hat sich als entscheidender Schritt er
 Er ermöglicht einen durchgängigen Arbeitsfluss zwischen Code, Automation und Projektmanagement, ohne Tool-Brüche.  
 Zudem ist die Nachweisführung durch Screenshots, Actions-Runs und verlinkte Dokumentation klar prüfbar und Versionen lassen sich über Commit-SHAs direkt nachvollziehen.
 
-
+---
 
 ## SWOT-Analyse
 
@@ -733,6 +733,8 @@ Die Risikomatrix dient zur strukturierten Bewertung potenzieller Risiken im Proj
 Bewertet werden Risiken aus den Bereichen **Infrastruktur, Kubernetes, CI/CD, Sicherheit und Betrieb**.  
 Die Kombination aus Eintrittswahrscheinlichkeit und Auswirkung zeigt die Dringlichkeit notwendiger Gegenmassnahmen.
 
+**(Stand 07.01.2025)**
+
 ![Risikomatrix](./screenshots/Risikomatrix_Sem4.png)
 
 
@@ -810,7 +812,7 @@ Dieses Diagramm zeigt den Ablauf einer Änderung vom Commit bis zum erfolgreiche
 
 Kernaussage: Jeder Push auf `main` erzeugt eine neue deployte Version. Der Commit SHA Tag in GHCR dient als Nachweis, welche Version gerade produktiv läuft und ermöglicht ein sauberes Rollback auf eine frühere Version.
 
-### Sequenzdiagramm
+**Sequenzdiagramm**
 
 
 ```mermaid
@@ -1008,6 +1010,8 @@ Für die Erreichbarkeit ohne eigene DNS Zone wird nip io verwendet.
 | Probes | Readiness und Liveness geplant | Grenzwerte und Fehlerfälle testen |
 | Logs | Container Logs über kubectl abrufbar | Zentrales Logging optional |
 | Rollback | Über Image Tags möglich | Strategie dokumentieren und üben |
+
+---
 
 # Branching Strategie und Regeln
 
