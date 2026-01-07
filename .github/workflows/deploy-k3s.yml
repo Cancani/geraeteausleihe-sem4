@@ -28,7 +28,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "k8s/*.yaml"
+          source: "k3s/*.yaml"
           target: "~/deploy/geraeteausleihe"
 
       - name: Deploy to K3s on EC2
