@@ -1,47 +1,36 @@
-site_name: Geraeteausleihe Microservice
-site_description: Cloud Native Deployment auf AWS mit K3s und GitHub Actions
-site_url: https://cancani.github.io/geraeteausleihe-sem4/
+site_name: Geraeteausleihe Microservice Sem4
+site_description: Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions
+site_url: https://cancani.com/geraeteausleihe-sem4/
+
+repo_url: https://github.com/Cancani/geraeteausleihe-sem4
+repo_name: Cancani/geraeteausleihe-sem4
 
 theme:
-  name: material
+  name: windmill
   language: de
-  palette:
-    scheme: slate
-    primary: black
-    accent: cyan
-  features:
-    - navigation.instant
-    - navigation.tabs
-    - navigation.sections
-    - content.code.copy
-    - toc.follow
-  font:
-    text: Roboto
-    code: Roboto Mono
+
+plugins:
+  - search
 
 markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
-  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 4
   - pymdownx.highlight
   - pymdownx.inlinehilite
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
 
 extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
-  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
-  - javascripts/mermaid-init.js
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
+  - javascripts/mermaid-force.js
 
 nav:
   - Start: index.md
-  - Projektmanagement: projektmanagement.md
-  - Sprints: sprints.md
-  - Architektur: architektur.md
-  - Technische Umsetzung: technische_umsetzung.md
+  - Dokumentation: dokumentation.md

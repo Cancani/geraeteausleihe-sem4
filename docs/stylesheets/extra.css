@@ -1,28 +1,47 @@
-.md-typeset h1 {
-  font-size: 2.0rem;
-  font-weight: 800;
-  color: var(--md-default-fg-color);
-  letter-spacing: 0.2px;
-  margin-bottom: 0.6rem;
+/* Allgemeine Typografie */
+body {
+  font-size: 16px;
+  line-height: 1.65;
 }
 
-.md-typeset h2 {
-  font-size: 1.5rem;
-  font-weight: 750;
-  color: var(--md-default-fg-color);
-  margin-top: 1.6rem;
+/* Überschriften klarer und technischer */
+h1, h2, h3, h4 {
+  font-weight: 600;
 }
 
-.md-typeset p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--md-default-fg-color);
+/* Tabellen lesbarer */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.md-header__title {
-  font-weight: 800;
+table th,
+table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.md-nav__title {
-  font-weight: 700;
+/* Codeblöcke */
+code {
+  font-size: 0.9em;
+}
+
+/* Mermaid Diagramme zentrieren */
+.mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+/* Buttons (z. B. auf index.md) */
+a.md-button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a.md-button:hover {
+  background-color: #1e40af;
 }

@@ -1,0 +1,44 @@
+name: "User Story"
+description: "Schlankes Template mit Akzeptanzkriterien, DoD und Nachweisen"
+title: "USXX: "
+labels: ["story"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User Story
+      description: "Als <Rolle> möchte ich <Ziel>, damit <Nutzen>."
+      placeholder: "Als Helpdesk möchte ich Geräte digital ausleihen können, damit der Prozess schneller und nachvollziehbarer wird."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Akzeptanzkriterien
+      options:
+        - label: "Kriterium 1 erfüllt"
+        - label: "Kriterium 2 erfüllt"
+        - label: "Kriterium 3 erfüllt"
+
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: Definition of Done
+      options:
+        - label: "Code oder Doku ist committed und gepusht"
+        - label: "Akzeptanzkriterien sind erfüllt"
+        - label: "Nachweis ist in docs abgelegt (Screenshot oder Logauszug)"
+        - label: "Issue ist im Board korrekt verschoben"
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Nachweise
+      description: "Links oder Pfade zu Actions Runs, Dokumentation oder Screenshots"
+      placeholder: |
+        Actions Run:
+        Doku Abschnitt:
+        Screenshot Pfad:
+    validations:
+      required: false

@@ -12,7 +12,7 @@
 
 ## Dokumentation
 Die laufende Projektdokumentation ist auf GitHub Pages verfuegbar:  
-**GitHub Pages**: https://cancani.github.io/geraeteausleihe-sem4/
+**GitHub Pages**: https://cancani.com/geraeteausleihe-sem4
 
 ---
 
