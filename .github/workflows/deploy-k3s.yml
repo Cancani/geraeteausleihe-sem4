@@ -56,7 +56,7 @@ jobs:
             kubectl apply -f service.yaml
             kubectl apply -f ingress.yaml
 
-            REPO_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+            REPO_LOWER=$(echo "${REPO}" | tr '[:upper:]' '[:lower:]')
             IMAGE="ghcr.io/${REPO_LOWER}:${DEPLOY_SHA}"
 
             echo "Using image: ${IMAGE}"
