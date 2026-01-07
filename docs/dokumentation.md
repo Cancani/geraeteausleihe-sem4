@@ -301,7 +301,7 @@ dass fachlich und technisch zwingend notwendige Aufgaben
 jederzeit klar erkennbar sind
 und zuerst in die Sprint Planung einfliessen.
 
-[Board Priorität](./screenshots/Board_Prio.png)
+![Board_Priorität](screenshots/Board_Prio.png)
 
 ---
 
