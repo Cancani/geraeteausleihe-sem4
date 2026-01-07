@@ -446,7 +446,7 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 
 #### Sprint Zeitraum
 
-18.11.2025 bis 07.01.2025
+18.11.2025 bis 15.12.2025 (Wurde am 07.01.2025 durch Feedback von Fachdozenten verbessert)
 
 #### Sprint Ziel
 
@@ -568,21 +568,98 @@ Das schriftliche Feedback von Corrado Parisi wurde im Verlauf von Sprint 2 aktiv
 
 ### Sprint 2 Retrospektive
 
-![Sprint 2 Retrospektive](./screenshots/Sprint_2_Retro.png)
+![Starfish Retrospektive Sprint 2](./screenshots/Sprint_2_Retro.png)
 
-Die Retrospektive wurde erneut mithilfe des Starfish-Modells durchgeführt und reflektiert die Erfahrungen des zweiten Sprints.
+Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 2. Zusätzlich wurde das schriftliche Dozentenfeedback von Corrado Parisi einbezogen, um konkrete Verbesserungen für Transparenz, Nachvollziehbarkeit und technische Stabilität abzuleiten.
 
+### Zusammenfassung
 
+Positiv hervorzuheben ist, dass der Cloud Native Betrieb technisch umgesetzt und stabil lauffähig gemacht wurde. Der Flask Microservice läuft containerisiert, Images werden automatisiert nach GHCR gepusht und der Service ist auf AWS EC2 in einem K3s Cluster über Traefik Ingress extern erreichbar. Damit ist der zentrale Sprint 2 Anspruch erfüllt, einen End to end Betrieb aufzubauen, der über reale Requests von aussen verifiziert werden kann. Ebenso wurde die technische Dokumentation deutlich ausgebaut, sodass wichtige Schritte und Entscheide nachvollziehbar sind.
 
-#### Konkrete Massnahmen für Sprint 3
-1. Deploy Workflow weiter stabilisieren, sodass Image Tag deterministisch gesetzt wird und Rollouts reproduzierbar sind
-2. Dokumentationsstruktur ausbauen, damit technische Änderungen sofort an der richtigen Stelle landen und nicht verteilt werden
-3. Ausführliche und aktive Updates an Dozenten im Teams Kanal
-4. Priorisierung und Schätzungen als Standard im Backlog beibehalten und pro Sprint Scope sichtbar machen
+Gleichzeitig zeigte Sprint 2 klar, dass technische Umsetzung allein nicht genügt, wenn der Projektstand für Stakeholder nicht jederzeit sichtbar ist. Corrado hat insbesondere fehlende Transparenz kritisiert, zum Beispiel fehlender Überblick über Ziele und Herausforderungen, ein zeitweise nicht zugängliches Board sowie uneinheitliche Sprintlängen. Diese Punkte wurden aufgenommen und korrigiert. Der Board Link wurde aktualisiert, die Sprintlängen wurden konsistenter gestaltet und der Überblick in der Dokumentation wurde verbessert, indem Status, Ziele und nächste Schritte klarer beschrieben wurden. Zusätzlich wurde die Retrospektive visuell stärker aufbereitet und Sprint Goals wurden präziser formuliert.
+
+Ausserdem wurde deutlich, dass Deploy Automatisierung sehr fehleranfällig ist, wenn Variablen und Image Tags nicht deterministisch gesetzt werden. Mehrere Fehlerquellen entstanden durch falsche Repo und SHA Übernahme und durch unstimmige Workflow Logik. Daraus ergibt sich als wichtiger Lernpunkt, dass CI CD Schritte nicht nur gebaut, sondern auch konsequent mit Rollout Status und externem Health Check verifiziert werden müssen. Im selben Zuge wurde das Thema Schätzung verbessert. Tasks wurden mit Story Points dokumentiert und die Priorisierung im Board wurde sichtbar gemacht, um Abhängigkeiten und kritische Aufgaben zuerst umzusetzen.
+
+Für die kommenden Sprints wurde festgehalten, dass die Kombination aus stabiler Technik und laufender Evidenz der Schlüssel ist. Dozentenfeedback muss früh erfasst, im Backlog sichtbar priorisiert und durch konkrete Anpassungen nachweisbar umgesetzt werden. Der Schwerpunkt liegt in Sprint 3 darauf, Deploy und Betrieb weiter zu stabilisieren, die Dokumentation als zentrale Quelle konsequent weiterzuführen und den Projektstatus für Dozenten dauerhaft transparent zu halten.
 
 ---
 
 ### Sprint 3 Planung
+
+#### Sprint Zeitraum
+
+15.12.2026 bis 21.01.2026 (Terminorientiert wegen Gespräch mit Corrado am 13.01.2026)
+
+#### Sprint Ziel
+
+CI und CD für den Cloud Native Betrieb stabil und nachvollziehbar umsetzen. Fokus liegt auf einem reproduzierbaren Build und Push nach GHCR, einem automatischen Deployment nach K3s auf AWS EC2, klarer Tagging Strategie sowie einer vollständigen technischen Dokumentation als Basis für das Gespräch mit Corrado.
+
+![Sprint 3 Milestone und Issues](./screenshots/Sprint_3_Milestone_Issues.png)
+
+**Reviewgespräch Hinweis**  
+Für Sprint 3 ist ein Gespräch mit Corrado am 13.01.2026 geplant. Ziel ist es, bis dahin einen stabilen Stand inklusive Nachweisen und Dokumentation vorzeigen zu können.
+
+#### Sprint 3 Scope
+
+Die folgenden Umsetzungspakete gehören zu Sprint 3:
+
+| Bereich | Inhalt |
+|---|---|
+| CI Build | GitHub Actions Build robust machen und nur bei relevanten Änderungen ausführen |
+| Registry | Push nach GHCR mit konsistenten Tags wie latest und Commit SHA sowie lowercase Repository |
+| Secrets | Zugriff für GHCR und EC2 sauber über GitHub Secrets abbilden und testen |
+| CD Deployment | Automatisches Deployment nach K3s via Workflow, inkl. apply, set image, rollout status |
+| Tagging | Tagging Strategie definieren und konsistent in Build und Deploy anwenden |
+| Tests und Checks | Pipeline Testlauf als Nachweis dokumentieren, inklusive Logs und Outputs |
+| Dokumentation | Technische Dokumentation zu CI, CD und Betrieb aktualisieren und prüfbar machen |
+
+---
+
+#### Sprint 3 User Stories
+
+Die folgenden User Stories gehören zu Sprint 3:
+
+
+| US | Titel | Bereich | Story Points |
+|---|---|---|---|
+| US18 | GitHub Actions Build und Push nach GHCR | CI | 5 |
+| US19 | Secrets für GHCR und Cluster Zugriff einrichten | Security | 3 |
+| US20 | CD Workflow deployt nach K3s | Kubernetes | 5 |
+| US21 | Tagging Strategie dokumentieren und anwenden | Repo | 3 |
+| US22 | Pipeline Testlauf dokumentieren | Testing | 3 |
+| US23 | Sprint 3 Review und Retro dokumentieren | PM | 2 |
+
+**Geplanter Aufwand Sprint 3:** **21 Story Points**
+
+#### WIP Regel
+
+In Progress sind maximal zwei parallel laufende Issues erlaubt.
+
+#### Evidence Standard für Sprint 3
+
+Für Sprint 3 werden mindestens folgende Nachweise geplant und laufend in die technische Dokumentation ergänzt:
+
+* Screenshot oder Link zu GitHub Actions Run für Build und Push nach GHCR  
+* Screenshot GHCR Package mit latest und Commit SHA Tag  
+* Screenshot oder Link zu Deploy Workflow Run inklusive Logs  
+* Output von kubectl get pods und kubectl rollout status als Rollout Nachweis  
+* Screenshot oder Output der gesetzten Image Version im Deployment  
+* Externer Health Check Nachweis über den Ingress Host  
+  * http://geraeteausleihe.13.223.28.53.nip.io/healthz  
+* Dokumentierte Tagging Strategie mit Begründung  
+* Dokumentierter Pipeline Testlauf als End to End Nachweis  
+
+---
+
+
+#### Sprint 3 Review
+
+---
+
+#### Sprint 3 Retrospektive
+
+---
+
 
 ## Verwaltung der Aufgaben
 
