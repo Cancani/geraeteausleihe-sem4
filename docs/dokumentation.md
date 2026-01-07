@@ -343,9 +343,11 @@ Projektbasis schaffen, damit Fortschritt und Qualität transparent nachvollziehb
 
 ---
 
-#### Sprint 1 Scope
+#### Sprint 1 User Stories
 
 Die folgenden User Stories gehören zu Sprint 1:
+
+[Link zu Issues auf GitHub Projects](https://github.com/Cancani/geraeteausleihe-sem4/milestone/1)
 
 | US | Titel | Bereich | Story Points |
 |---|---|---|---|
@@ -619,6 +621,7 @@ Die folgenden Umsetzungspakete gehören zu Sprint 3:
 
 Die folgenden User Stories gehören zu Sprint 3:
 
+[Link zu Issues auf GitHub Projects](https://github.com/Cancani/geraeteausleihe-sem4/milestone/3)
 
 | US | Titel | Bereich | Story Points |
 |---|---|---|---|
