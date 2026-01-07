@@ -1472,7 +1472,7 @@ Tags:
 
 ---
 
-# 7 AWS Setup
+# AWS Setup
 
 ## EC2 Instanz
 Konfiguration:
@@ -1580,12 +1580,17 @@ Erforderlich:
 kubectl -n geraeteausleihe get all
 kubectl -n geraeteausleihe get ingress
 ```
+![Kubernetes Status](./screenshots/Kubernetes_Status.png)
+
 
 ## Externe Requests
 ```bash
 curl -f http://geraeteausleihe.13.223.28.53.nip.io/healthz
 curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Notebook&staff=IT"
 ```
+
+
+![Externe Requests](./screenshots/Externe_Requests.png)
 
 ---
 
@@ -1594,9 +1599,11 @@ curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Not
 ## Launch auf PDF Endpoint
 PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device und staff.
 
-Evidence:
-- `![PowerApps Launch](./screenshots/powerapps_launch.png)`
-- `![PDF Download](./screenshots/pdf_download.png)`
+![Heruntergeladene PDF](./screenshots/PowerApps.png)
+
+**Ausgegebene Quittung**
+
+![Screenshot PDF](./screenshots/ScreenshotQuittung.png)
 
 ---
 
@@ -1612,33 +1619,6 @@ Checkliste:
 - CI Build und CD Deploy sind als Workflows dokumentiert
 - Tests laufen reproduzierbar im Container
 
+Start Umsetzung Sprint 3
+
 ---
-
-## 2 Repository Aufbau
-
-### 2.1 Verzeichnisstruktur
-
-Hier wird die Struktur des Repositories dokumentiert. Passe sie an deinen aktuellen Stand an.
-
-```text
-.
-├── service/
-│   ├── app.py
-│   ├── requirements.txt
-│   ├── test_api.py
-│   └── ...
-├── k3s/
-│   ├── namespace.yaml
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── ingress.yaml
-├── docs/
-│   └── ...
-├── mkdocs.yml
-└── .github/
-    └── workflows/
-        ├── container-build.yml
-        ├── deploy-k3s.yml
-        ├── pr-checks.yml
-        └── docs-pages.yml
-

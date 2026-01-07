@@ -108,7 +108,7 @@ Der Service stellt eine REST API bereit und erzeugt PDFs für die Geräteausleih
 Umgebungsvariable:
 - `PORT` wird im Kubernetes Deployment auf `8080` gesetzt.
 
-## 3.3 Lokale Ausführung
+## Lokale Ausführung
 Beispiel Ablauf:
 ```bash
 cd service
@@ -121,7 +121,7 @@ python app.py
 Nachweise:
 - `![Local Run](./screenshots/local_run.png)`
 
-## 3.4 Endpoints
+## Endpoints
 
 ### GET /
 Erwartung:
@@ -161,7 +161,7 @@ curl -I "http://localhost:8080/pdf?borrower=Test&device=Notebook&staff=IT"
 ## Ziel
 Automatisierte Tests prüfen die wichtigsten API Endpoints. Fokus liegt auf Response Codes, Content Type und Basis Inhalt.
 
-## 4.2 Besonderheiten und Lösung
+## Besonderheiten und Lösung
 WeasyPrint benötigt System Libraries. Lokale Tests auf Windows waren dadurch aufwendig. Lösung war, die Tests im Docker Container auszuführen.
 
 Weitere Besonderheit:
@@ -233,7 +233,7 @@ Konfiguration:
 Nachweise:
 - `![EC2 Instance](./screenshots/aws_ec2_instance.png)`
 
-## 7.2 Security Group
+## Security Group
 Inbound Rules:
 - 22 SSH
 - 80 HTTP
@@ -244,9 +244,9 @@ Nachweise:
 
 ---
 
-# 8 K3s Installation und Cluster Zugriff
+# K3s Installation und Cluster Zugriff
 
-## 8.1 K3s Installation
+## K3s Installation
 K3s wurde manuell installiert. Traefik ist standardmässig aktiv.
 
 Nachweise:
@@ -303,9 +303,9 @@ Ingress Host:
 
 ---
 
-# 10 GitHub Actions
+# GitHub Actions
 
-## 10.1 Workflow Übersicht
+## Workflow Übersicht
 Bis Ende Sprint 2 sind folgende Workflows im Einsatz:
 
 - container-build.yml: Build und Push nach GHCR
@@ -315,7 +315,7 @@ Bis Ende Sprint 2 sind folgende Workflows im Einsatz:
 
 ![Workflows](./screenshots/GH_Actions.png)
 
-## 10.2 Benötigte Secrets
+## Benötigte Secrets
 Erforderlich:
 - EC2_HOST
 - EC2_USER
@@ -323,21 +323,17 @@ Erforderlich:
 
 ![Github Actions Secrets](./screenshots/GH_Secrets.png)
 
-## 10.3 Evidence Workflows
-- `![container-build Run](./screenshots/actions_build_run.png)`
-- `![deploy-k3s Run](./screenshots/actions_deploy_run.png)`
-
 ---
 
-# 11 Deployment Verifikation
+# Deployment Verifikation
 
-## 11.1 Kubernetes Status
+## Kubernetes Status
 ```bash
 kubectl -n geraeteausleihe get all
 kubectl -n geraeteausleihe get ingress
 ```
 
-## 11.2 Externe Requests
+## Externe Requests
 ```bash
 curl -f http://geraeteausleihe.13.223.28.53.nip.io/healthz
 curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Notebook&staff=IT"
@@ -345,9 +341,9 @@ curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Not
 
 ---
 
-# 12 PowerApps Integration
+# PowerApps Integration
 
-## 12.1 Launch auf PDF Endpoint
+## Launch auf PDF Endpoint
 PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device und staff.
 
 Evidence:
@@ -356,42 +352,7 @@ Evidence:
 
 ---
 
-# 13 Nachweise Sprint 2
-Dieser Abschnitt ist die Sammelstelle für Evidence. Screenshots können hier gesammelt und aus Sprint Review oder Issues verlinkt werden.
-
-## 13.1 GHCR
-- `![GHCR Tags](./screenshots/ghcr_tags.png)`
-
-## 13.2 GitHub Actions
-- `![Build Run](./screenshots/actions_build_run.png)`
-- `![Deploy Run](./screenshots/actions_deploy_run.png)`
-
-## 13.3 Docker und Tests
-- `![Docker Build](./screenshots/docker_build.png)`
-- `![Pytest](./screenshots/pytest_container.png)`
-
-## 13.4 K3s Status
-- `![Nodes](./screenshots/kubectl_get_nodes.png)`
-- `![Pods all namespaces](./screenshots/kubectl_get_pods_all.png)`
-
-## 13.5 Kubernetes Ressourcen
-- `![get all](./screenshots/k8s_get_all.png)`
-- `![ingress](./screenshots/k8s_ingress.png)`
-
-## 13.6 Externe curl Nachweise
-- `![curl healthz](./screenshots/curl_healthz.png)`
-- `![curl pdf headers](./screenshots/curl_pdf_headers.png)`
-
-## 13.7 Architektur und CI CD Grafiken
-- `![Architektur Übersicht](./screenshots/arch_overview.png)`
-- `![CI CD Ablauf](./screenshots/cicd_flow.png)`
-
-## 13.8 Risiko Matrix
-- `![Risikomatrix](./screenshots/risikomatrix.png)`
-
----
-
-# 14 Status Ende Sprint 2
+# Status bisher
 Ende Sprint 2 ist der Service in K3s auf AWS EC2 produktionsnah lauffähig und extern erreichbar.
 
 Checkliste:
