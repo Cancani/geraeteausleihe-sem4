@@ -27,9 +27,9 @@ Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient a
 **Key Features**
 * Container Build und Push nach GHCR
 * Automatisiertes Deployment nach K3s auf AWS EC2 via GitHub Actions
-* Ingress Routing ueber Traefik und Hostname ueber nip.io
+* Ingress Routing über Traefik und Hostname ueber nip.io
 * Extern erreichbare Endpoints healthz und pdf
-* Laufende Dokumentation ueber MkDocs und GitHub Pages
+* Laufende Dokumentation über MkDocs und GitHub Pages
 
 ---
 
@@ -37,7 +37,7 @@ Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient a
 
 ### Ist Zustand
 
-Der Service war zwar technisch lauffähig, der Betrieb und das Deployment waren jedoch zu wenig standardisiert und zu wenig automatisiert. Zudem fehlten laufende Nachweise und eine klare Transparenz über Projektstand, Risiken und Fortschritt.
+Der Service war zwar technisch lauffähig, der Betrieb und das Deployment waren jedoch zu wenig standardisiert und zu wenig automatisiert. 
 
 Typische Nachteile im Ist Zustand:
 * Deployment Updates waren fehleranfällig und schwer nachvollziehbar
@@ -50,9 +50,9 @@ Typische Nachteile im Ist Zustand:
 
 ```mermaid
 flowchart LR
-  A[Lokale Aenderung am Code] --> B[Manueller Build oder uneinheitlicher Build]
+  A[Lokale Änderung am Code] --> B[Manueller Build oder uneinheitlicher Build]
   B --> C[Manuelles Deployment]
-  C --> D[Service laeuft, Status schwer nachvollziehbar]
+  C --> D[Service läuft, Status schwer nachvollziehbar]
 ```
 
 
@@ -60,7 +60,7 @@ flowchart LR
 
 ### Soll Zustand
 
-Ziel ist ein durchgängig automatisierter Workflow vom Commit bis zum laufenden Pod im Cluster. Jede relevante Änderung soll ein Image bauen, in die Registry pushen und anschliessend automatisiert im K3s Cluster deployed werden. Der Betriebszustand soll jederzeit über Board, Doku und konkrete Nachweise nachvollziehbar sein.
+Ziel ist ein durchgängig automatisierter Workflow vom Commit bis zum laufenden Pod im Cluster. Jede relevante Änderung soll ein Image bauen, in die Registry pushen und anschliessend automatisiert im K3s Cluster deployed werden.
 
 **Soll Workflow**
 
@@ -92,13 +92,12 @@ ___
 | Automatisierter Build und Push | Reproduzierbar, nachvollziehbar | GitHub Actions, GHCR |
 | Automatisierter Deploy | Schneller und konsistent | GitHub Actions, kubectl apply |
 | Deklarative Kubernetes Manifeste | Standardisiertes Deployment | Namespace, Deployment, Service, Ingress |
-| Laufende Nachweise | Transparenz für Stakeholder | Screenshots, Links, Sprint Reviews |
 
 ---
 
 ## Zielsetzung
 
-Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betriebsumgebung zu überfuehren. Der Fokus liegt auf CI und CD, Kubernetes Deployment, stabiler Erreichbarkeit ueber Ingress sowie einer laufenden Dokumentation, die den Fortschritt und die Qualität belegt.
+Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betriebsumgebung zu überfuehren. Der Fokus liegt auf CI und CD, Kubernetes Deployment, stabiler Erreichbarkeit über Ingress sowie einer laufenden Dokumentation, die den Fortschritt und die Qualität belegt.
 
 ---
 
@@ -108,8 +107,7 @@ Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betri
 |---|---|---|---|---|---|
 | CI Build und Push | Container Image wird gebaut und nach GHCR gepusht | Erfolgreiche Actions Runs und sichtbare Tags | DevOps Nutzen | Mit GitHub Actions umsetzbar | Sprint 2 und 3 |
 | CD Deploy nach K3s | Manifeste werden applied und Image wird aktualisiert | Pods laufen, Service extern erreichbar | Automatisierung | Mit K3s auf EC2 umsetzbar | Sprint 2 und 3 |
-| Ingress und Endpoints | Health und PDF funktionieren extern | HTTP 200, PDF Response | Demo faehig | Traefik und nip.io vorhanden | Sprint 2 |
-| Dokumentation und Nachweise | Laufende Sprint Reviews mit Belegen | Pro Sprint Belegliste mit Screenshots | Stakeholder Transparenz | Mit MkDocs umsetzbar | Laufend |
+| Ingress und Endpoints | Health und PDF funktionieren extern | HTTP 200, PDF Response | Demo fähig | Traefik und nip.io vorhanden | Sprint 2 |
 
 ---
 
@@ -126,6 +124,8 @@ Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betri
 | Ingress | Traefik | Routing im Cluster und externe Erreichbarkeit |
 | Dokumentation | MkDocs, GitHub Pages | Versionierte und laufend publizierte Doku |
 | Projektmanagement | GitHub Projects, Issues | Backlog, Schätzungen, Priorisierung, DoD |
+
+---
 
 # Projektmanagement
 
@@ -153,7 +153,7 @@ Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 
 **Sprint Planning (Sprintbeginn):**
 * Definition von User Stories mit klaren Akzeptanzkriterien
-* Aufwandsschätzung in Story Points und Priorisierung nach Must Should Could
+* Aufwandsschätzung in Story Points
 * Festlegung des Sprintziels als ein Satz Outcome und der Deliverables
 * Sprint Scope im GitHub Project Board zuweisen, Sprint Feld und Milestone setzen
 
@@ -164,7 +164,7 @@ Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 * Ticket Status aktuell halten, WIP Limit in Progress maximal 2
 
 **Sprint Review (Sprintende):**
-* Demo der implementierten Features und Abgleich gegen Sprintziel
+* Abgleich gegen Sprintziel
 * Review Gespräche mit Dozenten zur Qualitätssicherung
 * Bewertung der Zielerreichung und Identifikation von Verbesserungspotenzialen
 * Evidence Pflicht, Screenshots und Links werden direkt pro Sprint Review dokumentiert
@@ -172,7 +172,6 @@ Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 **Sprint Retrospektive:**
 * Reflexion des Arbeitsprozesses mit dem Starfish Modell
 * Identifikation von Start Doing, Stop Doing, Keep Doing, More Of, Less Of
-* Konkrete Action Items als Issues erfassen und dem nächsten Sprint zuordnen
 
 **Vorteile der gewählten Methodik:**
 * Flexibilität, schnelle Anpassung an neue Erkenntnisse, zum Beispiel Ingress Routing oder CI CD Details
@@ -193,7 +192,10 @@ Aufbau der Projektbasis mit Board Struktur, Labels, Milestones, Issue Standards 
 Aufbau der Laufzeitumgebung auf AWS EC2 mit K3s, Kubernetes Ressourcen und Ingress über Traefik. Erste externe Tests der Endpoints.
 
 **Sprint 3 CI CD und Nachweise:**  
-Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versionierung, Rollback Vorgehen und laufende Nachweise pro Sprint.
+Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versionierung,
+ Rollback Vorgehen.
+ 
+ Laufende Nachweise pro Sprint durchgehend.
 
 ![Sprintuebersicht](./screenshots/Sprintuebersicht.png)
 
@@ -203,8 +205,7 @@ Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versio
 | ------------ | ------------------------- | ------------------------------------------------------------------------------------------ | ------------- |
 | **Sprint 1** | 27.10.2025 bis 17.11.2025 | Projektbasis, Board Setup, Standards, Architektur Zielbild                                 | Abgeschlossen |
 | **Sprint 2** | 18.11.2025 bis 15.12.2025 | AWS EC2 und K3s Setup, Kubernetes Manifeste, Ingress, erste externe Tests                  | Abgeschlossen |
-| **Sprint 3** | 16.12.2025 bis 13.01.2026 | CI CD stabilisieren, Evidence pro Sprint, Dokumentation Finalisierung, Abgabe Vorbereitung | In Arbeit     |
-
+| **Sprint 3** | 16.12.2025 bis 21.01.2026 | CI CD stabilisieren, Evidence pro Sprint, Dokumentation Finalisierung, Abgabe Vorbereitung | In Arbeit     |
 
 ---
 
@@ -296,12 +297,9 @@ Issues mit der Priorität **Must** sind im Backlog ganz oben angeordnet,
 darunter folgen Issues mit der Priorität **Should**,
 während Issues mit der Priorität **Could** bewusst am unteren Ende des Backlogs platziert sind.
 
-Diese Anordnung stellt sicher,
-dass fachlich und technisch zwingend notwendige Aufgaben
-jederzeit klar erkennbar sind
-und zuerst in die Sprint Planung einfliessen.
+Diese Anordnung stellt sicher, dass fachlich und technisch zwingend notwendige Aufgaben jederzeit klar erkennbar sind und zuerst in die Sprint Planung einfliessen.
 
-![Board_Priorität](screenshots/Board_Prio.png)
+![Board Priorität](screenshots/Board_Prio.png)
 
 ---
 
@@ -318,8 +316,6 @@ und zuerst in die Sprint Planung einfliessen.
 Die Story Points werden direkt pro Issue im GitHub Project Board gepflegt.
 Zusätzlich ist in jedem Issue eine kurze Begründung der Schätzung dokumentiert.
 Änderungen an Schätzungen wurden transparent im jeweiligen Issue festgehalten.
-
-
 
 ---
 
@@ -399,7 +395,7 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 **Umgesetzter Aufwand:** **12 von 12 Story Points**
 
-![Sprint 2 erledigt](./screenshots/Sprint1_2.png)
+![Sprint 1 erledigt](./screenshots/Sprint1_2.png)
 
 
 #### Board und Planung
@@ -442,6 +438,7 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 - Retrospektiven konsequent visuell dokumentieren und konkrete Massnahmen ableiten  
 - Nachweise pro erledigtem Ticket sofort ergänzen und nicht erst am Sprintende  
 - Dozentenfeedback direkt als Issue erfassen, priorisieren und mit Belegen abschliessen
+  
 ---
 
 ### Sprint 2 Planung
@@ -520,7 +517,6 @@ Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend in die te
 - Eine Risiko Matrix wird als Grafik erstellt und eingebunden  
 
 ---
-
 
 ### Sprint 2 Review
 
