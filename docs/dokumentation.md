@@ -379,8 +379,7 @@ Für Sprint 1 werden mindestens folgende Nachweise geplant:
 ### Sprint 1 Review
 
 **Reviewgespräch Hinweis**
-Für Sprint 1 fand kein Reviewgespräch statt. R
-ückmeldungen und Hinweise wurden schriftlich via Microsoft Teams ausgetauscht.
+Für Sprint 1 fand kein Reviewgespräch statt. Rückmeldungen und Hinweise wurden schriftlich via Microsoft Teams ausgetauscht.
 
 
 #### Review Ergebnis
@@ -400,8 +399,6 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 ![Sprint 2 erledigt](./screenshots/Sprint1_2.png)
 
-### Nachweise und Belege
-
 
 #### Board und Planung
 
@@ -417,13 +414,10 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 ![Milestones](./screenshots/Milestones_Uebersicht.png)
 
-#### Standards
 * Issue Template  
 ![Issue Template](./screenshots/Issue_Template_1.png)
 ![Issue Template 2](./screenshots/Issue_Template_2.png)
 
-* Branching Strategie Dokumentation  
-Link: 
 
 ### Sprint 1 Retrospektive
 
@@ -431,8 +425,6 @@ Link:
 ![Starfish Retrospektive Sprint 1](./screenshots/Sprint_1_Retro.png)
 
 Die Retrospektive wurde mithilfe des Starfish-Modells durchgeführt und reflektiert die Erfahrungen des ersten Sprints.
-
-
 
 ### Zusammenfassung
 
@@ -454,7 +446,7 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 
 #### Sprint Zeitraum
 
-18.11.2025 bis 31.12.2025
+18.11.2025 bis 07.01.2025
 
 #### Sprint Ziel
 
@@ -511,7 +503,7 @@ In Progress sind maximal zwei parallel laufende Issues erlaubt.
 
 #### Evidence Standard für Sprint 2
 
-Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend ergänzt:
+Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend in die technische Dokumentation ergänzt:
 
 - Screenshot des GHCR Packages mit Tags latest und Commit SHA  
 - Screenshot oder Link zu GitHub Actions Runs für Container Build und Deployment  
@@ -527,12 +519,70 @@ Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend ergänzt:
 
 ---
 
+
 ### Sprint 2 Review
 
+**Reviewgespräch Hinweis**  
+Für Sprint 2 fand kein Reviewgespräch statt. Feedback erfolgte schriftlich via Microsoft Teams durch Corrado Parisi.
+
+#### Review Ergebnis
+
+Sprint 2 wurde umgesetzt. Der Microservice läuft stabil auf AWS EC2 in einem K3s Cluster und ist extern über Traefik Ingress erreichbar. Build und Push nach GHCR funktionieren, sowie ein automatisiertes Deployment per GitHub Actions.
 
 
+| Review Punkt | Ergebnis |
+|---|---|
+| Service läuft lokal und im Container | Erfüllt |
+| Tests sind reproduzierbar im Container ausführbar | Erfüllt |
+| Docker Image ist gebaut und lauffähig | Erfüllt |
+| GHCR enthält Tags latest und Commit SHA | Erfüllt |
+| AWS EC2 bereitgestellt und erreichbar | Erfüllt |
+| K3s läuft und kubectl Zugriff ist möglich | Erfüllt |
+| Kubernetes Namespace Deployment Service Ingress angewendet | Erfüllt |
+| Externer Zugriff über nip io Host funktioniert | Erfüllt |
+| Deployment Workflow setzt Image und prüft Rollout | Erfüllt |
+| Nachweise sind zentral dokumentiert | Erfüllt |
+
+**Umgesetzter Aufwand:** **27 von 27 Story Points**
+
+![Sprint 2 erledigt](./screenshots/Sprint_2_Done.png)
 
 ---
+
+#### Dozentenfeedback und Einbau in Review
+
+Das schriftliche Feedback von Corrado Parisi wurde im Verlauf von Sprint 2 aktiv verarbeitet und in Dokumentation sowie Projektorganisation integriert. Die folgenden Punkte wurden umgesetzt und sind in der Dokumentation und im Project Board nachvollziehbar.
+
+| Feedback Punkt | Umsetzung in Sprint 2 |
+|---|---|
+| Risikomatrix fehlt | Risikomatrix erstellt, bewertet und in der Dokumentation eingebunden |
+| Board Link liefert 404 und Board ist nicht sichtbar | Project Link aktualisiert und Sichtbarkeit überprüft |
+| Sprints sind unterschiedlich lang | Sprintlängen wurden korrigiert |
+| Zu wenig Überblick über Projektstand | Massnahmen seit Feedback am Montag, 05.01.2026 umgesetzt, Status und Nachweise werden laufend gepflegt |
+| Retro könnte noch mehr Struktur haben | Retrospektive visuell verbessert und klarer dokumentiert |
+| Sprint Goals besser formulieren | Sprint Goals in der Dokumentation präziser formuliert und am Sprintende überprüfbar gestaltet |
+| Wie schätzt du deine Tasks | Story Points pro Issue dokumentiert und Aufwand transparent gemacht |
+| Priorisierung im Backlog sichtbar machen | Issues nach Priorität im Kanban Board sichtbar gemacht und nach Must Should Could gefiltert |
+
+---
+
+### Sprint 2 Retrospektive
+
+![Sprint 2 Retrospektive](./screenshots/Sprint_2_Retro.png)
+
+Die Retrospektive wurde erneut mithilfe des Starfish-Modells durchgeführt und reflektiert die Erfahrungen des zweiten Sprints.
+
+
+
+#### Konkrete Massnahmen für Sprint 3
+1. Deploy Workflow weiter stabilisieren, sodass Image Tag deterministisch gesetzt wird und Rollouts reproduzierbar sind
+2. Dokumentationsstruktur ausbauen, damit technische Änderungen sofort an der richtigen Stelle landen und nicht verteilt werden
+3. Ausführliche und aktive Updates an Dozenten im Teams Kanal
+4. Priorisierung und Schätzungen als Standard im Backlog beibehalten und pro Sprint Scope sichtbar machen
+
+---
+
+### Sprint 3 Planung
 
 ## Verwaltung der Aufgaben
 
@@ -1125,4 +1175,398 @@ Beispiele:
 - **Merge Flow ist nachvollziehbar beschrieben**
 - **Branch Regeln sind dokumentiert**
 - **Issue US05 ist im Board auf Done**
+
+
+# Technische Dokumentation (fortlaufend)
+
+Repository: https://github.com/Cancani/geraeteausleihe-sem4  
+GitHub Pages: https://cancani.com/geraeteausleihe-sem4/  
+
+AWS Region: us east 1  
+EC2 Public IP: 13.223.28.53  
+Externer Endpoint: http://geraeteausleihe.13.223.28.53.nip.io  
+
+---
+
+## Ziel dieser technischen Dokumentation
+Diese technische Dokumentation beschreibt den vollständigen Stand bis Ende Sprint 2. Die Dokumentation wird sich im Laufe des Projekts ständig verändern.
+Fokus ist ein lauffähiger End to End Betrieb inklusive Service Code, Tests, Containerisierung, GHCR, AWS EC2, K3s, Kubernetes Ressourcen, GitHub Actions CI und CD sowie nachvollziehbaren Nachweisen.
+
+Alle Aussagen sind so strukturiert, dass sie mit Commands, Outputs oder Screenshots belegt werden können.
+
+---
+
+# Systemübersicht
+
+## Zielbild
+```mermaid
+flowchart TD
+  subgraph Clients
+    PA[PowerApps Client]
+    BR[Browser]
+  end
+
+  subgraph GitHub
+    REPO[Repository]
+    ACT[GitHub Actions]
+    GHCR[GitHub Container Registry]
+    PAGES[GitHub Pages]
+  end
+
+  subgraph AWS
+    EC2[AWS EC2 Instanz]
+    K3S[K3s Cluster]
+    TRF[Traefik Ingress]
+    SVC[Flask Microservice geraeteausleihe]
+  end
+
+  PA -->|HTTP| TRF
+  BR -->|HTTP| TRF
+  TRF -->|Service Routing| SVC
+
+  REPO --> ACT
+  ACT -->|Build und Push| GHCR
+  ACT -->|kubectl apply, set image| K3S
+  GHCR -->|pull image| SVC
+
+  REPO -->|MkDocs Build| PAGES
+```
+
+## Komponenten
+| Komponente | Aufgabe | Hinweis |
+| --- | --- | --- |
+| PowerApps | Konsument des Microservice | Ruft den PDF Endpoint auf |
+| Flask Microservice | REST API und PDF Ausgabe | Läuft containerisiert |
+| GitHub Actions | Build, Push, Deploy und Docs | CI CD und GitHub Pages |
+| GHCR | Container Images | Versionierung über Tags |
+| AWS EC2 | Compute Basis | K3s läuft auf der Instanz |
+| K3s | Kubernetes Distribution | Single Node Betrieb |
+| Traefik Ingress | HTTP Ingress Controller | Routing auf Service |
+| nip.io | DNS Convenience | Hostname ohne eigene DNS Zone |
+
+## Schnittstellen und Endpunkte
+| Endpoint | Methode | Zweck | Erwartung |
+| --- | --- | --- | --- |
+| `/` | GET | Basis Response | Text Response |
+| `/healthz` | GET | Health Check | 200 OK mit JSON |
+| `/pdf` | GET | PDF Ausgabe für PowerApps | PDF Response mit Content Disposition Attachment |
+
+Externe Verifikation:
+```bash
+curl -i http://geraeteausleihe.13.223.28.53.nip.io/
+curl -i http://geraeteausleihe.13.223.28.53.nip.io/healthz
+curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Notebook&staff=TBZ"
+```
+
+
+![Curl Commands Endpoints](./screenshots/curl_commands.png)
+
+---
+
+# Repository Struktur
+
+## Struktur
+Wichtige Bereiche im Repository:
+
+- `service/` Python Flask App
+- `service/test_api.py` Pytest Tests
+- `Dockerfile` Container Image Build
+- `.github/workflows/` Workflows für CI, CD, PR Checks, Docs
+- `k3s/` Kubernetes Manifeste (Namespace, Deployment, Service, Ingress)
+- `docs/` MkDocs Seiten
+- `mkdocs.yml` MkDocs Konfiguration
+
+---
+
+# Python Flask Service
+
+## Zweck
+Der Service stellt eine REST API bereit und erzeugt PDFs für die Geräteausleihe. Nutzung erfolgt durch PowerApps oder Browser. Der Service läuft lokal und produktionsnah im Container mit gunicorn.
+
+## Konfiguration
+Umgebungsvariable:
+- `PORT` wird im Kubernetes Deployment auf `8080` gesetzt.
+
+## Lokale Ausführung
+Beispiel Ablauf:
+```bash
+cd service
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+
+
+- `![Local Run](./screenshots/local_run.png)`
+
+## Endpoints
+
+### GET /
+Erwartung:
+- HTTP 200
+- Text Response
+
+
+```bash
+curl -i http://localhost:8080/
+```
+
+### GET /healthz
+Erwartung:
+- HTTP 200
+- JSON mit status und timestamp
+
+
+```bash
+curl -i http://localhost:8080/healthz
+```
+
+### GET /pdf
+Erwartung:
+- HTTP 200
+- PDF Response
+- Content Disposition Attachment
+
+
+```bash
+curl -I "http://localhost:8080/pdf?borrower=Test&device=Notebook&staff=IT"
+```
+
+---
+
+# Tests
+
+## Ziel
+Automatisierte Tests prüfen die wichtigsten API Endpoints. Fokus liegt auf Response Codes, Content Type und Basis Inhalt.
+
+## Besonderheiten und Lösung
+WeasyPrint benötigt System Libraries. Lokale Tests auf Windows waren dadurch aufwendig. Lösung war, die Tests im Docker Container auszuführen.
+
+Weitere Besonderheit:
+- Bytes Assertions mit Umlauten führten zu Syntax Problemen
+- Lösung: `response.get_data(as_text=True)`
+
+## Testausführung im Container
+```bash
+docker build -t geraeteausleihe:test .
+docker run --rm geraeteausleihe:test sh -c "pip install pytest && cd /srv && pytest -q -p no:cacheprovider test_api.py"
+```
+
+Erwartung:
+- Alle Tests erfolgreich,  `5 passed`
+
+Nachweise:
+- `![Pytest im Container](./screenshots/pytest_container.png)`
+
+---
+
+# Containerisierung
+
+## Dockerfile Ziel
+Das Dockerfile baut ein Image auf Basis `python:3.11-slim`. Es installiert WeasyPrint Abhängigkeiten (pango, cairo, gdk pixbuf und weitere) und startet den Service mit gunicorn.
+
+## Lokaler Build und Run
+Build:
+```bash
+docker build -t geraeteausleihe:local .
+```
+
+Run:
+```bash
+docker run --rm -p 8080:8080 geraeteausleihe:local
+```
+
+Verifikation:
+```bash
+curl -i http://localhost:8080/healthz
+```
+
+Nachweise:
+- `![Docker Build](./screenshots/docker_build.png)`
+- `![Docker Run Healthz](./screenshots/docker_run_healthz.png)`
+
+---
+
+# GitHub Container Registry GHCR
+
+## Naming und Tagging
+Tags:
+- `latest`
+- Commit SHA, zum Beispiel `115b431876813ef6867c26de7e7cf6df0c533809`
+
+
+![GHCR Tags](./screenshots/ghcr_package_latest.png)
+
+---
+
+# 7 AWS Setup
+
+## EC2 Instanz
+Konfiguration:
+- Region: us east 1
+- OS: Ubuntu 22.04
+- Public IP: 13.223.28.53
+- Elastic IP verwendet
+
+![EC2 Instanz](./screenshots/EC2_Instanz.png
+)
+
+## Security Group
+Inbound Rules:
+- 22 SSH
+- 80 HTTP
+- optional 443 später
+
+---
+
+# K3s Installation und Cluster Zugriff
+
+## K3s Installation
+K3s wurde manuell installiert. Traefik ist standardmässig aktiv.
+
+Nachweise:
+```bash
+sudo systemctl status k3s
+kubectl get nodes
+kubectl get pods -A
+```
+
+![k3s_status](./screenshots/k3s_status.png)
+![kubectl get nodes](./screenshots/get_nodes.png)
+
+---
+
+# Kubernetes Ressourcen
+
+## Übersicht
+Die App wird über deklarative YAML Manifeste betrieben.
+
+| Manifest | Ressource | Zweck |
+| --- | --- | --- |
+| `namespace.yaml` | Namespace | Logische Trennung |
+| `deployment.yaml` | Deployment | Pods, Rolling Update, Probes |
+| `service.yaml` | Service ClusterIP | Interner Zugriff |
+| `ingress.yaml` | Ingress | Externer Zugriff über Traefik |
+
+## Namespace
+Anwendung:
+```bash
+kubectl apply -f namespace.yaml
+```
+![Namescpace](./screenshots/Namespace.png)
+
+## Deployment
+Deployment enthält:
+- 1 Replica
+- containerPort 8080
+- env PORT 8080
+- readinessProbe auf /healthz
+- livenessProbe auf /healthz
+- imagePullPolicy Always
+
+![Deployment K3S](./screenshots/deployment_k3s.png)
+
+## Service
+
+![k3s Service](./screenshots/k3s_service.png)
+
+## Ingress
+Ingress Host:
+- `geraeteausleihe.13.223.28.53.nip.io`
+
+![k3s Ingress](./screenshots/k3s_ingress.png)
+
+---
+
+# GitHub Actions
+
+## Workflow Übersicht
+Bis Ende Sprint 2 sind folgende Workflows im Einsatz:
+
+- container-build.yml: Build und Push nach GHCR
+- deploy-k3s.yml: Deployment auf EC2 und Rollout Check
+- pr-checks.yml: Build, Lint, Tests für PR nach main
+- docs-pages.yml: MkDocs Build und Deploy nach gh-pages bei Docs Änderungen auf main
+
+![Workflows](./screenshots/GH_Actions.png)
+
+## Benötigte Secrets
+Erforderlich:
+- EC2_HOST
+- EC2_USER
+- EC2_SSH_KEY
+
+![Github Actions Secrets](./screenshots/GH_Secrets.png)
+
+---
+
+# Deployment Verifikation
+
+## Kubernetes Status
+```bash
+kubectl -n geraeteausleihe get all
+kubectl -n geraeteausleihe get ingress
+```
+
+## Externe Requests
+```bash
+curl -f http://geraeteausleihe.13.223.28.53.nip.io/healthz
+curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Notebook&staff=IT"
+```
+
+---
+
+# PowerApps Integration
+
+## Launch auf PDF Endpoint
+PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device und staff.
+
+Evidence:
+- `![PowerApps Launch](./screenshots/powerapps_launch.png)`
+- `![PDF Download](./screenshots/pdf_download.png)`
+
+---
+
+# Status bisher
+Ende Sprint 2 ist der Service in K3s auf AWS EC2 produktionsnah lauffähig und extern erreichbar.
+
+Checkliste:
+- Namespace `geraeteausleihe` existiert
+- Deployment läuft und Pods sind Ready
+- Service und Ingress sind vorhanden
+- Endpoint `http://geraeteausleihe.13.223.28.53.nip.io` liefert /healthz und /pdf
+- GHCR enthält Tags latest und Commit SHA
+- CI Build und CD Deploy sind als Workflows dokumentiert
+- Tests laufen reproduzierbar im Container
+
+---
+
+## 2 Repository Aufbau
+
+### 2.1 Verzeichnisstruktur
+
+Hier wird die Struktur des Repositories dokumentiert. Passe sie an deinen aktuellen Stand an.
+
+```text
+.
+├── service/
+│   ├── app.py
+│   ├── requirements.txt
+│   ├── test_api.py
+│   └── ...
+├── k3s/
+│   ├── namespace.yaml
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── ingress.yaml
+├── docs/
+│   └── ...
+├── mkdocs.yml
+└── .github/
+    └── workflows/
+        ├── container-build.yml
+        ├── deploy-k3s.yml
+        ├── pr-checks.yml
+        └── docs-pages.yml
 
