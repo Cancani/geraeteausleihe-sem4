@@ -225,7 +225,7 @@ Die Sanierung erfolgt durch folgende Massnahmen:
 
 Das Projekt umfasst 27 User Stories, US01 bis US27. Alle Stories werden als GitHub Issues geführt und im [GitHub Project Board](https://github.com/users/Cancani/projects/3) verwaltet.
 
-**Standards pro Issue**
+### Standards pro Issue
 
 * User Story Text
 * Akzeptanzkriterien als Checkboxen
@@ -233,7 +233,7 @@ Das Projekt umfasst 27 User Stories, US01 bis US27. Alle Stories werden als GitH
 * Labels für Priorität und Bereich
 * Milestone Zuordnung zu Sprint
 
-**Project Board Felder**
+### Project Board Felder
 
 Die Steuerung erfolgt über folgende Felder im GitHub Project:
 
@@ -245,7 +245,7 @@ Die Steuerung erfolgt über folgende Felder im GitHub Project:
 | Sprint | Sprint 1, Sprint 2, Sprint 3 |
 | DoD erfüllt | Ja, Nein |
 
-**Board Workflow**
+### Board Workflow
 
 | Spalte | Bedeutung |
 |---|---|
@@ -254,6 +254,39 @@ Die Steuerung erfolgt über folgende Felder im GitHub Project:
 | In Progress | Aktive Umsetzung, WIP Limit beachten |
 | Review | DoD Kontrolle, Evidence prüfen |
 | Done | Abgeschlossen und dokumentiert |
+
+### Aufwandsschätzung und Story Points (Issues und User Stories)
+
+Die Aufwände der einzelnen Issues und User Stories wurden mit Story Points geschätzt.
+Story Points stellen bewusst **keine Zeitangaben** dar, sondern dienen als relative Bewertung
+von Aufwand, Komplexität und Risiko.
+
+Die Schätzung basiert auf folgenden Kriterien:
+- Technische Komplexität der Aufgabe
+- Anzahl beteiligter Komponenten (Service, CI/CD, Kubernetes, Cloud)
+- Grad der Unsicherheit oder Neuartigkeit der Technologie
+- Erwarteter Analyse-, Test- und Debuggingaufwand
+- Abhängigkeiten zu anderen Tasks
+
+Es wurde bewusst auf eine Schätzung in Stunden verzichtet,
+da diese insbesondere bei technischen Aufgaben mit hohem Lern- und Analyseanteil
+eine Scheingenauigkeit erzeugen würde.
+
+### Verwendete Story-Point-Skala
+
+| Story Points | Bedeutung |
+|-------------|----------|
+| 1 | Sehr kleiner Task, klar abgegrenzt, kaum Risiko |
+| 2 | Kleiner Task mit überschaubarem Aufwand |
+| 3 | Mittlerer Task mit mehreren Schritten oder Abhängigkeiten |
+| 5 | Komplexer Task oder neue Technologie mit erhöhtem Debuggingaufwand |
+| 8 | Sehr komplexer Task mit hohem Risiko oder vielen Unbekannten |
+
+Die Story Points werden direkt pro Issue im GitHub Project Board gepflegt.
+Zusätzlich ist in jedem Issue eine kurze Begründung der Schätzung dokumentiert.
+Änderungen an Schätzungen wurden transparent im jeweiligen Issue festgehalten.
+
+
 
 ---
 
@@ -281,15 +314,17 @@ Projektbasis schaffen, damit Fortschritt und Qualität transparent nachvollziehb
 
 Die folgenden User Stories gehören zu Sprint 1:
 
-| US | Titel | Bereich |
-|---|---|---|
-| US01 | Kanban Board finalisieren | Projektmanagement |
-| US02 | Labels anlegen | Projektmanagement |
-| US03 | Milestones anlegen | Projektmanagement |
-| US04 | Issue Template einrichten | Projektmanagement |
-| US05 | Branching Strategie dokumentieren | Dokumentation |
-| US06 | Sprint 1 Review und Retro dokumentieren | Dokumentation |
-| US07 | Architektur Zielbild skizzieren | Architektur |
+| US | Titel | Bereich | Story Points |
+|---|---|---|---|
+| US01 | Kanban Board finalisieren | Projektmanagement | 1 |
+| US02 | Labels anlegen | Projektmanagement | 1 |
+| US03 | Milestones anlegen | Projektmanagement | 1 |
+| US04 | Issue Template einrichten | Projektmanagement | 2 |
+| US05 | Branching Strategie dokumentieren | Dokumentation | 2 |
+| US06 | Sprint 1 Review und Retro dokumentieren | Dokumentation | 2 |
+| US07 | Architektur Zielbild skizzieren | Architektur | 3 |
+
+**Geplanter Aufwand Sprint 1:** **12 Story Points**
 
 **WIP Regel**
 
@@ -327,6 +362,8 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 | Issue Template mit Akzeptanzkriterien und DoD vorhanden | Erfüllt |
 | Branching Strategie dokumentiert | Erfüllt |
 | Architektur Zielbild skizziert | Erfüllt |
+
+**Umgesetzter Aufwand:** **12 von 12 Story Points**
 
 ![Sprint 2 erledigt](./screenshots/Sprint1_2.png)
 
@@ -419,28 +456,25 @@ Die folgenden User Stories gehören zu Sprint 2:
 
 [Link zu Issues auf GitHub Projects](https://github.com/Cancani/geraeteausleihe-sem4/milestone/2)
 
-| US | Titel | Bereich |
-|---|---|---|
-| US08 | EC2 Instanz vorbereiten | Infrastruktur |
-| US09 | K3s auf EC2 installieren | Infrastruktur |
-| US10 | Namespace und Basis Ressourcen erstellen | Kubernetes |
-| US11 | Dockerfile finalisieren | Containerisierung |
-| US12 | GHCR Push verifizieren | Registry |
-| US13 | Kubernetes Deployment Manifest erstellen | Kubernetes |
-| US14 | Kubernetes Service Manifest erstellen | Kubernetes |
-| US15 | Ingress konfigurieren | Kubernetes |
-| US16 | Readiness und Liveness Probes definieren | Kubernetes |
-| US17 | Sprint 2 Review und Retro dokumentieren | Dokumentation |
+| US | Titel | Bereich | Story Points |
+|---|---|---|---|
+| US08 | EC2 Instanz vorbereiten | Infrastruktur | 3 |
+| US09 | K3s auf EC2 installieren | Infrastruktur | 5 |
+| US10 | Namespace und Basis Ressourcen erstellen | Kubernetes | 2 |
+| US11 | Dockerfile finalisieren | Containerisierung | 3 |
+| US12 | GHCR Push verifizieren | Registry | 2 |
+| US13 | Kubernetes Deployment Manifest erstellen | Kubernetes | 3 |
+| US14 | Kubernetes Service Manifest erstellen | Kubernetes | 2 |
+| US15 | Ingress konfigurieren | Kubernetes | 5 |
+| US16 | Readiness und Liveness Probes definieren | Kubernetes | 3 |
+| US17 | Sprint 2 Review und Retro dokumentieren | Dokumentation | 2 |
+
+**Geplanter Aufwand Sprint 2:** **30 Story Points**
 
 #### WIP Regel
 
 In Progress sind maximal zwei parallel laufende Issues erlaubt.
 
-#### Schätzungen und Priorisierung
-
-- Jede User Story erhält eine Schätzung wie zum Beispiel Story Points oder T Shirt Grössen  
-- Die Priorisierung im Backlog ist sichtbar mit Must, Should und Could sowie einer klaren Reihenfolge im Board  
-- Closed bedeutet erst Done, wenn alle DoD Checkboxen vollständig abgehakt sind  
 
 #### Evidence Standard für Sprint 2
 
