@@ -305,11 +305,6 @@ und zuerst in die Sprint Planung einfliessen.
 
 ---
 
-![Priorisiertes Backlog im GitHub Project Board](./screenshots/ProjectBoard_Priorisierung.png)
-
-*A
-
-
 ### Verwendete Story-Point-Skala
 
 | Story Points | Bedeutung |
