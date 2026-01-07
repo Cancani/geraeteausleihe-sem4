@@ -1359,8 +1359,8 @@ Der Service stellt eine REST API bereit und erzeugt PDFs für die Geräteausleih
 Umgebungsvariable:
 - `PORT` wird im Kubernetes Deployment auf `8080` gesetzt.
 
-## Lokale Ausführung
-Beispiel Ablauf:
+## Ausführung Lokal
+
 ```bash
 cd service
 python -m venv .venv
@@ -1369,8 +1369,6 @@ pip install -r requirements.txt
 python app.py
 ```
 
-
-- `![Local Run](./screenshots/local_run.png)`
 
 ## Endpoints
 
@@ -1384,6 +1382,8 @@ Erwartung:
 curl -i http://localhost:8080/
 ```
 
+![GET / Lokal](./screenshots/GET_Lokal.png)
+
 ### GET /healthz
 Erwartung:
 - HTTP 200
@@ -1393,6 +1393,8 @@ Erwartung:
 ```bash
 curl -i http://localhost:8080/healthz
 ```
+
+![GET Healthz](./screenshots/get_healthz.png)
 
 ### GET /pdf
 Erwartung:
@@ -1404,6 +1406,8 @@ Erwartung:
 ```bash
 curl -I "http://localhost:8080/pdf?borrower=Test&device=Notebook&staff=IT"
 ```
+
+![GET /PDF](./screenshots/get_pdf.png)
 
 ---
 
@@ -1428,8 +1432,7 @@ docker run --rm geraeteausleihe:test sh -c "pip install pytest && cd /srv && pyt
 Erwartung:
 - Alle Tests erfolgreich,  `5 passed`
 
-Nachweise:
-- `![Pytest im Container](./screenshots/pytest_container.png)`
+![Pytest](./screenshots/Pytest.png)
 
 ---
 
@@ -1444,19 +1447,19 @@ Build:
 docker build -t geraeteausleihe:local .
 ```
 
-Run:
+Test im Container:
 ```bash
 docker run --rm -p 8080:8080 geraeteausleihe:local
 ```
+
+![Docker Container Run](./screenshots/Container_Run.png)
 
 Verifikation:
 ```bash
 curl -i http://localhost:8080/healthz
 ```
 
-Nachweise:
-- `![Docker Build](./screenshots/docker_build.png)`
-- `![Docker Run Healthz](./screenshots/docker_run_healthz.png)`
+![Verifikation Container](./screenshots/Lokale_Endpoints.png)
 
 ---
 
