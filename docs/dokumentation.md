@@ -704,9 +704,6 @@ Der Entscheid wurde im Sprint-Review mit Corrado Parisi und Philip Stark besproc
 - **GitHub Labels und Milestones:** Ersetzen Buckets und Fälligkeitsdaten aus Planner  
 - **Synchronität mit CI/CD:** Automatische Workflows binden den Projektfortschritt direkt an den technischen Build Prozess  
 
-Verwendete Labels:
-- `sprint-1`, `sprint-2`, `sprint-3`
-- `ci-cd`, `kubernetes`, `documentation`, `review`, `done`
 
 ---
 
@@ -823,7 +820,6 @@ Das Use-Case Diagramm zeigt die Akteure und Interaktionen mit dem Geräteausleih
 Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration bewerten möchten.
 
 ![Use-Case](./screenshots/use_case_diagramm.png)
-<small><em>Abbildung 12: Use-Case Diagramm Geräteausleihe Sem4</em></small>
 
 ### Akteure
 
