@@ -1,11 +1,11 @@
 name: deploy-k3s
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["container-build"]
     types:
       - completed
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DEPLOY_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
 
     steps:
       - name: Checkout repository
@@ -28,13 +28,11 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "k8s/*.yaml"
-          target: "~/deploy/geraeteausleihe"
+          source: "k3s/*.yaml"
+          target: "~/deploy/geraeteausleihe/k3s"
 
       - name: Deploy to K3s on EC2
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          DEPLOY_SHA: ${{ env.DEPLOY_SHA }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
@@ -48,7 +46,7 @@ jobs:
             echo "Checking cluster access"
             kubectl get nodes
 
-            cd ~/deploy/geraeteausleihe/k8s
+            cd ~/deploy/geraeteausleihe/k3s
 
             echo "Applying Kubernetes manifests"
             kubectl apply -f namespace.yaml
@@ -56,12 +54,15 @@ jobs:
             kubectl apply -f service.yaml
             kubectl apply -f ingress.yaml
 
-            REPO_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
-            IMAGE="ghcr.io/${REPO_LOWER}:${DEPLOY_SHA}"
+            REPO="cancani/geraeteausleihe-sem4"
+            SHA="${DEPLOY_SHA}"
+
+            IMAGE="ghcr.io/${REPO}:${SHA}"
+            IMAGE="$(echo "${IMAGE}" | tr '[:upper:]' '[:lower:]')"
 
             echo "Using image: ${IMAGE}"
 
-            kubectl -n geraeteausleihe set image deployment/geraeteausleihe app=${IMAGE}
+            kubectl -n geraeteausleihe set image deployment/geraeteausleihe app="${IMAGE}"
             kubectl -n geraeteausleihe rollout restart deployment/geraeteausleihe
             kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe --timeout=180s
 
@@ -69,4 +70,4 @@ jobs:
             kubectl -n geraeteausleihe get ingress
 
             echo "External health check"
-            curl -f http://geraeteausleihe.13.223.28.53.nip.io/healthz
+            curl -f http://geraeteausleihe.***.nip.io/healthz
