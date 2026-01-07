@@ -1,6 +1,7 @@
 name: deploy-k3s
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["container-build"]
     types:
