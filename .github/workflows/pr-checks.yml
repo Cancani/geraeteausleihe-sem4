@@ -34,21 +34,3 @@ jobs:
         run: docker build -t geraeteausleihe:test .
       - name: Run tests in container
         run: docker run --rm geraeteausleihe:test sh -c "pip install pytest && cd /srv && pytest -q -p no:cacheprovider test_api.py"
-
-  pages-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install MkDocs deps
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f docs/requirements.txt ]; then
-            pip install -r docs/requirements.txt
-          else
-            pip install mkdocs mkdocs-material
-          fi
-      - name: Build MkDocs
-        run: mkdocs build
