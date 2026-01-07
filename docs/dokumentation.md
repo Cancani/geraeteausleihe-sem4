@@ -272,6 +272,44 @@ Es wurde bewusst auf eine Schätzung in Stunden verzichtet,
 da diese insbesondere bei technischen Aufgaben mit hohem Lern- und Analyseanteil
 eine Scheingenauigkeit erzeugen würde.
 
+### Priorisierung
+
+Die Priorisierung der Issues erfolgt zentral im GitHub Project Board
+und ist unabhängig von einzelnen Sprints.
+Ziel der Priorisierung ist es,
+den Fokus auf fachlich und technisch kritische Aufgaben zu legen
+und Abhängigkeiten frühzeitig zu berücksichtigen.
+
+Die Priorisierung basiert auf folgenden Kriterien:
+- Technische Abhängigkeiten zu anderen Tasks
+- Risiko für den Projektfortschritt oder Betrieb
+- Kritikalität für einen lauffähigen End to End Betrieb
+- Rückmeldungen und Anforderungen der Dozenten
+
+Die Priorität wird pro Issue explizit festgelegt
+und bleibt über mehrere Sprints hinweg sichtbar.
+Dadurch ist jederzeit nachvollziehbar,
+warum bestimmte Aufgaben früher umgesetzt wurden als andere.
+
+Die Priorisierung wird im Project Board visuell dargestellt.
+Issues mit der Priorität **Must** sind im Backlog ganz oben angeordnet,
+darunter folgen Issues mit der Priorität **Should**,
+während Issues mit der Priorität **Could** bewusst am unteren Ende des Backlogs platziert sind.
+
+Diese Anordnung stellt sicher,
+dass fachlich und technisch zwingend notwendige Aufgaben
+jederzeit klar erkennbar sind
+und zuerst in die Sprint Planung einfliessen.
+
+[Board Priorität](./screenshots/Board_Prio.png)
+
+---
+
+![Priorisiertes Backlog im GitHub Project Board](./screenshots/ProjectBoard_Priorisierung.png)
+
+*A
+
+
 ### Verwendete Story-Point-Skala
 
 | Story Points | Bedeutung |
@@ -386,8 +424,8 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 #### Standards
 * Issue Template  
-  ![Issue Template](./screenshots/Issue_Template_1.png)
-  ![Issue Template 2](./screenshots/Issue_Template_2.png)
+![Issue Template](./screenshots/Issue_Template_1.png)
+![Issue Template 2](./screenshots/Issue_Template_2.png)
 
 * Branching Strategie Dokumentation  
 Link: 
