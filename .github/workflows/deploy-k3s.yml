@@ -12,12 +12,8 @@ permissions:
 
 jobs:
   deploy:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-
-    # ❗ DEPLOY_SHA MUSS HIER DEFINIERT SEIN
-    env:
-      DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
 
     steps:
       - name: Checkout repository
@@ -55,11 +51,9 @@ jobs:
             kubectl apply -f service.yaml
             kubectl apply -f ingress.yaml
 
-            # 🔒 WICHTIG: Repo und SHA HIER DEFINIEREN
+            # Deterministisches Image (kein SHA-Drama)
             REPO="cancani/geraeteausleihe-sem4"
-            SHA="${DEPLOY_SHA}"
-
-            IMAGE="ghcr.io/${REPO}:${SHA}"
+            IMAGE="ghcr.io/${REPO}:latest"
             IMAGE="$(echo "${IMAGE}" | tr '[:upper:]' '[:lower:]')"
 
             echo "Using image: ${IMAGE}"
