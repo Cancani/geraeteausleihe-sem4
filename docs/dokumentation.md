@@ -13,7 +13,7 @@ Das Einreichungsformular kann hier entnommen werden:
 |---|---|
 | **Titel** | Geräteausleihe Microservice, Cloud Native Deployment auf AWS |
 | **Studierender** | Efekan Demirci |
-| **Dozenten** | PRJ Corrado Parisi, MSVC Philip Stark |
+| **Dozenten** | PRJ Corrado Parisi, CNC Philip Stark |
 | **Semester** | 4 Semester HF TBZ, ITCNE24 |
 | **Zeitraum** | Oktober 2025 bis Januar 2026 |
 | **Technologie Stack** | Python Flask, Docker, K3s auf AWS EC2, GitHub Actions, GHCR, MkDocs |
@@ -25,6 +25,7 @@ Das Einreichungsformular kann hier entnommen werden:
 Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient als Ausgangsbasis. In dieser Arbeit steht nicht die fachliche Erweiterung im Vordergrund, sondern die Cloud Native Transformation: Containerisierung, automatisierte CI/CD Pipelines sowie der Betrieb in einem Kubernetes Cluster auf AWS.
 
 **Key Features**
+
 * Container Build und Push nach GHCR
 * Automatisiertes Deployment nach K3s auf AWS EC2 via GitHub Actions
 * Ingress Routing über Traefik und Hostname ueber nip.io
