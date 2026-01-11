@@ -587,7 +587,7 @@ Für die kommenden Sprints wurde festgehalten, dass die Kombination aus stabiler
 
 #### Sprint Zeitraum
 
-15.12.2026 bis 21.01.2026 (Terminorientiert wegen Gespräch mit Corrado am 13.01.2026)
+15.12.2025 bis 21.01.2026 (Terminorientiert wegen Gespräch mit Corrado am 13.01.2026)
 
 #### Sprint Ziel
 
@@ -657,8 +657,6 @@ Für Sprint 3 werden mindestens folgende Nachweise geplant und laufend in die te
 **Reviewgespräch Hinweis**  
 Für Sprint 3 ist ein Gespräch mit Corrado am 13.01.2026 geplant. Aktuell ist Sprint 3 in Umsetzung. Dieses Review basiert auf dem aktuellen Arbeitsstand und den bereits nachweisbaren Ergebnissen.
 
-**Hinweis Zeitraum**  
-In deiner Sprint 3 Planung steht 15.12.2026 bis 21.01.2026. Da Sprint 2 im Dezember 2025 umgesetzt wurde, ist hier sehr wahrscheinlich 15.12.2025 bis 21.01.2026 gemeint.
 
 ### Aktueller Stand
 
@@ -693,6 +691,8 @@ Sprint 3 ist technisch weit fortgeschritten. Der Betrieb ist erreichbar und die 
 ---
 
 #### Sprint 3 Retrospektive
+
+
 
 ---
 
