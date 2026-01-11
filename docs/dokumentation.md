@@ -652,15 +652,43 @@ Für Sprint 3 werden mindestens folgende Nachweise geplant und laufend in die te
 ---
 
 
-#### Sprint 3 Review
+## Sprint 3 Review
 
 **Reviewgespräch Hinweis**  
-Für Sprint 3 findet ein Zwischengespräch am 13.01.2026 statt.
+Für Sprint 3 ist ein Gespräch mit Corrado am 13.01.2026 geplant. Aktuell ist Sprint 3 in Umsetzung. Dieses Review basiert auf dem aktuellen Arbeitsstand und den bereits nachweisbaren Ergebnissen.
 
-#### Review Ergebnis
+**Hinweis Zeitraum**  
+In deiner Sprint 3 Planung steht 15.12.2026 bis 21.01.2026. Da Sprint 2 im Dezember 2025 umgesetzt wurde, ist hier sehr wahrscheinlich 15.12.2025 bis 21.01.2026 gemeint.
 
-Sprint 2 wurde umgesetzt. Der Microservice läuft stabil auf AWS EC2 in einem K3s Cluster und ist extern über Traefik Ingress erreichbar. Build und Push nach GHCR funktionieren, sowie ein automatisiertes Deployment per GitHub Actions.
+### Aktueller Stand
 
+Sprint 3 fokussiert auf stabile und nachvollziehbare CI und CD. Der Container Build und Push nach GHCR funktioniert. Deploy nach K3s wurde umgesetzt und läuft, inklusive Apply der Manifeste, Setzen des Images und Rollout Kontrolle. Externe Verifikation über den Ingress Host ist möglich und die Endpoints sind erreichbar.
+
+### Review Ergebnis
+
+Sprint 3 ist technisch weit fortgeschritten. Der Betrieb ist erreichbar und die Pipeline läuft. Einzelne Punkte sind noch in Arbeit und müssen dokumentiert werden, vor allem die Stabilisierung der Workflow Logik und die laufende Evidence Ablage pro Change.
+
+| User Story | Titel | Status | Nachweis |
+|---|---|---|---|
+| US18 | GitHub Actions Build und Push nach GHCR | Erledigt | GitHub Actions Run, GHCR Package Tags |
+| US19 | Secrets für GHCR und Cluster Zugriff | Erledigt | Secrets gesetzt, Deploy Run mit SSH und SCP |
+| US20 | CD Workflow deployt nach K3s | In Arbeit | Deploy läuft, Stabilisierung der Variablen und Pfade |
+| US21 | Tagging Strategie dokumentieren und anwenden | Erledigt | Tags latest und Commit SHA, lowercase Repo |
+| US22 | Pipeline Testlauf dokumentieren | In Arbeit | Screenshot Logs, kubectl Outputs, externe Checks |
+| US23 | Sprint 3 Review und Retro dokumentieren | In Arbeit | Dieser Abschnitt, Retro folgt |
+
+### Was ist aktuell noch in Arbeit
+
+* Deploy Workflow Robustheit  
+  Variablen müssen deterministisch sein, besonders DEPLOY SHA und Image Referenz, damit nicht wieder ein leeres Repository wie ghcr.io/:sha gesetzt wird
+
+* Trigger Logik für Container Build  
+  Build soll nur bei Service relevanten Änderungen laufen und nicht bei reinen Doku Änderungen wie README
+
+* Evidence und Nachweise pro Änderung  
+  Pro Deployment Run sollen Logs, kubectl Status und externer Health Check als Screenshots oder Text Output abgelegt werden, damit Stakeholder laufend den Stand sehen
+
+  
 
 ---
 
