@@ -653,6 +653,14 @@ Für Sprint 3 werden mindestens folgende Nachweise geplant und laufend in die te
 
 #### Sprint 3 Review
 
+**Reviewgespräch Hinweis**  
+Für Sprint 3 findet ein Zwischengespräch am 13.01.2026 statt.
+
+#### Review Ergebnis
+
+Sprint 2 wurde umgesetzt. Der Microservice läuft stabil auf AWS EC2 in einem K3s Cluster und ist extern über Traefik Ingress erreichbar. Build und Push nach GHCR funktionieren, sowie ein automatisiertes Deployment per GitHub Actions.
+
+
 ---
 
 #### Sprint 3 Retrospektive
@@ -681,17 +689,15 @@ Diese Struktur sorgt für durchgängige Transparenz im gesamten Projektmanagemen
 
 ---
 
-## Wechsel von Microsoft Planner zu GitHub Projects und Issues
+## Wechsel von GitLab zu GitHub Projects und Issues
 
 ### Hintergrund
 
-Zu Beginn der Semesterarbeit 4 wurde die Projektplanung zunächst provisorisch in Microsoft Planner vorbereitet, da das Tool visuell bekannt war und bereits in früheren Arbeiten genutzt wurde.  
+Zu Beginn der Semesterarbeit 4 wurde die Projektplanung zunächst provisorisch in GitLab vorbereitet, da das Tool visuell bekannt war und bereits in früheren Arbeiten genutzt wurde.  
 Mit dem Start der technischen Umsetzung erfolgte jedoch der Umstieg auf **GitHub Projects**, um Code, Doku und Aufgabenverwaltung auf einer Plattform zu bündeln.  
 
 Durch diesen Wechsel konnten alle User Stories direkt mit Commits, Pull Requests und Actions-Runs verknüpft werden.  
 Damit war es erstmals möglich, Planung, Automatisierung und Deployment vollständig integriert zu führen.
-
-Der Entscheid wurde im Sprint-Review mit Corrado Parisi und Philip Stark besprochen und als Best Practice für Cloud-Native Projekte bestätigt.
 
 ---
 
