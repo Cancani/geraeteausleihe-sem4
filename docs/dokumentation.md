@@ -1645,7 +1645,121 @@ PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device
 
 ---
 
+## CI: Build und Push nach GHCR
+
+### Ziel
+
+Das Image soll nur dann gebaut werden, wenn sich service oder Build Artefakte ändern. Zusätzlich soll das Image eindeutig versioniert werden, damit Rollback und Nachvollziehbarkeit möglich sind.
+
+### Trigger Logik
+
+Das Build soll nur laufen, wenn Dateien geändert werden, die den Container beeinflussen.
 
 
+* Dockerfile
+* service Verzeichnis
+* requirements Dateien
+* k3s Manifeste, falls das Image Tag oder Deployment Logik anpasst
+* container build Workflow Datei selbst
+
+GHCR verlangt lowercase Repository Namen. Falls das Repository auf GitHub Grossbuchstaben enthält, muss der Image Tag vor dem Push in lowercase umgewandelt werden.
+
+
+Container Build: 
+
+![Container Build](./screenshots/Container_Build.png)
+
+Deploy auf EC2:
+
+![Deploy K3S](./screenshots/deploy_k3s.png)
+
+---
+
+### Tagging Strategie
+
+Es werden zwei Tags verwendet.
+
+* latest als schneller Referenz Tag für den aktuellen Stand
+* Commit SHA als deterministische Version, die exakt zu einem Commit passt
+
+Beispiel.
+
+```text
+ghcr.io/cancani/geraeteausleihe-sem4:latest
+ghcr.io/cancani/geraeteausleihe-sem4:<commit_sha>
+```
+![Tagging](./screenshots/Tagging.png)
+
+---
+
+## CD: Deployment nach K3s auf AWS EC2
+
+### Ordnerstruktur für Manifeste
+
+Die Kubernetes Manifeste liegen im Repository im Ordner k3s.
+
+* namespace.yaml
+* deployment.yaml
+* service.yaml
+* ingress.yaml
+
+### Deploy Ablauf
+
+Der Deploy Workflow setzt die Umgebung in folgender Reihenfolge.
+
+1. Kubernetes Manifeste auf die EC2 kopieren
+2. namespace, deployment, service und ingress anwenden
+3. Ingress Host auf den aktuellen nip.io Host setzen
+4. Deployment Image auf den passenden Commit Tag setzen
+5. Rollout prüfen
+
+### Häufiger Fehler: InvalidImageName
+
+Symptom.
+
+* Pod Status InvalidImageName
+* Deployment zeigt ein Image wie ghcr.io/:<sha>
+
+Typische Ursache.
+
+* Image String wurde aus einer leeren oder nicht verfügbaren Variable zusammengesetzt
+* Das kann passieren, wenn Variablen im SSH Script nicht so verfügbar sind wie im GitHub Runner
+
+Sofortmassnahme auf der EC2.
+
+```bash
+kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.template.spec.containers[0].name}{"\n"}{.spec.template.spec.containers[0].image}{"\n"}'
+
+CN=$(kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.template.spec.containers[0].name}')
+kubectl -n geraeteausleihe set image deployment/geraeteausleihe ${CN}=ghcr.io/cancani/geraeteausleihe-sem4:latest
+kubectl -n geraeteausleihe rollout restart deployment/geraeteausleihe
+kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe --timeout=180s
+```
+
+Langfristige Lösung im Workflow.
+
+* Image String im Workflow so zusammensetzen, dass er nicht leer sein kann
+* Deploy SHA sauber setzen, je nach Trigger
+  * workflow run nutzt head sha des Build Runs
+  * workflow dispatch nutzt den aktuellen github sha
+
+### Ingress Host Validierung
+
+Ingress Hosts müssen RFC 1123 konform sein, also nur lowercase, Zahlen, Punkte und Bindestriche, und dürfen nicht mit einem Platzhalter wie CHANGE_ME deployed werden.
+
+---
+
+## Verifikation nach dem Deployment
+
+### Kontrolle auf der EC2
+
+```bash
+kubectl -n geraeteausleihe get pods -o wide
+kubectl -n geraeteausleihe get deploy
+kubectl -n geraeteausleihe get ingress
+kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.template.spec.containers[0].image}{"\n"}'
+```
+
+Screenshots:
 
 ---
