@@ -1592,7 +1592,7 @@ Ingress Host:
 # GitHub Actions
 
 ## Workflow Übersicht
-Bis Ende Sprint 2 sind folgende Workflows im Einsatz:
+Folgende Workflows sind im Einsatz:
 
 - container-build.yml: Build und Push nach GHCR
 - deploy-k3s.yml: Deployment auf EC2 und Rollout Check
