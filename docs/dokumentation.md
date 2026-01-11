@@ -1645,18 +1645,7 @@ PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device
 
 ---
 
-# Status bisher
-Ende Sprint 2 ist der Service in K3s auf AWS EC2 produktionsnah lauffähig und extern erreichbar.
 
-Checkliste:
-- Namespace `geraeteausleihe` existiert
-- Deployment läuft und Pods sind Ready
-- Service und Ingress sind vorhanden
-- Endpoint `http://geraeteausleihe.13.223.28.53.nip.io` liefert /healthz und /pdf
-- GHCR enthält Tags latest und Commit SHA
-- CI Build und CD Deploy sind als Workflows dokumentiert
-- Tests laufen reproduzierbar im Container
 
-Start Umsetzung Sprint 3
 
 ---
