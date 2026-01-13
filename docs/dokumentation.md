@@ -1450,7 +1450,6 @@ Konfiguration:
 Inbound Rules:
 - 22 SSH
 - 80 HTTP
-- optional 443 später
 
 ---
 
@@ -1471,46 +1470,71 @@ kubectl get pods -A
 
 ---
 
-# Kubernetes Ressourcen
+## Kubernetes Ressourcen
 
-## Übersicht
-Die App wird über deklarative YAML Manifeste betrieben.
+Die App wird über deklarative YAML Manifeste in K3s betrieben. Die Ressourcen sind versioniert im Repository und werden durch GitHub Actions auf die EC2 Instanz ausgerollt.
 
-| Manifest | Ressource | Zweck |
-| --- | --- | --- |
-| `namespace.yaml` | Namespace | Logische Trennung |
-| `deployment.yaml` | Deployment | Pods, Rolling Update, Probes |
-| `service.yaml` | Service ClusterIP | Interner Zugriff |
-| `ingress.yaml` | Ingress | Externer Zugriff über Traefik |
+| Manifest | Ressource | Zweck | Wichtige Punkte |
+| --- | --- | --- | --- |
+| `k8s/namespace.yaml` | Namespace | Logische Trennung der App Ressourcen | eigener Namespace für bessere Übersicht |
+| `k8s/deployment.yaml` | Deployment | Pods, Rolling Update, Probes | Image Tag, Readiness und Liveness auf `/healthz` |
+| `k8s/service.yaml` | Service ClusterIP | Interner Zugriff | stabile interne Adresse für die Pods |
+| `k8s/ingress.yaml` | Ingress | Externer Zugriff über Traefik | Host Routing über nip.io |
 
-## Namespace
+### Namespace
+
 Anwendung:
-```bash
-kubectl apply -f namespace.yaml
-```
-![Namescpace](./screenshots/Namespace.png)
 
-## Deployment
-Deployment enthält:
-- 1 Replica
-- containerPort 8080
-- env PORT 8080
-- readinessProbe auf /healthz
-- livenessProbe auf /healthz
-- imagePullPolicy Always
+```bash
+kubectl apply -f k8s/namespace.yaml
+kubectl get ns geraeteausleihe
+```
+
+### Deployment
+
+Anwendung und Kontrolle:
+
+```bash
+kubectl apply -f k8s/deployment.yaml
+kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe
+kubectl -n geraeteausleihe get pods -o wide
+```
+
+Wesentliche Konfiguration im Deployment:
+
+| Element | Wert |
+| --- | --- |
+| Container Port | 8080 |
+| Environment Variable PORT | 8080 |
+| Readiness Probe | GET `/healthz` |
+| Liveness Probe | GET `/healthz` |
+| Image Pull Policy | Always |
 
 ![Deployment K3S](./screenshots/deployment_k3s.png)
 
-## Service
+### Service
+
+Anwendung und Kontrolle:
+
+```bash
+kubectl apply -f k8s/service.yaml
+kubectl -n geraeteausleihe get svc
+```
 
 ![k3s Service](./screenshots/k3s_service.png)
 
-## Ingress
-Ingress Host:
-- `geraeteausleihe.13.223.28.53.nip.io`
+### Ingress
+
+Anwendung und Kontrolle:
+
+```bash
+kubectl apply -f k8s/ingress.yaml
+kubectl -n geraeteausleihe get ingress
+```
+
+Ingress Host: `geraeteausleihe.<EC2_IP>.nip.io`
 
 ![k3s Ingress](./screenshots/k3s_ingress.png)
-
 ---
 
 # GitHub Actions
