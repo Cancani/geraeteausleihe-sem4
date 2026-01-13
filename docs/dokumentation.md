@@ -538,7 +538,7 @@ Sprint 2 wurde umgesetzt. Der Microservice läuft stabil auf AWS EC2 in einem K3
 | AWS EC2 bereitgestellt und erreichbar | Erfüllt |
 | K3s läuft und kubectl Zugriff ist möglich | Erfüllt |
 | Kubernetes Namespace Deployment Service Ingress angewendet | Erfüllt |
-| Externer Zugriff über nip io Host funktioniert | Erfüllt |
+| Externer Zugriff über nip.io Host funktioniert | Erfüllt |
 | Deployment Workflow setzt Image und prüft Rollout | Erfüllt |
 | Nachweise sind zentral dokumentiert | Erfüllt |
 
@@ -904,7 +904,7 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 - GitHub Actions arbeitet mit SSH-Key und Secret Authentication.
 
 **Regeln für Deployments:**
-- Nur Änderungen im Ordner `/service` lösen einen Container Build aus.
+- Nur Änderungen am Build Kontext lösen einen Container Build aus. Dazu gehören `service/`, `Dockerfile` und Dependency Dateien im Service Kontext.
 - Deployments erfolgen nur auf dem Branch `main`.  
 - Erfolgreiche Deployments werden in der Doku unter Evidence pro Sprint nachgewiesen.
 
@@ -1029,7 +1029,7 @@ ___
 Dieses Diagramm zeigt die Systemlandschaft und den Datenfluss von links nach rechts, also vom lokalen Arbeiten bis zum Aufruf durch Nutzer.
 
 1. Der Entwickler arbeitet lokal am Service, an den Kubernetes Manifesten und an den Workflows.  
-2. Der Code wird ins GitHub Repository gepusht. Das Repository ist die zentrale Quelle für Source Code, `k8s` Manifeste und Workflows unter `.github/workflows`.  
+2. Der Code wird ins GitHub Repository gepusht. Das Repository ist die zentrale Quelle für Source Code, `k3s/` Manifeste und Workflows unter `.github/workflows`.  
 3. Bei einem Push auf `main` startet GitHub Actions.  
 4. GitHub Actions baut das Docker Image und pusht es nach GHCR. Dadurch ist das Artefakt zentral verfügbar und eindeutig versioniert.  
 5. Anschliessend führt GitHub Actions den Deploy Job aus und verbindet sich mit der AWS EC2 Instanz, auf der K3s läuft.  
@@ -1102,11 +1102,11 @@ flowchart TB
   SVC --> P1
   SVC --> P2
 ```
----
+
 
 ## Ingress Host Handling
 
-Für die Erreichbarkeit ohne eigene DNS Zone wird nip io verwendet.
+Für die Erreichbarkeit ohne eigene DNS Zone wird nip.io verwendet.
 
 | Element | Beispiel |
 | --- | --- |
@@ -1197,7 +1197,7 @@ Beispiele:
 - **docs(arch):** add target architecture overview
 - **ci(pages):** enable docs deployment workflow
 - **ci(cd):** deploy to k3s on push to main
-- **feat(k8s):** add deployment and service manifests
+- **feat(k3s):** add deployment and service manifests
 - **fix(ci):** correct ghcr image tag
 - **chore:** update dependencies
 
@@ -1450,6 +1450,7 @@ Konfiguration:
 Inbound Rules:
 - 22 SSH
 - 80 HTTP
+- optional 443 später
 
 ---
 
@@ -1476,17 +1477,17 @@ Die App wird über deklarative YAML Manifeste in K3s betrieben. Die Ressourcen s
 
 | Manifest | Ressource | Zweck | Wichtige Punkte |
 | --- | --- | --- | --- |
-| `k8s/namespace.yaml` | Namespace | Logische Trennung der App Ressourcen | eigener Namespace für bessere Übersicht |
-| `k8s/deployment.yaml` | Deployment | Pods, Rolling Update, Probes | Image Tag, Readiness und Liveness auf `/healthz` |
-| `k8s/service.yaml` | Service ClusterIP | Interner Zugriff | stabile interne Adresse für die Pods |
-| `k8s/ingress.yaml` | Ingress | Externer Zugriff über Traefik | Host Routing über nip.io |
+| `k3s/namespace.yaml` | Namespace | Logische Trennung der App Ressourcen | eigener Namespace für bessere Übersicht |
+| `k3s/deployment.yaml` | Deployment | Pods, Rolling Update, Probes | Image Tag, Readiness und Liveness auf `/healthz` |
+| `k3s/service.yaml` | Service ClusterIP | Interner Zugriff | stabile interne Adresse für die Pods |
+| `k3s/ingress.yaml` | Ingress | Externer Zugriff über Traefik | Host Routing über nip.io |
 
 ### Namespace
 
 Anwendung:
 
 ```bash
-kubectl apply -f k8s/namespace.yaml
+kubectl apply -f k3s/namespace.yaml
 kubectl get ns geraeteausleihe
 ```
 
@@ -1495,7 +1496,7 @@ kubectl get ns geraeteausleihe
 Anwendung und Kontrolle:
 
 ```bash
-kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k3s/deployment.yaml
 kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe
 kubectl -n geraeteausleihe get pods -o wide
 ```
@@ -1517,7 +1518,7 @@ Wesentliche Konfiguration im Deployment:
 Anwendung und Kontrolle:
 
 ```bash
-kubectl apply -f k8s/service.yaml
+kubectl apply -f k3s/service.yaml
 kubectl -n geraeteausleihe get svc
 ```
 
@@ -1528,14 +1529,13 @@ kubectl -n geraeteausleihe get svc
 Anwendung und Kontrolle:
 
 ```bash
-kubectl apply -f k8s/ingress.yaml
+kubectl apply -f k3s/ingress.yaml
 kubectl -n geraeteausleihe get ingress
 ```
 
 Ingress Host: `geraeteausleihe.<EC2_IP>.nip.io`
 
 ![k3s Ingress](./screenshots/k3s_ingress.png)
----
 
 # GitHub Actions
 
@@ -1601,14 +1601,16 @@ Das Image soll nur dann gebaut werden, wenn sich service oder Build Artefakte ä
 
 ### Trigger Logik
 
-Das Build soll nur laufen, wenn Dateien geändert werden, die den Container beeinflussen.
+Das Container Image wird nur gebaut, wenn sich Dateien ändern, die den Build Kontext beeinflussen.
 
 
-* Dockerfile
-* service Verzeichnis
-* requirements Dateien
-* k3s Manifeste, falls das Image Tag oder Deployment Logik anpasst
-* container build Workflow Datei selbst
+* `Dockerfile`
+* `service/**` (Applikationscode und Tests)
+* Dependency Dateien im `service/` Kontext (zum Beispiel `requirements*.txt`, falls vorhanden)
+* `.github/workflows/container-build.yml`
+
+Änderungen an Kubernetes Manifesten unter `k3s/**` lösen keinen Container Build aus. Sie werden über den Deploy Workflow ausgerollt.
+
 
 GHCR verlangt lowercase Repository Namen. Falls das Repository auf GitHub Grossbuchstaben enthält, muss der Image Tag vor dem Push in lowercase umgewandelt werden.
 
