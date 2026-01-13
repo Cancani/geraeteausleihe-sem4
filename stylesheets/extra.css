@@ -1,0 +1,47 @@
+/* Allgemeine Typografie */
+body {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* Überschriften klarer und technischer */
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+/* Tabellen lesbarer */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Codeblöcke */
+code {
+  font-size: 0.9em;
+}
+
+/* Mermaid Diagramme zentrieren */
+.mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+/* Buttons (z. B. auf index.md) */
+a.md-button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a.md-button:hover {
+  background-color: #1e40af;
+}

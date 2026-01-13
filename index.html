@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions">
+    
+    <link rel="canonical" href="https://cancani.com/geraeteausleihe-sem4/">
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Geraeteausleihe Microservice Sem4</title>
+    <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="./css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/highlight.css">
+    <link href="stylesheets/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap-3.3.7.min.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    
+      <script src="./js/elasticlunr.min.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '.';
+      var is_top_frame = (window === window.parent);
+        
+        var pageToc = [
+          {title: "Kurzlinks", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="./js/base.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="javascripts/mermaid-force.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+<nav class="navbar wm-page-top-frame">
+  <div class="container-fluid wm-top-container">
+    
+    <div class="wm-top-tool pull-right wm-vcenter">
+      <form class="dropdown wm-vcentered" id="wm-search-form" action="./search.html">
+        
+        <button id="wm-search-show" class="btn btn-sm btn-default" type="submit"
+          ><i class="fa fa-search" aria-hidden="true"></i></button>
+
+        <div class="input-group input-group-sm wm-top-search">
+          <input type="text" name="q" class="form-control" id="mkdocs-search-query" placeholder="Search" autocomplete="off">
+          <span class="input-group-btn" role="search">
+            
+            <button class="btn btn-default dropdown-toggle collapse" data-toggle="dropdown" type="button"><span class="caret"></span></button>
+            <ul id="mkdocs-search-results" class="dropdown-menu dropdown-menu-right"></ul>
+            <button id="wm-search-go" class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="wm-top-tool wm-vcenter pull-right wm-small-left">
+      <button id="wm-toc-button" type="button" class="btn btn-sm btn-default wm-vcentered"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+    </div>
+
+    
+    
+
+    
+    <a href="" class="wm-top-brand wm-top-link wm-vcenter">
+      
+      <div class="wm-top-title">
+        Geraeteausleihe Microservice Sem4<br>
+        
+      </div>
+    </a>
+  </div>
+</nav>
+
+  <div id="main-content" class="wm-page-top-frame">
+    
+<nav class="wm-toc-pane">
+  
+    <ul class="wm-toctree wm-toc-repo">
+      <li class="wm-toc-li wm-toc-lev1">
+      <a class="wm-article-link wm-toc-text" href="https://github.com/Cancani/geraeteausleihe-sem4">
+        
+        Cancani/geraeteausleihe-sem4
+      </a>
+      </li>
+    </ul>
+  <ul class="wm-toctree">
+        <li class="wm-toc-li wm-toc-lev1 "><a href="" class="wm-article-link wm-toc-text">Start</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="dokumentation/" class="wm-article-link wm-toc-text">Dokumentation</a>
+</li>
+  </ul>
+</nav>
+
+    <div class="wm-content-pane">
+      <iframe class="wm-article" name="article"></iframe>
+    </div>
+  </div>
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="dokumentation/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="dokumentation/" class="btn btn-xs btn-link">
+        Dokumentation
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p align="center"><strong>Geraeteausleihe Microservice Sem4</strong></p>
+<p align="center">Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions</p>
+
+<p align="center">
+  <a href="dokumentation/" class="md-button md-button--primary">
+    Hier geht es zur Dokumentation!
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.11-3776ab?style=for-the-badge&logo=python&logoColor=white"></a>
+  <a href="https://flask.palletsprojects.com"><img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"></a>
+  <a href="https://docker.com"><img src="https://img.shields.io/badge/Docker-2496ed?style=for-the-badge&logo=docker&logoColor=white"></a>
+  <a href="https://kubernetes.io"><img src="https://img.shields.io/badge/Kubernetes-326ce5?style=for-the-badge&logo=kubernetes&logoColor=white"></a>
+  <a href="https://github.com/features/actions"><img src="https://img.shields.io/badge/GitHub_Actions-2088ff?style=for-the-badge&logo=githubactions&logoColor=white"></a>
+  <a href="https://aws.amazon.com"><img src="https://img.shields.io/badge/AWS-Cloud-ff9900?style=for-the-badge&logo=amazonaws&logoColor=white"></a>
+</p>
+
+<hr />
+<h2 id="kurzlinks">Kurzlinks<a class="headerlink" href="#kurzlinks" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/Cancani/geraeteausleihe-sem4">https://github.com/Cancani/geraeteausleihe-sem4</a></td>
+</tr>
+<tr>
+<td>GitHub Projects Board</td>
+<td><a href="https://github.com/users/Cancani/projects/3/views/1">https://github.com/users/Cancani/projects/3/views/1</a></td>
+</tr>
+<tr>
+<td>GitHub Pages</td>
+<td><a href="https://cancani.com/geraeteausleihe-sem4">https://cancani.com/geraeteausleihe-sem4</a></td>
+</tr>
+<tr>
+<td>Einreichungsformular</td>
+<td><a href="Efekan_Einreichungsformular_4.SemesterV2.docx">Efekan_Einreichungsformular_4.SemesterV2.docx</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="dokumentation/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="dokumentation/" class="btn btn-xs btn-link">
+        Dokumentation
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://github.com/Cancani/geraeteausleihe-sem4/edit/master/docs/index.md">Edit on Cancani/geraeteausleihe-sem4</a>
+      </p>
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-01-13 09:35:29.262348+00:00
+-->

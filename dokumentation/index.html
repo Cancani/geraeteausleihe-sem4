@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://cancani.com/geraeteausleihe-sem4/dokumentation/">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Dokumentation - Geraeteausleihe Microservice Sem4</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <link href="../stylesheets/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Projektdefinition", url: "#_top", children: [
+              {title: "Einreichungsformular", url: "#einreichungsformular" },
+              {title: "Projekt\u00fcbersicht", url: "#projektubersicht" },
+              {title: "Ausgangslage und Problemstellung", url: "#ausgangslage-und-problemstellung" },
+              {title: "Zielsetzung", url: "#zielsetzung" },
+              {title: "Technologien und Werkzeuge", url: "#technologien-und-werkzeuge" },
+          ]},
+          {title: "Projektmanagement", url: "#projektmanagement", children: [
+              {title: "Projektmethodik", url: "#projektmethodik" },
+              {title: "Projektphasen und Meilensteine", url: "#projektphasen-und-meilensteine" },
+              {title: "Anpassung der Sprint Planung", url: "#anpassung-der-sprint-planung" },
+              {title: "Issues und User Stories", url: "#issues-und-user-stories" },
+              {title: "Sprint Planungen, Reviews \u0026amp; Retrospektiven", url: "#sprint-planungen-reviews-retrospektiven" },
+              {title: "Empfehlungen f\u00fcr die n\u00e4chsten Sprints", url: "#empfehlungen-fur-die-nachsten-sprints" },
+              {title: "Sprint 3 Review", url: "#sprint-3-review" },
+              {title: "Verwaltung der Aufgaben", url: "#verwaltung-der-aufgaben" },
+              {title: "Wechsel von GitLab zu GitHub Projects und Issues", url: "#wechsel-von-gitlab-zu-github-projects-und-issues" },
+              {title: "SWOT-Analyse", url: "#swot-analyse" },
+              {title: "Use-Case Diagramm", url: "#use-case-diagramm" },
+              {title: "Risikomatrix", url: "#risikomatrix" },
+          ]},
+          {title: "Architektur", url: "#architektur", children: [
+              {title: "Deployment Ablauf", url: "#deployment-ablauf" },
+              {title: "Ingress Host Handling", url: "#ingress-host-handling" },
+              {title: "Security und Betrieb", url: "#security-und-betrieb" },
+          ]},
+          {title: "Branching Strategie und Regeln", url: "#branching-strategie-und-regeln", children: [
+              {title: "Ziel", url: "#ziel" },
+              {title: "Branches", url: "#branches" },
+              {title: "Merge Flow", url: "#merge-flow" },
+              {title: "Regeln und Schutz", url: "#regeln-und-schutz" },
+              {title: "Dokumentation und GitHub Pages", url: "#dokumentation-und-github-pages" },
+              {title: "Commit Konvention", url: "#commit-konvention" },
+              {title: "Definition of Done f\u00fcr Branching Doku", url: "#definition-of-done-fur-branching-doku" },
+          ]},
+          {title: "Technische Dokumentation (fortlaufend)", url: "#technische-dokumentation-fortlaufend", children: [
+              {title: "Ziel dieser technischen Dokumentation", url: "#ziel-dieser-technischen-dokumentation" },
+          ]},
+          {title: "System\u00fcbersicht", url: "#systemubersicht", children: [
+              {title: "Zielbild", url: "#zielbild" },
+              {title: "Komponenten", url: "#komponenten" },
+              {title: "Schnittstellen und Endpunkte", url: "#schnittstellen-und-endpunkte" },
+          ]},
+          {title: "Repository Struktur", url: "#repository-struktur", children: [
+              {title: "Struktur", url: "#struktur" },
+          ]},
+          {title: "Python Flask Service", url: "#python-flask-service", children: [
+              {title: "Zweck", url: "#zweck" },
+              {title: "Konfiguration", url: "#konfiguration" },
+              {title: "Ausf\u00fchrung Lokal", url: "#ausfuhrung-lokal" },
+              {title: "Endpoints", url: "#endpoints" },
+          ]},
+          {title: "Tests", url: "#tests", children: [
+              {title: "Ziel", url: "#ziel_1" },
+              {title: "Besonderheiten und L\u00f6sung", url: "#besonderheiten-und-losung" },
+              {title: "Testausf\u00fchrung im Container", url: "#testausfuhrung-im-container" },
+          ]},
+          {title: "Containerisierung", url: "#containerisierung", children: [
+              {title: "Dockerfile Ziel", url: "#dockerfile-ziel" },
+              {title: "Lokaler Build und Run", url: "#lokaler-build-und-run" },
+          ]},
+          {title: "GitHub Container Registry GHCR", url: "#github-container-registry-ghcr", children: [
+              {title: "Naming und Tagging", url: "#naming-und-tagging" },
+          ]},
+          {title: "AWS Setup", url: "#aws-setup", children: [
+              {title: "EC2 Instanz", url: "#ec2-instanz" },
+              {title: "Security Group", url: "#security-group" },
+          ]},
+          {title: "K3s Installation und Cluster Zugriff", url: "#k3s-installation-und-cluster-zugriff", children: [
+              {title: "K3s Installation", url: "#k3s-installation" },
+              {title: "Kubernetes Ressourcen", url: "#kubernetes-ressourcen" },
+          ]},
+          {title: "GitHub Actions", url: "#github-actions", children: [
+              {title: "Workflow \u00dcbersicht", url: "#workflow-ubersicht" },
+              {title: "Ben\u00f6tigte Secrets", url: "#benotigte-secrets" },
+          ]},
+          {title: "Deployment Verifikation", url: "#deployment-verifikation", children: [
+              {title: "Kubernetes Status", url: "#kubernetes-status" },
+              {title: "Externe Requests", url: "#externe-requests" },
+          ]},
+          {title: "Observability", url: "#observability", children: [
+              {title: "Logging und Events", url: "#logging-und-events" },
+              {title: "Health Checks", url: "#health-checks" },
+              {title: "Monitoring und Metriken", url: "#monitoring-und-metriken" },
+              {title: "Screenshots hinzuf\u00fcgen!!!", url: "#screenshots-hinzufugen" },
+          ]},
+          {title: "PowerApps Integration", url: "#powerapps-integration", children: [
+              {title: "Launch auf PDF Endpoint", url: "#launch-auf-pdf-endpoint" },
+              {title: "CI: Build und Push nach GHCR", url: "#ci-build-und-push-nach-ghcr" },
+              {title: "CD: Deployment nach K3s auf AWS EC2", url: "#cd-deployment-nach-k3s-auf-aws-ec2" },
+              {title: "Verifikation nach dem Deployment", url: "#verifikation-nach-dem-deployment" },
+          ]},
+          {title: "Betrieb", url: "#betrieb", children: [
+              {title: "Deployment Ablauf", url: "#deployment-ablauf_1" },
+              {title: "Rollback Vorgehen", url: "#rollback-vorgehen" },
+              {title: "Troubleshooting Checkliste", url: "#troubleshooting-checkliste" },
+              {title: "Wartung und Betriebshinweise", url: "#wartung-und-betriebshinweise" },
+              {title: "Nachweise und Screenshots", url: "#nachweise-und-screenshots" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/mermaid-force.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Start
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="projektdefinition">Projektdefinition<a class="headerlink" href="#projektdefinition" title="Permanent link">&para;</a></h1>
+<h2 id="einreichungsformular">Einreichungsformular<a class="headerlink" href="#einreichungsformular" title="Permanent link">&para;</a></h2>
+<p>Das Einreichungsformular kann hier entnommen werden:<br />
+<a href="../Efekan_Einreichungsformular_4.SemesterV2.docx">ITCNE24 Semesterarbeit 4 Einreichungsformular</a></p>
+<hr />
+<h2 id="projektubersicht">Projektübersicht<a class="headerlink" href="#projektubersicht" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Eigenschaft</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Titel</strong></td>
+<td>Geräteausleihe Microservice, Cloud Native Deployment auf AWS</td>
+</tr>
+<tr>
+<td><strong>Studierender</strong></td>
+<td>Efekan Demirci</td>
+</tr>
+<tr>
+<td><strong>Dozenten</strong></td>
+<td>PRJ Corrado Parisi, CNC Philip Stark</td>
+</tr>
+<tr>
+<td><strong>Semester</strong></td>
+<td>4 Semester HF TBZ, ITCNE24</td>
+</tr>
+<tr>
+<td><strong>Zeitraum</strong></td>
+<td>Oktober 2025 bis Januar 2026</td>
+</tr>
+<tr>
+<td><strong>Technologie Stack</strong></td>
+<td>Python Flask, Docker, K3s auf AWS EC2, GitHub Actions, GHCR, MkDocs</td>
+</tr>
+<tr>
+<td><strong>Architektur</strong></td>
+<td>Microservice, Container, Kubernetes Deployment, Ingress Routing</td>
+</tr>
+<tr>
+<td><strong>Repository</strong></td>
+<td>https://github.com/Cancani/geraeteausleihe-sem4</td>
+</tr>
+<tr>
+<td><strong>GitHub Pages</strong></td>
+<td>https://cancani.com/geraeteausleihe-sem4/</td>
+</tr>
+<tr>
+<td><strong>Project Board</strong></td>
+<td>https://github.com/users/Cancani/projects/3/views/1</td>
+</tr>
+</tbody>
+</table>
+<p>Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient als Ausgangsbasis. In dieser Arbeit steht nicht die fachliche Erweiterung im Vordergrund, sondern die Cloud Native Transformation: Containerisierung, automatisierte CI/CD Pipelines sowie der Betrieb in einem Kubernetes Cluster auf AWS.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>Container Build und Push nach GHCR</li>
+<li>Automatisiertes Deployment nach K3s auf AWS EC2 via GitHub Actions</li>
+<li>Ingress Routing über Traefik und Hostname über nip.io</li>
+<li>Extern erreichbare Endpoints healthz und pdf</li>
+<li>Laufende Dokumentation über MkDocs und GitHub Pages</li>
+</ul>
+<hr />
+<h2 id="ausgangslage-und-problemstellung">Ausgangslage und Problemstellung<a class="headerlink" href="#ausgangslage-und-problemstellung" title="Permanent link">&para;</a></h2>
+<h3 id="ist-zustand">Ist Zustand<a class="headerlink" href="#ist-zustand" title="Permanent link">&para;</a></h3>
+<p>Der Service war zwar technisch lauffähig, der Betrieb und das Deployment waren jedoch zu wenig standardisiert und zu wenig automatisiert. </p>
+<p>Typische Nachteile im Ist Zustand:
+* Deployment Updates waren fehleranfällig und schwer nachvollziehbar
+* Kein konsistentes Release und Tagging Konzept
+* Keine Kubernetes Eigenschaften wie Self Healing und deklarative Deployments
+* Nachweise für Stakeholder fehlten oder wurden erst spät nachgetragen</p>
+<p><strong>Ist Workflow</strong></p>
+<pre><code class="language-mermaid">flowchart LR
+  A[Lokale Änderung am Code] --&gt; B[Manueller Build oder uneinheitlicher Build]
+  B --&gt; C[Manuelles Deployment]
+  C --&gt; D[Service läuft, Status schwer nachvollziehbar]
+</code></pre>
+<hr />
+<h3 id="soll-zustand">Soll Zustand<a class="headerlink" href="#soll-zustand" title="Permanent link">&para;</a></h3>
+<p>Ziel ist ein durchgängig automatisierter Workflow vom Commit bis zum laufenden Pod im Cluster. Jede relevante Änderung soll ein Image bauen, in die Registry pushen und anschliessend automatisiert im K3s Cluster deployed werden.</p>
+<p><strong>Soll Workflow</strong></p>
+<pre><code class="language-mermaid">flowchart LR
+  subgraph GitHub
+    A[Repository] --&gt; B[GitHub Actions]
+    B --&gt; C[GHCR Image]
+    B --&gt; D[GitHub Pages Doku]
+  end
+
+  subgraph AWS
+    E[AWS EC2] --&gt; F[K3s Cluster]
+    F --&gt; G[Traefik Ingress]
+    G --&gt; H[Microservice Pod]
+  end
+
+  C --&gt; H
+  B --&gt; E
+</code></pre>
+<hr />
+<p><strong>Soll Verbesserungen</strong></p>
+<table>
+<thead>
+<tr>
+<th>Verbesserung</th>
+<th>Nutzen</th>
+<th>Umsetzung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatisierter Build und Push</td>
+<td>Reproduzierbar, nachvollziehbar</td>
+<td>GitHub Actions, GHCR</td>
+</tr>
+<tr>
+<td>Automatisierter Deploy</td>
+<td>Schneller und konsistent</td>
+<td>GitHub Actions, kubectl apply</td>
+</tr>
+<tr>
+<td>Deklarative Kubernetes Manifeste</td>
+<td>Standardisiertes Deployment</td>
+<td>Namespace, Deployment, Service, Ingress</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="zielsetzung">Zielsetzung<a class="headerlink" href="#zielsetzung" title="Permanent link">&para;</a></h2>
+<p>Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betriebsumgebung zu überfuehren. Der Fokus liegt auf CI und CD, Kubernetes Deployment, stabiler Erreichbarkeit über Ingress sowie einer laufenden Dokumentation, die den Fortschritt und die Qualität belegt.</p>
+<hr />
+<h3 id="smart-ziele">SMART Ziele<a class="headerlink" href="#smart-ziele" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ziel</th>
+<th>Spezifisch</th>
+<th>Messbar</th>
+<th>Attraktiv</th>
+<th>Realistisch</th>
+<th>Terminiert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI Build und Push</td>
+<td>Container Image wird gebaut und nach GHCR gepusht</td>
+<td>Erfolgreiche Actions Runs und sichtbare Tags</td>
+<td>DevOps Nutzen</td>
+<td>Mit GitHub Actions umsetzbar</td>
+<td>Sprint 2 und 3</td>
+</tr>
+<tr>
+<td>CD Deploy nach K3s</td>
+<td>Manifeste werden applied und Image wird aktualisiert</td>
+<td>Pods laufen, Service extern erreichbar</td>
+<td>Automatisierung</td>
+<td>Mit K3s auf EC2 umsetzbar</td>
+<td>Sprint 2 und 3</td>
+</tr>
+<tr>
+<td>Ingress und Endpoints</td>
+<td>Health und PDF funktionieren extern</td>
+<td>HTTP 200, PDF Response</td>
+<td>Demo fähig</td>
+<td>Traefik und nip.io vorhanden</td>
+<td>Sprint 2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="technologien-und-werkzeuge">Technologien und Werkzeuge<a class="headerlink" href="#technologien-und-werkzeuge" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Technologie</th>
+<th>Begründung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend</td>
+<td>Python Flask</td>
+<td>Schlankes Framework für Microservices</td>
+</tr>
+<tr>
+<td>Containerisierung</td>
+<td>Docker</td>
+<td>Portabilität und reproduzierbarer Betrieb</td>
+</tr>
+<tr>
+<td>Orchestrierung</td>
+<td>K3s</td>
+<td>Kubernetes Betrieb auf einer EC2 Instanz</td>
+</tr>
+<tr>
+<td>Cloud Hosting</td>
+<td>AWS EC2</td>
+<td>Realistische Zielumgebung für DevOps Deployment</td>
+</tr>
+<tr>
+<td>Registry</td>
+<td>GHCR</td>
+<td>In GitHub integriert, einfache Distribution</td>
+</tr>
+<tr>
+<td>CI und CD</td>
+<td>GitHub Actions</td>
+<td>Automatisierung von Build, Push und Deploy</td>
+</tr>
+<tr>
+<td>Ingress</td>
+<td>Traefik</td>
+<td>Routing im Cluster und externe Erreichbarkeit</td>
+</tr>
+<tr>
+<td>Dokumentation</td>
+<td>MkDocs, GitHub Pages</td>
+<td>Versionierte und laufend publizierte Doku</td>
+</tr>
+<tr>
+<td>Projektmanagement</td>
+<td>GitHub Projects, Issues</td>
+<td>Backlog, Schätzungen, Priorisierung, DoD</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="projektmanagement">Projektmanagement<a class="headerlink" href="#projektmanagement" title="Permanent link">&para;</a></h1>
+<h2 id="projektmethodik">Projektmethodik<a class="headerlink" href="#projektmethodik" title="Permanent link">&para;</a></h2>
+<p>Das Projekt folgt einem agilen, scrumähnlichen Vorgehen mit iterativer Entwicklung und regelmässigen Review Zyklen. Die Planung und Nachverfolgung erfolgt vollständig in GitHub.</p>
+<p><strong>Gewählte Methodik: Sprint basierte Entwicklung</strong></p>
+<p>Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:</p>
+<ul>
+<li>Neue technische Themen wie Kubernetes, K3s und CI CD benötigen experimentelles Vorgehen mit kurzen Feedback Schleifen</li>
+<li>Technische Abhängigkeiten werden oft erst während der Umsetzung sichtbar, zum Beispiel Ingress, Host Routing und Secrets Handling</li>
+<li>Dozenten Feedback kann direkt in die nächsten Tasks und in die Dokumentation einfliessen</li>
+<li>Risiken werden früh sichtbar, statt erst am Schluss</li>
+</ul>
+<p><strong>Kernprinzipien der angewandten Methodik</strong></p>
+<ul>
+<li>Iterative Entwicklung mit funktionsfähigen Zwischenständen</li>
+<li>Kontinuierliches Feedback und Anpassung der Prioritäten</li>
+<li>Laufende Nachweisführung, damit der Projektstand jederzeit nachvollziehbar ist</li>
+<li>Klare Definition of Done pro Ticket inklusive Evidence Anforderungen</li>
+</ul>
+<h3 id="sprintstruktur-im-detail">Sprintstruktur im Detail<a class="headerlink" href="#sprintstruktur-im-detail" title="Permanent link">&para;</a></h3>
+<p><strong>Sprint Planning (Sprintbeginn):</strong>
+* Definition von User Stories mit klaren Akzeptanzkriterien
+* Aufwandsschätzung in Story Points
+* Festlegung des Sprintziels als ein Satz Outcome und der Deliverables
+* Sprint Scope im GitHub Project Board zuweisen, Sprint Feld und Milestone setzen</p>
+<p><strong>Sprint Execution (Durchführung):</strong>
+* Kontinuierliche Arbeit an den definierten User Stories
+* GitHub Issues für Aufgaben Tracking und Statusupdates
+* Regelmässige Commits und Pushes, kleine Änderungen statt grosse Sprünge
+* Ticket Status aktuell halten, WIP Limit in Progress maximal 2</p>
+<p><strong>Sprint Review (Sprintende):</strong>
+* Abgleich gegen Sprintziel
+* Review Gespräche mit Dozenten zur Qualitätssicherung
+* Bewertung der Zielerreichung und Identifikation von Verbesserungspotenzialen
+* Evidence Pflicht, Screenshots und Links werden direkt pro Sprint Review dokumentiert</p>
+<p><strong>Sprint Retrospektive:</strong>
+* Reflexion des Arbeitsprozesses mit dem Starfish Modell
+* Identifikation von Start Doing, Stop Doing, Keep Doing, More Of, Less Of</p>
+<p><strong>Vorteile der gewählten Methodik:</strong>
+* Flexibilität, schnelle Anpassung an neue Erkenntnisse, zum Beispiel Ingress Routing oder CI CD Details
+* Qualitätssicherung, regelmässige Reviews verhindern späte Richtungsänderungen
+* Motivation, sichtbare Fortschritte nach jedem Sprint
+* Lernoptimierung, Retrospektiven führen zu kontinuierlicher Prozessverbesserung</p>
+<h2 id="projektphasen-und-meilensteine">Projektphasen und Meilensteine<a class="headerlink" href="#projektphasen-und-meilensteine" title="Permanent link">&para;</a></h2>
+<p>Das Projekt ist in drei Sprints gegliedert. Die Sprintzeiträume entsprechen der ursprünglichen Planung. Inhalte aus Sprint 1 und Sprint 2 wurden in einem späteren Zeitraum konzentriert nachgezogen. Die Dokumentation wird nun strukturiert und evidenzbasiert ergänzt, damit der Stand jederzeit nachvollziehbar ist.</p>
+<h3 id="sprint-progression-im-uberblick">Sprint Progression im Überblick<a class="headerlink" href="#sprint-progression-im-uberblick" title="Permanent link">&para;</a></h3>
+<p><strong>Sprint 1 Projektbasis:</strong><br />
+Aufbau der Projektbasis mit Board Struktur, Labels, Milestones, Issue Standards und erstem Architektur Zielbild.</p>
+<p><strong>Sprint 2 Cluster und Deploy:</strong><br />
+Aufbau der Laufzeitumgebung auf AWS EC2 mit K3s, Kubernetes Ressourcen und Ingress über Traefik. Erste externe Tests der Endpoints.</p>
+<p><strong>Sprint 3 CI CD und Nachweise:</strong><br />
+Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versionierung,
+ Rollback Vorgehen.</p>
+<p>Laufende Nachweise pro Sprint durchgehend.</p>
+<p><img alt="Sprintübersicht" src="../screenshots/Sprintuebersicht.png" /></p>
+<h3 id="zeitplan">Zeitplan<a class="headerlink" href="#zeitplan" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Zeitraum</th>
+<th>Fokus</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sprint 1</strong></td>
+<td>27.10.2025 bis 17.11.2025</td>
+<td>Projektbasis, Board Setup, Standards, Architektur Zielbild</td>
+<td>Abgeschlossen</td>
+</tr>
+<tr>
+<td><strong>Sprint 2</strong></td>
+<td>18.11.2025 bis 15.12.2025</td>
+<td>AWS EC2 und K3s Setup, Kubernetes Manifeste, Ingress, erste externe Tests</td>
+<td>Abgeschlossen</td>
+</tr>
+<tr>
+<td><strong>Sprint 3</strong></td>
+<td>16.12.2025 bis 21.01.2026</td>
+<td>CI CD stabilisieren, Evidence pro Sprint, Dokumentation Finalisierung, Abgabe Vorbereitung</td>
+<td>In Arbeit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="anpassung-der-sprint-planung">Anpassung der Sprint Planung<a class="headerlink" href="#anpassung-der-sprint-planung" title="Permanent link">&para;</a></h2>
+<p>In der praktischen Umsetzung wurden zentrale Inhalte aus Sprint 1 und Sprint 2 in einem späteren Zeitraum konzentriert nachgezogen. Gründe dafür waren parallele Verpflichtungen und die Priorisierung des technischen Fortschritts vor der finalen Dokumentationsform.</p>
+<p>Die Sanierung erfolgt durch folgende Massnahmen:</p>
+<ul>
+<li>Backlog wird konsequent priorisiert und geschätzt</li>
+<li>Definition of Done wird strikt eingehalten, closed Tickets werden bei offenen DoD Punkten wieder geöffnet</li>
+<li>Sprint Reviews enthalten ab jetzt konkrete Nachweise, nicht nur Text</li>
+<li>Status Updates erfolgen regelmässig, inklusive Links auf Board und Dokumentation</li>
+</ul>
+<hr />
+<h2 id="issues-und-user-stories">Issues und User Stories<a class="headerlink" href="#issues-und-user-stories" title="Permanent link">&para;</a></h2>
+<p>Das Projekt umfasst 27 User Stories, US01 bis US27. Alle Stories werden als GitHub Issues geführt und im <a href="https://github.com/users/Cancani/projects/3">GitHub Project Board</a> verwaltet.</p>
+<h3 id="standards-pro-issue">Standards pro Issue<a class="headerlink" href="#standards-pro-issue" title="Permanent link">&para;</a></h3>
+<ul>
+<li>User Story Text</li>
+<li>Akzeptanzkriterien als Checkboxen</li>
+<li>Definition of Done als Checkboxen</li>
+<li>Labels für Priorität und Bereich</li>
+<li>Milestone Zuordnung zu Sprint</li>
+</ul>
+<h3 id="project-board-felder">Project Board Felder<a class="headerlink" href="#project-board-felder" title="Permanent link">&para;</a></h3>
+<p>Die Steuerung erfolgt über folgende Felder im GitHub Project:</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Zweck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>Backlog, Ready, In Progress, Review, Done</td>
+</tr>
+<tr>
+<td>Story Points</td>
+<td>Aufwandsschätzung</td>
+</tr>
+<tr>
+<td>Priorität</td>
+<td>Must, Should, Could</td>
+</tr>
+<tr>
+<td>Sprint</td>
+<td>Sprint 1, Sprint 2, Sprint 3</td>
+</tr>
+<tr>
+<td>DoD erfüllt</td>
+<td>Ja, Nein</td>
+</tr>
+</tbody>
+</table>
+<h3 id="board-workflow">Board Workflow<a class="headerlink" href="#board-workflow" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Spalte</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backlog</td>
+<td>Neue Anforderungen, noch nicht priorisiert</td>
+</tr>
+<tr>
+<td>Ready</td>
+<td>Priorisiert und bereit zur Umsetzung</td>
+</tr>
+<tr>
+<td>In Progress</td>
+<td>Aktive Umsetzung, WIP Limit beachten</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>DoD Kontrolle, Evidence prüfen</td>
+</tr>
+<tr>
+<td>Done</td>
+<td>Abgeschlossen und dokumentiert</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aufwandsschatzung-und-story-points-issues-und-user-stories">Aufwandsschätzung und Story Points (Issues und User Stories)<a class="headerlink" href="#aufwandsschatzung-und-story-points-issues-und-user-stories" title="Permanent link">&para;</a></h3>
+<p>Die Aufwände der einzelnen Issues und User Stories wurden mit Story Points geschätzt.
+Story Points stellen bewusst <strong>keine Zeitangaben</strong> dar, sondern dienen als relative Bewertung
+von Aufwand, Komplexität und Risiko.</p>
+<p>Die Schätzung basiert auf folgenden Kriterien:
+- Technische Komplexität der Aufgabe
+- Anzahl beteiligter Komponenten (Service, CI/CD, Kubernetes, Cloud)
+- Grad der Unsicherheit oder Neuartigkeit der Technologie
+- Erwarteter Analyse-, Test- und Debuggingaufwand
+- Abhängigkeiten zu anderen Tasks</p>
+<p>Es wurde bewusst auf eine Schätzung in Stunden verzichtet,
+da diese insbesondere bei technischen Aufgaben mit hohem Lern- und Analyseanteil
+eine Scheingenauigkeit erzeugen würde.</p>
+<h3 id="priorisierung">Priorisierung<a class="headerlink" href="#priorisierung" title="Permanent link">&para;</a></h3>
+<p>Die Priorisierung der Issues erfolgt zentral im GitHub Project Board
+und ist unabhängig von einzelnen Sprints.
+Ziel der Priorisierung ist es,
+den Fokus auf fachlich und technisch kritische Aufgaben zu legen
+und Abhängigkeiten frühzeitig zu berücksichtigen.</p>
+<p>Die Priorisierung basiert auf folgenden Kriterien:
+- Technische Abhängigkeiten zu anderen Tasks
+- Risiko für den Projektfortschritt oder Betrieb
+- Kritikalität für einen lauffähigen End to End Betrieb
+- Rückmeldungen und Anforderungen der Dozenten</p>
+<p>Die Priorität wird pro Issue explizit festgelegt
+und bleibt über mehrere Sprints hinweg sichtbar.
+Dadurch ist jederzeit nachvollziehbar,
+warum bestimmte Aufgaben früher umgesetzt wurden als andere.</p>
+<p>Die Priorisierung wird im Project Board visuell dargestellt.
+Issues mit der Priorität <strong>Must</strong> sind im Backlog ganz oben angeordnet,
+darunter folgen Issues mit der Priorität <strong>Should</strong>,
+während Issues mit der Priorität <strong>Could</strong> bewusst am unteren Ende des Backlogs platziert sind.</p>
+<p>Diese Anordnung stellt sicher, dass fachlich und technisch zwingend notwendige Aufgaben jederzeit klar erkennbar sind und zuerst in die Sprint Planung einfliessen.</p>
+<p><img alt="Board Priorität" src="../screenshots/Board_Prio.png" /></p>
+<hr />
+<h3 id="verwendete-story-point-skala">Verwendete Story-Point-Skala<a class="headerlink" href="#verwendete-story-point-skala" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Story Points</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sehr kleiner Task, klar abgegrenzt, kaum Risiko</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kleiner Task mit überschaubarem Aufwand</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mittlerer Task mit mehreren Schritten oder Abhängigkeiten</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Komplexer Task oder neue Technologie mit erhöhtem Debuggingaufwand</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Sehr komplexer Task mit hohem Risiko oder vielen Unbekannten</td>
+</tr>
+</tbody>
+</table>
+<p>Die Story Points werden direkt pro Issue im GitHub Project Board gepflegt.
+Zusätzlich ist in jedem Issue eine kurze Begründung der Schätzung dokumentiert.
+Änderungen an Schätzungen wurden transparent im jeweiligen Issue festgehalten.</p>
+<hr />
+<h2 id="sprint-planungen-reviews-retrospektiven">Sprint Planungen, Reviews &amp; Retrospektiven<a class="headerlink" href="#sprint-planungen-reviews-retrospektiven" title="Permanent link">&para;</a></h2>
+<p>Die nachfolgenden Abschnitte dokumentieren den vollständigen Projektverlauf und machen Fortschritte, Entscheidungen und Herausforderungen transparent nachvollziehbar.</p>
+<hr />
+<h3 id="sprint-1-planung-review-und-retrospektive">Sprint 1 Planung, Review und Retrospektive<a class="headerlink" href="#sprint-1-planung-review-und-retrospektive" title="Permanent link">&para;</a></h3>
+<h4 id="sprint-zeitraum">Sprint Zeitraum<a class="headerlink" href="#sprint-zeitraum" title="Permanent link">&para;</a></h4>
+<p>27.10.2025 bis 17.11.2025</p>
+<h4 id="sprintziel">Sprintziel<a class="headerlink" href="#sprintziel" title="Permanent link">&para;</a></h4>
+<p>Projektbasis schaffen, damit Fortschritt und Qualität transparent nachvollziehbar sind. Fokus liegt auf Board Setup, Standards und erstem Architektur Zielbild.</p>
+<p><img alt="Sprint 1 Milestone &amp; Issues" src="../screenshots/Sprint1_1.png" /></p>
+<hr />
+<h4 id="sprint-1-user-stories">Sprint 1 User Stories<a class="headerlink" href="#sprint-1-user-stories" title="Permanent link">&para;</a></h4>
+<p>Die folgenden User Stories gehören zu Sprint 1:</p>
+<p><a href="https://github.com/Cancani/geraeteausleihe-sem4/milestone/1">Link zu Issues auf GitHub Projects</a></p>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Titel</th>
+<th>Bereich</th>
+<th>Story Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US01</td>
+<td>Kanban Board finalisieren</td>
+<td>Projektmanagement</td>
+<td>1</td>
+</tr>
+<tr>
+<td>US02</td>
+<td>Labels anlegen</td>
+<td>Projektmanagement</td>
+<td>1</td>
+</tr>
+<tr>
+<td>US03</td>
+<td>Milestones anlegen</td>
+<td>Projektmanagement</td>
+<td>1</td>
+</tr>
+<tr>
+<td>US04</td>
+<td>Issue Template einrichten</td>
+<td>Projektmanagement</td>
+<td>2</td>
+</tr>
+<tr>
+<td>US05</td>
+<td>Branching Strategie dokumentieren</td>
+<td>Dokumentation</td>
+<td>2</td>
+</tr>
+<tr>
+<td>US06</td>
+<td>Sprint 1 Review und Retro dokumentieren</td>
+<td>Dokumentation</td>
+<td>2</td>
+</tr>
+<tr>
+<td>US07</td>
+<td>Architektur Zielbild skizzieren</td>
+<td>Architektur</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Geplanter Aufwand Sprint 1:</strong> <strong>12 Story Points</strong></p>
+<p><strong>WIP Regel</strong></p>
+<p>In Progress maximal 2 parallel laufende Issues.</p>
+<h4 id="evidence-standard-fur-sprint-1">Evidence Standard für Sprint 1<a class="headerlink" href="#evidence-standard-fur-sprint-1" title="Permanent link">&para;</a></h4>
+<p>Für Sprint 1 werden mindestens folgende Nachweise geplant:</p>
+<ul>
+<li>Screenshot Project Board Übersicht</li>
+<li>Screenshot Labels</li>
+<li>Screenshot Milestones</li>
+<li>Screenshot Issue Template</li>
+<li>Link zur Branching Dokumentation</li>
+<li>Architektur Zielbild als Diagramm</li>
+</ul>
+<hr />
+<h3 id="sprint-1-review">Sprint 1 Review<a class="headerlink" href="#sprint-1-review" title="Permanent link">&para;</a></h3>
+<p><strong>Reviewgespräch Hinweis</strong>
+Für Sprint 1 fand kein Reviewgespräch statt. Rückmeldungen und Hinweise wurden schriftlich via Microsoft Teams ausgetauscht.</p>
+<h4 id="review-ergebnis">Review Ergebnis<a class="headerlink" href="#review-ergebnis" title="Permanent link">&para;</a></h4>
+<p>Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlage für Sprint 2 und Sprint 3.</p>
+<table>
+<thead>
+<tr>
+<th>Review Punkt</th>
+<th>Ergebnis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Board Struktur vorhanden und nachvollziehbar</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Labels vorhanden und konsistent genutzt</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Milestones für Sprints vorhanden</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Issue Template mit Akzeptanzkriterien und DoD vorhanden</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Branching Strategie dokumentiert</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Architektur Zielbild skizziert</td>
+<td>Erfüllt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Umgesetzter Aufwand:</strong> <strong>12 von 12 Story Points</strong></p>
+<p><img alt="Sprint 1 erledigt" src="../screenshots/Sprint1_2.png" /></p>
+<h4 id="board-und-planung">Board und Planung<a class="headerlink" href="#board-und-planung" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Project Board Overview  </li>
+</ul>
+<p><img alt="Project Board Sprint 1" src="../screenshots/Projectboard_Sprint_1.png" /></p>
+<ul>
+<li>Labels  </li>
+</ul>
+<p><img alt="Issue Labels" src="../screenshots/Issue_Labels.png" /></p>
+<ul>
+<li>Milestones </li>
+</ul>
+<p><img alt="Milestones" src="../screenshots/Milestones_Uebersicht.png" /></p>
+<ul>
+<li>Issue Template<br />
+<img alt="Issue Template" src="../screenshots/Issue_Template_1.png" />
+<img alt="Issue Template 2" src="../screenshots/Issue_Template_2.png" /></li>
+</ul>
+<h3 id="sprint-1-retrospektive">Sprint 1 Retrospektive<a class="headerlink" href="#sprint-1-retrospektive" title="Permanent link">&para;</a></h3>
+<p><img alt="Starfish Retrospektive Sprint 1" src="../screenshots/Sprint_1_Retro.png" /></p>
+<p>Die Retrospektive wurde mithilfe des Starfish-Modells durchgeführt und reflektiert die Erfahrungen des ersten Sprints.</p>
+<h3 id="zusammenfassung">Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permanent link">&para;</a></h3>
+<p>Positiv hervorzuheben ist, dass die Projektbasis sauber aufgebaut wurde und damit eine nachvollziehbare Grundlage für die nächsten Sprints entstand. Die Aufgaben wurden konsequent als Issues erfasst, über ein Kanban Board gesteuert und durch definierte Standards wie Akzeptanzkriterien und Definition of Done strukturiert. Dadurch war der Fortschritt bereits in Sprint 1 transparent sichtbar.</p>
+<p>Gleichzeitig zeigte Sprint 1, dass Projektmanagement nicht nur aus der Board Struktur besteht, sondern vor allem aus laufender Evidenz und aktiver Kommunikation. Rückmeldungen erfolgten in Sprint 1 ausschliesslich schriftlich via Teams und ohne separates Reviewgespräch. Dadurch fehlte zeitweise eine klare gemeinsame Standortbestimmung. Ebenfalls wurde deutlich, dass Nachweise und Dokumentation früher und kontinuierlicher gepflegt werden müssen, damit Stakeholder den Projektfortschritt jederzeit prüfen können.</p>
+<p>Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Starfish, Risiko Matrix und Architektur Grafiken konsequent eingesetzt werden sollen. Zudem muss Dozentenfeedback nicht nur gelesen, sondern direkt als Issue erfasst, priorisiert und nachvollziehbar umgesetzt werden. Die Sprint Planung soll ausserdem klar definierte Sprint Goals enthalten, welche am Sprintende explizit überprüft werden.</p>
+<h2 id="empfehlungen-fur-die-nachsten-sprints">Empfehlungen für die nächsten Sprints<a class="headerlink" href="#empfehlungen-fur-die-nachsten-sprints" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Mehr Zeitpuffer beim Sprintbeginn einplanen und Aufgaben früh schätzen  </li>
+<li>Retrospektiven konsequent visuell dokumentieren und konkrete Massnahmen ableiten  </li>
+<li>Nachweise pro erledigtem Ticket sofort ergänzen und nicht erst am Sprintende  </li>
+<li>Dozentenfeedback direkt als Issue erfassen, priorisieren und mit Belegen abschliessen</li>
+</ul>
+<hr />
+<h3 id="sprint-2-planung">Sprint 2 Planung<a class="headerlink" href="#sprint-2-planung" title="Permanent link">&para;</a></h3>
+<h4 id="sprint-zeitraum_1">Sprint Zeitraum<a class="headerlink" href="#sprint-zeitraum_1" title="Permanent link">&para;</a></h4>
+<p>18.11.2025 bis 15.12.2025 (Wurde am 07.01.2026 durch Feedback von Fachdozenten verbessert)</p>
+<h4 id="sprint-ziel">Sprint Ziel<a class="headerlink" href="#sprint-ziel" title="Permanent link">&para;</a></h4>
+<p>Technische Umsetzung für den Cloud Native Betrieb liefern und gleichzeitig die Nachvollziehbarkeit massiv verbessern. Der Fokus liegt auf einem lauffähigen End to End Betrieb mit Container, GHCR, K3s, Kubernetes und Ingress sowie auf sauberen Nachweisen, realistischen Schätzungen und einem sichtbar priorisierten Backlog.</p>
+<p><img alt="Sprint 2 Milestone und Issues" src="../screenshots/Sprint_2_Issues.png" /></p>
+<p><strong>Reviewgespräch Hinweis</strong><br />
+Für Sprint 2 fand kein Reviewgespräch statt. Feedback erfolgte schriftlich via Microsoft Teams durch Corrado Parisi.</p>
+<h4 id="sprint-2-scope">Sprint 2 Scope<a class="headerlink" href="#sprint-2-scope" title="Permanent link">&para;</a></h4>
+<p>Die folgenden Umsetzungspakete gehören zu Sprint 2:</p>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service</td>
+<td>Bestehenden Flask Service aufbereiten, Requirements bereinigen und Tests ausführbar machen</td>
+</tr>
+<tr>
+<td>Containerisierung</td>
+<td>Dockerfile erstellen sowie Image lokal bauen und testen</td>
+</tr>
+<tr>
+<td>Registry</td>
+<td>Build und Push nach GitHub Container Registry (GHCR) mit sinnvollen Tags wie latest und Commit SHA</td>
+</tr>
+<tr>
+<td>Kubernetes</td>
+<td>Namespace, Deployment, Service und Ingress Manifeste erstellen</td>
+</tr>
+<tr>
+<td>Infrastruktur</td>
+<td>AWS EC2 bereitstellen, K3s installieren und Traefik Ingress nutzen</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Manuelles Deployment verifizieren und anschliessend GitHub Actions Deployment auf EC2 umsetzen</td>
+</tr>
+<tr>
+<td>Nachweise</td>
+<td>Pro abgeschlossenem Punkt Belege erfassen wie Screenshots, Logs, curl Ausgaben, kubectl Status und Actions Runs</td>
+</tr>
+<tr>
+<td>PM Verbesserungen</td>
+<td>Board Sichtbarkeit sicherstellen, Schätzungen und Priorisierung einführen sowie DoD in Tickets konsequent schliessen</td>
+</tr>
+<tr>
+<td>Dokumentation</td>
+<td>MkDocs Struktur pflegen, Navigation bereinigen und Grafiken ergänzen</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="sprint-2-user-stories">Sprint 2 User Stories<a class="headerlink" href="#sprint-2-user-stories" title="Permanent link">&para;</a></h4>
+<p>Die folgenden User Stories gehören zu Sprint 2:</p>
+<p><a href="https://github.com/Cancani/geraeteausleihe-sem4/milestone/2">Link zu Issues auf GitHub Projects</a></p>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Titel</th>
+<th>Bereich</th>
+<th>Story Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US08</td>
+<td>EC2 Instanz vorbereiten</td>
+<td>Infrastruktur</td>
+<td>3</td>
+</tr>
+<tr>
+<td>US09</td>
+<td>K3s auf EC2 installieren</td>
+<td>Infrastruktur</td>
+<td>5</td>
+</tr>
+<tr>
+<td>US10</td>
+<td>Namespace und Basis Ressourcen erstellen</td>
+<td>Kubernetes</td>
+<td>2</td>
+</tr>
+<tr>
+<td>US11</td>
+<td>Dockerfile finalisieren</td>
+<td>Containerisierung</td>
+<td>3</td>
+</tr>
+<tr>
+<td>US12</td>
+<td>GHCR Push verifizieren</td>
+<td>Registry</td>
+<td>2</td>
+</tr>
+<tr>
+<td>US13</td>
+<td>Kubernetes Deployment Manifest erstellen</td>
+<td>Kubernetes</td>
+<td>3</td>
+</tr>
+<tr>
+<td>US14</td>
+<td>Kubernetes Service Manifest erstellen</td>
+<td>Kubernetes</td>
+<td>2</td>
+</tr>
+<tr>
+<td>US15</td>
+<td>Ingress konfigurieren</td>
+<td>Kubernetes</td>
+<td>5</td>
+</tr>
+<tr>
+<td>US16</td>
+<td>Readiness und Liveness Probes definieren</td>
+<td>Kubernetes</td>
+<td>3</td>
+</tr>
+<tr>
+<td>US17</td>
+<td>Sprint 2 Review und Retro dokumentieren</td>
+<td>Dokumentation</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Geplanter Aufwand Sprint 2:</strong> <strong>30 Story Points</strong></p>
+<h4 id="wip-regel">WIP Regel<a class="headerlink" href="#wip-regel" title="Permanent link">&para;</a></h4>
+<p>In Progress sind maximal zwei parallel laufende Issues erlaubt.</p>
+<h4 id="evidence-standard-fur-sprint-2">Evidence Standard für Sprint 2<a class="headerlink" href="#evidence-standard-fur-sprint-2" title="Permanent link">&para;</a></h4>
+<p>Für Sprint 2 werden mindestens folgende Nachweise geplant und laufend in die technische Dokumentation ergänzt:</p>
+<ul>
+<li>Screenshot des GHCR Packages mit Tags latest und Commit SHA  </li>
+<li>Screenshot oder Link zu GitHub Actions Runs für Container Build und Deployment  </li>
+<li>Screenshot oder Output von Docker Build und lokalen Tests mit pytest  </li>
+<li>kubectl get nodes und kubectl get pods -A als Nachweis, dass K3s läuft  </li>
+<li>kubectl -n geraeteausleihe get all und get ingress als Nachweis für ein korrektes Deployment  </li>
+<li>curl Nachweise extern  </li>
+<li>/healthz  </li>
+<li>/pdf mit Content Disposition Header  </li>
+<li>Screenshots der relevanten Dokumentationsseiten wie Technische Umsetzung, Projektmanagement und Sprint Review  </li>
+<li>Mindestens eine Grafik für die Architektur und eine Grafik für den CI CD Ablauf  </li>
+<li>Eine Risiko Matrix wird als Grafik erstellt und eingebunden  </li>
+</ul>
+<hr />
+<h3 id="sprint-2-review">Sprint 2 Review<a class="headerlink" href="#sprint-2-review" title="Permanent link">&para;</a></h3>
+<p><strong>Reviewgespräch Hinweis</strong><br />
+Für Sprint 2 fand kein Reviewgespräch statt. Feedback erfolgte schriftlich via Microsoft Teams durch Corrado Parisi.</p>
+<h4 id="review-ergebnis_1">Review Ergebnis<a class="headerlink" href="#review-ergebnis_1" title="Permanent link">&para;</a></h4>
+<p>Sprint 2 wurde umgesetzt. Der Microservice läuft stabil auf AWS EC2 in einem K3s Cluster und ist extern über Traefik Ingress erreichbar. Build und Push nach GHCR funktionieren, sowie ein automatisiertes Deployment per GitHub Actions.</p>
+<table>
+<thead>
+<tr>
+<th>Review Punkt</th>
+<th>Ergebnis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service läuft lokal und im Container</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Tests sind reproduzierbar im Container ausführbar</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Docker Image ist gebaut und lauffähig</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>GHCR enthält Tags latest und Commit SHA</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>AWS EC2 bereitgestellt und erreichbar</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>K3s läuft und kubectl Zugriff ist möglich</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Kubernetes Namespace Deployment Service Ingress angewendet</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Externer Zugriff über nip.io Host funktioniert</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Deployment Workflow setzt Image und prüft Rollout</td>
+<td>Erfüllt</td>
+</tr>
+<tr>
+<td>Nachweise sind zentral dokumentiert</td>
+<td>Erfüllt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Umgesetzter Aufwand:</strong> <strong>27 von 27 Story Points</strong></p>
+<p><img alt="Sprint 2 erledigt" src="../screenshots/Sprint_2_Done.png" /></p>
+<hr />
+<h4 id="dozentenfeedback-und-einbau-in-review">Dozentenfeedback und Einbau in Review<a class="headerlink" href="#dozentenfeedback-und-einbau-in-review" title="Permanent link">&para;</a></h4>
+<p>Das schriftliche Feedback von Corrado Parisi wurde im Verlauf von Sprint 2 aktiv verarbeitet und in Dokumentation sowie Projektorganisation integriert. Die folgenden Punkte wurden umgesetzt und sind in der Dokumentation und im Project Board nachvollziehbar.</p>
+<table>
+<thead>
+<tr>
+<th>Feedback Punkt</th>
+<th>Umsetzung in Sprint 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Risikomatrix fehlt</td>
+<td>Risikomatrix erstellt, bewertet und in der Dokumentation eingebunden</td>
+</tr>
+<tr>
+<td>Board Link liefert 404 und Board ist nicht sichtbar</td>
+<td>Project Link aktualisiert und Sichtbarkeit überprüft</td>
+</tr>
+<tr>
+<td>Sprints sind unterschiedlich lang</td>
+<td>Sprintlängen wurden korrigiert</td>
+</tr>
+<tr>
+<td>Zu wenig Überblick über Projektstand</td>
+<td>Massnahmen seit Feedback am Montag, 05.01.2026 umgesetzt, Status und Nachweise werden laufend gepflegt</td>
+</tr>
+<tr>
+<td>Retro könnte noch mehr Struktur haben</td>
+<td>Retrospektive visuell verbessert und klarer dokumentiert</td>
+</tr>
+<tr>
+<td>Sprint Goals besser formulieren</td>
+<td>Sprint Goals in der Dokumentation präziser formuliert und am Sprintende überprüfbar gestaltet</td>
+</tr>
+<tr>
+<td>Wie schätzt du deine Tasks</td>
+<td>Story Points pro Issue dokumentiert und Aufwand transparent gemacht</td>
+</tr>
+<tr>
+<td>Priorisierung im Backlog sichtbar machen</td>
+<td>Issues nach Priorität im Kanban Board sichtbar gemacht und nach Must Should Could gefiltert</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="sprint-2-retrospektive">Sprint 2 Retrospektive<a class="headerlink" href="#sprint-2-retrospektive" title="Permanent link">&para;</a></h3>
+<p><img alt="Starfish Retrospektive Sprint 2" src="../screenshots/Sprint_2_Retro.png" /></p>
+<p>Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 2. Zusätzlich wurde das schriftliche Dozentenfeedback von Corrado Parisi einbezogen, um konkrete Verbesserungen für Transparenz, Nachvollziehbarkeit und technische Stabilität abzuleiten.</p>
+<h3 id="zusammenfassung_1">Zusammenfassung<a class="headerlink" href="#zusammenfassung_1" title="Permanent link">&para;</a></h3>
+<p>Positiv hervorzuheben ist, dass der Cloud Native Betrieb technisch umgesetzt und stabil lauffähig gemacht wurde. Der Flask Microservice läuft containerisiert, Images werden automatisiert nach GHCR gepusht und der Service ist auf AWS EC2 in einem K3s Cluster über Traefik Ingress extern erreichbar. Damit ist der zentrale Sprint 2 Anspruch erfüllt, einen End to end Betrieb aufzubauen, der über reale Requests von aussen verifiziert werden kann. Ebenso wurde die technische Dokumentation deutlich ausgebaut, sodass wichtige Schritte und Entscheide nachvollziehbar sind.</p>
+<p>Gleichzeitig zeigte Sprint 2 klar, dass technische Umsetzung allein nicht genügt, wenn der Projektstand für Stakeholder nicht jederzeit sichtbar ist. Corrado hat insbesondere fehlende Transparenz kritisiert, zum Beispiel fehlender Überblick über Ziele und Herausforderungen, ein zeitweise nicht zugängliches Board sowie uneinheitliche Sprintlängen. Diese Punkte wurden aufgenommen und korrigiert. Der Board Link wurde aktualisiert, die Sprintlängen wurden konsistenter gestaltet und der Überblick in der Dokumentation wurde verbessert, indem Status, Ziele und nächste Schritte klarer beschrieben wurden. Zusätzlich wurde die Retrospektive visuell stärker aufbereitet und Sprint Goals wurden präziser formuliert.</p>
+<p>Ausserdem wurde deutlich, dass Deploy Automatisierung sehr fehleranfällig ist, wenn Variablen und Image Tags nicht deterministisch gesetzt werden. Mehrere Fehlerquellen entstanden durch falsche Repo und SHA Übernahme und durch unstimmige Workflow Logik. Daraus ergibt sich als wichtiger Lernpunkt, dass CI CD Schritte nicht nur gebaut, sondern auch konsequent mit Rollout Status und externem Health Check verifiziert werden müssen. Im selben Zuge wurde das Thema Schätzung verbessert. Tasks wurden mit Story Points dokumentiert und die Priorisierung im Board wurde sichtbar gemacht, um Abhängigkeiten und kritische Aufgaben zuerst umzusetzen.</p>
+<p>Für die kommenden Sprints wurde festgehalten, dass die Kombination aus stabiler Technik und laufender Evidenz der Schlüssel ist. Dozentenfeedback muss früh erfasst, im Backlog sichtbar priorisiert und durch konkrete Anpassungen nachweisbar umgesetzt werden. Der Schwerpunkt liegt in Sprint 3 darauf, Deploy und Betrieb weiter zu stabilisieren, die Dokumentation als zentrale Quelle konsequent weiterzuführen und den Projektstatus für Dozenten dauerhaft transparent zu halten.</p>
+<hr />
+<h3 id="sprint-3-planung">Sprint 3 Planung<a class="headerlink" href="#sprint-3-planung" title="Permanent link">&para;</a></h3>
+<h4 id="sprint-zeitraum_2">Sprint Zeitraum<a class="headerlink" href="#sprint-zeitraum_2" title="Permanent link">&para;</a></h4>
+<p>15.12.2025 bis 21.01.2026 (Terminorientiert wegen Gespräch mit Corrado am 13.01.2026)</p>
+<h4 id="sprint-ziel_1">Sprint Ziel<a class="headerlink" href="#sprint-ziel_1" title="Permanent link">&para;</a></h4>
+<p>CI und CD für den Cloud Native Betrieb stabil und nachvollziehbar umsetzen. Fokus liegt auf einem reproduzierbaren Build und Push nach GHCR, einem automatischen Deployment nach K3s auf AWS EC2, klarer Tagging Strategie sowie einer vollständigen technischen Dokumentation als Basis für das Gespräch mit Corrado.</p>
+<p><img alt="Sprint 3 Milestone und Issues" src="../screenshots/Sprint_3_Milestone_Issues.png" /></p>
+<p><strong>Reviewgespräch Hinweis</strong><br />
+Für Sprint 3 ist ein Gespräch mit Corrado am 13.01.2026 geplant. Ziel ist es, bis dahin einen stabilen Stand inklusive Nachweisen und Dokumentation vorzeigen zu können.</p>
+<h4 id="sprint-3-scope">Sprint 3 Scope<a class="headerlink" href="#sprint-3-scope" title="Permanent link">&para;</a></h4>
+<p>Die folgenden Umsetzungspakete gehören zu Sprint 3:</p>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI Build</td>
+<td>GitHub Actions Build robust machen und nur bei relevanten Änderungen ausführen</td>
+</tr>
+<tr>
+<td>Registry</td>
+<td>Push nach GHCR mit konsistenten Tags wie latest und Commit SHA sowie lowercase Repository</td>
+</tr>
+<tr>
+<td>Secrets</td>
+<td>Zugriff für GHCR und EC2 sauber über GitHub Secrets abbilden und testen</td>
+</tr>
+<tr>
+<td>CD Deployment</td>
+<td>Automatisches Deployment nach K3s via Workflow, inkl. apply, set image, rollout status</td>
+</tr>
+<tr>
+<td>Tagging</td>
+<td>Tagging Strategie definieren und konsistent in Build und Deploy anwenden</td>
+</tr>
+<tr>
+<td>Tests und Checks</td>
+<td>Pipeline Testlauf als Nachweis dokumentieren, inklusive Logs und Outputs</td>
+</tr>
+<tr>
+<td>Dokumentation</td>
+<td>Technische Dokumentation zu CI, CD und Betrieb aktualisieren und prüfbar machen</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="sprint-3-user-stories">Sprint 3 User Stories<a class="headerlink" href="#sprint-3-user-stories" title="Permanent link">&para;</a></h4>
+<p>Die folgenden User Stories gehören zu Sprint 3:</p>
+<p><a href="https://github.com/Cancani/geraeteausleihe-sem4/milestone/3">Link zu Issues auf GitHub Projects</a></p>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Titel</th>
+<th>Bereich</th>
+<th>Story Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US18</td>
+<td>GitHub Actions Build und Push nach GHCR</td>
+<td>CI</td>
+<td>5</td>
+</tr>
+<tr>
+<td>US19</td>
+<td>Secrets für GHCR und Cluster Zugriff einrichten</td>
+<td>Security</td>
+<td>3</td>
+</tr>
+<tr>
+<td>US20</td>
+<td>CD Workflow deployt nach K3s</td>
+<td>Kubernetes</td>
+<td>5</td>
+</tr>
+<tr>
+<td>US21</td>
+<td>Tagging Strategie dokumentieren und anwenden</td>
+<td>Repo</td>
+<td>3</td>
+</tr>
+<tr>
+<td>US22</td>
+<td>Pipeline Testlauf dokumentieren</td>
+<td>Testing</td>
+<td>3</td>
+</tr>
+<tr>
+<td>US23</td>
+<td>Sprint 3 Review und Retro dokumentieren</td>
+<td>PM</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Geplanter Aufwand Sprint 3:</strong> <strong>21 Story Points</strong></p>
+<h4 id="wip-regel_1">WIP Regel<a class="headerlink" href="#wip-regel_1" title="Permanent link">&para;</a></h4>
+<p>In Progress sind maximal zwei parallel laufende Issues erlaubt.</p>
+<h4 id="evidence-standard-fur-sprint-3">Evidence Standard für Sprint 3<a class="headerlink" href="#evidence-standard-fur-sprint-3" title="Permanent link">&para;</a></h4>
+<p>Für Sprint 3 werden mindestens folgende Nachweise geplant und laufend in die technische Dokumentation ergänzt:</p>
+<ul>
+<li>Screenshot oder Link zu GitHub Actions Run für Build und Push nach GHCR  </li>
+<li>Screenshot GHCR Package mit latest und Commit SHA Tag  </li>
+<li>Screenshot oder Link zu Deploy Workflow Run inklusive Logs  </li>
+<li>Output von kubectl get pods und kubectl rollout status als Rollout Nachweis  </li>
+<li>Screenshot oder Output der gesetzten Image Version im Deployment  </li>
+<li>Externer Health Check Nachweis über den Ingress Host  </li>
+<li>http://geraeteausleihe.13.223.28.53.nip.io/healthz  </li>
+<li>Dokumentierte Tagging Strategie mit Begründung  </li>
+<li>Dokumentierter Pipeline Testlauf als End to End Nachweis  </li>
+</ul>
+<hr />
+<h2 id="sprint-3-review">Sprint 3 Review<a class="headerlink" href="#sprint-3-review" title="Permanent link">&para;</a></h2>
+<p><strong>Reviewgespräch Hinweis</strong><br />
+Für Sprint 3 ist ein Gespräch mit Corrado am 13.01.2026 geplant. Aktuell ist Sprint 3 in Umsetzung. Dieses Review basiert auf dem aktuellen Arbeitsstand und den bereits nachweisbaren Ergebnissen.</p>
+<h3 id="aktueller-stand">Aktueller Stand<a class="headerlink" href="#aktueller-stand" title="Permanent link">&para;</a></h3>
+<p>Sprint 3 fokussiert auf stabile und nachvollziehbare CI und CD. Der Container Build und Push nach GHCR funktioniert. Deploy nach K3s wurde umgesetzt und läuft, inklusive Apply der Manifeste, Setzen des Images und Rollout Kontrolle. Externe Verifikation über den Ingress Host ist möglich und die Endpoints sind erreichbar.</p>
+<h3 id="review-ergebnis_2">Review Ergebnis<a class="headerlink" href="#review-ergebnis_2" title="Permanent link">&para;</a></h3>
+<p>Sprint 3 ist technisch weit fortgeschritten. Der Betrieb ist erreichbar und die Pipeline läuft. Einzelne Punkte sind noch in Arbeit und müssen dokumentiert werden, vor allem die Stabilisierung der Workflow Logik und die laufende Evidence Ablage pro Change.</p>
+<table>
+<thead>
+<tr>
+<th>User Story</th>
+<th>Titel</th>
+<th>Status</th>
+<th>Nachweis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US18</td>
+<td>GitHub Actions Build und Push nach GHCR</td>
+<td>Erledigt</td>
+<td>GitHub Actions Run, GHCR Package Tags</td>
+</tr>
+<tr>
+<td>US19</td>
+<td>Secrets für GHCR und Cluster Zugriff</td>
+<td>Erledigt</td>
+<td>Secrets gesetzt, Deploy Run mit SSH und SCP</td>
+</tr>
+<tr>
+<td>US20</td>
+<td>CD Workflow deployt nach K3s</td>
+<td>In Arbeit</td>
+<td>Deploy läuft, Stabilisierung der Variablen und Pfade</td>
+</tr>
+<tr>
+<td>US21</td>
+<td>Tagging Strategie dokumentieren und anwenden</td>
+<td>Erledigt</td>
+<td>Tags latest und Commit SHA, lowercase Repo</td>
+</tr>
+<tr>
+<td>US22</td>
+<td>Pipeline Testlauf dokumentieren</td>
+<td>In Arbeit</td>
+<td>Screenshot Logs, kubectl Outputs, externe Checks</td>
+</tr>
+<tr>
+<td>US23</td>
+<td>Sprint 3 Review und Retro dokumentieren</td>
+<td>In Arbeit</td>
+<td>Dieser Abschnitt, Retro folgt</td>
+</tr>
+</tbody>
+</table>
+<h3 id="was-ist-aktuell-noch-in-arbeit">Was ist aktuell noch in Arbeit<a class="headerlink" href="#was-ist-aktuell-noch-in-arbeit" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Deploy Workflow Robustheit<br />
+  Variablen müssen deterministisch sein, besonders DEPLOY SHA und Image Referenz, damit nicht wieder ein leeres Repository wie ghcr.io/:sha gesetzt wird</p>
+</li>
+<li>
+<p>Trigger Logik für Container Build<br />
+  Build soll nur bei Service relevanten Änderungen laufen und nicht bei reinen Doku Änderungen wie README</p>
+</li>
+<li>
+<p>Evidence und Nachweise pro Änderung<br />
+  Pro Deployment Run sollen Logs, kubectl Status und externer Health Check als Screenshots oder Text Output abgelegt werden, damit Stakeholder laufend den Stand sehen</p>
+</li>
+</ul>
+<hr />
+<h4 id="sprint-3-retrospektive">Sprint 3 Retrospektive<a class="headerlink" href="#sprint-3-retrospektive" title="Permanent link">&para;</a></h4>
+<hr />
+<h2 id="verwaltung-der-aufgaben">Verwaltung der Aufgaben<a class="headerlink" href="#verwaltung-der-aufgaben" title="Permanent link">&para;</a></h2>
+<p>Die Aufgaben wurden vollständig in <a href="https://github.com/users/Cancani/projects/3/views/1">GitHub Projects</a> organisiert.<br />
+Das Board ist nach Sprints gegliedert und orientiert sich an der Kanban-Struktur mit den Spalten<br />
+<strong>Backlog</strong>, <strong>Ready</strong>, <strong>In Progress</strong>, <strong>Review</strong> und <strong>Done</strong>.  </p>
+<p>Jede Aufgabe ist als <strong>GitHub Issue</strong> (US01 – US27) angelegt und enthält:
+- eine klare <strong>User Story</strong>,
+- <strong>Akzeptanzkriterien</strong> und <strong>Definition of Done</strong> als Checkboxen,
+- eine <strong>Priorität</strong> (Must / Should / Could),
+- die Zuordnung zum <strong>Sprint</strong> als Milestone</p>
+<p><img alt="Project Board" src="../screenshots/Projectboard_Sprint_1.png" /></p>
+<p>Der Fortschritt ist über das Board jederzeit nachvollziehbar:<br />
+Geschlossene Issues wandern automatisch nach „Done“, offene bleiben in „Review“, bis alle DoD-Kriterien erfüllt und Nachweise in der Dokumentation ergänzt sind.<br />
+Diese Struktur sorgt für durchgängige Transparenz im gesamten Projektmanagementprozess.</p>
+<hr />
+<h2 id="wechsel-von-gitlab-zu-github-projects-und-issues">Wechsel von GitLab zu GitHub Projects und Issues<a class="headerlink" href="#wechsel-von-gitlab-zu-github-projects-und-issues" title="Permanent link">&para;</a></h2>
+<h3 id="hintergrund">Hintergrund<a class="headerlink" href="#hintergrund" title="Permanent link">&para;</a></h3>
+<p>Zu Beginn der Semesterarbeit 4 wurde die Projektplanung zunächst provisorisch in GitLab vorbereitet, da das Tool visuell bekannt war und bereits in früheren Arbeiten genutzt wurde.<br />
+Mit dem Start der technischen Umsetzung erfolgte jedoch der Umstieg auf <strong>GitHub Projects</strong>, um Code, Doku und Aufgabenverwaltung auf einer Plattform zu bündeln.  </p>
+<p>Durch diesen Wechsel konnten alle User Stories direkt mit Commits, Pull Requests und Actions-Runs verknüpft werden.<br />
+Damit war es erstmals möglich, Planung, Automatisierung und Deployment vollständig integriert zu führen.</p>
+<hr />
+<h3 id="grunde-fur-den-wechsel">Gründe für den Wechsel<a class="headerlink" href="#grunde-fur-den-wechsel" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Zentrale Plattform:</strong> Code, Doku und Tasks an einem Ort  </li>
+<li><strong>Nachvollziehbarkeit:</strong> Verknüpfung von Issues, Commits und Deployments  </li>
+<li><strong>Automatisierung:</strong> Actions können Status oder Nachweise direkt aktualisieren  </li>
+<li><strong>Klarer Prozess:</strong> Backlog → Sprint → Review → Done (identisch mit Planner, aber nachvollziehbar versioniert)  </li>
+<li><strong>GitHub Labels und Milestones:</strong> Ersetzen Buckets und Fälligkeitsdaten aus Planner  </li>
+<li><strong>Synchronität mit CI/CD:</strong> Automatische Workflows binden den Projektfortschritt direkt an den technischen Build Prozess  </li>
+</ul>
+<hr />
+<h3 id="fazit">Fazit<a class="headerlink" href="#fazit" title="Permanent link">&para;</a></h3>
+<p>Der Wechsel zu GitHub Projects und Issues hat sich als entscheidender Schritt erwiesen.<br />
+Er ermöglicht einen durchgängigen Arbeitsfluss zwischen Code, Automation und Projektmanagement, ohne Tool-Brüche.<br />
+Zudem ist die Nachweisführung durch Screenshots, Actions-Runs und verlinkte Dokumentation klar prüfbar und Versionen lassen sich über Commit-SHAs direkt nachvollziehen.</p>
+<hr />
+<h2 id="swot-analyse">SWOT-Analyse<a class="headerlink" href="#swot-analyse" title="Permanent link">&para;</a></h2>
+<p>Die SWOT-Analyse fasst die internen und externen Faktoren des Projekts zusammen und dient zur Bewertung der technologischen Tragfähigkeit und prozessualen Stabilität. Die SWOT-Analyse bietet einen strukturierten Überblick über die internen Stärken und Schwächen sowie die externen Chancen und Risiken des Projekts. Ziel ist es, das Projekt im Hinblick auf seine technologische, organisatorische und strategische Tragfähigkeit zu reflektieren.</p>
+<p><img alt="SWOT-Analyse" src="../screenshots/SWOT.png" /></p>
+<h3 id="starken">Stärken<a class="headerlink" href="#starken" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Cloud Native Architektur</strong></li>
+<li>Kubernetes ermöglicht skalierbaren und stabilen Betrieb</li>
+<li>
+<p>Self Healing durch automatische Pod Neustarts</p>
+</li>
+<li>
+<p><strong>Automatisierte CI/CD Pipeline</strong></p>
+</li>
+<li>Build, Push und Deployment laufen vollautomatisch</li>
+<li>
+<p>Reduktion von manuellen Fehlern bei Deployments</p>
+</li>
+<li>
+<p><strong>Moderne DevOps Praktiken</strong></p>
+</li>
+<li>Infrastructure as Code Denkweise</li>
+<li>
+<p>Versionierte Deployments über GitHub Container Registry</p>
+</li>
+<li>
+<p><strong>Technologie Unabhängigkeit</strong></p>
+</li>
+<li>Kein Vendor Lock In wie bei proprietären Plattformen</li>
+<li>
+<p>Offene Standards (Docker, Kubernetes, GitHub Actions)</p>
+</li>
+<li>
+<p><strong>Saubere Dokumentation</strong></p>
+</li>
+<li>Projektmanagement und Technik transparent dokumentiert</li>
+<li>GitHub Pages ermöglicht jederzeitigen Zugriff</li>
+</ul>
+<h3 id="schwachen">Schwächen<a class="headerlink" href="#schwachen" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Erhöhte Komplexität</strong></li>
+<li>Kubernetes und CI/CD erfordern tiefere Einarbeitung</li>
+<li>
+<p>Höherer initialer Setup Aufwand</p>
+</li>
+<li>
+<p><strong>Single Node Setup</strong></p>
+</li>
+<li>K3s läuft auf einer einzelnen EC2 Instanz</li>
+<li>
+<p>Keine echte Hochverfügbarkeit</p>
+</li>
+<li>
+<p><strong>Betriebsverantwortung</strong></p>
+</li>
+<li>Wartung und Updates liegen vollständig beim Betreiber</li>
+<li>
+<p>Monitoring und Alerting nur rudimentär umgesetzt</p>
+</li>
+<li>
+<p><strong>Kein Managed Service</strong></p>
+</li>
+<li>Im Vergleich zu EKS mehr manueller Aufwand</li>
+<li>Sicherheitsupdates müssen selbst geplant werden</li>
+</ul>
+<h3 id="chancen">Chancen<a class="headerlink" href="#chancen" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Skalierbarkeit für Zukunft</strong></li>
+<li>Erweiterung auf Multi Node Cluster möglich</li>
+<li>
+<p>Einfache Integration weiterer Microservices</p>
+</li>
+<li>
+<p><strong>Übertragbarkeit auf reale Projekte</strong></p>
+</li>
+<li>Architektur entspricht modernen Unternehmensstandards</li>
+<li>
+<p>Direkter Praxisbezug für DevOps und Cloud Rollen</p>
+</li>
+<li>
+<p><strong>Automatisierungspotenzial</strong></p>
+</li>
+<li>Erweiterbar um Monitoring, Logging und Alerts</li>
+<li>
+<p>GitOps Ansatz später möglich</p>
+</li>
+<li>
+<p><strong>Weiterentwicklung der Anwendung</strong></p>
+</li>
+<li>Anbindung weiterer Systeme oder Services</li>
+<li>
+<p>Trennung von Frontend und Backend möglich</p>
+</li>
+<li>
+<p><strong>Wiederverwendbarkeit</strong></p>
+</li>
+<li>Pipeline und Kubernetes Manifeste können für andere Projekte genutzt werden</li>
+</ul>
+<h3 id="risiken">Risiken<a class="headerlink" href="#risiken" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Fehlkonfigurationen</strong></li>
+<li>Fehler in Kubernetes Manifests können Service Ausfall verursachen</li>
+<li>
+<p>Sicherheitsrelevante Fehlkonfigurationen möglich</p>
+</li>
+<li>
+<p><strong>Kostenrisiken</strong></p>
+</li>
+<li>AWS EC2 Kosten bei längerem Betrieb</li>
+<li>
+<p>Speicher und Traffic Kosten bei Skalierung</p>
+</li>
+<li>
+<p><strong>Know how Abhängigkeit</strong></p>
+</li>
+<li>Betrieb erfordert Kubernetes und Linux Wissen</li>
+<li>
+<p>Fehlende Erfahrung kann zu Ausfällen führen</p>
+</li>
+<li>
+<p><strong>Zeitliche Überforderung</strong></p>
+</li>
+<li>Parallel laufende Module können Zeitdruck erzeugen</li>
+<li>Debugging von CI/CD kann zeitintensiv sein</li>
+</ul>
+<h3 id="fazit-der-swot-analyse">Fazit der SWOT Analyse<a class="headerlink" href="#fazit-der-swot-analyse" title="Permanent link">&para;</a></h3>
+<p>Die Cloud Native Umsetzung bietet klare Vorteile in Bezug auf Automatisierung, Skalierbarkeit und Wartbarkeit.<br />
+Die erhöhte technische Komplexität und der manuelle Betriebsaufwand stellen jedoch Herausforderungen dar.<br />
+Insgesamt überwiegen die Stärken und Chancen, insbesondere im Hinblick auf Lerngewinn und Praxisnähe für moderne IT Betriebsmodelle.</p>
+<hr />
+<h2 id="use-case-diagramm">Use-Case Diagramm<a class="headerlink" href="#use-case-diagramm" title="Permanent link">&para;</a></h2>
+<p>Das Use-Case Diagramm zeigt die Akteure und Interaktionen mit dem Geräteausleihe-System aus technischer Sicht.<br />
+Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration bewerten möchten.</p>
+<p><img alt="Use-Case" src="../screenshots/use_case_diagramm.png" /></p>
+<h3 id="akteure">Akteure<a class="headerlink" href="#akteure" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Akteur</th>
+<th>Rolle</th>
+<th>Berechtigung</th>
+<th>Hauptfunktionen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Developer / Student</strong></td>
+<td>Projektverantwortlicher</td>
+<td>Vollzugriff auf Repo und Cluster</td>
+<td>Code, Deploy, Doku</td>
+</tr>
+<tr>
+<td><strong>Fachdozent</strong></td>
+<td>Reviewer</td>
+<td>Leserechte auf Board und Repo</td>
+<td>Sprint Reviews, Feedback</td>
+</tr>
+<tr>
+<td><strong>AWS System</strong></td>
+<td>Infrastruktur</td>
+<td>Cluster Hosting und Networking</td>
+<td>CI/CD Zielsystem</td>
+</tr>
+<tr>
+<td><strong>GitHub Actions</strong></td>
+<td>Automatisierung</td>
+<td>Build, Push, Deploy</td>
+<td>Workflows, Status, Rollbacks</td>
+</tr>
+<tr>
+<td><strong>Nutzer (PowerApps)</strong></td>
+<td>Externer Konsument</td>
+<td>Zugriff auf /healthz und /pdf</td>
+<td>Nutzung der API</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="use-cases-im-detail">Use-Cases im Detail<a class="headerlink" href="#use-cases-im-detail" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Use-Case</th>
+<th>Beschreibung</th>
+<th>Akteur</th>
+<th>Priorität</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UC1</strong></td>
+<td>Codeänderung pushen</td>
+<td>Developer</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td><strong>UC2</strong></td>
+<td>Workflow ausführen</td>
+<td>GitHub Actions</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td><strong>UC3</strong></td>
+<td>Container bauen und pushen</td>
+<td>GitHub Actions / GHCR</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td><strong>UC4</strong></td>
+<td>Deployment auf K3s durchführen</td>
+<td>GitHub Actions</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td><strong>UC5</strong></td>
+<td>Service testen über /healthz</td>
+<td>Nutzer / Dozent</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td><strong>UC6</strong></td>
+<td>PDF-Endpoint überprüfen</td>
+<td>Nutzer / Dozent</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td><strong>UC7</strong></td>
+<td>Rollback auf älteres Image durchführen</td>
+<td>Developer</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td><strong>UC8</strong></td>
+<td>Dokumentation aktualisieren und deployen</td>
+<td>GitHub Actions</td>
+<td>Mittel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="externe-system-integrationen">Externe System-Integrationen<a class="headerlink" href="#externe-system-integrationen" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Beschreibung</th>
+<th>Use-Cases</th>
+<th>Schnittstelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub Actions</strong></td>
+<td>CI/CD-Automatisierung</td>
+<td>UC1 – UC4, UC8</td>
+<td>Workflow-YAML</td>
+</tr>
+<tr>
+<td><strong>GHCR</strong></td>
+<td>Container Registry für Images</td>
+<td>UC3 – UC4</td>
+<td>Docker API</td>
+</tr>
+<tr>
+<td><strong>AWS EC2</strong></td>
+<td>Hostet den K3s Cluster</td>
+<td>UC4 – UC7</td>
+<td>SSH / kubectl</td>
+</tr>
+<tr>
+<td><strong>K3s Cluster</strong></td>
+<td>Kubernetes Runtime</td>
+<td>UC4 – UC7</td>
+<td>API Server</td>
+</tr>
+<tr>
+<td><strong>PowerApps</strong></td>
+<td>Client Frontend für Nutzer</td>
+<td>UC5 – UC6</td>
+<td>HTTP GET</td>
+</tr>
+<tr>
+<td><strong>GitHub Pages</strong></td>
+<td>Dokumentationshosting</td>
+<td>UC8</td>
+<td>Static Site Deploy</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="geschaftsregeln-und-technische-constraints">Geschäftsregeln und technische Constraints<a class="headerlink" href="#geschaftsregeln-und-technische-constraints" title="Permanent link">&para;</a></h3>
+<p><strong>Berechtigungen:</strong>
+- Nur der Developer darf Deployments ausführen.
+- Dozenten haben Leserechte auf Board, Repo und Doku.
+- GitHub Actions arbeitet mit SSH-Key und Secret Authentication.</p>
+<p><strong>Regeln für Deployments:</strong>
+- Nur Änderungen am Build Kontext lösen einen Container Build aus. Dazu gehören <code>service/</code>, <code>Dockerfile</code> und Dependency Dateien im Service Kontext.
+- Deployments erfolgen nur auf dem Branch <code>main</code>.<br />
+- Erfolgreiche Deployments werden in der Doku unter Evidence pro Sprint nachgewiesen.</p>
+<p><strong>Technische Constraints:</strong>
+- Cluster: Einzelinstanz K3s auf AWS EC2 t3.medium<br />
+- Registry: GHCR öffentlich lesbar, privat schreibgeschützt<br />
+- Keine Persistenz im Cluster, da State nicht Teil des Projekts<br />
+- Keine TLS Zertifikate, da nip.io Host für interne Demo</p>
+<hr />
+<h2 id="risikomatrix">Risikomatrix<a class="headerlink" href="#risikomatrix" title="Permanent link">&para;</a></h2>
+<p>Die Risikomatrix dient zur strukturierten Bewertung potenzieller Risiken im Projekt.</p>
+<p>Bewertet werden Risiken aus den Bereichen <strong>Infrastruktur, Kubernetes, CI/CD, Sicherheit und Betrieb</strong>.<br />
+Die Kombination aus Eintrittswahrscheinlichkeit und Auswirkung zeigt die Dringlichkeit notwendiger Gegenmassnahmen.</p>
+<p><strong>(Stand 07.01.2026)</strong></p>
+<p><img alt="Risikomatrix" src="../screenshots/Risikomatrix_Sem4.png" /></p>
+<h3 id="achsenbeschreibung">Achsenbeschreibung<a class="headerlink" href="#achsenbeschreibung" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Y-Achse:</strong> Eintrittswahrscheinlichkeit<br />
+  (Unwahrscheinlich → Sehr wahrscheinlich)</p>
+</li>
+<li>
+<p><strong>X-Achse:</strong> Auswirkung<br />
+  (Niedrig → Kritisch)</p>
+</li>
+</ul>
+<h3 id="farbbedeutung">Farbbedeutung<a class="headerlink" href="#farbbedeutung" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🟩 Grün: Geringes Risiko  </li>
+<li>🟨 Gelb: Akzeptables Risiko  </li>
+<li>🟧 Orange: Erhöhtes Risiko  </li>
+<li>🔴 Rot: Kritisches Risiko</li>
+</ul>
+<hr />
+<h3 id="risiken-im-detail">Risiken im Detail<a class="headerlink" href="#risiken-im-detail" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Nr.</th>
+<th>Risiko</th>
+<th>Eintritt</th>
+<th>Auswirkung</th>
+<th>Bewertung</th>
+<th>Massnahme / Lösung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Fehlkonfiguration von Kubernetes Manifests (Pods starten nicht)</td>
+<td>Gelegentlich</td>
+<td>Hoch</td>
+<td>Orange</td>
+<td>Manifeste schrittweise testen, <code>kubectl apply --dry-run</code>, Logs prüfen</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>CI Pipeline schlägt fehl durch falsche Secrets oder Tokens</td>
+<td>Wahrscheinlich</td>
+<td>Mittel</td>
+<td>Orange</td>
+<td>Secrets früh testen, klare Namenskonventionen, Test Runs</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Kein Zugriff auf EC2 Instanz (SSH Key verloren oder Security Group Fehler)</td>
+<td>Unwahrscheinlich</td>
+<td>Kritisch</td>
+<td>Gelb</td>
+<td>SSH Keys sichern, Dokumentation der Zugänge, Fallback Zugriff</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Container Image wird nicht korrekt nach GHCR gepusht</td>
+<td>Gelegentlich</td>
+<td>Mittel</td>
+<td>Gelb</td>
+<td>Image Tags prüfen, lowercase Repo Namen erzwingen</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Ingress ist falsch konfiguriert, Service nicht erreichbar</td>
+<td>Gelegentlich</td>
+<td>Hoch</td>
+<td>Orange</td>
+<td>Ingress separat testen, Logs des Ingress Controllers prüfen</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>K3s Dienst oder Node fällt aus (Single Node Setup)</td>
+<td>Selten</td>
+<td>Hoch</td>
+<td>Gelb</td>
+<td>Neustart Strategien dokumentieren, Risiko bewusst akzeptieren</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Fehlende Health Checks führen zu instabilem Betrieb</td>
+<td>Wahrscheinlich</td>
+<td>Mittel</td>
+<td>Orange</td>
+<td>Readiness und Liveness Probes definieren</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Fehlerhafte CI/CD Änderung deployed fehlerhafte Version</td>
+<td>Gelegentlich</td>
+<td>Hoch</td>
+<td>Orange</td>
+<td>Deployment nur über main, saubere Reviews, Rollback via Image Tag</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Dokumentation nicht aktuell zum Projektstand</td>
+<td>Gelegentlich</td>
+<td>Niedrig</td>
+<td>Grün</td>
+<td>Doku als Teil der Definition of Done</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Zeitmangel durch parallele Module und Aufgaben</td>
+<td>Sehr Wahrscheinlich</td>
+<td>Hoch</td>
+<td>Rot</td>
+<td>Priorisierung auf Kernanforderungen, Sprint Planung strikt einhalten</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="einordnung-in-die-risikomatrix">Einordnung in die Risikomatrix<a class="headerlink" href="#einordnung-in-die-risikomatrix" title="Permanent link">&para;</a></h3>
+<p>Die Risiken wurden in der Risikomatrix wie folgt positioniert:</p>
+<ul>
+<li><strong>Orange (erhöhtes Risiko):</strong> 1, 2, 5, 7, 8  </li>
+<li><strong>Gelb (akzeptables Risiko):</strong> 3, 4, 6  </li>
+<li><strong>Grün (geringes Risiko):</strong> 9  </li>
+<li><strong>Rot (kritisch):</strong> 10</li>
+</ul>
+<hr />
+<h3 id="fazit_1">Fazit<a class="headerlink" href="#fazit_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Insgesamt wurden 10 projektrelevante Risiken identifiziert und bewertet.</li>
+<li>Mehrere Risiken befinden sich im orangefarbenen Bereich, was die erhöhte technische Komplexität von Kubernetes und CI/CD widerspiegelt.</li>
+<li>Ein Risiko (Nr. 10: Zeitmangel durch parallele Module und Aufgaben) wurde bewusst als <strong>kritisch (rot)</strong> eingestuft, da die zeitlichen Rahmenbedingungen während des Semesters eine reale und hohe Gefahr darstellen.</li>
+<li>Dieses Risiko wird durch klare Priorisierung der Kernanforderungen, Sprint-Planung sowie konsequente Fokussierung auf Mindestanforderungen aktiv adressiert.</li>
+<li>Insgesamt bleibt das Risikoprofil trotz des identifizierten kritischen Risikos kontrollierbar und angemessen für ein praxisorientiertes Lernprojekt.</li>
+</ul>
+<h1 id="architektur">Architektur<a class="headerlink" href="#architektur" title="Permanent link">&para;</a></h1>
+<p>Die folgenden Abschnitte erklären die drei Diagramme inhaltlich und bezogen auf dein aktuelles Setup mit GitHub, GHCR, AWS EC2, K3s und Traefik Ingress. Externe Erreichbarkeit erfolgt über den Host <code>geraeteausleihe.&lt;EC2_IP&gt;.nip.io</code>, die wichtigsten Endpoints sind <code>/healthz</code> und <code>/pdf</code>.</p>
+<h2 id="deployment-ablauf">Deployment Ablauf<a class="headerlink" href="#deployment-ablauf" title="Permanent link">&para;</a></h2>
+<p>Dieses Diagramm zeigt den Ablauf einer Änderung vom Commit bis zum erfolgreichen Rollout im K3s Cluster.</p>
+<ol>
+<li>Entwickler pusht Änderungen auf den Branch <code>main</code> im GitHub Repository.  </li>
+<li>GitHub triggert den GitHub Actions Workflow aufgrund des Push Events.  </li>
+<li>GitHub Actions baut ein neues Docker Image aus dem aktuellen Repository Stand. Dabei wird der Service reproduzierbar erstellt, inklusive Abhängigkeiten.  </li>
+<li>Das erzeugte Image wird in die GitHub Container Registry GHCR gepusht. Als Tag wird ein eindeutiger Wert genutzt, typischerweise die Commit SHA, damit jede Version klar nachvollziehbar ist.  </li>
+<li>Danach startet der Deploy Schritt. GitHub Actions authentifiziert sich auf die AWS EC2 Instanz, auf der K3s läuft. In deinem Setup passiert das üblicherweise über SSH zur EC2 Instanz und anschliessend über <code>kubectl</code> Befehle im richtigen Cluster Kontext.  </li>
+<li>Mit <code>kubectl apply</code> werden die Kubernetes Manifeste angewendet oder aktualisiert. Damit sind Namespace, Deployment, Service und Ingress definiert.  </li>
+<li>K3s führt ein Rolling Update durch. Neue Pods werden gestartet, Readiness greift, danach werden alte Pods beendet. Der Service bleibt während des Updates erreichbar.  </li>
+<li>Der Workflow prüft den Rollout Status. Bei Erfolg gilt das Deployment als abgeschlossen. Optional kann danach zusätzlich ein externer Smoke Test erfolgen, zum Beispiel ein Request auf <code>http://geraeteausleihe.&lt;EC2_IP&gt;.nip.io/healthz</code>.</li>
+</ol>
+<p>Kernaussage: Jeder Push auf <code>main</code> erzeugt eine neue deployte Version. Der Commit SHA Tag in GHCR dient als Nachweis, welche Version gerade produktiv läuft und ermöglicht ein sauberes Rollback auf eine frühere Version.</p>
+<p><strong>Sequenzdiagramm</strong></p>
+<pre><code class="language-mermaid">sequenceDiagram
+  autonumber
+  participant Dev as Developer
+  participant GH as GitHub
+  participant GA as GitHub Actions
+  participant Reg as GHCR
+  participant K as K3s on EC2
+
+  Dev-&gt;&gt;GH: Push auf main
+  GH-&gt;&gt;GA: Trigger Workflow
+  GA-&gt;&gt;GA: Build Docker Image
+  GA-&gt;&gt;Reg: Push Image Tag commit sha
+  GA-&gt;&gt;K: Auth und kubectl apply
+  K-&gt;&gt;K: Rollout Deployment
+  K--&gt;&gt;GA: Rollout Status ok
+</code></pre>
+<hr />
+<h4 id="flowchart-lr-komponenten-und-datenfluss-von-entwicklung-bis-nutzerzugriff">Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff<a class="headerlink" href="#flowchart-lr-komponenten-und-datenfluss-von-entwicklung-bis-nutzerzugriff" title="Permanent link">&para;</a></h4>
+<p>Dieses Diagramm zeigt die Systemlandschaft und den Datenfluss von links nach rechts, also vom lokalen Arbeiten bis zum Aufruf durch Nutzer.</p>
+<ol>
+<li>Der Entwickler arbeitet lokal am Service, an den Kubernetes Manifesten und an den Workflows.  </li>
+<li>Der Code wird ins GitHub Repository gepusht. Das Repository ist die zentrale Quelle für Source Code, <code>k3s/</code> Manifeste und Workflows unter <code>.github/workflows</code>.  </li>
+<li>Bei einem Push auf <code>main</code> startet GitHub Actions.  </li>
+<li>GitHub Actions baut das Docker Image und pusht es nach GHCR. Dadurch ist das Artefakt zentral verfügbar und eindeutig versioniert.  </li>
+<li>Anschliessend führt GitHub Actions den Deploy Job aus und verbindet sich mit der AWS EC2 Instanz, auf der K3s läuft.  </li>
+<li>In K3s existiert ein Namespace <code>geraeteausleihe</code>. Dort laufen Deployment, Pods, Service und Ingress.  </li>
+<li>Der Ingress wird über Traefik bereitgestellt. Er nimmt externe HTTP Requests an, matched Host und Pfade und leitet den Traffic intern an den Service weiter.  </li>
+<li>Der Service verteilt den Traffic auf die laufenden Pods. Die Pods beantworten die Requests, zum Beispiel <code>/healthz</code> für den Health Check und <code>/pdf</code> für die PDF Ausgabe.  </li>
+<li>Der Nutzer greift extern über <code>geraeteausleihe.&lt;EC2_IP&gt;.nip.io</code> zu. nip.io löst den Host automatisch auf die EC2 IP auf und ersetzt damit eine klassische DNS Konfiguration.</li>
+</ol>
+<p>Kernaussage: Das Diagramm zeigt die saubere Trennung zwischen Artefakt Ebene und Laufzeit Ebene. Das Image entsteht und lebt in GHCR, die Ausführung erfolgt in K3s als Pods, gesteuert durch deklarative Manifeste.</p>
+<pre><code class="language-mermaid">flowchart LR
+  Dev[Developer Laptop] --&gt; Repo[GitHub Repository]
+  Repo --&gt;|push auf main| Actions[GitHub Actions Workflow]
+
+  Actions --&gt; Build[Build Docker Image]
+  Build --&gt; GHCR[GitHub Container Registry]
+
+  Actions --&gt; Deploy[Deploy Job]
+  Deploy --&gt;|kubectl apply| EC2[AWS EC2 Instance]
+  EC2 --&gt; K3s[K3s Cluster]
+
+  K3s --&gt; NS[Namespace]
+  NS --&gt; DEP[Deployment]
+  DEP --&gt; PODS[Pods]
+  NS --&gt; SVC[Service]
+  NS --&gt; ING[Ingress]
+
+  Users[User Browser] --&gt; ING
+  ING --&gt; SVC
+  SVC --&gt; PODS
+
+</code></pre>
+<hr />
+<h4 id="flowchart-tb-interne-kubernetes-struktur-im-cluster">Flowchart TB interne Kubernetes Struktur im Cluster<a class="headerlink" href="#flowchart-tb-interne-kubernetes-struktur-im-cluster" title="Permanent link">&para;</a></h4>
+<p>Dieses Diagramm zoomt in den K3s Cluster hinein und zeigt die internen Kubernetes Objekte und deren Rollen.</p>
+<ol>
+<li>K3s ist die Kubernetes Laufzeitplattform auf deiner AWS EC2 Instanz. Sie übernimmt Scheduling, Rollouts, Self Healing und Cluster Networking.  </li>
+<li>Im Cluster existiert der Namespace <code>geraeteausleihe</code>. Er dient der logischen Trennung, verbessert die Übersicht und erleichtert die Wartung.  </li>
+<li>Das Deployment beschreibt, welches Container Image laufen soll, wie viele Replikate gewünscht sind und welche Ports und Einstellungen der Service braucht.  </li>
+<li>Aus dem Deployment entsteht ein ReplicaSet. Das ReplicaSet stellt sicher, dass die gewünschte Anzahl Pods wirklich läuft. Fällt ein Pod aus, wird automatisch ein neuer erstellt.  </li>
+<li>Die Pods sind die eigentlichen Instanzen deines Flask Microservice. Dort laufen die Endpoints <code>/healthz</code> und <code>/pdf</code>.  </li>
+<li>Der Service vom Typ ClusterIP stellt eine interne stabile Adresse bereit und verteilt Requests an die Pods anhand von Labels.  </li>
+<li>Der Ingress Controller Traefik nimmt externe Requests entgegen. Er leitet sie anhand von Regeln im Ingress Objekt an den Service weiter.  </li>
+<li>Der Nutzer spricht nur den Ingress an. Alles danach passiert intern über Service und Pod Networking.</li>
+</ol>
+<p>Kernaussage: Extern sichtbar ist der Ingress, intern bleibt die Applikation über Service und Deployment abstrahiert. Das entspricht der erwarteten Kubernetes Struktur für stabile Deployments und Rolling Updates.</p>
+<pre><code class="language-mermaid">flowchart TB
+  subgraph K3s[K3s Cluster]
+    subgraph NS[Namespace geraeteausleihe]
+      DEP[Deployment]
+      DEP --&gt; RS[ReplicaSet]
+      RS --&gt; P1[Pod 1]
+      RS --&gt; P2[Pod 2]
+      SVC[Service ClusterIP]
+    end
+
+    INGCTRL[Ingress Controller]
+  end
+
+  Users[User Browser] --&gt; INGCTRL
+  INGCTRL --&gt; SVC
+  SVC --&gt; P1
+  SVC --&gt; P2
+</code></pre>
+<h2 id="ingress-host-handling">Ingress Host Handling<a class="headerlink" href="#ingress-host-handling" title="Permanent link">&para;</a></h2>
+<p>Für die Erreichbarkeit ohne eigene DNS Zone wird nip.io verwendet.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muster</td>
+<td><code>geraeteausleihe.&lt;EC2_IP&gt;.nip.io</code></td>
+</tr>
+<tr>
+<td>Vorteil</td>
+<td>Keine DNS Konfiguration, sofort testbar</td>
+</tr>
+<tr>
+<td>Nachteil</td>
+<td>Nicht geeignet für produktive Umgebungen</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="security-und-betrieb">Security und Betrieb<a class="headerlink" href="#security-und-betrieb" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Umsetzung</th>
+<th>Offener Ausbau</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secrets</td>
+<td>GitHub Secrets, EC2 SSH, Registry Zugriff</td>
+<td>Rotation und Least Privilege</td>
+</tr>
+<tr>
+<td>Probes</td>
+<td>Readiness und Liveness geplant</td>
+<td>Grenzwerte und Fehlerfälle testen</td>
+</tr>
+<tr>
+<td>Logs</td>
+<td>Container Logs über kubectl abrufbar</td>
+<td>Zentrales Logging optional</td>
+</tr>
+<tr>
+<td>Rollback</td>
+<td>Über Image Tags möglich</td>
+<td>Strategie dokumentieren und üben</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="branching-strategie-und-regeln">Branching Strategie und Regeln<a class="headerlink" href="#branching-strategie-und-regeln" title="Permanent link">&para;</a></h1>
+<h2 id="ziel">Ziel<a class="headerlink" href="#ziel" title="Permanent link">&para;</a></h2>
+<p>Die Branching Strategie stellt sicher, dass der <strong>main Branch jederzeit stabil</strong> ist und den Stand für Demo und Abgabe abbildet. Entwicklung und laufende Arbeiten erfolgen auf <strong>develop</strong> oder auf <strong>feature branches</strong>. Die Dokumentation wird über GitHub Pages aus dem Repository veröffentlicht.</p>
+<h2 id="branches">Branches<a class="headerlink" href="#branches" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>main</strong></li>
+<li>Stabiler Stand für Sprint Reviews, Demo und Abgabe</li>
+<li>Änderungen erfolgen nur über Pull Requests</li>
+<li>
+<p>Keine direkten Pushes, sofern Branch Regeln aktiv sind</p>
+</li>
+<li>
+<p><strong>develop</strong></p>
+</li>
+<li>Integrationsbranch für laufende Entwicklung</li>
+<li>Feature branches werden zuerst nach develop gemerged</li>
+<li>
+<p>develop dient als Sammelpunkt bis zum stabilen Merge nach main</p>
+</li>
+<li>
+<p><strong>feature branches</strong></p>
+</li>
+<li>Kurzlebige branches für einzelne Themen oder Issues</li>
+<li>Namensschema Empfehlung:<ul>
+<li><code>feature/us08-ec2-setup</code></li>
+<li><code>feature/us09-k3s-install</code></li>
+<li><code>feature/us20-ci-cd-deploy</code></li>
+</ul>
+</li>
+<li>
+<p>Nach Abschluss wird per Pull Request nach develop gemerged</p>
+</li>
+<li>
+<p><strong>gh-pages</strong></p>
+</li>
+<li>Enthält die generierte GitHub Pages Ausgabe</li>
+<li>Wird ausschliesslich durch den GitHub Actions Workflow aktualisiert</li>
+<li>Keine manuelle Bearbeitung</li>
+</ul>
+<h2 id="merge-flow">Merge Flow<a class="headerlink" href="#merge-flow" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Feature Umsetzung</strong></li>
+<li>feature branch wird von develop erstellt</li>
+<li>Pull Request von feature nach develop</li>
+<li>
+<p>Review und Checks, dann Merge</p>
+</li>
+<li>
+<p><strong>Sprint Stand oder Release</strong></p>
+</li>
+<li>Pull Request von develop nach main</li>
+<li>main wird nur gemerged, wenn der Stand stabil ist</li>
+</ul>
+<h2 id="regeln-und-schutz">Regeln und Schutz<a class="headerlink" href="#regeln-und-schutz" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>main</strong></li>
+<li>Force Push blockiert</li>
+<li>Direkte Pushes blockiert, Merge nur über Pull Request</li>
+<li>
+<p>Status Checks müssen bestehen, falls Workflows definiert sind</p>
+</li>
+<li>
+<p><strong>develop</strong></p>
+</li>
+<li>Direkte Pushes erlaubt, aber bevorzugt über Pull Requests</li>
+<li>
+<p>Force Push blockiert, falls Regeln aktiv sind</p>
+</li>
+<li>
+<p><strong>gh-pages</strong></p>
+</li>
+<li>Branch ist geschützt</li>
+<li>Updates erfolgen nur über den GitHub Actions Workflow</li>
+<li>Keine manuellen Pushes</li>
+</ul>
+<h2 id="dokumentation-und-github-pages">Dokumentation und GitHub Pages<a class="headerlink" href="#dokumentation-und-github-pages" title="Permanent link">&para;</a></h2>
+<p>Die GitHub Pages Dokumentation wird aus dem Repository gebaut. Der Workflow wird nur ausgeführt, wenn relevante Dateien geändert wurden, zum Beispiel <code>docs</code> oder <code>mkdocs.yml</code>. Dadurch bleibt die Pages Ausgabe konsistent mit dem Stand auf main.</p>
+<h2 id="commit-konvention">Commit Konvention<a class="headerlink" href="#commit-konvention" title="Permanent link">&para;</a></h2>
+<p>Konvention: <code>type(scope): message</code></p>
+<p>Beispiele:
+- <strong>docs(pm):</strong> add sprint 1 review and retrospective
+- <strong>docs(arch):</strong> add target architecture overview
+- <strong>ci(pages):</strong> enable docs deployment workflow
+- <strong>ci(cd):</strong> deploy to k3s on push to main
+- <strong>feat(k3s):</strong> add deployment and service manifests
+- <strong>fix(ci):</strong> correct ghcr image tag
+- <strong>chore:</strong> update dependencies</p>
+<h2 id="definition-of-done-fur-branching-doku">Definition of Done für Branching Doku<a class="headerlink" href="#definition-of-done-fur-branching-doku" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Dokumentation ist committed und gepusht</strong></li>
+<li><strong>Merge Flow ist nachvollziehbar beschrieben</strong></li>
+<li><strong>Branch Regeln sind dokumentiert</strong></li>
+<li><strong>Issue US05 ist im Board auf Done</strong></li>
+</ul>
+<h1 id="technische-dokumentation-fortlaufend">Technische Dokumentation (fortlaufend)<a class="headerlink" href="#technische-dokumentation-fortlaufend" title="Permanent link">&para;</a></h1>
+<p>Repository: https://github.com/Cancani/geraeteausleihe-sem4<br />
+GitHub Pages: https://cancani.com/geraeteausleihe-sem4/  </p>
+<p>AWS Region: us-east-1<br />
+EC2 Public IP: 13.223.28.53<br />
+Externer Endpoint: http://geraeteausleihe.13.223.28.53.nip.io  </p>
+<hr />
+<h2 id="ziel-dieser-technischen-dokumentation">Ziel dieser technischen Dokumentation<a class="headerlink" href="#ziel-dieser-technischen-dokumentation" title="Permanent link">&para;</a></h2>
+<p>Diese technische Dokumentation beschreibt den vollständigen Stand bis Ende Sprint 2. Die Dokumentation wird sich im Laufe des Projekts ständig verändern.
+Fokus ist ein lauffähiger End to End Betrieb inklusive Service Code, Tests, Containerisierung, GHCR, AWS EC2, K3s, Kubernetes Ressourcen, GitHub Actions CI und CD sowie nachvollziehbaren Nachweisen.</p>
+<p>Alle Aussagen sind so strukturiert, dass sie mit Commands, Outputs oder Screenshots belegt werden können.</p>
+<hr />
+<h1 id="systemubersicht">Systemübersicht<a class="headerlink" href="#systemubersicht" title="Permanent link">&para;</a></h1>
+<h2 id="zielbild">Zielbild<a class="headerlink" href="#zielbild" title="Permanent link">&para;</a></h2>
+<pre><code class="language-mermaid">flowchart TD
+  subgraph Clients
+    PA[PowerApps Client]
+    BR[Browser]
+  end
+
+  subgraph GitHub
+    REPO[Repository]
+    ACT[GitHub Actions]
+    GHCR[GitHub Container Registry]
+    PAGES[GitHub Pages]
+  end
+
+  subgraph AWS
+    EC2[AWS EC2 Instanz]
+    K3S[K3s Cluster]
+    TRF[Traefik Ingress]
+    SVC[Flask Microservice geraeteausleihe]
+  end
+
+  PA --&gt;|HTTP| TRF
+  BR --&gt;|HTTP| TRF
+  TRF --&gt;|Service Routing| SVC
+
+  REPO --&gt; ACT
+  ACT --&gt;|Build und Push| GHCR
+  ACT --&gt;|kubectl apply, set image| K3S
+  GHCR --&gt;|pull image| SVC
+
+  REPO --&gt;|MkDocs Build| PAGES
+</code></pre>
+<h2 id="komponenten">Komponenten<a class="headerlink" href="#komponenten" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Komponente</th>
+<th>Aufgabe</th>
+<th>Hinweis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PowerApps</td>
+<td>Konsument des Microservice</td>
+<td>Ruft den PDF Endpoint auf</td>
+</tr>
+<tr>
+<td>Flask Microservice</td>
+<td>REST API und PDF Ausgabe</td>
+<td>Läuft containerisiert</td>
+</tr>
+<tr>
+<td>GitHub Actions</td>
+<td>Build, Push, Deploy und Docs</td>
+<td>CI CD und GitHub Pages</td>
+</tr>
+<tr>
+<td>GHCR</td>
+<td>Container Images</td>
+<td>Versionierung über Tags</td>
+</tr>
+<tr>
+<td>AWS EC2</td>
+<td>Compute Basis</td>
+<td>K3s läuft auf der Instanz</td>
+</tr>
+<tr>
+<td>K3s</td>
+<td>Kubernetes Distribution</td>
+<td>Single Node Betrieb</td>
+</tr>
+<tr>
+<td>Traefik Ingress</td>
+<td>HTTP Ingress Controller</td>
+<td>Routing auf Service</td>
+</tr>
+<tr>
+<td>nip.io</td>
+<td>DNS Convenience</td>
+<td>Hostname ohne eigene DNS Zone</td>
+</tr>
+</tbody>
+</table>
+<h2 id="schnittstellen-und-endpunkte">Schnittstellen und Endpunkte<a class="headerlink" href="#schnittstellen-und-endpunkte" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Methode</th>
+<th>Zweck</th>
+<th>Erwartung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>GET</td>
+<td>Basis Response</td>
+<td>Text Response</td>
+</tr>
+<tr>
+<td><code>/healthz</code></td>
+<td>GET</td>
+<td>Health Check</td>
+<td>200 OK mit JSON</td>
+</tr>
+<tr>
+<td><code>/pdf</code></td>
+<td>GET</td>
+<td>PDF Ausgabe für PowerApps</td>
+<td>PDF Response mit Content Disposition Attachment</td>
+</tr>
+</tbody>
+</table>
+<p>Externe Verifikation:</p>
+<pre><code class="language-bash">curl -i http://geraeteausleihe.13.223.28.53.nip.io/
+curl -i http://geraeteausleihe.13.223.28.53.nip.io/healthz
+curl -I &quot;http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&amp;device=Notebook&amp;staff=TBZ&quot;
+</code></pre>
+<p><img alt="Curl Commands Endpoints" src="../screenshots/curl_commands.png" /></p>
+<hr />
+<h1 id="repository-struktur">Repository Struktur<a class="headerlink" href="#repository-struktur" title="Permanent link">&para;</a></h1>
+<h2 id="struktur">Struktur<a class="headerlink" href="#struktur" title="Permanent link">&para;</a></h2>
+<p>Wichtige Bereiche im Repository:</p>
+<ul>
+<li><code>service/</code> Python Flask App</li>
+<li><code>service/test_api.py</code> Pytest Tests</li>
+<li><code>Dockerfile</code> Container Image Build</li>
+<li><code>.github/workflows/</code> Workflows für CI, CD, PR Checks, Docs</li>
+<li><code>k3s/</code> Kubernetes Manifeste (Namespace, Deployment, Service, Ingress)</li>
+<li><code>docs/</code> MkDocs Seiten</li>
+<li><code>mkdocs.yml</code> MkDocs Konfiguration</li>
+</ul>
+<hr />
+<h1 id="python-flask-service">Python Flask Service<a class="headerlink" href="#python-flask-service" title="Permanent link">&para;</a></h1>
+<h2 id="zweck">Zweck<a class="headerlink" href="#zweck" title="Permanent link">&para;</a></h2>
+<p>Der Service stellt eine REST API bereit und erzeugt PDFs für die Geräteausleihe. Nutzung erfolgt durch PowerApps oder Browser. Der Service läuft lokal und produktionsnah im Container mit gunicorn.</p>
+<h2 id="konfiguration">Konfiguration<a class="headerlink" href="#konfiguration" title="Permanent link">&para;</a></h2>
+<p>Umgebungsvariable:
+- <code>PORT</code> wird im Kubernetes Deployment auf <code>8080</code> gesetzt.</p>
+<h2 id="ausfuhrung-lokal">Ausführung Lokal<a class="headerlink" href="#ausfuhrung-lokal" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">cd service
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python app.py
+</code></pre>
+<h2 id="endpoints">Endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h2>
+<h3 id="get">GET /<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
+<p>Erwartung:
+- HTTP 200
+- Text Response</p>
+<pre><code class="language-bash">curl -i http://localhost:8080/
+</code></pre>
+<p><img alt="GET / Lokal" src="../screenshots/GET_Lokal.png" /></p>
+<h3 id="get-healthz">GET /healthz<a class="headerlink" href="#get-healthz" title="Permanent link">&para;</a></h3>
+<p>Erwartung:
+- HTTP 200
+- JSON mit status und timestamp</p>
+<pre><code class="language-bash">curl -i http://localhost:8080/healthz
+</code></pre>
+<p><img alt="GET Healthz" src="../screenshots/get_healthz.png" /></p>
+<h3 id="get-pdf">GET /pdf<a class="headerlink" href="#get-pdf" title="Permanent link">&para;</a></h3>
+<p>Erwartung:
+- HTTP 200
+- PDF Response
+- Content Disposition Attachment</p>
+<pre><code class="language-bash">curl -I &quot;http://localhost:8080/pdf?borrower=Test&amp;device=Notebook&amp;staff=IT&quot;
+</code></pre>
+<p><img alt="GET /PDF" src="../screenshots/get_pdf.png" /></p>
+<hr />
+<h1 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h1>
+<h2 id="ziel_1">Ziel<a class="headerlink" href="#ziel_1" title="Permanent link">&para;</a></h2>
+<p>Automatisierte Tests prüfen die wichtigsten API Endpoints. Fokus liegt auf Response Codes, Content Type und Basis Inhalt.</p>
+<h2 id="besonderheiten-und-losung">Besonderheiten und Lösung<a class="headerlink" href="#besonderheiten-und-losung" title="Permanent link">&para;</a></h2>
+<p>WeasyPrint benötigt System Libraries. Lokale Tests auf Windows waren dadurch aufwendig. Lösung war, die Tests im Docker Container auszuführen.</p>
+<p>Weitere Besonderheit:
+- Bytes Assertions mit Umlauten führten zu Syntax Problemen
+- Lösung: <code>response.get_data(as_text=True)</code></p>
+<h2 id="testausfuhrung-im-container">Testausführung im Container<a class="headerlink" href="#testausfuhrung-im-container" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">docker build -t geraeteausleihe:test .
+docker run --rm geraeteausleihe:test sh -c &quot;pip install pytest &amp;&amp; cd /srv &amp;&amp; pytest -q -p no:cacheprovider test_api.py&quot;
+</code></pre>
+<p>Erwartung:
+- Alle Tests erfolgreich,  <code>5 passed</code></p>
+<p><img alt="Pytest" src="../screenshots/Pytest.png" /></p>
+<hr />
+<h1 id="containerisierung">Containerisierung<a class="headerlink" href="#containerisierung" title="Permanent link">&para;</a></h1>
+<h2 id="dockerfile-ziel">Dockerfile Ziel<a class="headerlink" href="#dockerfile-ziel" title="Permanent link">&para;</a></h2>
+<p>Das Dockerfile baut ein Image auf Basis <code>python:3.11-slim</code>. Es installiert WeasyPrint Abhängigkeiten (pango, cairo, gdk pixbuf und weitere) und startet den Service mit gunicorn.</p>
+<h2 id="lokaler-build-und-run">Lokaler Build und Run<a class="headerlink" href="#lokaler-build-und-run" title="Permanent link">&para;</a></h2>
+<p>Build:</p>
+<pre><code class="language-bash">docker build -t geraeteausleihe:local .
+</code></pre>
+<p>Test im Container:</p>
+<pre><code class="language-bash">docker run --rm -p 8080:8080 geraeteausleihe:local
+</code></pre>
+<p><img alt="Docker Container Run" src="../screenshots/Container_Run.png" /></p>
+<p>Verifikation:</p>
+<pre><code class="language-bash">curl -i http://localhost:8080/healthz
+</code></pre>
+<p><img alt="Verifikation Container" src="../screenshots/Lokale_Endpoints.png" /></p>
+<hr />
+<h1 id="github-container-registry-ghcr">GitHub Container Registry GHCR<a class="headerlink" href="#github-container-registry-ghcr" title="Permanent link">&para;</a></h1>
+<h2 id="naming-und-tagging">Naming und Tagging<a class="headerlink" href="#naming-und-tagging" title="Permanent link">&para;</a></h2>
+<p>Tags:
+- <code>latest</code>
+- Commit SHA, zum Beispiel <code>115b431876813ef6867c26de7e7cf6df0c533809</code></p>
+<p><img alt="GHCR Tags" src="../screenshots/ghcr_package_latest.png" /></p>
+<hr />
+<h1 id="aws-setup">AWS Setup<a class="headerlink" href="#aws-setup" title="Permanent link">&para;</a></h1>
+<h2 id="ec2-instanz">EC2 Instanz<a class="headerlink" href="#ec2-instanz" title="Permanent link">&para;</a></h2>
+<p>Konfiguration:
+- Region: us east 1
+- OS: Ubuntu 22.04
+- Public IP: 13.223.28.53
+- Elastic IP verwendet</p>
+<p><img alt="EC2 Instanz" src="../screenshots/EC2_Instanz.png" /></p>
+<h2 id="security-group">Security Group<a class="headerlink" href="#security-group" title="Permanent link">&para;</a></h2>
+<p>Inbound Rules:
+- 22 SSH
+- 80 HTTP
+- optional 443 später</p>
+<p>Neben den Inbound Regeln der Security Group wurden folgende Host und Zugriffs Massnahmen umgesetzt bzw. als Standard definiert, damit der Zugriff auf die EC2 Instanz kontrolliert bleibt.</p>
+<h4 id="host-hardening-und-zugriff">Host Hardening und Zugriff<a class="headerlink" href="#host-hardening-und-zugriff" title="Permanent link">&para;</a></h4>
+<ol>
+<li>SSH Zugriff erfolgt mit Key Authentisierung, kein Passwort Login</li>
+<li>Root Login ist deaktiviert, Administration erfolgt über einen dedizierten Benutzer mit sudo</li>
+<li>SSH ist auf definierte Quell IP Adressen eingeschränkt, sofern im jeweiligen Netzwerk möglich</li>
+<li>Offen nach aussen sind nur die zwingend benötigten Ports für SSH und HTTP Ingress Traffic</li>
+<li>Applikations Pods sind nicht direkt exponiert, Zugriff erfolgt nur über Ingress via Traefik</li>
+</ol>
+<h4 id="abgrenzung-demo-setup-und-produktiver-betrieb">Abgrenzung Demo Setup und produktiver Betrieb<a class="headerlink" href="#abgrenzung-demo-setup-und-produktiver-betrieb" title="Permanent link">&para;</a></h4>
+<p>Dieses Setup ist als Lern und Demo Umgebung ausgelegt. Folgende Punkte sind bewusst nicht umgesetzt und müssen für Produktion ergänzt werden.</p>
+<ol>
+<li>TLS ist nicht aktiviert, da nip.io verwendet wird und der Fokus auf der Deploy Nachvollziehbarkeit liegt<br />
+   Für Produktion ist TLS via cert manager und validem DNS zwingend</li>
+<li>Kein umfassendes Cluster Hardening wie Network Policies oder Pod Security Standards, da Single Node K3s<br />
+   Für Produktion sollten mindestens Pod Security, Namespace Isolation und Network Policies bewertet werden</li>
+<li>Secrets Management ist im Projekt schlank gehalten<br />
+   Für Produktion wäre ein dediziertes Secret Management wie SOPS oder ein Vault Ansatz sinnvoll</li>
+</ol>
+<hr />
+<h1 id="k3s-installation-und-cluster-zugriff">K3s Installation und Cluster Zugriff<a class="headerlink" href="#k3s-installation-und-cluster-zugriff" title="Permanent link">&para;</a></h1>
+<h2 id="k3s-installation">K3s Installation<a class="headerlink" href="#k3s-installation" title="Permanent link">&para;</a></h2>
+<p>K3s wurde manuell installiert. Traefik ist standardmässig aktiv.</p>
+<p>Nachweise:</p>
+<pre><code class="language-bash">sudo systemctl status k3s
+kubectl get nodes
+kubectl get pods -A
+</code></pre>
+<p><img alt="k3s_status" src="../screenshots/k3s_status.png" />
+<img alt="kubectl get nodes" src="../screenshots/get_nodes.png" /></p>
+<hr />
+<h2 id="kubernetes-ressourcen">Kubernetes Ressourcen<a class="headerlink" href="#kubernetes-ressourcen" title="Permanent link">&para;</a></h2>
+<p>Die App wird über deklarative YAML Manifeste in K3s betrieben. Die Ressourcen sind versioniert im Repository und werden durch GitHub Actions auf die EC2 Instanz ausgerollt.</p>
+<table>
+<thead>
+<tr>
+<th>Manifest</th>
+<th>Ressource</th>
+<th>Zweck</th>
+<th>Wichtige Punkte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>k3s/namespace.yaml</code></td>
+<td>Namespace</td>
+<td>Logische Trennung der App Ressourcen</td>
+<td>eigener Namespace für bessere Übersicht</td>
+</tr>
+<tr>
+<td><code>k3s/deployment.yaml</code></td>
+<td>Deployment</td>
+<td>Pods, Rolling Update, Probes</td>
+<td>Image Tag, Readiness und Liveness auf <code>/healthz</code></td>
+</tr>
+<tr>
+<td><code>k3s/service.yaml</code></td>
+<td>Service ClusterIP</td>
+<td>Interner Zugriff</td>
+<td>stabile interne Adresse für die Pods</td>
+</tr>
+<tr>
+<td><code>k3s/ingress.yaml</code></td>
+<td>Ingress</td>
+<td>Externer Zugriff über Traefik</td>
+<td>Host Routing über nip.io</td>
+</tr>
+</tbody>
+</table>
+<h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
+<p>Anwendung:</p>
+<pre><code class="language-bash">kubectl apply -f k3s/namespace.yaml
+kubectl get ns geraeteausleihe
+</code></pre>
+<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
+<p>Anwendung und Kontrolle:</p>
+<pre><code class="language-bash">kubectl apply -f k3s/deployment.yaml
+kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe
+kubectl -n geraeteausleihe get pods -o wide
+</code></pre>
+<p>Wesentliche Konfiguration im Deployment:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container Port</td>
+<td>8080</td>
+</tr>
+<tr>
+<td>Environment Variable PORT</td>
+<td>8080</td>
+</tr>
+<tr>
+<td>Readiness Probe</td>
+<td>GET <code>/healthz</code></td>
+</tr>
+<tr>
+<td>Liveness Probe</td>
+<td>GET <code>/healthz</code></td>
+</tr>
+<tr>
+<td>Image Pull Policy</td>
+<td>Always</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Deployment K3S" src="../screenshots/deployment_k3s.png" /></p>
+<h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
+<p>Anwendung und Kontrolle:</p>
+<pre><code class="language-bash">kubectl apply -f k3s/service.yaml
+kubectl -n geraeteausleihe get svc
+</code></pre>
+<p><img alt="k3s Service" src="../screenshots/k3s_service.png" /></p>
+<h3 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<p>Anwendung und Kontrolle:</p>
+<pre><code class="language-bash">kubectl apply -f k3s/ingress.yaml
+kubectl -n geraeteausleihe get ingress
+</code></pre>
+<p>Ingress Host: <code>geraeteausleihe.&lt;EC2_IP&gt;.nip.io</code></p>
+<p><img alt="k3s Ingress" src="../screenshots/k3s_ingress.png" /></p>
+<h1 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h1>
+<h2 id="workflow-ubersicht">Workflow Übersicht<a class="headerlink" href="#workflow-ubersicht" title="Permanent link">&para;</a></h2>
+<p>Folgende Workflows sind im Einsatz:</p>
+<ul>
+<li>container-build.yml: Build und Push nach GHCR</li>
+<li>deploy-k3s.yml: Deployment auf EC2 und Rollout Check</li>
+<li>pr-checks.yml: Build, Lint, Tests für PR nach main</li>
+<li>docs-pages.yml: MkDocs Build und Deploy nach gh-pages bei Docs Änderungen auf main</li>
+</ul>
+<p><img alt="Workflows" src="../screenshots/GH_Actions.png" /></p>
+<h2 id="benotigte-secrets">Benötigte Secrets<a class="headerlink" href="#benotigte-secrets" title="Permanent link">&para;</a></h2>
+<p>Erforderlich:
+- EC2_HOST
+- EC2_USER
+- EC2_SSH_KEY</p>
+<p><img alt="Github Actions Secrets" src="../screenshots/GH_Secrets.png" /></p>
+<hr />
+<h1 id="deployment-verifikation">Deployment Verifikation<a class="headerlink" href="#deployment-verifikation" title="Permanent link">&para;</a></h1>
+<h2 id="kubernetes-status">Kubernetes Status<a class="headerlink" href="#kubernetes-status" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">kubectl -n geraeteausleihe get all
+kubectl -n geraeteausleihe get ingress
+</code></pre>
+<p><img alt="Kubernetes Status" src="../screenshots/Kubernetes_Status.png" /></p>
+<h2 id="externe-requests">Externe Requests<a class="headerlink" href="#externe-requests" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">curl -f http://geraeteausleihe.13.223.28.53.nip.io/healthz
+curl -I &quot;http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&amp;device=Notebook&amp;staff=IT&quot;
+</code></pre>
+<p><img alt="Externe Requests" src="../screenshots/Externe_Requests.png" /></p>
+<h1 id="observability">Observability<a class="headerlink" href="#observability" title="Permanent link">&para;</a></h1>
+<p>Observability ist bewusst schlank gehalten und basiert auf Kubernetes Standardmitteln. Ziel ist, dass Betrieb und Fehlersuche ohne zusätzliche Plattform Komponenten nachvollziehbar möglich sind.</p>
+<h2 id="logging-und-events">Logging und Events<a class="headerlink" href="#logging-und-events" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Applikations Logs laufen nach stdout und stderr und werden über Kubernetes bereitgestellt</li>
+<li>Logs pro Pod prüfen</li>
+<li><code>kubectl -n &lt;namespace&gt; logs deploy/&lt;deployment-name&gt;</code></li>
+<li><code>kubectl -n &lt;namespace&gt; logs &lt;pod-name&gt; --previous</code> bei Neustarts</li>
+<li>Events und Status prüfen</li>
+<li><code>kubectl -n &lt;namespace&gt; get pods</code></li>
+<li><code>kubectl -n &lt;namespace&gt; describe pod &lt;pod-name&gt;</code></li>
+<li>Typische Hinweise sind ImagePullBackOff, CrashLoopBackOff, OOMKilled oder fehlende Readiness</li>
+</ol>
+<h2 id="health-checks">Health Checks<a class="headerlink" href="#health-checks" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Der Service stellt einen Health Endpoint bereit für eine einfache Verfügbarkeitsprüfung</li>
+<li>Für stabilen Betrieb sind Readiness und Liveness Probes vorgesehen, damit Traffic nur an gesunde Pods geht und defekte Pods automatisch neu gestartet werden</li>
+</ol>
+<h2 id="monitoring-und-metriken">Monitoring und Metriken<a class="headerlink" href="#monitoring-und-metriken" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Ein zentrales Monitoring Stack ist im Demo Setup nicht integriert</li>
+<li>Für produktiven Betrieb wären Prometheus und Grafana sinnvoll, inklusive Alerts für</li>
+<li>HTTP Fehlerquote</li>
+<li>Latenz</li>
+<li>Pod Restarts</li>
+<li>Ressourcen Auslastung</li>
+</ol>
+<h2 id="screenshots-hinzufugen">Screenshots hinzufügen!!!<a class="headerlink" href="#screenshots-hinzufugen" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Screenshot <code>kubectl -n &lt;namespace&gt; get pods</code> nach erfolgreichem Deploy</li>
+<li>Screenshot <code>kubectl -n &lt;namespace&gt; logs &lt;pod-name&gt;</code> nach einem Request</li>
+<li>Screenshot <code>kubectl -n &lt;namespace&gt; describe pod &lt;pod-name&gt;</code> mit Events Übersicht</li>
+</ol>
+<hr />
+<h1 id="powerapps-integration">PowerApps Integration<a class="headerlink" href="#powerapps-integration" title="Permanent link">&para;</a></h1>
+<h2 id="launch-auf-pdf-endpoint">Launch auf PDF Endpoint<a class="headerlink" href="#launch-auf-pdf-endpoint" title="Permanent link">&para;</a></h2>
+<p>PowerApps ruft <code>/pdf</code> über Launch auf und nutzt EncodeUrl für borrower, device und staff.</p>
+<p><img alt="Heruntergeladene PDF" src="../screenshots/PowerApps.png" /></p>
+<p><strong>Ausgegebene Quittung</strong></p>
+<p><img alt="Screenshot PDF" src="../screenshots/ScreenshotQuittung.png" /></p>
+<hr />
+<h2 id="ci-build-und-push-nach-ghcr">CI: Build und Push nach GHCR<a class="headerlink" href="#ci-build-und-push-nach-ghcr" title="Permanent link">&para;</a></h2>
+<h3 id="ziel_2">Ziel<a class="headerlink" href="#ziel_2" title="Permanent link">&para;</a></h3>
+<p>Das Image soll nur dann gebaut werden, wenn sich service oder Build Artefakte ändern. Zusätzlich soll das Image eindeutig versioniert werden, damit Rollback und Nachvollziehbarkeit möglich sind.</p>
+<h3 id="trigger-logik">Trigger Logik<a class="headerlink" href="#trigger-logik" title="Permanent link">&para;</a></h3>
+<p>Das Container Image wird nur gebaut, wenn sich Dateien ändern, die den Build Kontext beeinflussen.</p>
+<ul>
+<li><code>Dockerfile</code></li>
+<li><code>service/**</code> (Applikationscode und Tests)</li>
+<li>Dependency Dateien im <code>service/</code> Kontext (zum Beispiel <code>requirements*.txt</code>, falls vorhanden)</li>
+<li><code>.github/workflows/container-build.yml</code></li>
+</ul>
+<p>Änderungen an Kubernetes Manifesten unter <code>k3s/**</code> lösen keinen Container Build aus. Sie werden über den Deploy Workflow ausgerollt.</p>
+<p>GHCR verlangt lowercase Repository Namen. Falls das Repository auf GitHub Grossbuchstaben enthält, muss der Image Tag vor dem Push in lowercase umgewandelt werden.</p>
+<p>Container Build: </p>
+<p><img alt="Container Build" src="../screenshots/Container_Build.png" /></p>
+<p>Deploy auf EC2:</p>
+<p><img alt="Deploy K3S" src="../screenshots/deploy_k3s.png" /></p>
+<hr />
+<h3 id="tagging-strategie">Tagging Strategie<a class="headerlink" href="#tagging-strategie" title="Permanent link">&para;</a></h3>
+<p>Es werden zwei Tags verwendet.</p>
+<ul>
+<li>latest als schneller Referenz Tag für den aktuellen Stand</li>
+<li>Commit SHA als deterministische Version, die exakt zu einem Commit passt</li>
+</ul>
+<p>Beispiel.</p>
+<pre><code class="language-text">ghcr.io/cancani/geraeteausleihe-sem4:latest
+ghcr.io/cancani/geraeteausleihe-sem4:&lt;commit_sha&gt;
+</code></pre>
+<p><img alt="Tagging" src="../screenshots/Tagging.png" /></p>
+<hr />
+<h2 id="cd-deployment-nach-k3s-auf-aws-ec2">CD: Deployment nach K3s auf AWS EC2<a class="headerlink" href="#cd-deployment-nach-k3s-auf-aws-ec2" title="Permanent link">&para;</a></h2>
+<h3 id="ordnerstruktur-fur-manifeste">Ordnerstruktur für Manifeste<a class="headerlink" href="#ordnerstruktur-fur-manifeste" title="Permanent link">&para;</a></h3>
+<p>Die Kubernetes Manifeste liegen im Repository im Ordner k3s.</p>
+<ul>
+<li>namespace.yaml</li>
+<li>deployment.yaml</li>
+<li>service.yaml</li>
+<li>ingress.yaml</li>
+</ul>
+<h3 id="deploy-ablauf">Deploy Ablauf<a class="headerlink" href="#deploy-ablauf" title="Permanent link">&para;</a></h3>
+<p>Der Deploy Workflow setzt die Umgebung in folgender Reihenfolge.</p>
+<ol>
+<li>Kubernetes Manifeste auf die EC2 kopieren</li>
+<li>namespace, deployment, service und ingress anwenden</li>
+<li>Ingress Host auf den aktuellen nip.io Host setzen</li>
+<li>Deployment Image auf den passenden Commit Tag setzen</li>
+<li>Rollout prüfen</li>
+</ol>
+<h3 id="haufiger-fehler-invalidimagename">Häufiger Fehler: InvalidImageName<a class="headerlink" href="#haufiger-fehler-invalidimagename" title="Permanent link">&para;</a></h3>
+<p>Symptom.</p>
+<ul>
+<li>Pod Status InvalidImageName</li>
+<li>Deployment zeigt ein Image wie ghcr.io/:<sha></li>
+</ul>
+<p>Typische Ursache.</p>
+<ul>
+<li>Image String wurde aus einer leeren oder nicht verfügbaren Variable zusammengesetzt</li>
+<li>Das kann passieren, wenn Variablen im SSH Script nicht so verfügbar sind wie im GitHub Runner</li>
+</ul>
+<p>Sofortmassnahme auf der EC2.</p>
+<pre><code class="language-bash">kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.template.spec.containers[0].name}{&quot;\n&quot;}{.spec.template.spec.containers[0].image}{&quot;\n&quot;}'
+
+CN=$(kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.template.spec.containers[0].name}')
+kubectl -n geraeteausleihe set image deployment/geraeteausleihe ${CN}=ghcr.io/cancani/geraeteausleihe-sem4:latest
+kubectl -n geraeteausleihe rollout restart deployment/geraeteausleihe
+kubectl -n geraeteausleihe rollout status deployment/geraeteausleihe --timeout=180s
+</code></pre>
+<p>Langfristige Lösung im Workflow.</p>
+<ul>
+<li>Image String im Workflow so zusammensetzen, dass er nicht leer sein kann</li>
+<li>Deploy SHA sauber setzen, je nach Trigger</li>
+<li>workflow run nutzt head sha des Build Runs</li>
+<li>workflow dispatch nutzt den aktuellen github sha</li>
+</ul>
+<h3 id="ingress-host-validierung">Ingress Host Validierung<a class="headerlink" href="#ingress-host-validierung" title="Permanent link">&para;</a></h3>
+<p>Ingress Hosts müssen RFC 1123 konform sein, also nur lowercase, Zahlen, Punkte und Bindestriche, und dürfen nicht mit einem Platzhalter wie CHANGE_ME deployed werden.</p>
+<hr />
+<h2 id="verifikation-nach-dem-deployment">Verifikation nach dem Deployment<a class="headerlink" href="#verifikation-nach-dem-deployment" title="Permanent link">&para;</a></h2>
+<h3 id="kontrolle-auf-der-ec2">Kontrolle auf der EC2<a class="headerlink" href="#kontrolle-auf-der-ec2" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">kubectl -n geraeteausleihe get pods -o wide
+kubectl -n geraeteausleihe get deploy
+kubectl -n geraeteausleihe get ingress
+kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.template.spec.containers[0].image}{&quot;\n&quot;}'
+</code></pre>
+<p>Screenshots:</p>
+<hr />
+<h1 id="betrieb">Betrieb<a class="headerlink" href="#betrieb" title="Permanent link">&para;</a></h1>
+<p>Dieses Kapitel beschreibt den minimalen Betrieb für das Single Node K3s Setup auf AWS EC2. Fokus ist ein reproduzierbarer Ablauf für Deployment, Verifikation, Rollback und Troubleshooting.</p>
+<h2 id="deployment-ablauf_1">Deployment Ablauf<a class="headerlink" href="#deployment-ablauf_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Code Änderung wird in GitHub gepusht</li>
+<li>Container Image wird gebaut und nach GHCR gepusht, nur bei Änderungen im Service Kontext</li>
+<li>Deployment Workflow wendet die Manifeste aus <code>k3s/</code> auf der EC2 Instanz an</li>
+<li>Deployment wird auf das neue Image aktualisiert</li>
+</ol>
+<h2 id="rollback-vorgehen">Rollback Vorgehen<a class="headerlink" href="#rollback-vorgehen" title="Permanent link">&para;</a></h2>
+<p>Ein Rollback ist möglich, falls ein Deployment fehlschlägt oder die Applikation nicht mehr korrekt reagiert.</p>
+<ol>
+<li>Rollout Verlauf prüfen<br />
+<code>kubectl -n &lt;namespace&gt; rollout history deploy/&lt;deployment-name&gt;</code></li>
+<li>Rollback auf vorherige Revision ausführen<br />
+<code>kubectl -n &lt;namespace&gt; rollout undo deploy/&lt;deployment-name&gt;</code></li>
+<li>Status prüfen bis das Deployment wieder Available ist<br />
+<code>kubectl -n &lt;namespace&gt; rollout status deploy/&lt;deployment-name&gt;</code></li>
+<li>Funktionstest über Ingress URL durchführen und Logs kontrollieren</li>
+</ol>
+<h2 id="troubleshooting-checkliste">Troubleshooting Checkliste<a class="headerlink" href="#troubleshooting-checkliste" title="Permanent link">&para;</a></h2>
+<h3 id="ingress-und-routing">Ingress und Routing<a class="headerlink" href="#ingress-und-routing" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ingress Ressource existiert<br />
+<code>kubectl -n &lt;namespace&gt; get ingress</code></li>
+<li>Hostname stimmt und zeigt auf die EC2 IP</li>
+<li>Traefik sieht die Route und liefert keine 404 oder 502 Fehler</li>
+</ol>
+<h3 id="service-und-endpoints">Service und Endpoints<a class="headerlink" href="#service-und-endpoints" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Service zeigt auf die korrekten Labels<br />
+<code>kubectl -n &lt;namespace&gt; describe svc &lt;service-name&gt;</code></li>
+<li>Endpoints sind vorhanden<br />
+<code>kubectl -n &lt;namespace&gt; get endpoints &lt;service-name&gt;</code></li>
+<li>Pods sind Ready, sonst wird kein Traffic geroutet</li>
+</ol>
+<h3 id="pod-fehler">Pod Fehler<a class="headerlink" href="#pod-fehler" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Logs prüfen<br />
+<code>kubectl -n &lt;namespace&gt; logs &lt;pod-name&gt;</code></li>
+<li>Events prüfen<br />
+<code>kubectl -n &lt;namespace&gt; describe pod &lt;pod-name&gt;</code></li>
+<li>Ressourcen Hinweise prüfen, zum Beispiel OOMKilled oder Memory Pressure</li>
+</ol>
+<h3 id="registry-und-image-pull">Registry und Image Pull<a class="headerlink" href="#registry-und-image-pull" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Image Name und Tag sind korrekt im Deployment gesetzt</li>
+<li>Image ist in GHCR vorhanden</li>
+<li>Bei ImagePullBackOff prüfen, ob Pull Rechte und Secret korrekt sind</li>
+</ol>
+<h2 id="wartung-und-betriebshinweise">Wartung und Betriebshinweise<a class="headerlink" href="#wartung-und-betriebshinweise" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Basis Image und Dependencies regelmässig aktualisieren</li>
+<li>GitHub Actions Workflows und verwendete Actions Versionen aktuell halten</li>
+<li>Der Service ist stateless, daher liegt der Fokus auf reproduzierbarem Deploy und Versionierung<br />
+   Für produktiven Betrieb sollten Secrets und Cluster State separat gesichert und verwaltet werden</li>
+</ol>
+<h2 id="nachweise-und-screenshots">Nachweise und Screenshots<a class="headerlink" href="#nachweise-und-screenshots" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Screenshot GitHub Actions Run für Build und Push</li>
+<li>Screenshot GitHub Actions Run für Deploy</li>
+<li>Screenshot <code>kubectl -n &lt;namespace&gt; get all</code> nach erfolgreichem Deploy</li>
+<li>Screenshot erfolgreicher Request über die Ingress URL</li>
+</ol>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Start
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://github.com/Cancani/geraeteausleihe-sem4/edit/master/docs/dokumentation.md">Edit on Cancani/geraeteausleihe-sem4</a>
+      </p>
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
