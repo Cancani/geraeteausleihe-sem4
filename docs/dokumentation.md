@@ -28,7 +28,7 @@ Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient a
 
 * Container Build und Push nach GHCR
 * Automatisiertes Deployment nach K3s auf AWS EC2 via GitHub Actions
-* Ingress Routing über Traefik und Hostname ueber nip.io
+* Ingress Routing über Traefik und Hostname über nip.io
 * Extern erreichbare Endpoints healthz und pdf
 * Laufende Dokumentation über MkDocs und GitHub Pages
 
@@ -198,7 +198,7 @@ Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versio
  
  Laufende Nachweise pro Sprint durchgehend.
 
-![Sprintuebersicht](./screenshots/Sprintuebersicht.png)
+![Sprintübersicht](./screenshots/Sprintuebersicht.png)
 
 ### Zeitplan
 
@@ -998,7 +998,7 @@ Dieses Diagramm zeigt den Ablauf einer Änderung vom Commit bis zum erfolgreiche
 5. Danach startet der Deploy Schritt. GitHub Actions authentifiziert sich auf die AWS EC2 Instanz, auf der K3s läuft. In deinem Setup passiert das üblicherweise über SSH zur EC2 Instanz und anschliessend über `kubectl` Befehle im richtigen Cluster Kontext.  
 6. Mit `kubectl apply` werden die Kubernetes Manifeste angewendet oder aktualisiert. Damit sind Namespace, Deployment, Service und Ingress definiert.  
 7. K3s führt ein Rolling Update durch. Neue Pods werden gestartet, Readiness greift, danach werden alte Pods beendet. Der Service bleibt während des Updates erreichbar.  
-8. Der Workflow prüft den Rollout Status. Bei Erfolg gilt das Deployment als abgeschlossen. Optional kann danach zusätzlich ein externer Smoke Test erfolgen, zum Beispiel ein Request auf `https://geraeteausleihe.<EC2_IP>.nip.io/healthz`.
+8. Der Workflow prüft den Rollout Status. Bei Erfolg gilt das Deployment als abgeschlossen. Optional kann danach zusätzlich ein externer Smoke Test erfolgen, zum Beispiel ein Request auf `http://geraeteausleihe.<EC2_IP>.nip.io/healthz`.
 
 Kernaussage: Jeder Push auf `main` erzeugt eine neue deployte Version. Der Commit SHA Tag in GHCR dient als Nachweis, welche Version gerade produktiv läuft und ermöglicht ein sauberes Rollback auf eine frühere Version.
 
@@ -1213,7 +1213,7 @@ Beispiele:
 Repository: https://github.com/Cancani/geraeteausleihe-sem4  
 GitHub Pages: https://cancani.com/geraeteausleihe-sem4/  
 
-AWS Region: us east 1  
+AWS Region: us-east-1  
 EC2 Public IP: 13.223.28.53  
 Externer Endpoint: http://geraeteausleihe.13.223.28.53.nip.io  
 
