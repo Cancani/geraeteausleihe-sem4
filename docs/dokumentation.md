@@ -1452,6 +1452,27 @@ Inbound Rules:
 - 80 HTTP
 - optional 443 später
 
+Neben den Inbound Regeln der Security Group wurden folgende Host und Zugriffs Massnahmen umgesetzt bzw. als Standard definiert, damit der Zugriff auf die EC2 Instanz kontrolliert bleibt.
+
+#### Host Hardening und Zugriff
+
+1. SSH Zugriff erfolgt mit Key Authentisierung, kein Passwort Login
+2. Root Login ist deaktiviert, Administration erfolgt über einen dedizierten Benutzer mit sudo
+3. SSH ist auf definierte Quell IP Adressen eingeschränkt, sofern im jeweiligen Netzwerk möglich
+4. Offen nach aussen sind nur die zwingend benötigten Ports für SSH und HTTP Ingress Traffic
+5. Applikations Pods sind nicht direkt exponiert, Zugriff erfolgt nur über Ingress via Traefik
+
+#### Abgrenzung Demo Setup und produktiver Betrieb
+
+Dieses Setup ist als Lern und Demo Umgebung ausgelegt. Folgende Punkte sind bewusst nicht umgesetzt und müssen für Produktion ergänzt werden.
+
+1. TLS ist nicht aktiviert, da nip.io verwendet wird und der Fokus auf der Deploy Nachvollziehbarkeit liegt  
+   Für Produktion ist TLS via cert manager und validem DNS zwingend
+2. Kein umfassendes Cluster Hardening wie Network Policies oder Pod Security Standards, da Single Node K3s  
+   Für Produktion sollten mindestens Pod Security, Namespace Isolation und Network Policies bewertet werden
+3. Secrets Management ist im Projekt schlank gehalten  
+   Für Produktion wäre ein dediziertes Secret Management wie SOPS oder ein Vault Ansatz sinnvoll
+
 ---
 
 # K3s Installation und Cluster Zugriff
@@ -1577,6 +1598,42 @@ curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Not
 
 
 ![Externe Requests](./screenshots/Externe_Requests.png)
+
+# Observability
+
+Observability ist bewusst schlank gehalten und basiert auf Kubernetes Standardmitteln. Ziel ist, dass Betrieb und Fehlersuche ohne zusätzliche Plattform Komponenten nachvollziehbar möglich sind.
+
+## Logging und Events
+
+1. Applikations Logs laufen nach stdout und stderr und werden über Kubernetes bereitgestellt
+2. Logs pro Pod prüfen
+   1. `kubectl -n <namespace> logs deploy/<deployment-name>`
+   2. `kubectl -n <namespace> logs <pod-name> --previous` bei Neustarts
+3. Events und Status prüfen
+   1. `kubectl -n <namespace> get pods`
+   2. `kubectl -n <namespace> describe pod <pod-name>`
+   3. Typische Hinweise sind ImagePullBackOff, CrashLoopBackOff, OOMKilled oder fehlende Readiness
+
+## Health Checks
+
+1. Der Service stellt einen Health Endpoint bereit für eine einfache Verfügbarkeitsprüfung
+2. Für stabilen Betrieb sind Readiness und Liveness Probes vorgesehen, damit Traffic nur an gesunde Pods geht und defekte Pods automatisch neu gestartet werden
+
+## Monitoring und Metriken
+
+1. Ein zentrales Monitoring Stack ist im Demo Setup nicht integriert
+2. Für produktiven Betrieb wären Prometheus und Grafana sinnvoll, inklusive Alerts für
+   1. HTTP Fehlerquote
+   2. Latenz
+   3. Pod Restarts
+   4. Ressourcen Auslastung
+
+## Screenshots hinzufügen!!!
+
+1. Screenshot `kubectl -n <namespace> get pods` nach erfolgreichem Deploy
+2. Screenshot `kubectl -n <namespace> logs <pod-name>` nach einem Request
+3. Screenshot `kubectl -n <namespace> describe pod <pod-name>` mit Events Übersicht
+
 
 ---
 
