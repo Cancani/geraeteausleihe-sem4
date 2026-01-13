@@ -1770,3 +1770,71 @@ kubectl -n geraeteausleihe get deploy geraeteausleihe -o jsonpath='{.spec.templa
 Screenshots:
 
 ---
+
+# Betrieb
+
+Dieses Kapitel beschreibt den minimalen Betrieb für das Single Node K3s Setup auf AWS EC2. Fokus ist ein reproduzierbarer Ablauf für Deployment, Verifikation, Rollback und Troubleshooting.
+
+## Deployment Ablauf
+
+1. Code Änderung wird in GitHub gepusht
+2. Container Image wird gebaut und nach GHCR gepusht, nur bei Änderungen im Service Kontext
+3. Deployment Workflow wendet die Manifeste aus `k3s/` auf der EC2 Instanz an
+4. Deployment wird auf das neue Image aktualisiert
+
+## Rollback Vorgehen
+
+Ein Rollback ist möglich, falls ein Deployment fehlschlägt oder die Applikation nicht mehr korrekt reagiert.
+
+1. Rollout Verlauf prüfen  
+   `kubectl -n <namespace> rollout history deploy/<deployment-name>`
+2. Rollback auf vorherige Revision ausführen  
+   `kubectl -n <namespace> rollout undo deploy/<deployment-name>`
+3. Status prüfen bis das Deployment wieder Available ist  
+   `kubectl -n <namespace> rollout status deploy/<deployment-name>`
+4. Funktionstest über Ingress URL durchführen und Logs kontrollieren
+
+## Troubleshooting Checkliste
+
+### Ingress und Routing
+
+1. Ingress Ressource existiert  
+   `kubectl -n <namespace> get ingress`
+2. Hostname stimmt und zeigt auf die EC2 IP
+3. Traefik sieht die Route und liefert keine 404 oder 502 Fehler
+
+### Service und Endpoints
+
+1. Service zeigt auf die korrekten Labels  
+   `kubectl -n <namespace> describe svc <service-name>`
+2. Endpoints sind vorhanden  
+   `kubectl -n <namespace> get endpoints <service-name>`
+3. Pods sind Ready, sonst wird kein Traffic geroutet
+
+### Pod Fehler
+
+1. Logs prüfen  
+   `kubectl -n <namespace> logs <pod-name>`
+2. Events prüfen  
+   `kubectl -n <namespace> describe pod <pod-name>`
+3. Ressourcen Hinweise prüfen, zum Beispiel OOMKilled oder Memory Pressure
+
+### Registry und Image Pull
+
+1. Image Name und Tag sind korrekt im Deployment gesetzt
+2. Image ist in GHCR vorhanden
+3. Bei ImagePullBackOff prüfen, ob Pull Rechte und Secret korrekt sind
+
+## Wartung und Betriebshinweise
+
+1. Basis Image und Dependencies regelmässig aktualisieren
+2. GitHub Actions Workflows und verwendete Actions Versionen aktuell halten
+3. Der Service ist stateless, daher liegt der Fokus auf reproduzierbarem Deploy und Versionierung  
+   Für produktiven Betrieb sollten Secrets und Cluster State separat gesichert und verwaltet werden
+
+## Nachweise und Screenshots
+
+1. Screenshot GitHub Actions Run für Build und Push
+2. Screenshot GitHub Actions Run für Deploy
+3. Screenshot `kubectl -n <namespace> get all` nach erfolgreichem Deploy
+4. Screenshot erfolgreicher Request über die Ingress URL
