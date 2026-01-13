@@ -446,7 +446,7 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 
 #### Sprint Zeitraum
 
-18.11.2025 bis 15.12.2025 (Wurde am 07.01.2025 durch Feedback von Fachdozenten verbessert)
+18.11.2025 bis 15.12.2025 (Wurde am 07.01.2026 durch Feedback von Fachdozenten verbessert)
 
 #### Sprint Ziel
 
@@ -923,7 +923,7 @@ Die Risikomatrix dient zur strukturierten Bewertung potenzieller Risiken im Proj
 Bewertet werden Risiken aus den Bereichen **Infrastruktur, Kubernetes, CI/CD, Sicherheit und Betrieb**.  
 Die Kombination aus Eintrittswahrscheinlichkeit und Auswirkung zeigt die Dringlichkeit notwendiger Gegenmassnahmen.
 
-**(Stand 07.01.2025)**
+**(Stand 07.01.2026)**
 
 ![Risikomatrix](./screenshots/Risikomatrix_Sem4.png)
 
