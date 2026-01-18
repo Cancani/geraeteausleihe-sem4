@@ -748,6 +748,8 @@ Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Pus
 6. Screenshot externer Health Check Request auf /healthz
 7. Screenshot GitHub Project Board mit sichtbaren Labels für Priorität und Story Points
 
+![Sprint 3 Milestone Fertig](./screenshots/Sprint_3_Milestones_Fertig.png)
+
 
 ### Sprint 3 Retrospektive
 
