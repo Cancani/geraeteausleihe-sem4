@@ -753,18 +753,17 @@ Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Pus
 
 Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 3, inklusive des Feedbacks aus dem Reviewgespräch mit Corrado Parisi.
 
+![Sprint 3 Retro](./screenshots/Sprint_3_Retro.png)
+
 #### Start Doing
 
-1. Priorität und Story Points direkt auf den Board Karten sichtbar machen, damit der Projektstand für Dritte ohne Klicks verständlich ist.
-2. Evidence konsequent pro Change ablegen, direkt nach jedem Deploy Run, nicht erst gesammelt am Sprintende.
-3. Kurze visuelle Nachweise ergänzen, zum Beispiel eine Mini Demo als GIF.
-4. Risiko Entwicklung über Zeit als Visualisierung prüfen und einbauen, damit Fortschritt bei Risiken sichtbar wird.
+1. Kurze visuelle Nachweise ergänzen, zum Beispiel eine Mini Demo als GIF.
+2. Risiko Entwicklung über Zeit als Visualisierung prüfen und einbauen, damit Fortschritt bei Risiken sichtbar wird.
 
 #### Stop Doing
 
 1. Platzhalter Überschriften wie Screenshots hinzufügen ohne direkte Umsetzung stehen lassen.
-2. Technische Nachweise nur als Text erwähnen, ohne mindestens einen Screenshot oder Output pro Kernpunkt.
-3. Uneinheitliche Begriffe in Board und Doku verwenden, zum Beispiel unterschiedliche Namen für dieselben Artefakte.
+2. Uneinheitliche Begriffe in Board und Doku verwenden, zum Beispiel unterschiedliche Namen für dieselben Artefakte.
 
 #### Keep Doing
 
