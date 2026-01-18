@@ -26,10 +26,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install dependencies (forced same python)
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install --no-cache-dir -r requirements.txt
+          python -m pip list
 
       - name: Build documentation
         run: |
