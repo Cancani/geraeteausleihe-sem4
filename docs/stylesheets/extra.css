@@ -1,21 +1,17 @@
-/* Grundlayout */
 body {
   font-size: 16px;
   line-height: 1.65;
 }
 
-/* Seitenbreite */
 .md-grid {
   max-width: 1400px;
 }
 
-/* Haupttitel */
 h1 {
   font-weight: 600;
   margin-bottom: 1.5rem;
 }
 
-/* Kapitel */
 h2 {
   margin-top: 2.5rem;
   padding-bottom: 0.3rem;
@@ -23,7 +19,6 @@ h2 {
   font-weight: 600;
 }
 
-/* Unterkapitel */
 h3 {
   margin-top: 1.8rem;
   font-weight: 600;
@@ -34,7 +29,6 @@ h4 {
   font-weight: 600;
 }
 
-/* Tabellen */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -57,7 +51,6 @@ table tr:hover {
   background-color: #f1f5f9;
 }
 
-/* Code */
 code {
   font-size: 0.9em;
 }
@@ -66,7 +59,6 @@ pre code {
   font-size: 0.85em;
 }
 
-/* Mermaid */
 .mermaid {
   display: flex;
   justify-content: center;
@@ -74,18 +66,4 @@ pre code {
 
 .mermaid svg {
   max-width: 900px;
-}
-
-/* Buttons */
-a.md-button {
-  padding: 10px 16px;
-  border-radius: 6px;
-  background-color: #2563eb;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-a.md-button:hover {
-  background-color: #1e40af;
 }

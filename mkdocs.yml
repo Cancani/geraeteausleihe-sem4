@@ -8,25 +8,30 @@ theme:
   features:
     - toc.integrate
     - content.code.copy
-    - navigation.instant
-    - navigation.tracking
 
 nav:
   - Start: index.md
   - Dokumentation: dokumentation.md
 
 markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
   - toc:
       permalink: true
       toc_depth: 4
-  - admonition
-  - fenced_code
-  - codehilite
-  - tables
-  - attr_list
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+  - mermaid2
 
 extra_css:
-  - extra.css
+  - stylesheets/extra.css
 
 extra_javascript:
-  - mermaid-force.js
+  - javascripts/mermaid-force.js
