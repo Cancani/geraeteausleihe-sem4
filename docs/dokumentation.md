@@ -1921,9 +1921,9 @@ Ein Rollback ist möglich, falls ein Deployment fehlschlägt oder die Applikatio
 3. Der Service ist stateless, daher liegt der Fokus auf reproduzierbarem Deploy und Versionierung  
    Für produktiven Betrieb sollten Secrets und Cluster State separat gesichert und verwaltet werden
 
-## Nachweise und Screenshots
 
-1. Screenshot GitHub Actions Run für Build und Push
-2. Screenshot GitHub Actions Run für Deploy
-3. Screenshot `kubectl -n <namespace> get all` nach erfolgreichem Deploy
-4. Screenshot erfolgreicher Request über die Ingress URL
+## App-Demo
+
+Das folgende .gif zeigt die Geräteausleihe und das erhalten einer Quittung durch die EC2-Instanz.
+
+[Demo Geräteausleihe](./screenshots/Demo_Geraeteausleihe.gif)
