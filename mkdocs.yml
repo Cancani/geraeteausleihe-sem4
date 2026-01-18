@@ -8,6 +8,7 @@ theme:
   features:
     - toc.integrate
     - content.code.copy
+    - navigation.tracking
 
 nav:
   - Start: index.md

@@ -1,19 +1,17 @@
 # Dokumentation
 
-## Inhaltsverzeichnis
-{:toc}
 
-# Projektdefinition
+## Projektdefinition
 
 
-## Einreichungsformular
+### Einreichungsformular
 
 Das Einreichungsformular kann hier entnommen werden:  
 [ITCNE24 Semesterarbeit 4 Einreichungsformular](./Efekan_Einreichungsformular_4.SemesterV2.docx)
 
 ---
 
-## Projektübersicht
+### Projektübersicht
 
 | Eigenschaft | Details |
 |---|---|
@@ -134,9 +132,9 @@ Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betri
 
 ---
 
-# Projektmanagement
+## Projektmanagement
 
-## Projektmethodik
+### Projektmethodik
 
 Das Projekt folgt einem agilen, scrumähnlichen Vorgehen mit iterativer Entwicklung und regelmässigen Review Zyklen. Die Planung und Nachverfolgung erfolgt vollständig in GitHub.
 
@@ -186,11 +184,11 @@ Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 * Motivation, sichtbare Fortschritte nach jedem Sprint
 * Lernoptimierung, Retrospektiven führen zu kontinuierlicher Prozessverbesserung
 
-## Projektphasen und Meilensteine
+### Projektphasen und Meilensteine
 
 Das Projekt ist in drei Sprints gegliedert. Die Sprintzeiträume entsprechen der ursprünglichen Planung. Inhalte aus Sprint 1 und Sprint 2 wurden in einem späteren Zeitraum konzentriert nachgezogen. Die Dokumentation wird nun strukturiert und evidenzbasiert ergänzt, damit der Stand jederzeit nachvollziehbar ist.
 
-### Sprint Progression im Überblick
+#### Sprint Progression im Überblick
 
 **Sprint 1 Projektbasis:**  
 Aufbau der Projektbasis mit Board Struktur, Labels, Milestones, Issue Standards und erstem Architektur Zielbild.
@@ -206,7 +204,7 @@ Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versio
 
 ![Sprintübersicht](./screenshots/Sprintuebersicht.png)
 
-### Zeitplan
+#### Zeitplan
 
 | Sprint       | Zeitraum                  | Fokus                                                                                      | Status        |
 | ------------ | ------------------------- | ------------------------------------------------------------------------------------------ | ------------- |
@@ -431,7 +429,7 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 Die Retrospektive wurde mithilfe des Starfish-Modells durchgeführt und reflektiert die Erfahrungen des ersten Sprints.
 
-### Zusammenfassung
+#### Zusammenfassung
 
 Positiv hervorzuheben ist, dass die Projektbasis sauber aufgebaut wurde und damit eine nachvollziehbare Grundlage für die nächsten Sprints entstand. Die Aufgaben wurden konsequent als Issues erfasst, über ein Kanban Board gesteuert und durch definierte Standards wie Akzeptanzkriterien und Definition of Done strukturiert. Dadurch war der Fortschritt bereits in Sprint 1 transparent sichtbar.
 
@@ -439,7 +437,7 @@ Gleichzeitig zeigte Sprint 1, dass Projektmanagement nicht nur aus der Board Str
 
 Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Starfish, Risiko Matrix und Architektur Grafiken konsequent eingesetzt werden sollen. Zudem muss Dozentenfeedback nicht nur gelesen, sondern direkt als Issue erfasst, priorisiert und nachvollziehbar umgesetzt werden. Die Sprint Planung soll ausserdem klar definierte Sprint Goals enthalten, welche am Sprintende explizit überprüft werden.
 
-## Empfehlungen für die nächsten Sprints
+#### Empfehlungen für die nächsten Sprints
 
 - Mehr Zeitpuffer beim Sprintbeginn einplanen und Aufgaben früh schätzen  
 - Retrospektiven konsequent visuell dokumentieren und konkrete Massnahmen ableiten  
@@ -577,7 +575,7 @@ Das schriftliche Feedback von Corrado Parisi wurde im Verlauf von Sprint 2 aktiv
 
 Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 2. Zusätzlich wurde das schriftliche Dozentenfeedback von Corrado Parisi einbezogen, um konkrete Verbesserungen für Transparenz, Nachvollziehbarkeit und technische Stabilität abzuleiten.
 
-### Zusammenfassung
+#### Zusammenfassung
 
 Positiv hervorzuheben ist, dass der Cloud Native Betrieb technisch umgesetzt und stabil lauffähig gemacht wurde. Der Flask Microservice läuft containerisiert, Images werden automatisiert nach GHCR gepusht und der Service ist auf AWS EC2 in einem K3s Cluster über Traefik Ingress extern erreichbar. Damit ist der zentrale Sprint 2 Anspruch erfüllt, einen End to end Betrieb aufzubauen, der über reale Requests von aussen verifiziert werden kann. Ebenso wurde die technische Dokumentation deutlich ausgebaut, sodass wichtige Schritte und Entscheide nachvollziehbar sind.
 
@@ -658,18 +656,18 @@ Für Sprint 3 werden mindestens folgende Nachweise geplant und laufend in die te
 ---
 
 
-## Sprint 3 Review
+### Sprint 3 Review
 
 **Sprint Review mit Parisi Corrado 13.01.2026**
 
 **Reviewgespräch Hinweis**  
 Für Sprint 3 fand ein Reviewgespräch mit Corrado Parisi am 13.01.2026 statt. Im Gespräch wurde der aktuelle Stand der Projektdokumentation und des GitHub Projekts gemeinsam geprüft und direkt Feedback dazu gegeben.
 
-### Kontext
+#### Kontext
 
 Im Call wurde vor allem der aktuelle Stand der Dokumentation, die GitHub Pages Darstellung sowie das GitHub Project Board besprochen. Corrado hat sich die Änderungen während des Calls angesehen und Rückmeldungen zur Qualität, Nachvollziehbarkeit und Präsentation des Projektstands gegeben.
 
-### Positive Rückmeldungen
+#### Positive Rückmeldungen
 
 1. Die Dokumentation wirkt deutlich verbessert und übersichtlicher als zuvor.
 2. Die Navigation wurde adressiert und wirkt jetzt deutlich besser.
@@ -678,34 +676,34 @@ Im Call wurde vor allem der aktuelle Stand der Dokumentation, die GitHub Pages D
 5. Ergänzungen wie die Risikomatrix wurden ausdrücklich positiv bewertet.
 6. Insgesamt wurde bestätigt, dass damit viele Punkte gewonnen werden können und dass der Stand nach viel Arbeit aussieht.
 
-### Projektmanagement und Board
+#### Projektmanagement und Board
 
 1. WIP Regel ist vorhanden und sinnvoll, konkret maximal 2 parallele Issues.
 2. Schätzungen wurden thematisiert und als sinnvoll bewertet.
 3. Fibonacci Sequenz für Story Points wurde als passend bestätigt, weil es um relative Grössen und nicht um exakte Zeiten geht.
 4. Empfehlung: Prioritäten und Schätzungen direkt auf den Karten im GitHub Board sichtbar machen, zum Beispiel über Labels, damit es für Dritte sofort ersichtlich ist. Dazu soll ein Screenshot in die Dokumentation.
 
-### Dokumentation und Nachweise
+#### Dokumentation und Nachweise
 
 1. Sprint Review Logik wurde angesprochen: pro Sprint klar zeigen, welche Ziele geplant waren und wie sie erreicht wurden.
 2. Wenn ein Ziel nicht erreicht wird, ist das okay. Es soll sauber dokumentiert werden, inklusive was in den nächsten Sprint wandert.
 3. Hyperlinks als Nachweis sind optional, können aber helfen, wenn es sinnvoll ist.
 
-### Risikomatrix
+#### Risikomatrix
 
 1. Risikomatrix soll laufend gepflegt werden.
 2. Zusätzliche Idee: Risiko Entwicklung über Zeit visualisieren, damit erkennbar wird, ob Risiken kleiner oder grösser werden. Dazu soll ein Beispiel Screenshot geliefert werden.
 
-### Vorschläge für zusätzliche Verbesserungen
+#### Vorschläge für zusätzliche Verbesserungen
 
 1. Burndown Chart wäre ein starker Zusatz, falls GitHub Projects das unterstützt oder sich alternativ darstellen lässt.
 2. Eine kurze Demo als GIF aufnehmen und in die Dokumentation einbauen, damit der Effekt sofort sichtbar ist. Philipp soll dabei explizit markiert werden.
 
-### Inhaltliche Detailkritik
+#### Inhaltliche Detailkritik
 
 1. Ein kleiner Punkt im Use Case Bereich: ein Eintrag wie Deployment System wirkt dort eventuell nicht passend platziert und könnte optisch besser umgeordnet werden.
 
-### Review Ergebnis
+#### Review Ergebnis
 
 Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Push nach GHCR sind nachvollziehbar, CD Deployment nach K3s läuft und die Nachweise sind zentral über GitHub Pages auffindbar. Das Review hat bestätigt, dass der Projektstand deutlich professioneller wirkt, insbesondere durch die strukturierte Dokumentation, den Pull Request Workflow und die Ergänzungen im Projektmanagement.
 
@@ -722,7 +720,7 @@ Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Pus
 
 **Umgesetzter Aufwand:** **21 von 21 Story Points**
 
-### Sprint 3 User Stories und Status
+#### Sprint 3 User Stories und Status
 
 | User Story | Titel | Status | Nachweis |
 |---|---|---|---|
@@ -733,14 +731,14 @@ Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Pus
 | US22 | Pipeline Testlauf dokumentieren | Erledigt | Logs, kubectl Outputs, externe Requests |
 | US23 | Sprint 3 Review und Retro dokumentieren | Erledigt | Dieser Abschnitt, Retro ergänzt |
 
-### Offene Punkte und nächste Schritte
+#### Offene Punkte und nächste Schritte
 
 1. Burndown Chart Darstellung im GitHub Projekt prüfen und falls möglich ergänzen.
 2. Optional eine sehr kurze Demo als GIF erstellen und in die Dokumentation einbauen, Philipp dabei markieren.
 3. Risiko Entwicklung Visualisierung prüfen, Beispiel kommt via Screenshot.
 4. Use Case Darstellung optisch prüfen und Eintrag Deployment System passend umordnen.
 
-### Nachweise und Screenshots für Sprint 3
+#### Nachweise und Screenshots für Sprint 3
 
 1. Screenshot GitHub Actions Run Build und Push
 2. Screenshot GitHub Actions Run Deploy
@@ -751,42 +749,42 @@ Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Pus
 7. Screenshot GitHub Project Board mit sichtbaren Labels für Priorität und Story Points
 
 
-#### Sprint 3 Retrospektive
+### Sprint 3 Retrospektive
 
 Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 3, inklusive des Feedbacks aus dem Reviewgespräch mit Corrado Parisi.
 
-### Start Doing
+#### Start Doing
 
 1. Priorität und Story Points direkt auf den Board Karten sichtbar machen, damit der Projektstand für Dritte ohne Klicks verständlich ist.
 2. Evidence konsequent pro Change ablegen, direkt nach jedem Deploy Run, nicht erst gesammelt am Sprintende.
 3. Kurze visuelle Nachweise ergänzen, zum Beispiel eine Mini Demo als GIF.
 4. Risiko Entwicklung über Zeit als Visualisierung prüfen und einbauen, damit Fortschritt bei Risiken sichtbar wird.
 
-### Stop Doing
+#### Stop Doing
 
 1. Platzhalter Überschriften wie Screenshots hinzufügen ohne direkte Umsetzung stehen lassen.
 2. Technische Nachweise nur als Text erwähnen, ohne mindestens einen Screenshot oder Output pro Kernpunkt.
 3. Uneinheitliche Begriffe in Board und Doku verwenden, zum Beispiel unterschiedliche Namen für dieselben Artefakte.
 
-### Keep Doing
+#### Keep Doing
 
 1. Pull Request Workflow beibehalten, weil er Nachvollziehbarkeit und Qualität erhöht.
 2. GitHub Pages als zentrale Projektseite beibehalten, weil Dozenten und Stakeholder damit alles an einem Ort prüfen können.
 3. WIP Limit maximal 2 beibehalten, weil es Fokus und Durchsatz verbessert.
 4. End to End Verifikation regelmässig durchführen, kubectl Status plus externe Requests.
 
-### More Of
+#### More Of
 
 1. Visualisierung und klare Sprint Ziele mit messbaren Ergebnissen, damit Reviews schneller prüfbar sind.
 2. Projektmanagement Nachweise weiter ausbauen, zum Beispiel Board Screenshot pro Sprint mit sichtbaren Prioritäten und Schätzungen.
 3. Kleine, reproduzierbare Commands und Outputs als Evidence, statt lange Freitexte.
 
-### Less Of
+#### Less Of
 
 1. Manuelle Server Eingriffe ohne dokumentierten Grund und ohne Nachweis.
 2. Späte Dokumentations Updates kurz vor Reviews, stattdessen kontinuierlich.
 
-### Fazit
+#### Fazit
 
 Sprint 3 hat bestätigt, dass die Kombination aus stabiler Technik und sichtbarer Evidence entscheidend ist. Das Review Feedback hat vor allem die starke Verbesserung der Dokumentation und des Workflows bestätigt. Der wichtigste nächste Schritt ist, den Projektstand für Dritte noch schneller erfassbar zu machen, insbesondere über sichtbare Prioritäten und Schätzungen im Board sowie zusätzliche visuelle Evidence.
 
@@ -1080,11 +1078,11 @@ Die Risiken wurden in der Risikomatrix wie folgt positioniert:
 - Dieses Risiko wird durch klare Priorisierung der Kernanforderungen, Sprint-Planung sowie konsequente Fokussierung auf Mindestanforderungen aktiv adressiert.
 - Insgesamt bleibt das Risikoprofil trotz des identifizierten kritischen Risikos kontrollierbar und angemessen für ein praxisorientiertes Lernprojekt.
 
-# Architektur
+## Architektur
 
 Die folgenden Abschnitte erklären die drei Diagramme inhaltlich und bezogen auf dein aktuelles Setup mit GitHub, GHCR, AWS EC2, K3s und Traefik Ingress. Externe Erreichbarkeit erfolgt über den Host `geraeteausleihe.<EC2_IP>.nip.io`, die wichtigsten Endpoints sind `/healthz` und `/pdf`.
 
-## Deployment Ablauf
+### Deployment Ablauf
 
 Dieses Diagramm zeigt den Ablauf einer Änderung vom Commit bis zum erfolgreichen Rollout im K3s Cluster.
 
@@ -1121,7 +1119,7 @@ sequenceDiagram
 ```
 ___
 
-#### Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
+### Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
 
 Dieses Diagramm zeigt die Systemlandschaft und den Datenfluss von links nach rechts, also vom lokalen Arbeiten bis zum Aufruf durch Nutzer.
 
@@ -1164,7 +1162,7 @@ flowchart LR
 
 ---
 
-#### Flowchart TB interne Kubernetes Struktur im Cluster
+### Flowchart TB interne Kubernetes Struktur im Cluster
 
 Dieses Diagramm zoomt in den K3s Cluster hinein und zeigt die internen Kubernetes Objekte und deren Rollen.
 
@@ -1224,12 +1222,12 @@ Für die Erreichbarkeit ohne eigene DNS Zone wird nip.io verwendet.
 
 ---
 
-# Branching Strategie und Regeln
+## Branching Strategie und Regeln
 
-## Ziel
+### Ziel
 Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil** ist und den Stand für Demo und Abgabe abbildet. Entwicklung und laufende Arbeiten erfolgen auf **develop** oder auf **feature branches**. Die Dokumentation wird über GitHub Pages aus dem Repository veröffentlicht.
 
-## Branches
+### Branches
 
 - **main**
   - Stabiler Stand für Sprint Reviews, Demo und Abgabe
@@ -1256,7 +1254,7 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
 
 
 
-## Merge Flow
+### Merge Flow
 
 - **Feature Umsetzung**
   - feature branch wird von develop erstellt
@@ -1267,7 +1265,7 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
   - Pull Request von develop nach main
   - main wird nur gemerged, wenn der Stand stabil ist
 
-## Regeln und Schutz
+### Regeln und Schutz
 
 - **main**
   - Force Push blockiert
@@ -1283,10 +1281,10 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
   - Updates erfolgen nur über den GitHub Actions Workflow
   - Keine manuellen Pushes
 
-## Dokumentation und GitHub Pages
+### Dokumentation und GitHub Pages
 Die GitHub Pages Dokumentation wird aus dem Repository gebaut. Der Workflow wird nur ausgeführt, wenn relevante Dateien geändert wurden, zum Beispiel `docs` oder `mkdocs.yml`. Dadurch bleibt die Pages Ausgabe konsistent mit dem Stand auf main.
 
-## Commit Konvention
+### Commit Konvention
 Konvention: `type(scope): message`
 
 Beispiele:
@@ -1298,14 +1296,14 @@ Beispiele:
 - **fix(ci):** correct ghcr image tag
 - **chore:** update dependencies
 
-## Definition of Done für Branching Doku
+### Definition of Done für Branching Doku
 - **Dokumentation ist committed und gepusht**
 - **Merge Flow ist nachvollziehbar beschrieben**
 - **Branch Regeln sind dokumentiert**
 - **Issue US05 ist im Board auf Done**
 
 
-# Technische Dokumentation (fortlaufend)
+## Technische Dokumentation (fortlaufend)
 
 Repository: https://github.com/Cancani/geraeteausleihe-sem4  
 GitHub Pages: https://cancani.com/geraeteausleihe-sem4/  
@@ -1316,7 +1314,7 @@ Externer Endpoint: http://geraeteausleihe.13.223.28.53.nip.io
 
 ---
 
-## Ziel dieser technischen Dokumentation
+### Ziel dieser technischen Dokumentation
 Diese technische Dokumentation beschreibt den vollständigen Stand bis Ende Sprint 2. Die Dokumentation wird sich im Laufe des Projekts ständig verändern.
 Fokus ist ein lauffähiger End to End Betrieb inklusive Service Code, Tests, Containerisierung, GHCR, AWS EC2, K3s, Kubernetes Ressourcen, GitHub Actions CI und CD sowie nachvollziehbaren Nachweisen.
 
@@ -1324,9 +1322,9 @@ Alle Aussagen sind so strukturiert, dass sie mit Commands, Outputs oder Screensh
 
 ---
 
-# Systemübersicht
+## Systemübersicht
 
-## Zielbild
+### Zielbild
 ```mermaid
 flowchart TD
   subgraph Clients
@@ -1360,7 +1358,7 @@ flowchart TD
   REPO -->|MkDocs Build| PAGES
 ```
 
-## Komponenten
+### Komponenten
 | Komponente | Aufgabe | Hinweis |
 | --- | --- | --- |
 | PowerApps | Konsument des Microservice | Ruft den PDF Endpoint auf |
@@ -1372,7 +1370,7 @@ flowchart TD
 | Traefik Ingress | HTTP Ingress Controller | Routing auf Service |
 | nip.io | DNS Convenience | Hostname ohne eigene DNS Zone |
 
-## Schnittstellen und Endpunkte
+### Schnittstellen und Endpunkte
 | Endpoint | Methode | Zweck | Erwartung |
 | --- | --- | --- | --- |
 | `/` | GET | Basis Response | Text Response |
@@ -1391,9 +1389,9 @@ curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Not
 
 ---
 
-# Repository Struktur
+## Repository Struktur
 
-## Struktur
+### Struktur
 Wichtige Bereiche im Repository:
 
 - `service/` Python Flask App
@@ -1406,16 +1404,16 @@ Wichtige Bereiche im Repository:
 
 ---
 
-# Python Flask Service
+## Python Flask Service
 
-## Zweck
+### Zweck
 Der Service stellt eine REST API bereit und erzeugt PDFs für die Geräteausleihe. Nutzung erfolgt durch PowerApps oder Browser. Der Service läuft lokal und produktionsnah im Container mit gunicorn.
 
-## Konfiguration
+### Konfiguration
 Umgebungsvariable:
 - `PORT` wird im Kubernetes Deployment auf `8080` gesetzt.
 
-## Ausführung Lokal
+### Ausführung Lokal
 
 ```bash
 cd service
@@ -1467,19 +1465,19 @@ curl -I "http://localhost:8080/pdf?borrower=Test&device=Notebook&staff=IT"
 
 ---
 
-# Tests
+## Tests
 
-## Ziel
+### Ziel
 Automatisierte Tests prüfen die wichtigsten API Endpoints. Fokus liegt auf Response Codes, Content Type und Basis Inhalt.
 
-## Besonderheiten und Lösung
+### Besonderheiten und Lösung
 WeasyPrint benötigt System Libraries. Lokale Tests auf Windows waren dadurch aufwendig. Lösung war, die Tests im Docker Container auszuführen.
 
 Weitere Besonderheit:
 - Bytes Assertions mit Umlauten führten zu Syntax Problemen
 - Lösung: `response.get_data(as_text=True)`
 
-## Testausführung im Container
+### Testausführung im Container
 ```bash
 docker build -t geraeteausleihe:test .
 docker run --rm geraeteausleihe:test sh -c "pip install pytest && cd /srv && pytest -q -p no:cacheprovider test_api.py"
@@ -1492,12 +1490,12 @@ Erwartung:
 
 ---
 
-# Containerisierung
+## Containerisierung
 
-## Dockerfile Ziel
+### Dockerfile Ziel
 Das Dockerfile baut ein Image auf Basis `python:3.11-slim`. Es installiert WeasyPrint Abhängigkeiten (pango, cairo, gdk pixbuf und weitere) und startet den Service mit gunicorn.
 
-## Lokaler Build und Run
+### Lokaler Build und Run
 Build:
 ```bash
 docker build -t geraeteausleihe:local .
@@ -1519,9 +1517,9 @@ curl -i http://localhost:8080/healthz
 
 ---
 
-# GitHub Container Registry GHCR
+## GitHub Container Registry GHCR
 
-## Naming und Tagging
+### Naming und Tagging
 Tags:
 - `latest`
 - Commit SHA, zum Beispiel `115b431876813ef6867c26de7e7cf6df0c533809`
@@ -1531,9 +1529,9 @@ Tags:
 
 ---
 
-# AWS Setup
+## AWS Setup
 
-## EC2 Instanz
+### EC2 Instanz
 Konfiguration:
 - Region: us east 1
 - OS: Ubuntu 22.04
@@ -1543,7 +1541,7 @@ Konfiguration:
 ![EC2 Instanz](./screenshots/EC2_Instanz.png
 )
 
-## Security Group
+### Security Group
 Inbound Rules:
 - 22 SSH
 - 80 HTTP
@@ -1551,7 +1549,7 @@ Inbound Rules:
 
 Neben den Inbound Regeln der Security Group wurden folgende Host und Zugriffs Massnahmen umgesetzt bzw. als Standard definiert, damit der Zugriff auf die EC2 Instanz kontrolliert bleibt.
 
-#### Host Hardening und Zugriff
+### Host Hardening und Zugriff
 
 1. SSH Zugriff erfolgt mit Key Authentisierung, kein Passwort Login
 2. Root Login ist deaktiviert, Administration erfolgt über einen dedizierten Benutzer mit sudo
@@ -1559,7 +1557,7 @@ Neben den Inbound Regeln der Security Group wurden folgende Host und Zugriffs Ma
 4. Offen nach aussen sind nur die zwingend benötigten Ports für SSH und HTTP Ingress Traffic
 5. Applikations Pods sind nicht direkt exponiert, Zugriff erfolgt nur über Ingress via Traefik
 
-#### Abgrenzung Demo Setup und produktiver Betrieb
+### Abgrenzung Demo Setup und produktiver Betrieb
 
 Dieses Setup ist als Lern und Demo Umgebung ausgelegt. Folgende Punkte sind bewusst nicht umgesetzt und müssen für Produktion ergänzt werden.
 
@@ -1572,9 +1570,9 @@ Dieses Setup ist als Lern und Demo Umgebung ausgelegt. Folgende Punkte sind bewu
 
 ---
 
-# K3s Installation und Cluster Zugriff
+## K3s Installation und Cluster Zugriff
 
-## K3s Installation
+### K3s Installation
 K3s wurde manuell installiert. Traefik ist standardmässig aktiv.
 
 Nachweise:
@@ -1600,7 +1598,7 @@ Die App wird über deklarative YAML Manifeste in K3s betrieben. Die Ressourcen s
 | `k3s/service.yaml` | Service ClusterIP | Interner Zugriff | stabile interne Adresse für die Pods |
 | `k3s/ingress.yaml` | Ingress | Externer Zugriff über Traefik | Host Routing über nip.io |
 
-### Namespace
+## Namespace
 
 Anwendung:
 
@@ -1609,7 +1607,7 @@ kubectl apply -f k3s/namespace.yaml
 kubectl get ns geraeteausleihe
 ```
 
-### Deployment
+## Deployment
 
 Anwendung und Kontrolle:
 
@@ -1631,7 +1629,7 @@ Wesentliche Konfiguration im Deployment:
 
 ![Deployment K3S](./screenshots/deployment_k3s.png)
 
-### Service
+## Service
 
 Anwendung und Kontrolle:
 
@@ -1642,7 +1640,7 @@ kubectl -n geraeteausleihe get svc
 
 ![k3s Service](./screenshots/k3s_service.png)
 
-### Ingress
+## Ingress
 
 Anwendung und Kontrolle:
 
@@ -1655,9 +1653,9 @@ Ingress Host: `geraeteausleihe.<EC2_IP>.nip.io`
 
 ![k3s Ingress](./screenshots/k3s_ingress.png)
 
-# GitHub Actions
+## GitHub Actions
 
-## Workflow Übersicht
+### Workflow Übersicht
 Folgende Workflows sind im Einsatz:
 
 - container-build.yml: Build und Push nach GHCR
@@ -1667,7 +1665,7 @@ Folgende Workflows sind im Einsatz:
 
 ![Workflows](./screenshots/GH_Actions.png)
 
-## Benötigte Secrets
+### Benötigte Secrets
 Erforderlich:
 - EC2_HOST
 - EC2_USER
@@ -1677,9 +1675,9 @@ Erforderlich:
 
 ---
 
-# Deployment Verifikation
+## Deployment Verifikation
 
-## Kubernetes Status
+### Kubernetes Status
 ```bash
 kubectl -n geraeteausleihe get all
 kubectl -n geraeteausleihe get ingress
@@ -1687,7 +1685,7 @@ kubectl -n geraeteausleihe get ingress
 ![Kubernetes Status](./screenshots/Kubernetes_Status.png)
 
 
-## Externe Requests
+### Externe Requests
 ```bash
 curl -f http://geraeteausleihe.13.223.28.53.nip.io/healthz
 curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Notebook&staff=IT"
@@ -1696,11 +1694,11 @@ curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Not
 
 ![Externe Requests](./screenshots/Externe_Requests.png)
 
-# Observability
+## Observability
 
 Observability ist bewusst schlank gehalten und basiert auf Kubernetes Standardmitteln. Ziel ist, dass Betrieb und Fehlersuche ohne zusätzliche Plattform Komponenten nachvollziehbar möglich sind.
 
-## Logging und Events
+### Logging und Events
 
 1. Applikations Logs laufen nach stdout und stderr und werden über Kubernetes bereitgestellt
 2. Logs pro Pod prüfen
@@ -1711,12 +1709,12 @@ Observability ist bewusst schlank gehalten und basiert auf Kubernetes Standardmi
    2. `kubectl -n <namespace> describe pod <pod-name>`
    3. Typische Hinweise sind ImagePullBackOff, CrashLoopBackOff, OOMKilled oder fehlende Readiness
 
-## Health Checks
+### Health Checks
 
 1. Der Service stellt einen Health Endpoint bereit für eine einfache Verfügbarkeitsprüfung
 2. Für stabilen Betrieb sind Readiness und Liveness Probes vorgesehen, damit Traffic nur an gesunde Pods geht und defekte Pods automatisch neu gestartet werden
 
-## Monitoring und Metriken
+### Monitoring und Metriken
 
 1. Ein zentrales Monitoring Stack ist im Demo Setup nicht integriert
 2. Für produktiven Betrieb wären Prometheus und Grafana sinnvoll, inklusive Alerts für
@@ -1725,18 +1723,11 @@ Observability ist bewusst schlank gehalten und basiert auf Kubernetes Standardmi
    3. Pod Restarts
    4. Ressourcen Auslastung
 
-## Screenshots hinzufügen!!!
-
-1. Screenshot `kubectl -n <namespace> get pods` nach erfolgreichem Deploy
-2. Screenshot `kubectl -n <namespace> logs <pod-name>` nach einem Request
-3. Screenshot `kubectl -n <namespace> describe pod <pod-name>` mit Events Übersicht
-
-
 ---
 
-# PowerApps Integration
+## PowerApps Integration
 
-## Launch auf PDF Endpoint
+### Launch auf PDF Endpoint
 PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device und staff.
 
 ![Heruntergeladene PDF](./screenshots/PowerApps.png)
@@ -1779,7 +1770,7 @@ Deploy auf EC2:
 
 ---
 
-### Tagging Strategie
+## Tagging Strategie
 
 Es werden zwei Tags verwendet.
 
@@ -1868,18 +1859,18 @@ Screenshots:
 
 ---
 
-# Betrieb
+## Betrieb
 
 Dieses Kapitel beschreibt den minimalen Betrieb für das Single Node K3s Setup auf AWS EC2. Fokus ist ein reproduzierbarer Ablauf für Deployment, Verifikation, Rollback und Troubleshooting.
 
-## Deployment Ablauf
+### Deployment Ablauf
 
 1. Code Änderung wird in GitHub gepusht
 2. Container Image wird gebaut und nach GHCR gepusht, nur bei Änderungen im Service Kontext
 3. Deployment Workflow wendet die Manifeste aus `k3s/` auf der EC2 Instanz an
 4. Deployment wird auf das neue Image aktualisiert
 
-## Rollback Vorgehen
+### Rollback Vorgehen
 
 Ein Rollback ist möglich, falls ein Deployment fehlschlägt oder die Applikation nicht mehr korrekt reagiert.
 
