@@ -654,46 +654,137 @@ Für Sprint 3 werden mindestens folgende Nachweise geplant und laufend in die te
 
 ## Sprint 3 Review
 
+**Sprint Review mit Parisi Corrado 13.01.2026**
+
 **Reviewgespräch Hinweis**  
-Für Sprint 3 ist ein Gespräch mit Corrado am 13.01.2026 geplant. Aktuell ist Sprint 3 in Umsetzung. Dieses Review basiert auf dem aktuellen Arbeitsstand und den bereits nachweisbaren Ergebnissen.
+Für Sprint 3 fand ein Reviewgespräch mit Corrado Parisi am 13.01.2026 statt. Im Gespräch wurde der aktuelle Stand der Projektdokumentation und des GitHub Projekts gemeinsam geprüft und direkt Feedback dazu gegeben.
 
+### Kontext
 
-### Aktueller Stand
+Im Call wurde vor allem der aktuelle Stand der Dokumentation, die GitHub Pages Darstellung sowie das GitHub Project Board besprochen. Corrado hat sich die Änderungen während des Calls angesehen und Rückmeldungen zur Qualität, Nachvollziehbarkeit und Präsentation des Projektstands gegeben.
 
-Sprint 3 fokussiert auf stabile und nachvollziehbare CI und CD. Der Container Build und Push nach GHCR funktioniert. Deploy nach K3s wurde umgesetzt und läuft, inklusive Apply der Manifeste, Setzen des Images und Rollout Kontrolle. Externe Verifikation über den Ingress Host ist möglich und die Endpoints sind erreichbar.
+### Positive Rückmeldungen
+
+1. Die Dokumentation wirkt deutlich verbessert und übersichtlicher als zuvor.
+2. Die Navigation wurde adressiert und wirkt jetzt deutlich besser.
+3. GitHub Pages ist als zentrale Seite sehr sinnvoll, weil alles an einem Ort ist und kein Wechsel zwischen Tools nötig ist.
+4. Der Workflow über Pull Requests wurde als sauberer Prozess gelobt.
+5. Ergänzungen wie die Risikomatrix wurden ausdrücklich positiv bewertet.
+6. Insgesamt wurde bestätigt, dass damit viele Punkte gewonnen werden können und dass der Stand nach viel Arbeit aussieht.
+
+### Projektmanagement und Board
+
+1. WIP Regel ist vorhanden und sinnvoll, konkret maximal 2 parallele Issues.
+2. Schätzungen wurden thematisiert und als sinnvoll bewertet.
+3. Fibonacci Sequenz für Story Points wurde als passend bestätigt, weil es um relative Grössen und nicht um exakte Zeiten geht.
+4. Empfehlung: Prioritäten und Schätzungen direkt auf den Karten im GitHub Board sichtbar machen, zum Beispiel über Labels, damit es für Dritte sofort ersichtlich ist. Dazu soll ein Screenshot in die Dokumentation.
+
+### Dokumentation und Nachweise
+
+1. Sprint Review Logik wurde angesprochen: pro Sprint klar zeigen, welche Ziele geplant waren und wie sie erreicht wurden.
+2. Wenn ein Ziel nicht erreicht wird, ist das okay. Es soll sauber dokumentiert werden, inklusive was in den nächsten Sprint wandert.
+3. Hyperlinks als Nachweis sind optional, können aber helfen, wenn es sinnvoll ist.
+
+### Risikomatrix
+
+1. Risikomatrix soll laufend gepflegt werden.
+2. Zusätzliche Idee: Risiko Entwicklung über Zeit visualisieren, damit erkennbar wird, ob Risiken kleiner oder grösser werden. Dazu soll ein Beispiel Screenshot geliefert werden.
+
+### Vorschläge für zusätzliche Verbesserungen
+
+1. Burndown Chart wäre ein starker Zusatz, falls GitHub Projects das unterstützt oder sich alternativ darstellen lässt.
+2. Eine kurze Demo als GIF aufnehmen und in die Dokumentation einbauen, damit der Effekt sofort sichtbar ist. Philipp soll dabei explizit markiert werden.
+
+### Inhaltliche Detailkritik
+
+1. Ein kleiner Punkt im Use Case Bereich: ein Eintrag wie Deployment System wirkt dort eventuell nicht passend platziert und könnte optisch besser umgeordnet werden.
 
 ### Review Ergebnis
 
-Sprint 3 ist technisch weit fortgeschritten. Der Betrieb ist erreichbar und die Pipeline läuft. Einzelne Punkte sind noch in Arbeit und müssen dokumentiert werden, vor allem die Stabilisierung der Workflow Logik und die laufende Evidence Ablage pro Change.
+Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Push nach GHCR sind nachvollziehbar, CD Deployment nach K3s läuft und die Nachweise sind zentral über GitHub Pages auffindbar. Das Review hat bestätigt, dass der Projektstand deutlich professioneller wirkt, insbesondere durch die strukturierte Dokumentation, den Pull Request Workflow und die Ergänzungen im Projektmanagement.
+
+| Review Punkt | Ergebnis |
+|---|---|
+| Dokumentation strukturierter und besser navigierbar | Erfüllt |
+| GitHub Pages als zentrale Projektseite sinnvoll genutzt | Erfüllt |
+| Pull Request Workflow konsequent eingesetzt | Erfüllt |
+| WIP Limit und Schätzungen etabliert | Erfüllt |
+| Risikomatrix vorhanden und nachvollziehbar | Erfüllt |
+| CI Build und Push nach GHCR stabil und nachvollziehbar | Erfüllt |
+| CD Deployment nach K3s lauffähig und prüfbar | Erfüllt |
+| Evidence Ablage pro Sprint umgesetzt und ausbaufähig | Teilweise, laufend |
+
+**Umgesetzter Aufwand:** **21 von 21 Story Points**
+
+### Sprint 3 User Stories und Status
 
 | User Story | Titel | Status | Nachweis |
 |---|---|---|---|
 | US18 | GitHub Actions Build und Push nach GHCR | Erledigt | GitHub Actions Run, GHCR Package Tags |
-| US19 | Secrets für GHCR und Cluster Zugriff | Erledigt | Secrets gesetzt, Deploy Run mit SSH und SCP |
-| US20 | CD Workflow deployt nach K3s | In Arbeit | Deploy läuft, Stabilisierung der Variablen und Pfade |
+| US19 | Secrets für GHCR und Cluster Zugriff einrichten | Erledigt | GitHub Secrets gesetzt, Deploy Run mit SSH und SCP |
+| US20 | CD Workflow deployt nach K3s | Erledigt | Deploy Run, kubectl Status, Ingress erreichbar |
 | US21 | Tagging Strategie dokumentieren und anwenden | Erledigt | Tags latest und Commit SHA, lowercase Repo |
-| US22 | Pipeline Testlauf dokumentieren | In Arbeit | Screenshot Logs, kubectl Outputs, externe Checks |
-| US23 | Sprint 3 Review und Retro dokumentieren | In Arbeit | Dieser Abschnitt, Retro folgt |
+| US22 | Pipeline Testlauf dokumentieren | Erledigt | Logs, kubectl Outputs, externe Requests |
+| US23 | Sprint 3 Review und Retro dokumentieren | Erledigt | Dieser Abschnitt, Retro ergänzt |
 
-### Was ist aktuell noch in Arbeit
+### Offene Punkte und nächste Schritte
 
-* Deploy Workflow Robustheit  
-  Variablen müssen deterministisch sein, besonders DEPLOY SHA und Image Referenz, damit nicht wieder ein leeres Repository wie ghcr.io/:sha gesetzt wird
+1. Burndown Chart Darstellung im GitHub Projekt prüfen und falls möglich ergänzen.
+2. Optional eine sehr kurze Demo als GIF erstellen und in die Dokumentation einbauen, Philipp dabei markieren.
+3. Risiko Entwicklung Visualisierung prüfen, Beispiel kommt via Screenshot.
+4. Use Case Darstellung optisch prüfen und Eintrag Deployment System passend umordnen.
 
-* Trigger Logik für Container Build  
-  Build soll nur bei Service relevanten Änderungen laufen und nicht bei reinen Doku Änderungen wie README
+### Nachweise und Screenshots für Sprint 3
 
-* Evidence und Nachweise pro Änderung  
-  Pro Deployment Run sollen Logs, kubectl Status und externer Health Check als Screenshots oder Text Output abgelegt werden, damit Stakeholder laufend den Stand sehen
+1. Screenshot GitHub Actions Run Build und Push
+2. Screenshot GitHub Actions Run Deploy
+3. Screenshot GHCR Package mit latest und Commit SHA
+4. Screenshot kubectl get all im Namespace geraeteausleihe
+5. Screenshot kubectl get ingress im Namespace geraeteausleihe
+6. Screenshot externer Health Check Request auf /healthz
+7. Screenshot GitHub Project Board mit sichtbaren Labels für Priorität und Story Points
 
-  
-
----
 
 #### Sprint 3 Retrospektive
 
+Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 3, inklusive des Feedbacks aus dem Reviewgespräch mit Corrado Parisi.
 
+### Start Doing
 
+1. Priorität und Story Points direkt auf den Board Karten sichtbar machen, damit der Projektstand für Dritte ohne Klicks verständlich ist.
+2. Evidence konsequent pro Change ablegen, direkt nach jedem Deploy Run, nicht erst gesammelt am Sprintende.
+3. Kurze visuelle Nachweise ergänzen, zum Beispiel eine Mini Demo als GIF.
+4. Risiko Entwicklung über Zeit als Visualisierung prüfen und einbauen, damit Fortschritt bei Risiken sichtbar wird.
+
+### Stop Doing
+
+1. Platzhalter Überschriften wie Screenshots hinzufügen ohne direkte Umsetzung stehen lassen.
+2. Technische Nachweise nur als Text erwähnen, ohne mindestens einen Screenshot oder Output pro Kernpunkt.
+3. Uneinheitliche Begriffe in Board und Doku verwenden, zum Beispiel unterschiedliche Namen für dieselben Artefakte.
+
+### Keep Doing
+
+1. Pull Request Workflow beibehalten, weil er Nachvollziehbarkeit und Qualität erhöht.
+2. GitHub Pages als zentrale Projektseite beibehalten, weil Dozenten und Stakeholder damit alles an einem Ort prüfen können.
+3. WIP Limit maximal 2 beibehalten, weil es Fokus und Durchsatz verbessert.
+4. End to End Verifikation regelmässig durchführen, kubectl Status plus externe Requests.
+
+### More Of
+
+1. Visualisierung und klare Sprint Ziele mit messbaren Ergebnissen, damit Reviews schneller prüfbar sind.
+2. Projektmanagement Nachweise weiter ausbauen, zum Beispiel Board Screenshot pro Sprint mit sichtbaren Prioritäten und Schätzungen.
+3. Kleine, reproduzierbare Commands und Outputs als Evidence, statt lange Freitexte.
+
+### Less Of
+
+1. Manuelle Server Eingriffe ohne dokumentierten Grund und ohne Nachweis.
+2. Späte Dokumentations Updates kurz vor Reviews, stattdessen kontinuierlich.
+
+### Fazit
+
+Sprint 3 hat bestätigt, dass die Kombination aus stabiler Technik und sichtbarer Evidence entscheidend ist. Das Review Feedback hat vor allem die starke Verbesserung der Dokumentation und des Workflows bestätigt. Der wichtigste nächste Schritt ist, den Projektstand für Dritte noch schneller erfassbar zu machen, insbesondere über sichtbare Prioritäten und Schätzungen im Board sowie zusätzliche visuelle Evidence.
+
+  
 ---
 
 
