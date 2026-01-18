@@ -33,7 +33,7 @@ jobs:
 
       - name: Build documentation
         run: |
-          mkdocs build --strict
+          python -m mkdocs build --strict
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
