@@ -1,18 +1,50 @@
-/* Allgemeine Typografie */
+/* Grundlayout */
 body {
   font-size: 16px;
   line-height: 1.65;
 }
 
-/* Überschriften klarer und technischer */
-h1, h2, h3, h4 {
+/* Seitenbreite */
+.md-grid {
+  max-width: 1400px;
+}
+
+/* Haupttitel */
+h1 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Kapitel */
+h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e5e7eb;
   font-weight: 600;
 }
 
-/* Tabellen lesbarer */
+/* Unterkapitel */
+h3 {
+  margin-top: 1.8rem;
+  font-weight: 600;
+}
+
+h4 {
+  margin-top: 1.2rem;
+  font-weight: 600;
+}
+
+/* Tabellen */
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+table th {
+  background-color: #f9fafb;
+  font-weight: 600;
 }
 
 table th,
@@ -21,18 +53,30 @@ table td {
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* Codeblöcke */
+table tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Code */
 code {
   font-size: 0.9em;
 }
 
-/* Mermaid Diagramme zentrieren */
+pre code {
+  font-size: 0.85em;
+}
+
+/* Mermaid */
 .mermaid {
   display: flex;
   justify-content: center;
 }
 
-/* Buttons (z. B. auf index.md) */
+.mermaid svg {
+  max-width: 900px;
+}
+
+/* Buttons */
 a.md-button {
   padding: 10px 16px;
   border-radius: 6px;

@@ -1,36 +1,32 @@
-site_name: Geraeteausleihe Microservice Sem4
-site_description: Cloud Native Deployment auf AWS mit Kubernetes, K3s auf EC2 und GitHub Actions
-site_url: https://cancani.com/geraeteausleihe-sem4/
-
-repo_url: https://github.com/Cancani/geraeteausleihe-sem4
-repo_name: Cancani/geraeteausleihe-sem4
+site_name: Geraeteausleihe Microservice Semesterarbeit 4
+site_description: Cloud Native Deployment mit Kubernetes und GitHub Actions
+site_author: Efekan Demirci
 
 theme:
-  name: windmill
+  name: material
   language: de
-
-plugins:
-  - search
-
-markdown_extensions:
-  - admonition
-  - attr_list
-  - md_in_html
-  - tables
-  - toc:
-      permalink: true
-      toc_depth: 4
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.details
-
-extra_css:
-  - stylesheets/extra.css
-
-extra_javascript:
-  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
-  - javascripts/mermaid-force.js
+  features:
+    - toc.integrate
+    - content.code.copy
+    - navigation.instant
+    - navigation.tracking
 
 nav:
   - Start: index.md
   - Dokumentation: dokumentation.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - admonition
+  - fenced_code
+  - codehilite
+  - tables
+  - attr_list
+
+extra_css:
+  - extra.css
+
+extra_javascript:
+  - mermaid-force.js
