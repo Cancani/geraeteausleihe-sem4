@@ -154,6 +154,17 @@ Ein technisch versierter Dritter kann das Projekt anhand der Dokumentation nachv
 | Dokumentation | MkDocs, GitHub Pages | Versionierte und laufend publizierte Doku |
 | Projektmanagement | GitHub Projects, Issues | Backlog, Schätzungen, Priorisierung, DoD |
 
+## Evaluation technischer Alternativen
+
+Für die Umsetzung der Semesterarbeit wurden verschiedene technische Optionen betrachtet und bewusst bewertet.
+
+Für den Kubernetes Betrieb wurde K3s anstelle eines vollständigen Kubernetes Setups oder eines Managed Services wie Amazon EKS gewählt. K3s reduziert den Betriebsaufwand erheblich und eignet sich für Single Node Szenarien und Lernumgebungen. Ein Managed Kubernetes Service hätte zusätzliche Kosten und Komplexität verursacht, ohne einen direkten Mehrwert für die Zielsetzung der Arbeit zu liefern.
+
+Beim Ingress wurde Traefik gegenüber Alternativen wie Nginx gewählt, da Traefik standardmässig in K3s integriert ist und eine einfache Konfiguration bietet. Für produktive Umgebungen mit komplexeren Routing Anforderungen wäre Nginx Ingress oder ein dedizierter Load Balancer eine valide Alternative.
+
+Für die CI CD Umsetzung fiel die Wahl auf GitHub Actions, da Quellcode, Container Registry und Dokumentation bereits auf GitHub zentralisiert sind. Alternativen wie Jenkins oder GitLab CI hätten zusätzliche Infrastruktur oder einen Plattformwechsel erfordert und wurden daher nicht weiterverfolgt.
+
+
 ---
 
 ## Projektmanagement
@@ -1280,6 +1291,11 @@ Für die Erreichbarkeit ohne eigene DNS Zone wird nip.io verwendet.
 | Vorteil | Keine DNS Konfiguration, sofort testbar |
 | Nachteil | Nicht geeignet für produktive Umgebungen |
 
+### Theoretischer Hintergrund: Ingress und Service Routing
+
+Ingress ist eine Kubernetes Ressource zur Steuerung des externen Zugriffs auf Services im Cluster. Der Ingress Controller übernimmt Routing, Host Matching und Weiterleitung an interne Services. Dadurch bleiben Pods und Services von direktem externem Zugriff entkoppelt.
+
+
 ---
 
 ## Security und Betrieb
@@ -1691,6 +1707,11 @@ Die App wird über deklarative YAML Manifeste in K3s betrieben. Die Ressourcen s
 | `k3s/service.yaml` | Service ClusterIP | Interner Zugriff | stabile interne Adresse für die Pods |
 | `k3s/ingress.yaml` | Ingress | Externer Zugriff über Traefik | Host Routing über nip.io |
 
+### Theoretischer Hintergrund: Kubernetes und deklarative Ressourcen
+
+Kubernetes ist eine Plattform zur Orchestrierung containerisierter Anwendungen. Zentrale Konzepte sind deklarative Ressourcen, Self Healing Mechanismen und Rolling Updates. Der gewünschte Zustand wird beschrieben, die Plattform sorgt selbstständig für dessen Einhaltung.
+
+
 ## Namespace
 
 Anwendung:
@@ -1850,6 +1871,10 @@ PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device
 ---
 
 ## CI: Build und Push nach GHCR
+
+### Theoretischer Hintergrund: Continuous Integration und Continuous Deployment
+
+Continuous Integration beschreibt das automatische Bauen und Testen von Codeänderungen nach jedem Commit. Continuous Deployment erweitert diesen Prozess um das automatisierte Ausrollen der Anwendung in die Zielumgebung. Ziel ist eine schnelle, reproduzierbare und fehlerarme Bereitstellung von Software.
 
 ### Ziel
 
