@@ -2071,18 +2071,19 @@ Das folgende .gif zeigt die Geräteausleihe und das erhalten einer Quittung durc
 
 <small><em>Abbildung 49: Demo der Geräteausleihe-Applikation mit PDF-Generierung</em></small>
 
-
 ---
 
-## Fazit
-
-### Projektabnahme
+## Projektabnahme
 
 Die Projektabnahme erfolgte anhand der definierten Zielsetzungen und Erfolgskriterien der Semesterarbeit.
 
 Alle Kernanforderungen wurden erfüllt. Der Microservice wird automatisiert gebaut, versioniert und ohne manuelle Eingriffe auf dem Kubernetes Cluster betrieben. Die externe Erreichbarkeit sowie der stabile Betrieb wurden technisch verifiziert.
 
 Damit gilt das Projekt aus fachlicher und projektmethodischer Sicht als erfolgreich abgeschlossen.
+
+---
+
+## Fazit
 
 
 ### Projekterfolg
