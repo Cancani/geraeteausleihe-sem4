@@ -108,6 +108,26 @@ ___
 
 Die Arbeit hat das Ziel, den bestehenden Microservice in eine Cloud Native Betriebsumgebung zu überfuehren. Der Fokus liegt auf CI und CD, Kubernetes Deployment, stabiler Erreichbarkeit über Ingress sowie einer laufenden Dokumentation, die den Fortschritt und die Qualität belegt.
 
+Die Ziele der Semesterarbeit wurden so definiert, dass deren Erreichung objektiv überprüfbar ist.
+
+### Ziel 1: Automatisierte Container Erstellung
+Der bestehende Geräteausleihe Microservice aus dem 3. Semester wird containerisiert und über eine CI Pipeline automatisch gebaut.
+
+**Erfolgskriterium**  
+Nach jedem Commit auf den Main Branch wird automatisch ein lauffähiges Container Image erstellt und in der GitHub Container Registry veröffentlicht.
+
+### Ziel 2: Automatisiertes Deployment auf Kubernetes
+Der Microservice wird über eine CD Pipeline automatisiert auf einem Kubernetes Cluster bereitgestellt.
+
+**Erfolgskriterium**  
+Nach einem erfolgreichen Image Build wird das Deployment im Cluster automatisch aktualisiert und der Service ist ohne manuelle Eingriffe über eine öffentliche URL erreichbar.
+
+### Ziel 3: Nachvollziehbare und reproduzierbare Systemarchitektur
+Die gesamte Systemarchitektur inklusive CI CD Pipeline, Kubernetes Ressourcen und Netzwerkzugriff wird dokumentiert.
+
+**Erfolgskriterium**  
+Ein technisch versierter Dritter kann das Projekt anhand der Dokumentation nachvollziehen und reproduzieren.
+
 ---
 
 ### SMART Ziele
@@ -2026,15 +2046,28 @@ Das folgende .gif zeigt die Geräteausleihe und das erhalten einer Quittung durc
 
 <small><em>Abbildung 49: Demo der Geräteausleihe-Applikation mit PDF-Generierung</em></small>
 
+
 ---
 
 ## Fazit
+
+### Projektabnahme
+
+Die Projektabnahme erfolgte anhand der definierten Zielsetzungen und Erfolgskriterien der Semesterarbeit.
+
+Alle Kernanforderungen wurden erfüllt. Der Microservice wird automatisiert gebaut, versioniert und ohne manuelle Eingriffe auf dem Kubernetes Cluster betrieben. Die externe Erreichbarkeit sowie der stabile Betrieb wurden technisch verifiziert.
+
+Damit gilt das Projekt aus fachlicher und projektmethodischer Sicht als erfolgreich abgeschlossen.
+
 
 ### Projekterfolg
 
 Das Ziel dieser Semesterarbeit war die Cloud Native Transformation des bestehenden Geräteausleihe Microservice. Der Service wurde containerisiert, automatisiert gebaut, in einer Container Registry versioniert und auf einem Kubernetes Cluster betrieben. Die externe Erreichbarkeit ist über Traefik Ingress und nip.io umgesetzt, inklusive der relevanten Endpunkte healthz und pdf. Der Betrieb wurde mit konkreten Verifikationen belegt, sowohl über Kubernetes Status als auch über externe Requests. 
 
 Zusätzlich wurde die Dokumentation als zentrale Prüfbasis über GitHub Pages ausgebaut. Damit sind technische Nachweise, Architektur, Projektmanagement und Betrieb an einem Ort nachvollziehbar. Dieser Aspekt war entscheidend, damit der Projektstand nicht nur funktioniert, sondern für Dozenten und Stakeholder auch effizient überprüfbar ist. 
+
+Die definierten Ziele der Semesterarbeit wurden anhand der messbaren Erfolgskriterien überprüft und vollständig erreicht.
+
 
 ---
 
@@ -2069,6 +2102,9 @@ Im Projekt wurden zentrale Cloud Engineering Konzepte praktisch umgesetzt und ve
 
 6. Observability pragmatisch und nachvollziehbar  
    Observability wurde bewusst schlank gehalten und basiert auf Kubernetes Standardmitteln wie Logs und Events. Ein zentrales Monitoring ist nicht Teil des Demo Setups, wird aber als sinnvoller Ausbaupunkt für Produktion benannt. 
+
+Zusammenfassend hat die Semesterarbeit meine Kompetenzen in den Bereichen Cloud Engineering, CI CD Automatisierung und projektorientierte Arbeitsweise deutlich vertieft. Besonders der Umgang mit Fehlern, Reviews und externem Feedback hat gezeigt, wie wichtig saubere Nachweise und Transparenz für professionelle technische Arbeit sind. Diese Erkenntnisse nehme ich als festen Standard für zukünftige Projekte mit.
+
 
 ---
 
