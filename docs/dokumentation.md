@@ -1927,3 +1927,70 @@ Ein Rollback ist möglich, falls ein Deployment fehlschlägt oder die Applikatio
 Das folgende .gif zeigt die Geräteausleihe und das erhalten einer Quittung durch die EC2-Instanz.
 
 [Demo Geräteausleihe](./screenshots/Demo_Geraeteausleihe.gif)
+
+---
+
+## Fazit
+
+### Projekterfolg
+
+Das Ziel dieser Semesterarbeit war die Cloud Native Transformation des bestehenden Geräteausleihe Microservice. Der Service wurde containerisiert, automatisiert gebaut, in einer Container Registry versioniert und auf einem Kubernetes Cluster betrieben. Die externe Erreichbarkeit ist über Traefik Ingress und nip.io umgesetzt, inklusive der relevanten Endpunkte healthz und pdf. Der Betrieb wurde mit konkreten Verifikationen belegt, sowohl über Kubernetes Status als auch über externe Requests. 
+
+Zusätzlich wurde die Dokumentation als zentrale Prüfbasis über GitHub Pages ausgebaut. Damit sind technische Nachweise, Architektur, Projektmanagement und Betrieb an einem Ort nachvollziehbar. Dieser Aspekt war entscheidend, damit der Projektstand nicht nur funktioniert, sondern für Dozenten und Stakeholder auch effizient überprüfbar ist. 
+
+---
+
+### Reflexion
+
+Die grösste Erkenntnis aus der Umsetzung war, dass technische Funktion allein nicht genügt. Ein professioneller Cloud Engineering Output entsteht erst, wenn Technik, Nachweise und Projekttransparenz zusammenpassen. Genau diese Lücke wurde im Verlauf des Projekts sichtbar. Im Sprint Review Kontext wurde kritisiert, dass zeitweise Transparenz fehlte, zum Beispiel fehlender Überblick über Ziele und Herausforderungen, ein nicht zugängliches Board und uneinheitliche Sprintlängen. Diese Rückmeldungen wurden aufgenommen und konkret korrigiert, indem der Überblick in der Dokumentation verbessert, der Board Link aktualisiert und Sprint Ziele klarer formuliert wurden. 
+
+Technisch war die Automatisierung der Deploy Schritte ein wiederkehrender Knackpunkt. Besonders deutlich wurde, wie schnell eine Pipeline fehlschlagen kann, wenn Variablen oder Image Tags nicht deterministisch gesetzt sind. Ein Beispiel dafür ist der Fehler InvalidImageName, der durch leere oder falsch zusammengesetzte Image Strings entstehen kann. Daraus habe ich gelernt, dass CI und CD nicht nur gebaut, sondern konsequent über Rollout Status, Logs und externe Health Checks verifiziert werden müssen. 
+
+Methodisch hat sich die sprintbasierte Arbeitsweise als klarer Gewinn gezeigt. WIP Limit, Schätzungen und sichtbare Priorisierung erhöhen den Fokus und reduzieren Parallelität. Das Feedback von Corrado hat diesen Teil bestätigt und gleichzeitig klar gemacht, dass Prioritäten und Schätzungen für Dritte direkt auf den Board Karten sichtbar sein sollen, damit der Projektstand ohne Klicks verstanden wird. Diese Erkenntnis nehme ich als verbindlichen Standard für künftige Projekte mit.
+
+---
+
+### Technische Erkenntnisse
+
+Im Projekt wurden zentrale Cloud Engineering Konzepte praktisch umgesetzt und vertieft.
+
+1. Deklaratives Kubernetes Deployment  
+   Der Betrieb erfolgt über versionierte Kubernetes Ressourcen wie Namespace, Deployment, Service und Ingress. Dadurch ist der Stand reproduzierbar und der Betrieb wird über die Plattform Eigenschaften wie Rolling Update und Self Healing unterstützt. Readiness und Liveness basieren auf dem healthz Endpunkt. 
+
+2. CI und CD mit sauberer Trigger Logik  
+   Der Container Build wird nur ausgelöst, wenn sich der Build Kontext ändert, zum Beispiel Dockerfile oder Service Code. Änderungen an Kubernetes Manifesten lösen keinen Build aus und werden über den Deploy Prozess ausgerollt. Das reduziert unnötige Builds und hält den Prozess effizient. 
+
+3. Versionierung und Nachvollziehbarkeit über Tags  
+   Die Tagging Strategie mit latest und Commit SHA sorgt dafür, dass jede ausgelieferte Version eindeutig einem Stand zugeordnet werden kann. Das ist die Basis für reproduzierbare Releases und Rollback Fähigkeit. 
+
+4. Betrieb und Fehlersuche als Runbook Denkweise  
+   Neben der reinen Umsetzung wurde Betrieb dokumentiert, inklusive Rollback Vorgehen und Troubleshooting Checkliste für Ingress, Service Endpoints, Pod Fehler sowie Registry Pull Probleme. Dadurch ist das System nicht nur lauffähig, sondern auch betreibbar. 
+
+5. Security als bewusste Abgrenzung zwischen Demo und Produktion  
+   Security Group Regeln und grundlegende Host Massnahmen sind dokumentiert. Gleichzeitig ist klar beschrieben, welche Themen bewusst nicht umgesetzt wurden, zum Beispiel TLS, umfassendes Cluster Hardening und erweitertes Secrets Management, und was in einer produktiven Umgebung erforderlich wäre. 
+
+6. Observability pragmatisch und nachvollziehbar  
+   Observability wurde bewusst schlank gehalten und basiert auf Kubernetes Standardmitteln wie Logs und Events. Ein zentrales Monitoring ist nicht Teil des Demo Setups, wird aber als sinnvoller Ausbaupunkt für Produktion benannt. 
+
+---
+
+### Ausblick
+
+Der aktuelle Stand eignet sich als stabile Lern und Demo Umgebung und kann gezielt weiter professionalisiert werden.
+
+1. Projekttransparenz weiter erhöhen  
+   Burndown Darstellung prüfen und wenn möglich ergänzen. Priorität und Story Points sollen direkt auf den Karten sichtbar sein, danach Screenshot in die Dokumentation.
+
+2. Evidence schneller erfassbar machen  
+   Eine sehr kurze Demo als GIF in die Dokumentation integrieren, damit der Effekt sofort sichtbar ist. Relevante Personen im Review Kontext sollen dabei explizit markiert werden.
+
+3. Risikomanagement weiterentwickeln  
+   Die Risikomatrix wird laufend gepflegt. Zusätzlich kann die Risiko Entwicklung über Zeit visualisiert werden, damit Trends sichtbar sind und Massnahmen messbar werden. 
+
+4. Technische Härtung und Produktiv Betrieb vorbereiten  
+   TLS Einbindung mit cert manager und einem gültigen DNS Setup, ergänzende Cluster Schutzmassnahmen wie Pod Security und Network Policies sowie ein zentrales Monitoring mit Prometheus und Grafana.
+
+5. Nutzen im TBZ Kontext prüfen  
+   Mit der Fachstelle klären, ob das Ergebnis langfristig eingesetzt werden kann, damit die investierte Entwicklungszeit nachhaltig verwertet wird.
+
+---
