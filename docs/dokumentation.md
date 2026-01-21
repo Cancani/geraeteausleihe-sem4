@@ -1194,7 +1194,7 @@ sequenceDiagram
   K-->>GA: Rollout Status ok
 ```
 
-<small><em>Abbildung 23: Sequenzdiagramm des Sprint-Zyklus</em></small>
+<small><em>Abbildung 23: Sequenzdiagramm des Deployment Ablaufs</em></small>
 ___
 
 ### Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
@@ -1326,14 +1326,6 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
   - Feature branches werden zuerst nach develop gemerged
   - develop dient als Sammelpunkt bis zum stabilen Merge nach main
 
-- **feature branches**
-  - Kurzlebige branches für einzelne Themen oder Issues
-  - Namensschema Empfehlung:
-    - `feature/us08-ec2-setup`
-    - `feature/us09-k3s-install`
-    - `feature/us20-ci-cd-deploy`
-  - Nach Abschluss wird per Pull Request nach develop gemerged
-
 - **gh-pages**
   - Enthält die generierte GitHub Pages Ausgabe
   - Wird ausschliesslich durch den GitHub Actions Workflow aktualisiert
@@ -1344,8 +1336,8 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
 ### Merge Flow
 
 - **Feature Umsetzung**
-  - feature branch wird von develop erstellt
-  - Pull Request von feature nach develop
+  - features werden direkt auf develop erstellt
+  - Pull Request von develop nach main
   - Review und Checks, dann Merge
 
 - **Sprint Stand oder Release**
@@ -1387,7 +1379,6 @@ Beispiele:
 - **Dokumentation ist committed und gepusht**
 - **Merge Flow ist nachvollziehbar beschrieben**
 - **Branch Regeln sind dokumentiert**
-- **Issue US05 ist im Board auf Done**
 
 
 ## Technische Dokumentation (fortlaufend)
