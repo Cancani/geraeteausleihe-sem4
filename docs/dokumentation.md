@@ -60,6 +60,8 @@ flowchart LR
   C --> D[Service läuft, Status schwer nachvollziehbar]
 ```
 
+<small><em>Abbildung 1: Ist-Workflow mit manuellen Build- und Deployment-Schritten</em></small>
+
 
 ---
 
@@ -87,6 +89,8 @@ flowchart LR
   C --> H
   B --> E
 ```
+
+<small><em>Abbildung 2: Soll-Workflow mit automatisiertem CI/CD-Prozess über GitHub Actions und AWS</em></small>
 
 ___ 
 
@@ -204,6 +208,8 @@ Stabilisierung von Build und Deploy Workflows mit GitHub Actions, saubere Versio
 
 ![Sprintübersicht](./screenshots/Sprintuebersicht.png)
 
+<small><em>Abbildung 3: Sprint-Übersicht im GitHub Project Board</em></small>
+
 #### Zeitplan
 
 | Sprint       | Zeitraum                  | Fokus                                                                                      | Status        |
@@ -306,6 +312,8 @@ Diese Anordnung stellt sicher, dass fachlich und technisch zwingend notwendige A
 
 ![Board Priorität](screenshots/Board_Prio.png)
 
+<small><em>Abbildung 4: Priorisierung im GitHub Project Board</em></small>
+
 ---
 
 ### Verwendete Story-Point-Skala
@@ -341,6 +349,8 @@ Die nachfolgenden Abschnitte dokumentieren den vollständigen Projektverlauf und
 Projektbasis schaffen, damit Fortschritt und Qualität transparent nachvollziehbar sind. Fokus liegt auf Board Setup, Standards und erstem Architektur Zielbild.
 
 ![Sprint 1 Milestone & Issues](./screenshots/Sprint1_1.png)
+
+<small><em>Abbildung 5: Sprint 1 Meilensteine und Issues</em></small>
 
 ---
 
@@ -402,6 +412,8 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 ![Sprint 1 erledigt](./screenshots/Sprint1_2.png)
 
+<small><em>Abbildung 6: Abgeschlossene Tasks in Sprint 1</em></small>
+
 
 #### Board und Planung
 
@@ -409,23 +421,35 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 ![Project Board Sprint 1](./screenshots/Projectboard_Sprint_1.png)
 
+<small><em>Abbildung 7: GitHub Project Board Ansicht für Sprint 1</em></small>
+
 * Labels  
 
 ![Issue Labels](./screenshots/Issue_Labels.png)
+
+<small><em>Abbildung 8: Issue-Labels zur Kategorisierung</em></small>
 
 * Milestones 
 
 ![Milestones](./screenshots/Milestones_Uebersicht.png)
 
+<small><em>Abbildung 9: Meilenstein-Übersicht im Projekt</em></small>
+
 * Issue Template  
 ![Issue Template](./screenshots/Issue_Template_1.png)
+
+<small><em>Abbildung 10: Issue-Template für strukturierte Erfassung</em></small>
 ![Issue Template 2](./screenshots/Issue_Template_2.png)
+
+<small><em>Abbildung 11: Issue-Template für strukturierte Erfassung</em></small>
 
 
 ### Sprint 1 Retrospektive
 
 
 ![Starfish Retrospektive Sprint 1](./screenshots/Sprint_1_Retro.png)
+
+<small><em>Abbildung 12: Starfish Retrospektive Sprint 1</em></small>
 
 Die Retrospektive wurde mithilfe des Starfish-Modells durchgeführt und reflektiert die Erfahrungen des ersten Sprints.
 
@@ -457,6 +481,8 @@ Für die kommenden Sprints wurde festgehalten, dass visuelle Hilfsmittel wie Sta
 Technische Umsetzung für den Cloud Native Betrieb liefern und gleichzeitig die Nachvollziehbarkeit massiv verbessern. Der Fokus liegt auf einem lauffähigen End to End Betrieb mit Container, GHCR, K3s, Kubernetes und Ingress sowie auf sauberen Nachweisen, realistischen Schätzungen und einem sichtbar priorisierten Backlog.
 
 ![Sprint 2 Milestone und Issues](./screenshots/Sprint_2_Issues.png)
+
+<small><em>Abbildung 13: Sprint 2 Meilensteine und Issues</em></small>
 
 **Reviewgespräch Hinweis**  
 Für Sprint 2 fand kein Reviewgespräch statt. Feedback erfolgte schriftlich via Microsoft Teams durch Corrado Parisi.
@@ -550,6 +576,8 @@ Sprint 2 wurde umgesetzt. Der Microservice läuft stabil auf AWS EC2 in einem K3
 
 ![Sprint 2 erledigt](./screenshots/Sprint_2_Done.png)
 
+<small><em>Abbildung 14: Abgeschlossene Tasks in Sprint 2</em></small>
+
 ---
 
 #### Dozentenfeedback und Einbau in Review
@@ -572,6 +600,8 @@ Das schriftliche Feedback von Corrado Parisi wurde im Verlauf von Sprint 2 aktiv
 ### Sprint 2 Retrospektive
 
 ![Starfish Retrospektive Sprint 2](./screenshots/Sprint_2_Retro.png)
+
+<small><em>Abbildung 15: Starfish Retrospektive Sprint 2</em></small>
 
 Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 2. Zusätzlich wurde das schriftliche Dozentenfeedback von Corrado Parisi einbezogen, um konkrete Verbesserungen für Transparenz, Nachvollziehbarkeit und technische Stabilität abzuleiten.
 
@@ -598,6 +628,8 @@ Für die kommenden Sprints wurde festgehalten, dass die Kombination aus stabiler
 CI und CD für den Cloud Native Betrieb stabil und nachvollziehbar umsetzen. Fokus liegt auf einem reproduzierbaren Build und Push nach GHCR, einem automatischen Deployment nach K3s auf AWS EC2, klarer Tagging Strategie sowie einer vollständigen technischen Dokumentation als Basis für das Gespräch mit Corrado.
 
 ![Sprint 3 Milestone und Issues](./screenshots/Sprint_3_Milestone_Issues.png)
+
+<small><em>Abbildung 16: Sprint 3 Meilensteine und Issues</em></small>
 
 **Reviewgespräch Hinweis**  
 Für Sprint 3 ist ein Gespräch mit Corrado am 13.01.2026 geplant. Ziel ist es, bis dahin einen stabilen Stand inklusive Nachweisen und Dokumentation vorzeigen zu können.
@@ -750,12 +782,16 @@ Sprint 3 ist inhaltlich und technisch auf einem stabilen Stand. CI Build und Pus
 
 ![Sprint 3 Milestone Fertig](./screenshots/Sprint_3_Milestones_Fertig.png)
 
+<small><em>Abbildung 17: Sprint 3 Meilensteine und Issues</em></small>
+
 
 ### Sprint 3 Retrospektive
 
 Die Retrospektive wurde mithilfe des Starfish Modells durchgeführt und reflektiert die Erfahrungen aus Sprint 3, inklusive des Feedbacks aus dem Reviewgespräch mit Corrado Parisi.
 
 ![Sprint 3 Retro](./screenshots/Sprint_3_Retro.png)
+
+<small><em>Abbildung 18: Starfish Retrospektive Sprint 3</em></small>
 
 #### Start Doing
 
@@ -808,6 +844,8 @@ Jede Aufgabe ist als **GitHub Issue** (US01 – US27) angelegt und enthält:
 
 ![Project Board](./screenshots/Projectboard_Sprint_1.png)
 
+<small><em>Abbildung 19: GitHub Project Board Gesamtansicht</em></small>
+
 Der Fortschritt ist über das Board jederzeit nachvollziehbar:  
 Geschlossene Issues wandern automatisch nach „Done“, offene bleiben in „Review“, bis alle DoD-Kriterien erfüllt und Nachweise in der Dokumentation ergänzt sind.  
 Diese Struktur sorgt für durchgängige Transparenz im gesamten Projektmanagementprozess.
@@ -851,6 +889,8 @@ Zudem ist die Nachweisführung durch Screenshots, Actions-Runs und verlinkte Dok
 Die SWOT-Analyse fasst die internen und externen Faktoren des Projekts zusammen und dient zur Bewertung der technologischen Tragfähigkeit und prozessualen Stabilität. Die SWOT-Analyse bietet einen strukturierten Überblick über die internen Stärken und Schwächen sowie die externen Chancen und Risiken des Projekts. Ziel ist es, das Projekt im Hinblick auf seine technologische, organisatorische und strategische Tragfähigkeit zu reflektieren.
 
 ![SWOT-Analyse](./screenshots/SWOT.png)
+
+<small><em>Abbildung 20: SWOT-Analyse für Projektstrategie</em></small>
 
 ### Stärken
 
@@ -952,6 +992,8 @@ Die Zielgruppe sind vor allem Stakeholder, die den Betrieb oder die Integration 
 
 ![Use-Case](./screenshots/use_case_diagramm.png)
 
+<small><em>Abbildung 21: Use-Case-Diagramm der Systeminteraktionen</em></small>
+
 ### Akteure
 
 | Akteur | Rolle | Berechtigung | Hauptfunktionen |
@@ -1022,6 +1064,8 @@ Die Kombination aus Eintrittswahrscheinlichkeit und Auswirkung zeigt die Dringli
 **(Stand 07.01.2026)**
 
 ![Risikomatrix](./screenshots/Risikomatrix_Sem4.png)
+
+<small><em>Abbildung 22: Risikomatrix mit identifizierten Projektrisiken</em></small>
 
 
 
@@ -1118,6 +1162,8 @@ sequenceDiagram
   K->>K: Rollout Deployment
   K-->>GA: Rollout Status ok
 ```
+
+<small><em>Abbildung 23: Sequenzdiagramm des Sprint-Zyklus</em></small>
 ___
 
 ### Flowchart LR Komponenten und Datenfluss von Entwicklung bis Nutzerzugriff
@@ -1161,6 +1207,8 @@ flowchart LR
 
 ```
 
+<small><em>Abbildung 24: Soll-Workflow mit automatisiertem CI/CD-Prozess über GitHub Actions und AWS</em></small>
+
 ---
 
 ### Flowchart TB interne Kubernetes Struktur im Cluster
@@ -1198,6 +1246,8 @@ flowchart TB
   SVC --> P1
   SVC --> P2
 ```
+
+<small><em>Abbildung 25: Prozessdiagramm</em></small>
 
 
 ## Ingress Host Handling
@@ -1359,6 +1409,8 @@ flowchart TD
   REPO -->|MkDocs Build| PAGES
 ```
 
+<small><em>Abbildung 26: Soll-Workflow mit automatisiertem CI/CD-Prozess über GitHub Actions und AWS</em></small>
+
 ### Komponenten
 | Komponente | Aufgabe | Hinweis |
 | --- | --- | --- |
@@ -1387,6 +1439,8 @@ curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Not
 
 
 ![Curl Commands Endpoints](./screenshots/curl_commands.png)
+
+<small><em>Abbildung 27: Curl Commands Endpoints</em></small>
 
 ---
 
@@ -1439,6 +1493,8 @@ curl -i http://localhost:8080/
 
 ![GET / Lokal](./screenshots/GET_Lokal.png)
 
+<small><em>Abbildung 28: GET / Lokal</em></small>
+
 ### GET /healthz
 Erwartung:
 - HTTP 200
@@ -1450,6 +1506,8 @@ curl -i http://localhost:8080/healthz
 ```
 
 ![GET Healthz](./screenshots/get_healthz.png)
+
+<small><em>Abbildung 29: Health Check Endpoint Verifikation</em></small>
 
 ### GET /pdf
 Erwartung:
@@ -1463,6 +1521,8 @@ curl -I "http://localhost:8080/pdf?borrower=Test&device=Notebook&staff=IT"
 ```
 
 ![GET /PDF](./screenshots/get_pdf.png)
+
+<small><em>Abbildung 30: PDF Generator Endpoint Test</em></small>
 
 ---
 
@@ -1489,6 +1549,8 @@ Erwartung:
 
 ![Pytest](./screenshots/Pytest.png)
 
+<small><em>Abbildung 31: Unit Tests mit Pytest</em></small>
+
 ---
 
 ## Containerisierung
@@ -1509,12 +1571,16 @@ docker run --rm -p 8080:8080 geraeteausleihe:local
 
 ![Docker Container Run](./screenshots/Container_Run.png)
 
+<small><em>Abbildung 32: Docker Container Verifikation</em></small>
+
 Verifikation:
 ```bash
 curl -i http://localhost:8080/healthz
 ```
 
 ![Verifikation Container](./screenshots/Lokale_Endpoints.png)
+
+<small><em>Abbildung 33: Verifikation Container</em></small>
 
 ---
 
@@ -1527,6 +1593,8 @@ Tags:
 
 
 ![GHCR Tags](./screenshots/ghcr_package_latest.png)
+
+<small><em>Abbildung 34: GitHub Container Registry Tags</em></small>
 
 ---
 
@@ -1584,7 +1652,11 @@ kubectl get pods -A
 ```
 
 ![k3s_status](./screenshots/k3s_status.png)
+
+<small><em>Abbildung 35: K3s Cluster Status</em></small>
 ![kubectl get nodes](./screenshots/get_nodes.png)
+
+<small><em>Abbildung 36: kubectl Kommandozeilenausgabe</em></small>
 
 ---
 
@@ -1630,6 +1702,8 @@ Wesentliche Konfiguration im Deployment:
 
 ![Deployment K3S](./screenshots/deployment_k3s.png)
 
+<small><em>Abbildung 37: Kubernetes Deployment Konfiguration</em></small>
+
 ## Service
 
 Anwendung und Kontrolle:
@@ -1640,6 +1714,8 @@ kubectl -n geraeteausleihe get svc
 ```
 
 ![k3s Service](./screenshots/k3s_service.png)
+
+<small><em>Abbildung 38: Kubernetes Service Konfiguration</em></small>
 
 ## Ingress
 
@@ -1654,6 +1730,8 @@ Ingress Host: `geraeteausleihe.<EC2_IP>.nip.io`
 
 ![k3s Ingress](./screenshots/k3s_ingress.png)
 
+<small><em>Abbildung 39: Kubernetes Ingress Routing</em></small>
+
 ## GitHub Actions
 
 ### Workflow Übersicht
@@ -1666,6 +1744,8 @@ Folgende Workflows sind im Einsatz:
 
 ![Workflows](./screenshots/GH_Actions.png)
 
+<small><em>Abbildung 40: Workflows</em></small>
+
 ### Benötigte Secrets
 Erforderlich:
 - EC2_HOST
@@ -1673,6 +1753,8 @@ Erforderlich:
 - EC2_SSH_KEY
 
 ![Github Actions Secrets](./screenshots/GH_Secrets.png)
+
+<small><em>Abbildung 41: GitHub Secrets Konfiguration</em></small>
 
 ---
 
@@ -1685,6 +1767,8 @@ kubectl -n geraeteausleihe get ingress
 ```
 ![Kubernetes Status](./screenshots/Kubernetes_Status.png)
 
+<small><em>Abbildung 42: Kubernetes Status</em></small>
+
 
 ### Externe Requests
 ```bash
@@ -1694,6 +1778,8 @@ curl -I "http://geraeteausleihe.13.223.28.53.nip.io/pdf?borrower=Test&device=Not
 
 
 ![Externe Requests](./screenshots/Externe_Requests.png)
+
+<small><em>Abbildung 43: Externe Requests</em></small>
 
 ## Observability
 
@@ -1733,9 +1819,13 @@ PowerApps ruft `/pdf` über Launch auf und nutzt EncodeUrl für borrower, device
 
 ![Heruntergeladene PDF](./screenshots/PowerApps.png)
 
+<small><em>Abbildung 44: PDF Generator Endpoint Test</em></small>
+
 **Ausgegebene Quittung**
 
 ![Screenshot PDF](./screenshots/ScreenshotQuittung.png)
+
+<small><em>Abbildung 45: PDF Generator Endpoint Test</em></small>
 
 ---
 
@@ -1765,9 +1855,13 @@ Container Build:
 
 ![Container Build](./screenshots/Container_Build.png)
 
+<small><em>Abbildung 46: Container Build</em></small>
+
 Deploy auf EC2:
 
 ![Deploy K3S](./screenshots/deploy_k3s.png)
+
+<small><em>Abbildung 47: K3s Cluster Status</em></small>
 
 ---
 
@@ -1785,6 +1879,8 @@ ghcr.io/cancani/geraeteausleihe-sem4:latest
 ghcr.io/cancani/geraeteausleihe-sem4:<commit_sha>
 ```
 ![Tagging](./screenshots/Tagging.png)
+
+<small><em>Abbildung 48: Tagging</em></small>
 
 ---
 
@@ -1928,6 +2024,8 @@ Das folgende .gif zeigt die Geräteausleihe und das erhalten einer Quittung durc
 
 [Demo Geräteausleihe](./screenshots/Demo_Geraeteausleihe.gif)
 
+<small><em>Abbildung 49: Demo der Geräteausleihe-Applikation mit PDF-Generierung</em></small>
+
 ---
 
 ## Fazit
@@ -1994,3 +2092,58 @@ Der aktuelle Stand eignet sich als stabile Lern und Demo Umgebung und kann gezie
    Mit der Fachstelle klären, ob das Ergebnis langfristig eingesetzt werden kann, damit die investierte Entwicklungszeit nachhaltig verwertet wird.
 
 ---
+---
+
+## Abbildungsverzeichnis
+
+| Nr. | Abbildung | Kapitel | Typ |
+|-----|-----------|---------|-----|
+| 1 | Ist-Workflow mit manuellen Build- und Deployment-Schritten | Ist Zustand | Mermaid Flowchart |
+| 2 | Soll-Workflow mit automatisiertem CI/CD-Prozess über GitHub Actions und AWS | Soll Zustand | Mermaid Flowchart |
+| 3 | Sprint-Übersicht im GitHub Project Board | Projektphasen und Meilensteine | Screenshot |
+| 4 | Priorisierung im GitHub Project Board | Priorisierung | Screenshot |
+| 5 | Sprint 1 Meilensteine und Issues | Sprint 1 Planung, Review und Retrospektive | Screenshot |
+| 6 | Abgeschlossene Tasks in Sprint 1 | Sprint 1 Review | Screenshot |
+| 7 | GitHub Project Board Ansicht für Sprint 1 | Sprint 1 Review | Screenshot |
+| 8 | Issue-Labels zur Kategorisierung | Sprint 1 Review | Screenshot |
+| 9 | Meilenstein-Übersicht im Projekt | Sprint 1 Review | Screenshot |
+| 10 | Issue-Template für strukturierte Erfassung | Sprint 1 Review | Screenshot |
+| 11 | Issue-Template für strukturierte Erfassung | Sprint 1 Review | Screenshot |
+| 12 | Starfish Retrospektive Sprint 1 | Sprint 1 Retrospektive | Screenshot |
+| 13 | Sprint 2 Meilensteine und Issues | Sprint 2 Planung | Screenshot |
+| 14 | Abgeschlossene Tasks in Sprint 2 | Sprint 2 Review | Screenshot |
+| 15 | Starfish Retrospektive Sprint 2 | Sprint 2 Retrospektive | Screenshot |
+| 16 | Sprint 3 Meilensteine und Issues | Sprint 3 Planung | Screenshot |
+| 17 | Sprint 3 Meilensteine und Issues | Sprint 3 Review | Screenshot |
+| 18 | Starfish Retrospektive Sprint 3 | Sprint 3 Retrospektive | Screenshot |
+| 19 | GitHub Project Board Gesamtansicht | Verwaltung der Aufgaben | Screenshot |
+| 20 | SWOT-Analyse für Projektstrategie | SWOT-Analyse | Screenshot |
+| 21 | Use-Case-Diagramm der Systeminteraktionen | Use-Case Diagramm | Screenshot |
+| 22 | Risikomatrix mit identifizierten Projektrisiken | Risikomatrix | Screenshot |
+| 23 | Sequenzdiagramm des Sprint-Zyklus | Deployment Ablauf | Mermaid Sequence |
+| 24 | Soll-Workflow mit automatisiertem CI/CD-Prozess über GitHub Actions und AWS | Flowchart LR Komponenten und Datenfluss von Entwic... | Mermaid Flowchart |
+| 25 | Prozessdiagramm | Flowchart TB interne Kubernetes Struktur im Cluste... | Mermaid Flowchart |
+| 26 | Soll-Workflow mit automatisiertem CI/CD-Prozess über GitHub Actions und AWS | Zielbild | Mermaid Flowchart |
+| 27 | Curl Commands Endpoints | Schnittstellen und Endpunkte | Screenshot |
+| 28 | GET / Lokal | GET / | Screenshot |
+| 29 | Health Check Endpoint Verifikation | GET /healthz | Screenshot |
+| 30 | PDF Generator Endpoint Test | GET /pdf | Screenshot |
+| 31 | Unit Tests mit Pytest | Testausführung im Container | Screenshot |
+| 32 | Docker Container Verifikation | Lokaler Build und Run | Screenshot |
+| 33 | Verifikation Container | Lokaler Build und Run | Screenshot |
+| 34 | GitHub Container Registry Tags | Naming und Tagging | Screenshot |
+| 35 | K3s Cluster Status | K3s Installation | Screenshot |
+| 36 | kubectl Kommandozeilenausgabe | K3s Installation | Screenshot |
+| 37 | Kubernetes Deployment Konfiguration | Deployment | Screenshot |
+| 38 | Kubernetes Service Konfiguration | Service | Screenshot |
+| 39 | Kubernetes Ingress Routing | Ingress | Screenshot |
+| 40 | Workflows | Workflow Übersicht | Screenshot |
+| 41 | GitHub Secrets Konfiguration | Benötigte Secrets | Screenshot |
+| 42 | Kubernetes Status | Kubernetes Status | Screenshot |
+| 43 | Externe Requests | Externe Requests | Screenshot |
+| 44 | PDF Generator Endpoint Test | Launch auf PDF Endpoint | Screenshot |
+| 45 | PDF Generator Endpoint Test | Launch auf PDF Endpoint | Screenshot |
+| 46 | Container Build | Trigger Logik | Screenshot |
+| 47 | K3s Cluster Status | Trigger Logik | Screenshot |
+| 48 | Tagging | Tagging Strategie | Screenshot |
+| 49 | Demo der Geräteausleihe-Applikation mit PDF-Generierung | App-Demo | GIF |
