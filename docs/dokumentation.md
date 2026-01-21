@@ -2091,7 +2091,7 @@ Der aktuelle Stand eignet sich als stabile Lern und Demo Umgebung und kann gezie
 5. Nutzen im TBZ Kontext prüfen  
    Mit der Fachstelle klären, ob das Ergebnis langfristig eingesetzt werden kann, damit die investierte Entwicklungszeit nachhaltig verwertet wird.
 
----
+
 ---
 
 ## Abbildungsverzeichnis
@@ -2147,3 +2147,58 @@ Der aktuelle Stand eignet sich als stabile Lern und Demo Umgebung und kann gezie
 | 47 | K3s Cluster Status | Trigger Logik | Screenshot |
 | 48 | Tagging | Tagging Strategie | Screenshot |
 | 49 | Demo der Geräteausleihe-Applikation mit PDF-Generierung | App-Demo | GIF |
+
+## Legende
+
+**Dateitypen:**
+- **PNG**: Statische Screenshots und Grafiken
+- **Mermaid**: Interaktive Diagramme (Flowcharts, Sequenzdiagramme, Graphen)
+- **MP4 / GIF**: Kurze Demo- oder End-to-End-Demonstrationen des Systems
+
+**Mermaid Diagramme im Detail:**
+- **Flowchart**: Prozessabläufe und Workflows
+- **Graph TB/LR**: Systemarchitektur und Use-Cases
+- **Sequence**: Datenfluss und API-Kommunikation
+
+**Pfad-Referenzen:**
+Alle Medien befinden sich im Verzeichnis `./screenshots/` relativ zur Dokumentation
+
+## Glossar
+
+| Begriff | Erklärung |
+|--------|-----------|
+| AWS | Amazon Web Services, Cloud Plattform für Infrastruktur |
+| EC2 | Virtuelle Server Instanz innerhalb von AWS |
+| K3s | Leichtgewichtige Kubernetes Distribution |
+| Kubernetes | Plattform zur Orchestrierung von Containern |
+| Pod | Kleinste ausführbare Einheit in Kubernetes |
+| Deployment | Kubernetes Ressource für Rollout und Skalierung |
+| Service | Kubernetes Ressource zur internen Netzwerkfreigabe |
+| Ingress | Kubernetes Ressource für externen Zugriff auf Services |
+| Traefik | Ingress Controller für Kubernetes |
+| nip.io | DNS Dienst zur Nutzung von IP basierten Hostnamen |
+| Container | Isolierte Laufzeitumgebung für Anwendungen |
+| Docker | Tool zur Erstellung und Ausführung von Containern |
+| CI/CD | Automatisierter Prozess für Build und Deployment |
+| GitHub Actions | CI/CD Plattform innerhalb von GitHub |
+| GHCR | GitHub Container Registry für Container Images |
+| Image | Gebautes Container Artefakt |
+| Rollout | Ausrollen einer neuen Version |
+| Rollback | Zurücksetzen auf eine vorherige Version |
+| Health Check | Technische Prüfung der Service Verfügbarkeit |
+| Microservice | Eigenständiger, containerisierter Backend Service |
+| Observability | Sammelbegriff für Logs, Status und Überwachung |
+| Stateless | Anwendung ohne persistenten Zustand |
+| YAML | Konfigurationsformat für Kubernetes Manifeste |
+
+# Kontakt
+
+Für Rückfragen oder weiterführende Informationen zu diesem Projekt:
+
+**Efekan Demirci**  
+Technische Berufsschule Zürich (TBZ)  
+Informatikdienst  
+efekan@demirci.ch
+
+Die Projektdokumentation ist **öffentlich zugänglich**.
+
