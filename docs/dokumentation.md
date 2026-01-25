@@ -36,6 +36,25 @@ Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient a
 * Extern erreichbare Endpoints healthz und pdf
 * Laufende Dokumentation über MkDocs und GitHub Pages
 
+###
+
+### Versionskontrolle und Arbeitsweise auf GitHub
+
+Die Umsetzung der Semesterarbeit erfolgte vollständig versioniert über GitHub.  
+Dabei wurde bewusst ein **einfaches und kontrolliertes Branching-Modell** gewählt, das auf ein Einzelprojekt mit klaren Qualitätskontrollen abgestimmt ist.
+
+Die Entwicklung erfolgte nicht direkt auf dem produktiven Branch, sondern über einen separaten Arbeitsbranch. Änderungen wurden ausschliesslich über Pull Requests integriert und durch automatisierte Checks abgesichert.
+
+Kernelemente der Arbeitsweise:
+
+- Trennung zwischen stabilem Stand und laufender Entwicklung
+- Nachvollziehbare Änderungen über Pull Requests
+- Automatische Prüfungen vor jedem Merge
+- Klare Verbindung zwischen Code, CI/CD und Projektmanagement
+
+Diese Arbeitsweise stellt sicher, dass der `main`-Branch jederzeit einen stabilen, demo- und abgabefähigen Stand enthält.
+
+
 ---
 
 ## Ausgangslage und Problemstellung
@@ -1312,7 +1331,10 @@ Ingress ist eine Kubernetes Ressource zur Steuerung des externen Zugriffs auf Se
 ## Branching Strategie und Regeln
 
 ### Ziel
-Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil** ist und den Stand für Demo und Abgabe abbildet. Entwicklung und laufende Arbeiten erfolgen auf **develop** oder auf **feature branches**. Die Dokumentation wird über GitHub Pages aus dem Repository veröffentlicht.
+Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil** ist und den Stand für Sprint Reviews, Demo und Abgabe abbildet.
+
+Die laufende Entwicklung erfolgte bewusst über einen **permanenten develop Branch**, ohne zusätzliche Feature Branches.  
+Dieses vereinfachte Modell wurde gewählt, da es sich um ein Einzelprojekt handelt und der Fokus auf Nachvollziehbarkeit, Qualitätssicherung und stabilen Releases liegt.
 
 ### Branches
 
@@ -1322,9 +1344,10 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
   - Keine direkten Pushes, sofern Branch Regeln aktiv sind
 
 - **develop**
-  - Integrationsbranch für laufende Entwicklung
-  - Feature branches werden zuerst nach develop gemerged
-  - develop dient als Sammelpunkt bis zum stabilen Merge nach main
+  - Permanenter Arbeitsbranch für sämtliche Änderungen
+  - Alle technischen, fachlichen und CI/CD-Anpassungen wurden hier umgesetzt
+  - develop wurde bewusst nicht gelöscht, sondern kontinuierlich weiterentwickelt
+  - Der Merge nach main erfolgt ausschliesslich über Pull Requests
 
 - **gh-pages**
   - Enthält die generierte GitHub Pages Ausgabe
@@ -1343,6 +1366,20 @@ Die Branching Strategie stellt sicher, dass der **main Branch jederzeit stabil**
 - **Sprint Stand oder Release**
   - Pull Request von develop nach main
   - main wird nur gemerged, wenn der Stand stabil ist
+
+### Pull Request Workflow
+
+Jede relevante Änderung wurde über einen Pull Request von `develop` nach `main` integriert.
+
+Der Pull Request diente dabei als zentrales Qualitätstor und Nachweis für sauberes Arbeiten:
+
+- Änderungen sind klar beschrieben und nachvollziehbar
+- Automatische Checks laufen vor dem Merge
+- Fehlerhafte Builds oder Tests blockieren den Merge
+- Jeder Merge ist zeitlich und inhaltlich dokumentiert
+
+Dieser Workflow stellt sicher, dass der produktive Branch nicht durch ungetestete oder fehlerhafte Änderungen beeinträchtigt wird.
+
 
 ### Regeln und Schutz
 
@@ -1777,6 +1814,21 @@ Folgende Workflows sind im Einsatz:
 ![Workflows](./screenshots/GH_Actions.png)
 
 <small><em>Abbildung 40: Workflows</em></small>
+
+### Pull Request Checks (Continuous Integration)
+
+Für Pull Requests nach `main` ist ein separater CI Workflow definiert.  
+Dieser wird automatisch bei jedem Pull Request ausgelöst und prüft den aktuellen Stand vor dem Merge.
+
+Der Workflow umfasst:
+
+- Build Prüfung
+- Linting
+- Automatisierte Tests
+
+Nur wenn alle Checks erfolgreich sind, kann der Pull Request gemerged werden.  
+Dadurch wird sichergestellt, dass der `main`-Branch jederzeit einen lauffähigen und geprüften Stand enthält.
+
 
 ### Benötigte Secrets
 Erforderlich:
