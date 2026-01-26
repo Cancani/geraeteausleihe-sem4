@@ -197,47 +197,47 @@ Das Projekt folgt einem agilen, scrumähnlichen Vorgehen mit iterativer Entwickl
 
 Die Entscheidung für ein iteratives Vorgehen basiert auf folgenden Punkten:
 
-* Neue technische Themen wie Kubernetes, K3s und CI CD benötigen experimentelles Vorgehen mit kurzen Feedback Schleifen
-* Technische Abhängigkeiten werden oft erst während der Umsetzung sichtbar, zum Beispiel Ingress, Host Routing und Secrets Handling
-* Dozenten Feedback kann direkt in die nächsten Tasks und in die Dokumentation einfliessen
-* Risiken werden früh sichtbar, statt erst am Schluss
+- Neue technische Themen wie Kubernetes, K3s und CI CD benötigen experimentelles Vorgehen mit kurzen Feedback Schleifen
+- Technische Abhängigkeiten werden oft erst während der Umsetzung sichtbar, zum Beispiel Ingress, Host Routing und Secrets Handling
+- Dozenten Feedback kann direkt in die nächsten Tasks und in die Dokumentation einfliessen
+- Risiken werden früh sichtbar, statt erst am Schluss
 
 **Kernprinzipien der angewandten Methodik**
 
-* Iterative Entwicklung mit funktionsfähigen Zwischenständen
-* Kontinuierliches Feedback und Anpassung der Prioritäten
-* Laufende Nachweisführung, damit der Projektstand jederzeit nachvollziehbar ist
-* Klare Definition of Done pro Ticket inklusive Evidence Anforderungen
+- Iterative Entwicklung mit funktionsfähigen Zwischenständen
+- Kontinuierliches Feedback und Anpassung der Prioritäten
+- Laufende Nachweisführung, damit der Projektstand jederzeit nachvollziehbar ist
+- Klare Definition of Done pro Ticket inklusive Evidence Anforderungen
 
 ### Sprintstruktur im Detail
 
 **Sprint Planning (Sprintbeginn):**
-* Definition von User Stories mit klaren Akzeptanzkriterien
-* Aufwandsschätzung in Story Points
-* Festlegung des Sprintziels als ein Satz Outcome und der Deliverables
-* Sprint Scope im GitHub Project Board zuweisen, Sprint Feld und Milestone setzen
+- Definition von User Stories mit klaren Akzeptanzkriterien
+- Aufwandsschätzung in Story Points
+- Festlegung des Sprintziels als ein Satz Outcome und der Deliverables
+- Sprint Scope im GitHub Project Board zuweisen, Sprint Feld und Milestone setzen
 
 **Sprint Execution (Durchführung):**
-* Kontinuierliche Arbeit an den definierten User Stories
-* GitHub Issues für Aufgaben Tracking und Statusupdates
-* Regelmässige Commits und Pushes, kleine Änderungen statt grosse Sprünge
-* Ticket Status aktuell halten, WIP Limit in Progress maximal 2
+- Kontinuierliche Arbeit an den definierten User Stories
+- GitHub Issues für Aufgaben Tracking und Statusupdates
+- Regelmässige Commits und Pushes, kleine Änderungen statt grosse Sprünge
+- Ticket Status aktuell halten, WIP Limit in Progress maximal 2
 
 **Sprint Review (Sprintende):**
-* Abgleich gegen Sprintziel
-* Review Gespräche mit Dozenten zur Qualitätssicherung
-* Bewertung der Zielerreichung und Identifikation von Verbesserungspotenzialen
-* Evidence Pflicht, Screenshots und Links werden direkt pro Sprint Review dokumentiert
+- Abgleich gegen Sprintziel
+- Review Gespräche mit Dozenten zur Qualitätssicherung
+- Bewertung der Zielerreichung und Identifikation von Verbesserungspotenzialen
+- Evidence Pflicht, Screenshots und Links werden direkt pro Sprint Review dokumentiert
 
 **Sprint Retrospektive:**
-* Reflexion des Arbeitsprozesses mit dem Starfish Modell
-* Identifikation von Start Doing, Stop Doing, Keep Doing, More Of, Less Of
+- Reflexion des Arbeitsprozesses mit dem Starfish Modell
+- Identifikation von Start Doing, Stop Doing, Keep Doing, More Of, Less Of
 
 **Vorteile der gewählten Methodik:**
-* Flexibilität, schnelle Anpassung an neue Erkenntnisse, zum Beispiel Ingress Routing oder CI CD Details
-* Qualitätssicherung, regelmässige Reviews verhindern späte Richtungsänderungen
-* Motivation, sichtbare Fortschritte nach jedem Sprint
-* Lernoptimierung, Retrospektiven führen zu kontinuierlicher Prozessverbesserung
+- Flexibilität, schnelle Anpassung an neue Erkenntnisse, zum Beispiel Ingress Routing oder CI CD Details
+- Qualitätssicherung, regelmässige Reviews verhindern späte Richtungsänderungen
+- Motivation, sichtbare Fortschritte nach jedem Sprint
+- Lernoptimierung, Retrospektiven führen zu kontinuierlicher Prozessverbesserung
 
 ### Projektphasen und Meilensteine
 
@@ -468,7 +468,7 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 
 #### Board und Planung
 
-* Project Board Overview  
+Project Board Overview  
 
 ![Project Board Sprint 1](./screenshots/Projectboard_Sprint_1.png)
 
@@ -487,9 +487,11 @@ Sprint 1 wurde umgesetzt. Die Projektbasis ist vorhanden und bildet die Grundlag
 <small><em>Abbildung 9: Meilenstein-Übersicht im Projekt</em></small>
 
 * Issue Template  
+  
 ![Issue Template](./screenshots/Issue_Template_1.png)
 
 <small><em>Abbildung 10: Issue-Template für strukturierte Erfassung</em></small>
+
 ![Issue Template 2](./screenshots/Issue_Template_2.png)
 
 <small><em>Abbildung 11: Issue-Template für strukturierte Erfassung</em></small>
@@ -1719,6 +1721,7 @@ kubectl get pods -A
 ![k3s_status](./screenshots/k3s_status.png)
 
 <small><em>Abbildung 35: K3s Cluster Status</em></small>
+
 ![kubectl get nodes](./screenshots/get_nodes.png)
 
 <small><em>Abbildung 36: kubectl Kommandozeilenausgabe</em></small>
