@@ -64,10 +64,11 @@ Diese Arbeitsweise stellt sicher, dass der `main`-Branch jederzeit einen stabile
 Der Service war zwar technisch lauffähig, der Betrieb und das Deployment waren jedoch zu wenig standardisiert und zu wenig automatisiert. 
 
 Typische Nachteile im Ist Zustand:
-* Deployment Updates waren fehleranfällig und schwer nachvollziehbar
-* Kein konsistentes Release und Tagging Konzept
-* Keine Kubernetes Eigenschaften wie Self Healing und deklarative Deployments
-* Nachweise für Stakeholder fehlten oder wurden erst spät nachgetragen
+
+- Deployment Updates waren fehleranfällig und schwer nachvollziehbar
+- Kein konsistentes Release und Tagging Konzept
+- Keine Kubernetes Eigenschaften wie Self Healing und deklarative Deployments
+- Nachweise für Stakeholder fehlten oder wurden erst spät nachgetragen
 
 **Ist Workflow**
 
@@ -2150,26 +2151,41 @@ Methodisch hat sich die sprintbasierte Arbeitsweise als klarer Gewinn gezeigt. W
 
 ---
 
+### Reflexion zur Arbeitsweise mit Git und GitOps
+
+Ein besonders positiver Aspekt dieser Semesterarbeit war die konsequente Arbeit mit Git, Pull Requests und automatisierten im Sinne eines GitOps Ansatzes. Die tägliche Arbeit mit Branches, Commits und Pull Requests hat mir nicht nur technisch geholfen, sondern auch meine Arbeitsweise nachhaltig verändert.
+
+Durch den permanenten `develop` Branch und den klar geschütztem `main` Branch entstand eine saubere Trennung zwischen laufender Entwicklung und stabilem Stand. Änderungen wurden bewusst nicht direkt produktiv gemacht, sondern über Pull Requests integriert. Dieser Schritt hat sich als zentraler Qualitätsmechanismus erwiesen. Jeder Merge war nachvollziehbar, begründet und durch automatische Checks abgesichert.
+
+Besonders motiverend war die direkte Rückmeldung durch die Pull Request Checks. Build, Lint und Tests liefen automatisch und zeigten unmittelbar, ob ein Stand mergefähig ist oder nicht. Fehler wurden dadurch früh sichtbar und konnten gezielt behoben werden, bevor sie den produktiven Branch erreichten. Dieser Ablauf hat mir gezeigt, wie start Automatisierung die Qualität und Ruhe im Entwicklungsprozess erhöht.
+
+Auch das Arbeiten mit klaren Commits hat sich als grosser Mehrwert gezeigt. Kleine, thematisch saubere Commits machten es einfach, Änderungen nachzuvollziehen, Fehlerquellen einzugrenzen und Fortschritte transparent zu dokumentieren. In Kombination mit klaren Commit Messages entstand eine Art technisches Logbuch, das jederzeit erklärt, warum eine Änderung vorgenommen wurde.
+
+Der GitOps Gedanke wurde im Projekt praktisch erlebbar. Der gesamte Systemzustand ist versioniert im Repository abgelegt. Insgesamt hat mir das Projekt gezeigt, dass Git, Pull Requests und CICD nicht nur Werkzeuge sind, sondern ein Arbeitsmodell darstelllen. Ein Modell, das Qualität erzwingt, Transparenz schafft und Vertrauen in den eigenen Code und Betrieb aufbaut. Diese Erkenntnis nehme ich als festen Standard für zukünftige Projekte mit, sowohl im Ausbildungs- als auch im beruflichen Umfeld.
+
+---
+
+
 ### Technische Erkenntnisse
 
 Im Projekt wurden zentrale Cloud Engineering Konzepte praktisch umgesetzt und vertieft.
 
-1. Deklaratives Kubernetes Deployment  
+1. **Deklaratives Kubernetes Deployment** 
    Der Betrieb erfolgt über versionierte Kubernetes Ressourcen wie Namespace, Deployment, Service und Ingress. Dadurch ist der Stand reproduzierbar und der Betrieb wird über die Plattform Eigenschaften wie Rolling Update und Self Healing unterstützt. Readiness und Liveness basieren auf dem healthz Endpunkt. 
 
-2. CI und CD mit sauberer Trigger Logik  
+2. **CI und CD mit sauberer Trigger Logik**
    Der Container Build wird nur ausgelöst, wenn sich der Build Kontext ändert, zum Beispiel Dockerfile oder Service Code. Änderungen an Kubernetes Manifesten lösen keinen Build aus und werden über den Deploy Prozess ausgerollt. Das reduziert unnötige Builds und hält den Prozess effizient. 
 
-3. Versionierung und Nachvollziehbarkeit über Tags  
+3. **Versionierung und Nachvollziehbarkeit über Tags**
    Die Tagging Strategie mit latest und Commit SHA sorgt dafür, dass jede ausgelieferte Version eindeutig einem Stand zugeordnet werden kann. Das ist die Basis für reproduzierbare Releases und Rollback Fähigkeit. 
 
-4. Betrieb und Fehlersuche als Runbook Denkweise  
+4. **Betrieb und Fehlersuche als Runbook Denkweise**
    Neben der reinen Umsetzung wurde Betrieb dokumentiert, inklusive Rollback Vorgehen und Troubleshooting Checkliste für Ingress, Service Endpoints, Pod Fehler sowie Registry Pull Probleme. Dadurch ist das System nicht nur lauffähig, sondern auch betreibbar. 
 
-5. Security als bewusste Abgrenzung zwischen Demo und Produktion  
+5. **Security als bewusste Abgrenzung zwischen Demo und Produktion**
    Security Group Regeln und grundlegende Host Massnahmen sind dokumentiert. Gleichzeitig ist klar beschrieben, welche Themen bewusst nicht umgesetzt wurden, zum Beispiel TLS, umfassendes Cluster Hardening und erweitertes Secrets Management, und was in einer produktiven Umgebung erforderlich wäre. 
 
-6. Observability pragmatisch und nachvollziehbar  
+6. **Observability pragmatisch und nachvollziehbar**  
    Observability wurde bewusst schlank gehalten und basiert auf Kubernetes Standardmitteln wie Logs und Events. Ein zentrales Monitoring ist nicht Teil des Demo Setups, wird aber als sinnvoller Ausbaupunkt für Produktion benannt. 
 
 Zusammenfassend hat die Semesterarbeit meine Kompetenzen in den Bereichen Cloud Engineering, CI CD Automatisierung und projektorientierte Arbeitsweise deutlich vertieft. Besonders der Umgang mit Fehlern, Reviews und externem Feedback hat gezeigt, wie wichtig saubere Nachweise und Transparenz für professionelle technische Arbeit sind. Diese Erkenntnisse nehme ich als festen Standard für zukünftige Projekte mit.
@@ -2193,8 +2209,6 @@ Der aktuelle Stand eignet sich als stabile Lern und Demo Umgebung und kann gezie
 4. Technische Härtung und Produktiv Betrieb vorbereiten  
    TLS Einbindung mit cert manager und einem gültigen DNS Setup, ergänzende Cluster Schutzmassnahmen wie Pod Security und Network Policies sowie ein zentrales Monitoring mit Prometheus und Grafana.
 
-5. Nutzen im TBZ Kontext prüfen  
-   Mit der Fachstelle klären, ob das Ergebnis langfristig eingesetzt werden kann, damit die investierte Entwicklungszeit nachhaltig verwertet wird.
 
 
 ---
