@@ -1,0 +1,69 @@
+body {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.md-grid {
+  max-width: 1400px;
+}
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 1.8rem;
+  font-weight: 600;
+}
+
+h4 {
+  margin-top: 1.2rem;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+table th,
+table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+table tr:hover {
+  background-color: #f1f5f9;
+}
+
+code {
+  font-size: 0.9em;
+}
+
+pre code {
+  font-size: 0.85em;
+}
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+.mermaid svg {
+  max-width: 900px;
+}
