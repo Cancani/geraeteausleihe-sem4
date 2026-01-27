@@ -44,7 +44,7 @@ Als fachliche Grundlage dieser Semesterarbeit dient ein bestehender Geräteausle
 
 Der Microservice stellt eine REST API zur Verfügung und wird im Geräteausleihprozess als Backend Komponente eingesetzt. Er übernimmt die serverseitige Verarbeitung und stellt insbesondere die Endpunkte `/healthz` zur Verfügbarkeitsprüfung sowie `/pdf` zur Generierung von Geräteausleih Quittungen bereit. Die Nutzung erfolgt unter anderem durch eine PowerApps Applikation sowie über direkte HTTP Requests.
 
-Technologisch basiert der Service auf Python mit Flask. Die Anwendung ist stateless aufgebaut und eignet sich dadurch für einen containerisierten Betrieb. Funktionale Erweiterungen oder Änderungen an der Fachlogik sind nicht Bestandteil dieser Semesterarbeit.
+Technologisch basiert der Service auf Python mit Flask. Die Anwendung ist stateless aufgebaut und eignet sich dadurch für einen containerisierten Betrieb. Funktionale Erweiterungen oder Änderungen an der Fachlogik sind kein Bestandteil dieser Semesterarbeit.
 
 In der vorliegenden Semesterarbeit wird der bestehende Microservice als gegebenes System betrachtet. Der Fokus liegt ausschliesslich auf dessen Cloud Native Transformation. Dazu gehören die Containerisierung, der automatisierte Build und Push in eine Container Registry, das Deployment auf ein Kubernetes Cluster sowie der reproduzierbare Betrieb inklusive CI und CD.
 
