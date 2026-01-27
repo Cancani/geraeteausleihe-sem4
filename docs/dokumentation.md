@@ -36,7 +36,23 @@ Die bestehende Geräteausleihe Lösung aus der vorherigen Semesterarbeit dient a
 * Extern erreichbare Endpoints healthz und pdf
 * Laufende Dokumentation über MkDocs und GitHub Pages
 
-###
+---
+
+### Ausgangsbasis: Bestehender Microservice (Semesterarbeit 3)
+
+Als fachliche Grundlage dieser Semesterarbeit dient ein bestehender Geräteausleihe Microservice, der im Rahmen der Semesterarbeit 3 entwickelt wurde.
+
+Der Microservice stellt eine REST API zur Verfügung und wird im Geräteausleihprozess als Backend Komponente eingesetzt. Er übernimmt die serverseitige Verarbeitung und stellt insbesondere die Endpunkte `/healthz` zur Verfügbarkeitsprüfung sowie `/pdf` zur Generierung von Geräteausleih Quittungen bereit. Die Nutzung erfolgt unter anderem durch eine PowerApps Applikation sowie über direkte HTTP Requests.
+
+Technologisch basiert der Service auf Python mit Flask. Die Anwendung ist stateless aufgebaut und eignet sich dadurch für einen containerisierten Betrieb. Funktionale Erweiterungen oder Änderungen an der Fachlogik sind nicht Bestandteil dieser Semesterarbeit.
+
+In der vorliegenden Semesterarbeit wird der bestehende Microservice als gegebenes System betrachtet. Der Fokus liegt ausschliesslich auf dessen Cloud Native Transformation. Dazu gehören die Containerisierung, der automatisierte Build und Push in eine Container Registry, das Deployment auf ein Kubernetes Cluster sowie der reproduzierbare Betrieb inklusive CI und CD.
+
+Die vollständige fachliche Beschreibung und ursprüngliche Implementierung des Microservices ist in der Dokumentation der Semesterarbeit 3 enthalten und wird hier bewusst nicht erneut ausgeführt.
+
+[Hier ist die Verlinkung auf die alte Semesterarbeit und die Implementation des Microservices.](https://gitlab.com/Cancani/semesterarbeit-3-efekan-msvc/-/blob/main/README.md?ref_type=heads#4-implementierung)
+
+---
 
 ### Versionskontrolle und Arbeitsweise auf GitHub
 
